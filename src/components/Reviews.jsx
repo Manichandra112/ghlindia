@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { Star, ShieldAlert, BadgeCheck, ChevronRight, MessageSquareQuote } from 'lucide-react';
+import { Star, ShieldAlert, BadgeCheck, ChevronRight, MessageSquareQuote, X } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -9,6 +11,7 @@ import 'swiper/css/navigation';
 import './Reviews.css';
 
 export default function Reviews() {
+  const sectionRef = useScrollAnimation();
   const reviews = [
     {
       name: 'Deepak',
@@ -55,18 +58,18 @@ export default function Reviews() {
   ];
 
   return (
-    <section className="reviews-section section-padding" id="reviews">
+    <section className="reviews-section section-padding" id="reviews" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Investor Feedback</span>
           <h2>What Our Customers Say</h2>
           <p>Read about the experiences of our retail and corporate investors who grow their wealth through our platform.</p>
         </div>
 
         {/* Google Aggregator Panel */}
-        <div className="google-aggregator-panel glass-panel">
+        <div className="google-aggregator-panel glass-panel" data-animate="zoom-in" data-stagger-delay="150ms">
           <div className="aggregator-left">
             <div className="google-badge-brand">
               <span className="g-blue">G</span>
@@ -101,7 +104,7 @@ export default function Reviews() {
         </div>
 
         {/* Swiper Slider */}
-        <div className="reviews-slider-container">
+        <div className="reviews-slider-container" data-animate="fade-up" data-stagger-delay="400ms">
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
@@ -134,52 +137,122 @@ export default function Reviews() {
   );
 }
 
-// Sub-component review card for managing show more/less state
+// Sub-component review card for managing show more/less state and modal
 function ReviewCard({ review }) {
-  const [showFull, setShowFull] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [transformDelta, setTransformDelta] = useState({ x: 0, y: 0 });
+
+  const handleOpen = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = rect.left + rect.width / 2;
+    const clickY = rect.top + rect.height / 2;
+    
+    // Calculate distance from screen center
+    const deltaX = clickX - window.innerWidth / 2;
+    const deltaY = clickY - window.innerHeight / 2;
+    
+    setTransformDelta({ x: deltaX, y: deltaY });
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setShowModal(false);
+      setIsClosing(false);
+    }, 500); // Wait for CSS animation to finish
+  };
+
   const maxLen = 120;
   const isLong = review.text.length > maxLen;
 
-  const displayText = showFull 
-    ? review.text 
-    : isLong 
-      ? review.text.substring(0, maxLen) + '...' 
-      : review.text;
+  const displayText = isLong ? review.text.substring(0, maxLen) + '...' : review.text;
 
   return (
-    <div className="review-card-item glass-panel">
-      <MessageSquareQuote size={32} className="quote-icon" />
-      
-      <div className="reviewer-info">
-        <div className="avatar-circle">
-          {review.avatarLetter}
+    <>
+      <div className="review-card-item glass-panel">
+        <MessageSquareQuote size={32} className="quote-icon" />
+        
+        <div className="reviewer-info">
+          <div className="avatar-circle">
+            {review.avatarLetter}
+          </div>
+          <div className="reviewer-name-col">
+            <div className="name-row">
+              <h4>{review.name}</h4>
+              <div className="verified-wrapper">
+                <BadgeCheck size={14} className="verified-icon" />
+                <span className="tooltip-verified">Verified Investor</span>
+              </div>
+            </div>
+            <span className="review-time">{review.time}</span>
+          </div>
         </div>
-        <div className="reviewer-name-col">
-          <div className="name-row">
-            <h4>{review.name}</h4>
-            <div className="verified-wrapper">
-              <BadgeCheck size={14} className="verified-icon" />
-              <span className="tooltip-verified">Verified Investor</span>
+
+        <div className="stars-row">
+          {[...Array(review.rating)].map((_, i) => (
+            <Star key={i} size={14} className="star-filled" fill="currentColor" />
+          ))}
+        </div>
+
+        <p className="review-card-text">
+          "{displayText}"
+          {isLong && (
+            <button className="read-more-btn" onClick={handleOpen}>
+              Read More
+            </button>
+          )}
+        </p>
+      </div>
+
+      {showModal && createPortal(
+        <div className={`review-modal-backdrop ${isClosing ? 'fade-out' : 'fade-in'}`} onClick={handleClose}>
+          <div 
+            className={`review-modal-content glass-panel ${isClosing ? 'zoom-out' : 'zoom-in'}`} 
+            onClick={(e) => e.stopPropagation()}
+            style={{ 
+              '--dx': `${transformDelta.x}px`,
+              '--dy': `${transformDelta.y}px`
+            }}
+          >
+            <button className="review-modal-close" onClick={handleClose}>
+              <X size={24} />
+            </button>
+            <div className="reviewer-info modal-reviewer-info">
+              <div className="avatar-circle">
+                {review.avatarLetter}
+              </div>
+              <div className="reviewer-name-col">
+                <div className="name-row">
+                  <h4>{review.name}</h4>
+                  <div className="verified-wrapper">
+                    <BadgeCheck size={16} className="verified-icon" />
+                  </div>
+                </div>
+                <span className="review-time">{review.time}</span>
+              </div>
+            </div>
+            <div className="stars-row modal-stars">
+              {[...Array(review.rating)].map((_, i) => (
+                <Star key={`modal-star-${i}`} size={16} className="star-filled" fill="currentColor" />
+              ))}
+            </div>
+            <div className="review-modal-scroll-area">
+              <div className="review-modal-text">
+                <p>"{review.text}"</p>
+              </div>
+            </div>
+            
+            <div className="review-modal-footer">
+              <button className="btn btn-primary modal-bottom-close" onClick={handleClose}>
+                Close Review
+              </button>
             </div>
           </div>
-          <span className="review-time">{review.time}</span>
-        </div>
-      </div>
-
-      <div className="stars-row">
-        {[...Array(review.rating)].map((_, i) => (
-          <Star key={i} size={14} className="star-filled" fill="currentColor" />
-        ))}
-      </div>
-
-      <p className="review-card-text">
-        "{displayText}"
-        {isLong && (
-          <button className="read-more-btn" onClick={() => setShowFull(!showFull)}>
-            {showFull ? ' Show Less' : ' Read More'}
-          </button>
-        )}
-      </p>
-    </div>
+        </div>,
+        document.body
+      )}
+    </>
   );
 }

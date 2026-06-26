@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { Play, Plus, X, ShieldCheck } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './WhatWeDo.css';
 
 export default function WhatWeDo() {
   const [playingLeft, setPlayingLeft] = useState(false);
   const [playingRight, setPlayingRight] = useState(false);
-  const [modalType, setModalType] = useState(null); // 'trading' or 'wholesale'
+  const [modalType, setModalType] = useState(null);
+  const sectionRef = useScrollAnimation();
 
   return (
-    <section className="what-we-do-section section-padding" id="what-we-do">
+    <section className="what-we-do-section section-padding" id="what-we-do" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Operational Framework</span>
           <h2>What We Do</h2>
           <p>We leverage our structured Special Purpose Vehicles (SPVs) to generate maximum yields from asset flipping and consumable trading.</p>
@@ -22,7 +24,7 @@ export default function WhatWeDo() {
         <div className="operational-row">
           
           {/* LEFT VIDEO */}
-          <div className="op-video-box glass-panel">
+          <div className="op-video-box glass-panel" data-animate="fade-right">
             {!playingLeft ? (
               <div className="op-video-trigger" onClick={() => setPlayingLeft(true)}>
                 <img 
@@ -47,7 +49,7 @@ export default function WhatWeDo() {
           </div>
 
           {/* CENTER CIRCULAR IMAGE TRIGGER */}
-          <div className="op-circle-trigger-col">
+          <div className="op-circle-trigger-col" data-animate="fade-up" data-stagger-delay="100ms">
             <div className="circular-thumb-container" onClick={() => setModalType('trading')}>
               <img 
                 src="/assets/img/home2026/others/PropertyFlipping.jpg" 
@@ -62,7 +64,7 @@ export default function WhatWeDo() {
           </div>
 
           {/* RIGHT VIDEO */}
-          <div className="op-video-box glass-panel">
+          <div className="op-video-box glass-panel" data-animate="fade-left" data-stagger-delay="200ms">
             {!playingRight ? (
               <div className="op-video-trigger" onClick={() => setPlayingRight(true)}>
                 <img 

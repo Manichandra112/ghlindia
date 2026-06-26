@@ -1,21 +1,23 @@
 import React from 'react';
 import { ShieldCheck, Layers, Calendar, Landmark } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './InvestmentPlan.css';
 
 export default function InvestmentPlan() {
+  const sectionRef = useScrollAnimation();
   return (
-    <section className="investment-plan-section section-padding" id="investment-plan">
+    <section className="investment-plan-section section-padding" id="investment-plan" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Active Issuance</span>
           <h2>Primary Investment Plan</h2>
           <p>Subscribe to our active secured debenture issuance monitored by corporate trustees and backed by registered assets.</p>
         </div>
 
         {/* Product Board Layout */}
-        <div className="plan-board-grid">
+        <div className="plan-board-grid" data-animate="fade-up" data-stagger-delay="150ms">
           
           {/* Left Detail Table */}
           <div className="plan-detail-card glass-panel">

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './About.css';
 
 export default function About() {
   const [playingLeft, setPlayingLeft] = useState(false);
   const [playingRight, setPlayingRight] = useState(false);
+  const sectionRef = useScrollAnimation();
 
   return (
-    <section className="about-section section-padding" id="about">
+    <section className="about-section section-padding" id="about" ref={sectionRef}>
       <div className="container">
         
         {/* Established in 2021 Statement Block */}
-        <div className="established-box glass-panel">
+        <div className="established-box glass-panel" data-animate="fade-up">
           <div className="est-left">
             <h2>Established in <span className="red-accent">2021</span></h2>
           </div>
@@ -29,7 +31,7 @@ export default function About() {
         <div className="about-reels-row">
           
           {/* LEFT REEL */}
-          <div className="reel-card-item">
+          <div className="reel-card-item" data-animate="fade-right">
             {!playingLeft ? (
               <div className="reel-thumbnail-wrapper" onClick={() => setPlayingLeft(true)}>
                 <img 
@@ -54,7 +56,7 @@ export default function About() {
           </div>
 
           {/* MIDDLE CONTENT CARD */}
-          <div className="about-middle-card glass-panel">
+          <div className="about-middle-card glass-panel" data-animate="fade-up" data-stagger-delay="100ms">
             <h3 className="middle-card-title">
               <span className="red-accent">GHL‘s</span> Business-Alternative Investment Platform
             </h3>
@@ -76,7 +78,7 @@ export default function About() {
           </div>
 
           {/* RIGHT REEL */}
-          <div className="reel-card-item">
+          <div className="reel-card-item" data-animate="fade-left" data-stagger-delay="200ms">
             {!playingRight ? (
               <div className="reel-thumbnail-wrapper" onClick={() => setPlayingRight(true)}>
                 <img 

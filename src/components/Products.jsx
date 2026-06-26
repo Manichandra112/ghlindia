@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './Products.css';
 
 export default function Products() {
   const [activeVideo, setActiveVideo] = useState(null);
+  const sectionRef = useScrollAnimation();
 
   const productsData = [
     {
@@ -33,11 +35,11 @@ export default function Products() {
   ];
 
   return (
-    <section className="products-section section-padding" id="products">
+    <section className="products-section section-padding" id="products" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Knowledge Bank</span>
           <h2>Understand Our Products</h2>
           <p>Watch these informative videos to learn about alternate yield generation, security structures, and fractional assets.</p>
@@ -45,10 +47,10 @@ export default function Products() {
 
         {/* Video Cards Grid */}
         <div className="products-grid">
-          {productsData.map((prod) => {
+          {productsData.map((prod, idx) => {
             const isPlaying = activeVideo === prod.id;
             return (
-              <div key={prod.id} className="product-video-card glass-panel card-hover-effect">
+              <div key={prod.id} className="product-video-card glass-panel card-hover-effect" data-animate="fade-up" data-stagger-delay={`${idx * 300}ms`}>
                 <div className="product-media-wrapper">
                   {!isPlaying ? (
                     <div className="product-cover-trigger" onClick={() => setActiveVideo(prod.id)}>

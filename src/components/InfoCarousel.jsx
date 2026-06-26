@@ -1,7 +1,9 @@
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './InfoCarousel.css';
 
 export default function InfoCarousel() {
+  const sectionRef = useScrollAnimation();
   const cards = [
     { img: '/assets/img/cc/page-home.jpg', alt: 'GHL Investment Opportunity Cover' },
     { img: '/assets/img/cc/page1.jpg', alt: 'What are Distressed Properties?' },
@@ -13,18 +15,18 @@ export default function InfoCarousel() {
   ];
 
   return (
-    <section className="info-carousel-sec section-padding" id="info-carousel">
+    <section className="info-carousel-sec section-padding" id="info-carousel" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header text-center">
+        <div className="section-header text-center" data-animate="fade-up">
           <span>Investment Guidelines</span>
           <h2>Distressed Property Portfolios</h2>
           <p>Browse through our visual cards explaining distressed property flipping, NCD yields, and security backing.</p>
         </div>
 
         {/* CSS Continuous Scroll Marquee */}
-        <div className="info-marquee-container">
+        <div className="info-marquee-container" data-animate="fade-up" data-stagger-delay="200ms">
           <div className="info-marquee-track">
             {/* First Set of Cards */}
             {cards.map((card, idx) => (

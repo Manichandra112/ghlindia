@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FAQ.css';
 
 export default function FAQ() {
-  const [openIdx, setOpenIdx] = useState(0); // First item open by default
+  const [openIdx, setOpenIdx] = useState(0);
+  const sectionRef = useScrollAnimation();
 
   const faqs = [
     {
@@ -37,11 +39,11 @@ export default function FAQ() {
   };
 
   return (
-    <section className="faq-section section-padding" id="faq">
+    <section className="faq-section section-padding" id="faq" ref={sectionRef}>
       <div className="container faq-container">
         
         {/* Left column: FAQ Title & Help Box */}
-        <div className="faq-left-col">
+        <div className="faq-left-col" data-animate="fade-right">
           <span className="faq-subtitle">Support Desk</span>
           <h2 className="faq-main-title">Frequently Asked Questions</h2>
           <p className="faq-main-desc">
@@ -59,7 +61,7 @@ export default function FAQ() {
         </div>
 
         {/* Right column: Accordion List */}
-        <div className="faq-right-col">
+        <div className="faq-right-col" data-animate="fade-left" data-stagger-delay="100ms">
           <div className="faq-accordion-list">
             {faqs.map((faq, idx) => {
               const isOpen = openIdx === idx;

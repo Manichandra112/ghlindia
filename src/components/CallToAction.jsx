@@ -1,11 +1,13 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './CallToAction.css';
 
 export default function CallToAction() {
+  const sectionRef = useScrollAnimation();
   return (
-    <section className="cta-registration-sec" id="cta-registration">
-      <div className="container cta-reg-container text-center">
+    <section className="cta-registration-sec" id="cta-registration" ref={sectionRef}>
+      <div className="container cta-reg-container text-center" data-animate="zoom-in">
         <h2 className="cta-reg-title">
           GHL INDIA is here to create a prosperous environment that serves the world at large
         </h2>

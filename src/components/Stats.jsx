@@ -2,12 +2,14 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import { IndianRupee, Check, Users, Users2, ArrowLeftRight, Percent, ShieldCheck } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import './Stats.css';
 
 export default function Stats() {
+  const sectionRef = useScrollAnimation();
   const stats = [
     {
       icon: <IndianRupee size={22} />,
@@ -54,11 +56,11 @@ export default function Stats() {
   ];
 
   return (
-    <section className="stats-section section-padding" id="stats">
+    <section className="stats-section section-padding" id="stats" ref={sectionRef}>
       <div className="container">
         
         {/* Intro Header */}
-        <div className="stats-header-area">
+        <div className="stats-header-area" data-animate="fade-up">
           <span className="stats-micro-title">Performance Metrics</span>
           <h2>GHL India in Numbers</h2>
           <p>
@@ -67,7 +69,7 @@ export default function Stats() {
         </div>
 
         {/* Continuous Loop Swiper Ticker */}
-        <div className="stats-ticker-container">
+        <div className="stats-ticker-container" data-animate="zoom-in" data-stagger-delay="200ms">
           <Swiper
             slidesPerView={'auto'}
             spaceBetween={24}

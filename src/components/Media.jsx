@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './Media.css';
 
 export default function Media() {
   const [playingVideo, setPlayingVideo] = useState(null);
+  const sectionRef = useScrollAnimation();
 
   const mainMedia = [
     {
@@ -42,11 +44,11 @@ export default function Media() {
   ];
 
   return (
-    <section className="media-section section-padding" id="media">
+    <section className="media-section section-padding" id="media" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Public Outreach</span>
           <h2>Media Presence</h2>
           <p>We share insights, transparency standards, and market summaries across national news channels and podcasts.</p>
@@ -57,7 +59,7 @@ export default function Media() {
           {mainMedia.map((media) => {
             const isPlaying = playingVideo === media.id;
             return (
-              <div key={media.id} className="media-main-card glass-panel card-hover-effect">
+              <div key={media.id} className="media-main-card glass-panel card-hover-effect" data-animate="fade-up" data-stagger-delay={`${mainMedia.indexOf(media) * 250}ms`}>
                 <div className="media-player-wrapper">
                   {!isPlaying ? (
                     <div className="media-trigger" onClick={() => setPlayingVideo(media.id)}>

@@ -1,48 +1,62 @@
 .sectors-section {
-  background-color: var(--light-gray);
+  background-color: var(--text-white);
   position: relative;
+  overflow: hidden;
+}
+
+/* Subtle wave top decoration */
+.sectors-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--primary-red) 30%,
+    var(--gold-accent) 70%,
+    transparent 100%
+  );
 }
 
 .sectors-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 @media (max-width: 1100px) {
-  .sectors-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .sectors-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  .sectors-grid { grid-template-columns: 1fr; gap: 16px; }
 }
 
-/* Sector Card styling */
+/* ── Card ── */
 .sector-card {
-  padding: 32px;
   background-color: var(--text-white);
-  border-radius: var(--border-radius-md);
-  border: 1.5px solid rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  transition: var(--transition-smooth);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
 }
 
 .sector-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(var(--primary-red-rgb), 0.12);
-  background-color: var(--hover-accent);
+  transform: translateY(-8px);
+  border-color: rgba(var(--primary-red-rgb), 0.18);
+  box-shadow: 0 20px 48px rgba(var(--primary-red-rgb), 0.08),
+              0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-/* Glass Shimmer on hover */
+/* ── Shimmer ── */
 .sector-shimmer-effect {
   position: absolute;
   top: 0;
@@ -52,82 +66,145 @@
   background: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.25) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-25deg);
   pointer-events: none;
   transition: all 0.3s ease;
+  z-index: 2;
 }
 
 .sector-card:hover .sector-shimmer-effect {
-  animation: shine-effect 1.4s forwards;
+  animation: shine-effect 1.5s forwards;
 }
 
-@keyframes shine-effect {
-  0% { left: -75%; }
-  100% { left: 125%; }
-}
-
-.sector-icon-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* ── Image container ── */
+.sector-image-container {
+  position: relative;
   width: 100%;
-  margin-bottom: 24px;
+  height: 190px;
+  overflow: hidden;
 }
 
-.sector-icon-box {
-  width: 48px;
-  height: 48px;
-  background-color: rgba(var(--primary-red-rgb), 0.07);
-  color: var(--primary-red);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(var(--primary-red-rgb), 0.1);
+/* Gradient overlay on image always — stronger on hover */
+.sector-image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  transition: opacity 0.4s ease;
 }
 
+.sector-card:hover .sector-image-container::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--primary-red-rgb), 0.08) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.sector-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sector-card:hover .sector-image {
+  transform: scale(1.1);
+}
+
+/* ── Floating Stat Badge ── */
 .sector-stat-badge {
-  font-size: 11px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10.5px;
   font-weight: 700;
-  color: #b08e24;
-  background-color: rgba(212, 175, 55, 0.1);
-  padding: 4px 10px;
-  border-radius: 20px;
+  color: #fff;
+  background: rgba(10, 10, 20, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 3;
+  letter-spacing: 0.3px;
+  transition: background 0.3s ease;
+}
+
+.sector-card:hover .sector-stat-badge {
+  background: rgba(var(--primary-red-rgb), 0.85);
+  border-color: transparent;
+}
+
+/* ── Card Content ── */
+.sector-card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .sector-title {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 800;
   color: var(--dark-charcoal);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.sector-card:hover .sector-title {
+  color: var(--primary-red);
 }
 
 .sector-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  flex-grow: 1;
 }
 
 .sector-card-footer {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   margin-top: auto;
   color: var(--primary-red);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12.5px;
   cursor: pointer;
+  width: fit-content;
+  padding: 6px 0;
+  position: relative;
+}
+
+.sector-card-footer::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--primary-red);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sector-card:hover .sector-card-footer::after {
   width: 100%;
 }
 
 .arrow-icon {
-  transition: transform 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .sector-card:hover .arrow-icon {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }

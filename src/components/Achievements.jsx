@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 import { Award, ZoomIn, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -11,6 +12,7 @@ import './Achievements.css';
 
 export default function Achievements() {
   const [lightboxImg, setLightboxImg] = useState(null);
+  const sectionRef = useScrollAnimation();
 
   const awards = [
     {
@@ -46,18 +48,18 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="achievements-section section-padding" id="achievements">
+    <section className="achievements-section section-padding" id="achievements" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" data-animate="fade-up">
           <span>Our Credentials</span>
           <h2>Awards & Achievements</h2>
           <p>We are consistently recognized by leading global publications and national business forums for our secure returns and transparent operations.</p>
         </div>
 
         {/* Coverflow 3D Carousel */}
-        <div className="achievements-carousel-container">
+        <div className="achievements-carousel-container" data-animate="zoom-in" data-stagger-delay="300ms">
           <Swiper
             effect={'coverflow'}
             grabCursor={true}

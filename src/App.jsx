@@ -15,10 +15,12 @@ import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
     <>
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />
@@ -42,3 +44,4 @@ function App() {
 }
 
 export default App;
+
