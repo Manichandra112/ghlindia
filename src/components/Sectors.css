@@ -1,0 +1,133 @@
+.sectors-section {
+  background-color: var(--light-gray);
+  position: relative;
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1100px) {
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sectors-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Sector Card styling */
+.sector-card {
+  padding: 32px;
+  background-color: var(--text-white);
+  border-radius: var(--border-radius-md);
+  border: 1.5px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: var(--transition-smooth);
+}
+
+.sector-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--primary-red-rgb), 0.12);
+  background-color: var(--hover-accent);
+}
+
+/* Glass Shimmer on hover */
+.sector-shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.sector-card:hover .sector-shimmer-effect {
+  animation: shine-effect 1.4s forwards;
+}
+
+@keyframes shine-effect {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+.sector-icon-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.sector-icon-box {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(var(--primary-red-rgb), 0.07);
+  color: var(--primary-red);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--primary-red-rgb), 0.1);
+}
+
+.sector-stat-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #b08e24;
+  background-color: rgba(212, 175, 55, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.sector-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark-charcoal);
+  margin-bottom: 12px;
+}
+
+.sector-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.sector-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--primary-red);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.sector-card:hover .arrow-icon {
+  transform: translateX(4px);
+}

@@ -1,0 +1,86 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  margin-top: calc(var(--header-height) + 42px);
+  overflow: hidden;
+  background-color: var(--dark-charcoal);
+  line-height: 0;
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    margin-top: 70px;
+  }
+}
+
+.hero-swiper {
+  width: 100%;
+}
+
+.hero-slide-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.hero-slide-img-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.hero-slide-link:hover .hero-slide-img {
+  transform: scale(1.015);
+}
+
+/* Swiper navigation edits */
+.hero-section .swiper-button-prev,
+.hero-section .swiper-button-next {
+  color: var(--text-white);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(228, 31, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hero-section .swiper-button-prev::after,
+.hero-section .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.hero-section .swiper-button-prev:hover,
+.hero-section .swiper-button-next:hover {
+  background-color: var(--primary-red-hover);
+  color: var(--text-white);
+  transform: scale(1.05);
+}
+
+.hero-section .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+
+.hero-section .swiper-pagination-bullet-active {
+  background: var(--primary-red) !important;
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .hero-section .swiper-button-prev,
+  .hero-section .swiper-button-next {
+    display: none; /* Hide arrows on mobile to keep interface clutter-free */
+  }
+}

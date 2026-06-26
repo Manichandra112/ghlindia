@@ -1,0 +1,183 @@
+.investment-plan-section {
+  background-color: var(--light-gray);
+  position: relative;
+}
+
+.plan-board-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+@media (max-width: 991px) {
+  .plan-board-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Detail Card styling */
+.plan-detail-card {
+  background-color: var(--text-white);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card-header {
+  margin-bottom: 28px;
+}
+
+.plan-card-header h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--dark-charcoal);
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.plan-card-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.blue-link {
+  color: #0394e8;
+  font-weight: 700;
+}
+
+/* Metrics Table */
+.plan-metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.plan-metrics-table td {
+  padding: 16px 0;
+  border-bottom: 1.5px solid var(--border-light);
+}
+
+.table-label-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14.5px;
+}
+
+.table-icon {
+  color: var(--primary-red);
+}
+
+.table-val-cell {
+  text-align: right;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--dark-charcoal);
+  font-family: var(--font-heading);
+}
+
+.highlight-red {
+  color: var(--primary-red);
+}
+
+.table-pa {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Progress bar area */
+.plan-progress-area {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+}
+
+.yellow-text {
+  color: #c29519;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill.yet-funded {
+  background-color: #ffc107;
+  height: 100%;
+}
+
+.progress-raised-text {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Right card image */
+.plan-image-card {
+  background-color: var(--text-white);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plan-img-wrapper {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  background-color: var(--light-gray);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+}
+
+.plan-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-shine-effect {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine-loop 4s infinite;
+}
+
+.plan-action-btn {
+  margin-top: auto;
+}

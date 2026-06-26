@@ -1,0 +1,85 @@
+.cta-registration-sec {
+  background: linear-gradient(135deg, var(--primary-red) 0%, #aa090d 100%);
+  color: var(--text-white);
+  padding: 60px 0;
+}
+
+.cta-reg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-reg-title {
+  color: var(--text-white);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  max-width: 900px;
+  letter-spacing: -0.2px;
+  font-family: var(--font-heading);
+}
+
+.cta-reg-subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 28px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .cta-reg-title {
+    font-size: 18px;
+  }
+  .cta-reg-subtitle {
+    font-size: 14px;
+  }
+}
+
+.cta-reg-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .cta-reg-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .cta-reg-buttons .btn-pill-white {
+    width: 200px;
+  }
+}
+
+.btn-pill-white {
+  background-color: var(--text-white);
+  color: var(--primary-red);
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: var(--transition-smooth);
+}
+
+.btn-pill-white:hover {
+  background-color: #f8f9fa;
+  color: #aa090d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pill-white svg {
+  transition: transform 0.25s ease;
+}
+
+.btn-pill-white:hover svg {
+  transform: translateX(3px);
+}
