@@ -1,12 +1,20 @@
 .achievements-section {
-  background-color: var(--text-white);
+  background-color: var(--section-muted);
   position: relative;
   overflow: hidden;
 }
 
 .achievements-carousel-container {
   width: 100%;
-  padding: 40px 0;
+  padding: 28px 20px 46px;
+  background-color: var(--section-white);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+}
+
+.achievements-swiper {
+  padding: 12px 0 36px;
 }
 
 /* Swiper custom 3D card parameters */
@@ -16,8 +24,10 @@
   background-color: var(--card-dark);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(228, 31, 38, 0.15);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.22);
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  outline: 1px solid rgba(15, 23, 42, 0.18);
+  outline-offset: -1px;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.4s ease,
               box-shadow 0.4s ease;
@@ -26,6 +36,7 @@
 .achievement-slide:hover {
   transform: translateY(-8px);
   border-color: var(--gold-accent);
+  outline-color: rgba(212, 175, 55, 0.55);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35),
               0 0 15px rgba(212, 175, 55, 0.15);
 }
@@ -47,6 +58,7 @@
   align-items: center;
   justify-content: center;
   padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .award-cert-img {
@@ -100,7 +112,7 @@
 .award-card-info {
   padding: 20px 24px;
   background-color: var(--card-dark);
-  border-top: 1px solid rgba(228, 31, 38, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   margin-top: auto;
   text-align: center;
   transition: background-color 0.4s ease;
@@ -197,8 +209,9 @@
   width: 44px;
   height: 44px;
   background-color: var(--text-white);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--card-border);
   border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
 .achievements-section .swiper-button-prev:hover,
@@ -215,12 +228,24 @@
 /* Special Thank You Slide Styling */
 .thank-you-slide {
   background: radial-gradient(circle at center, #c6161c 0%, #0a0b0d 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.78);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .achievements-carousel-container {
+    padding: 20px 12px 38px;
+    border-radius: var(--border-radius-md);
+  }
+
+  .achievement-slide {
+    width: min(78vw, 290px);
+    height: 420px;
+  }
 }
 
 .thank-you-slide::before {

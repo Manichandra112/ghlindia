@@ -16,6 +16,11 @@
   --light-gray: #f8f9fd;
   --border-color: rgba(228, 31, 38, 0.15);
   --border-light: rgba(0, 0, 0, 0.06);
+  --section-white: #ffffff;
+  --section-muted: #f3f5f9;
+  --card-border: rgba(15, 23, 42, 0.14);
+  --card-border-strong: rgba(15, 23, 42, 0.2);
+  --card-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
   
   /* Text */
   --text-dark: #0f172a;
@@ -36,9 +41,9 @@
   --transition-fast: all 0.15s ease;
   
   /* Glassmorphism Defaults */
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.45);
-  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: var(--card-border);
+  --glass-shadow: var(--card-shadow);
 }
 
 /* Reset and Base Styles */
@@ -252,6 +257,49 @@ img {
   transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.4s ease;
+}
+
+/* Clear section bands and visible card separation */
+.about-section.about-section,
+.what-we-do-section.what-we-do-section,
+.media-section.media-section,
+.investment-plan-section.investment-plan-section,
+.reviews-section.reviews-section,
+.debt-intro.debt-intro,
+.debt-cards-grid.debt-cards-grid {
+  background-color: var(--section-white);
+}
+
+.products-section.products-section,
+.info-carousel-sec.info-carousel-sec,
+.achievements-section.achievements-section,
+.sectors-section.sectors-section,
+.how-section.how-section,
+.faq-section.faq-section,
+.debt-approach.debt-approach,
+.debt-why.debt-why {
+  background-color: var(--section-muted);
+}
+
+.glass-panel.glass-panel,
+.product-video-card.product-video-card,
+.media-main-card.media-main-card,
+.media-interview-card.media-interview-card,
+.sector-card.sector-card,
+.plan-detail-card.plan-detail-card,
+.plan-image-card.plan-image-card,
+.step-card.step-card,
+.review-card-item.review-card-item,
+.faq-item.faq-item,
+.faq-help-box.faq-help-box,
+.debt-grid-card.debt-grid-card,
+.benefit-card.benefit-card,
+.established-box.established-box,
+.about-middle-card.about-middle-card,
+.op-video-box.op-video-box,
+.info-card.info-card {
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
 /* Animations */
