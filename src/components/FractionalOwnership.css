@@ -1,0 +1,702 @@
+/* Fractional Ownership Stylesheet */
+
+.fractional-page-wrapper {
+  background-color: var(--light-gray);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* 1. Hero Section */
+.fractional-hero {
+  position: relative;
+  width: 100%;
+  margin-top: calc(var(--header-height) + 16px);
+  padding: 16px 0;
+}
+
+@media (max-width: 768px) {
+  .fractional-hero {
+    margin-top: 70px;
+    padding: 8px 0;
+  }
+}
+
+.fractional-hero-banner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .fractional-hero-banner {
+    padding: 0 16px;
+  }
+}
+
+.fractional-hero-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  display: block;
+}
+
+/* 2. Intro Section */
+.intro-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-image-container::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(228, 31, 38, 0.04) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.fractional-intro-img {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.intro-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-red);
+  background-color: rgba(228, 31, 38, 0.05);
+  border: 1px solid rgba(228, 31, 38, 0.15);
+  padding: 5px 14px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+}
+
+.text-highlight {
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--gold-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.intro-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.intro-feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.intro-feat-icon-wrapper {
+  background-color: rgba(228, 31, 38, 0.06);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.intro-feat-icon {
+  color: var(--primary-red);
+}
+
+.intro-feat-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.intro-feat-text strong {
+  color: var(--dark-charcoal);
+  font-weight: 600;
+}
+
+.fractional-row-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.fractional-col-flex {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .fractional-row-flex {
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+  .fractional-col-flex {
+    width: 100%;
+  }
+}
+
+.intro-content-col {
+  padding-left: 48px;
+}
+
+@media (max-width: 768px) {
+  .intro-content-col {
+    padding-left: 12px;
+    margin-top: 32px;
+  }
+}
+
+.text-accent {
+  color: var(--primary-red);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.intro-content-col h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.intro-content-col p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 3. Example Section */
+.fractional-example {
+  padding: 20px 0;
+  position: relative;
+}
+
+.example-glass-card {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+}
+
+.example-content {
+  padding: 48px 60px 48px 80px;
+}
+
+@media (max-width: 768px) {
+  .example-content {
+    padding: 32px;
+  }
+}
+
+.example-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+  margin-bottom: 12px;
+}
+
+.example-content p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Ribbon Gold */
+.ribbon-gold {
+  position: absolute;
+  top: 15px;
+  left: -35px;
+  background-color: var(--gold-accent);
+  color: var(--text-white);
+  padding: 6px 36px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* 4. Why Fractional Grid */
+.why-fractional-grid {
+  background-color: var(--light-gray);
+}
+
+.fractional-grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (max-width: 992px) {
+  .fractional-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .fractional-grid-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fractional-feat-card {
+  background-color: var(--text-white);
+  padding: 40px 32px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.fractional-feat-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--primary-red-rgb), 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.07);
+}
+
+.feat-icon-badge {
+  background-color: rgba(var(--primary-red-rgb), 0.08);
+  border: 1px solid rgba(var(--primary-red-rgb), 0.12);
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: transform 0.4s ease;
+}
+
+.fractional-feat-card:hover .feat-icon-badge {
+  transform: scale(1.08);
+  background-color: var(--primary-red);
+}
+
+.feat-icon {
+  color: var(--primary-red);
+  transition: color 0.4s ease;
+}
+
+.fractional-feat-card:hover .feat-icon {
+  color: var(--text-white);
+}
+
+.fractional-feat-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+  margin-bottom: 12px;
+}
+
+.fractional-feat-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 5. Why Choose GHL Section (Light Theme) */
+.why-ghl-details {
+  background-color: var(--light-gray);
+}
+
+.ghl-reasons-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+@media (max-width: 992px) {
+  .ghl-reasons-matrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ghl-reasons-matrix {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reason-card {
+  background-color: var(--text-white);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius-md);
+  padding: 32px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-card:hover {
+  border-color: rgba(228, 31, 38, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.reason-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.check-icon-gold {
+  color: var(--gold-accent);
+}
+
+.reason-card h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+  margin: 0;
+}
+
+.reason-card p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 6. Expertise Section */
+.property-flipping-expertise {
+  background-color: var(--text-white);
+}
+
+.expertise-accent-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background-color: rgba(212, 175, 55, 0.08);
+  border-left: 4.5px solid var(--gold-accent);
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  margin-top: 28px;
+}
+
+.expertise-accent-bar span {
+  font-size: 14px;
+  color: #c29519;
+  font-weight: 600;
+}
+
+.text-gold {
+  color: var(--gold-accent);
+}
+
+/* 7. Process Timeline Section (Light Theme) */
+.process-timeline-section {
+  background-color: var(--light-gray);
+  padding-bottom: 40px !important;
+}
+
+.timeline-block {
+  position: relative;
+  max-width: 860px;
+  margin: 60px auto 0;
+}
+
+.timeline-connector-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold-accent) 0%, rgba(212, 175, 55, 0.1) 100%);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .timeline-connector-line {
+    left: 28px;
+  }
+}
+
+.timeline-step-row {
+  display: flex;
+  position: relative;
+  margin-bottom: 48px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.timeline-step-row.left-align {
+  justify-content: flex-start;
+  padding-right: 50%;
+}
+
+.timeline-step-row.right-align {
+  justify-content: flex-end;
+  padding-left: 50%;
+}
+
+@media (max-width: 768px) {
+  .timeline-step-row.left-align,
+  .timeline-step-row.right-align {
+    justify-content: flex-start;
+    padding-left: 70px;
+    padding-right: 0;
+  }
+}
+
+.timeline-step-badge {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--text-white);
+  border: 1.5px solid var(--gold-accent);
+  color: var(--gold-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  z-index: 5;
+}
+
+.timeline-step-row:hover .timeline-step-badge {
+  transform: translateX(-50%) scale(1.08);
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  box-shadow: 0 6px 20px rgba(228, 31, 38, 0.15);
+}
+
+@media (max-width: 768px) {
+  .timeline-step-row:hover .timeline-step-badge {
+    transform: scale(1.08);
+  }
+}
+
+.step-num {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--primary-red);
+  color: var(--text-white);
+  font-size: 8px;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .timeline-step-badge {
+    left: 28px;
+  }
+}
+
+.timeline-card-wrapper {
+  background-color: var(--text-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 3px solid var(--gold-accent); /* Golden top strip */
+  border-radius: var(--border-radius-md);
+  padding: 24px 28px;
+  width: 90%;
+  margin: 0 auto;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.4s ease, 
+              box-shadow 0.4s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+}
+
+.timeline-step-row.left-align .timeline-card-wrapper {
+  margin-right: 28px;
+}
+
+.timeline-step-row.right-align .timeline-card-wrapper {
+  margin-left: 28px;
+}
+
+@media (max-width: 768px) {
+  .timeline-step-row.left-align .timeline-card-wrapper,
+  .timeline-step-row.right-align .timeline-card-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.timeline-card-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: rgba(228, 31, 38, 0.15);
+  border-top-color: var(--primary-red); /* Swaps to red strip on hover */
+  background-color: var(--text-white);
+  box-shadow: 0 15px 35px rgba(228, 31, 38, 0.08);
+}
+
+.timeline-card-wrapper h4 {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+  margin-bottom: 8px;
+}
+
+.step-number-prefix {
+  color: var(--gold-accent);
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+.timeline-card-wrapper p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 8. Call To Action (Bottom) */
+.fractional-cta {
+  background: linear-gradient(135deg, #e41f26 0%, #b21015 100%);
+  padding: 80px 0 100px !important;
+  text-align: center;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.15);
+}
+
+.cta-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.35;
+  letter-spacing: -0.2px;
+}
+
+.cta-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .cta-actions-row {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .cta-actions-row .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.btn-cta-primary {
+  background: var(--text-white);
+  color: #b21015 !important;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 30px;
+  border-radius: 30px; /* Modern pill style */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: #f4f5f7;
+}
+
+.btn-cta-secondary {
+  background: transparent;
+  border: 1.5px solid var(--text-white);
+  color: var(--text-white) !important;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 30px;
+  border-radius: 30px; /* Modern pill style */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
+}
+
+.btn-cta-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 9. Scroll Animation Custom overrides for Premium Smoothness */
+.fractional-page-wrapper [data-animate="fade-left"],
+.fractional-page-wrapper [data-animate="fade-right"],
+.fractional-page-wrapper [data-animate="fade-up"],
+.fractional-page-wrapper [data-animate="zoom-in"] {
+  transition-duration: 1.4s !important; /* Made animation slower for elegance */
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important; /* Smooth ease-out expo curve */
+}

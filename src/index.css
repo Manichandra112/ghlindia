@@ -36,9 +36,9 @@
   --transition-fast: all 0.15s ease;
   
   /* Glassmorphism Defaults */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.04);
 }
 
 /* Reset and Base Styles */
@@ -245,10 +245,13 @@ img {
 /* Glassmorphism Panel Utility */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
+  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease;
 }
 
 /* Animations */
@@ -531,15 +534,10 @@ img {
 /* ================================================================
    GLASS CARD — Premium hover depth
 ================================================================ */
-.glass-panel {
-  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s ease;
-}
-
 .glass-panel:hover {
-  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.08),
-              0 0 0 1px rgba(var(--primary-red-rgb), 0.08);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(var(--primary-red-rgb), 0.12);
+  border-color: rgba(var(--primary-red-rgb), 0.15);
 }
 
 /* ================================================================

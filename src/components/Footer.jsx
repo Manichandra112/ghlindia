@@ -54,7 +54,7 @@ export default function Footer() {
           
           {/* Brand/Contact column */}
           <div className="footer-col brand-col">
-            <a href="#" className="logo-area logo-footer">
+            <a href="#/" className="logo-area logo-footer">
               <div className="logo-symbol">G</div>
               <div className="logo-text text-white">
                 <span className="logo-highlight text-white">GHL</span>

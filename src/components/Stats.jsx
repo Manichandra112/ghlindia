@@ -13,9 +13,9 @@ export default function Stats() {
   const stats = [
     {
       icon: <IndianRupee size={22} />,
-      value: '$28.5M+',
+      value: '₹235+ Cr',
       label: 'Asset Under Management',
-      desc: 'INR 235+ Crores'
+      desc: 'USD $28.5M+ Portfolio'
     },
     {
       icon: <Check size={22} />,
@@ -37,9 +37,9 @@ export default function Stats() {
     },
     {
       icon: <ArrowLeftRight size={22} />,
-      value: '$3.8M+',
+      value: '₹31.5+ Cr',
       label: 'Repayments Made',
-      desc: 'On-time monthly payouts'
+      desc: 'USD $3.8M+ on-time payouts'
     },
     {
       icon: <Percent size={22} />,

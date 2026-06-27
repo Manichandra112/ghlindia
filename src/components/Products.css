@@ -25,11 +25,21 @@
 /* Product Card styling */
 .product-video-card {
   background-color: var(--text-white);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(228, 31, 38, 0.08);
   border-radius: var(--border-radius-md);
   padding: 16px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+}
+
+.product-video-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(228, 31, 38, 0.18);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06),
+              0 0 0 1px rgba(228, 31, 38, 0.1);
 }
 
 .product-media-wrapper {

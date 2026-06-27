@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,27 +16,57 @@ import FAQ from './components/FAQ';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
+import FractionalOwnership from './components/FractionalOwnership';
+import DebtFinancing from './components/DebtFinancing';
 
 function App() {
+  const [currentView, setCurrentView] = useState('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === '#/fractional-ownership') {
+        setCurrentView('fractional-ownership');
+      } else if (hash === '#/debt-financing') {
+        setCurrentView('debt-financing');
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo(0, 0); // Always scroll to top on hash view changes
+    };
+
+    // Initialize on mount
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <>
       <ScrollProgress />
       <Header />
       <main>
-        <Hero />
-        <About />
-        <Products />
-        <InfoCarousel />
-        <WhatWeDo />
-        <Stats />
-        <Achievements />
-        <Media />
-        <Sectors />
-        <InvestmentPlan />
-        <HowItWorks />
-        <Reviews />
-        <FAQ />
-        <CallToAction />
+        {currentView === 'fractional-ownership' && <FractionalOwnership />}
+        {currentView === 'debt-financing' && <DebtFinancing />}
+        {currentView === 'home' && (
+          <>
+            <Hero />
+            <About />
+            <Products />
+            <InfoCarousel />
+            <WhatWeDo />
+            <Stats />
+            <Achievements />
+            <Media />
+            <Sectors />
+            <InvestmentPlan />
+            <HowItWorks />
+            <Reviews />
+            <FAQ />
+            <CallToAction />
+          </>
+        )}
       </main>
       <Footer />
     </>

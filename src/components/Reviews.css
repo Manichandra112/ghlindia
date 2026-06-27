@@ -21,11 +21,21 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 40px;
-  background-color: #f8fafc;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 20px;
   margin-bottom: 56px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(228, 31, 38, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.google-aggregator-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(228, 31, 38, 0.18);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05),
+              0 0 0 1px rgba(228, 31, 38, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -126,7 +136,7 @@
 
 .review-card-item {
   background-color: var(--text-white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(228, 31, 38, 0.08);
   border-radius: 20px;
   padding: 32px;
   position: relative;
@@ -135,17 +145,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.4s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.025);
 }
 
 .review-card-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-12px) scale(1.02);
   border-color: rgba(var(--primary-red-rgb), 0.2);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06),
-    0 0 0 1px rgba(var(--primary-red-rgb), 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08),
+              0 0 0 1px rgba(var(--primary-red-rgb), 0.12);
 }
 
 /* Gradient accent bar on top of the card */
@@ -414,14 +425,14 @@
   justify-content: center;
   color: #64748b;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.35s ease;
   z-index: 2;
 }
 
 .review-modal-close:hover {
   background: #ef4444;
   color: white;
-  transform: rotate(90deg) scale(1.1);
+  transform: rotate(180deg) scale(1.15);
 }
 
 .modal-reviewer-info {
@@ -536,84 +547,13 @@
   }
 }
 
-100% {
-  transform: scale(0.01);
-  opacity: 0;
-}
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-
 /* ===== Premium Motion Enhancements ===== */
-
-.review-card-item {
-  will-change: transform;
-  transition:
-    transform .45s cubic-bezier(.22, 1, .36, 1),
-    box-shadow .45s,
-    border-color .35s;
-}
-
-.review-card-item:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, .08);
-}
-
 .read-more-btn {
   transition: all .3s ease;
 }
 
 .review-card-item:hover .read-more-btn {
   transform: translateX(6px);
-}
-
-.review-modal-content {
-  will-change: transform, opacity;
-}
-
-.review-modal-content.zoom-in {
-  animation:
-    modalOpen .45s cubic-bezier(.22, 1, .36, 1) forwards,
-    floating 4s ease-in-out infinite .45s;
-}
-
-@keyframes floating {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.review-modal-close {
-  transition: all .35s ease;
-}
-
-.review-modal-close:hover {
-  transform: rotate(180deg) scale(1.15);
 }
 
 .stars-row svg {

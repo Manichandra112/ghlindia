@@ -1,20 +1,39 @@
 .hero-section {
   position: relative;
   width: 100%;
-  margin-top: calc(var(--header-height) + 42px);
+  margin-top: calc(var(--header-height) + 16px);
+  padding: 16px 0;
   overflow: hidden;
-  background-color: var(--dark-charcoal);
-  line-height: 0;
+  background-color: transparent;
 }
 
 @media (max-width: 600px) {
   .hero-section {
     margin-top: 70px;
+    padding: 8px 0;
+  }
+}
+
+.hero-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    max-width: 100%;
+    padding: 0 16px;
   }
 }
 
 .hero-swiper {
   width: 100%;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-charcoal);
+  line-height: 0;
 }
 
 .hero-slide-link {
@@ -28,6 +47,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  border-radius: var(--border-radius-md);
 }
 
 .hero-slide-img {
@@ -44,43 +64,50 @@
 /* Swiper navigation edits */
 .hero-section .swiper-button-prev,
 .hero-section .swiper-button-next {
-  color: var(--text-white);
-  width: 44px;
-  height: 44px;
-  background-color: rgba(228, 31, 38, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-dark);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 50%;
-  transition: var(--transition-smooth);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .hero-section .swiper-button-prev::after,
 .hero-section .swiper-button-next::after {
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .hero-section .swiper-button-prev:hover,
 .hero-section .swiper-button-next:hover {
-  background-color: var(--primary-red-hover);
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
   color: var(--text-white);
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(228, 31, 38, 0.25);
 }
 
 .hero-section .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
   opacity: 1;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-section .swiper-pagination-bullet-active {
   background: var(--primary-red) !important;
-  width: 24px;
-  border-radius: 4px;
+  width: 28px;
+  border-radius: 6px;
 }
 
 @media (max-width: 768px) {
+
   .hero-section .swiper-button-prev,
   .hero-section .swiper-button-next {
-    display: none; /* Hide arrows on mobile to keep interface clutter-free */
+    display: none;
+    /* Hide arrows on mobile to keep interface clutter-free */
   }
 }

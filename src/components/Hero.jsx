@@ -44,48 +44,50 @@ export default function Hero() {
 
   return (
     <section className="hero-section" id="hero">
-      <Swiper
-        spaceBetween={0}
-        centeredSlides={true}
-        loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="hero-swiper"
-      >
-        {activeSlides.map((slide, index) => {
-          const isExternal = slide.link.startsWith('http');
-          const slideContent = (
-            <div className="hero-slide-img-wrapper">
-              <img 
-                src={slide.img} 
-                alt={`GHL Alternate Investment Banner ${index + 1}`} 
-                className="hero-slide-img" 
-              />
-            </div>
-          );
+      <div className="container hero-container">
+        <Swiper
+          spaceBetween={0}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="hero-swiper"
+        >
+          {activeSlides.map((slide, index) => {
+            const isExternal = slide.link.startsWith('http');
+            const slideContent = (
+              <div className="hero-slide-img-wrapper">
+                <img 
+                  src={slide.img} 
+                  alt={`GHL Alternate Investment Banner ${index + 1}`} 
+                  className="hero-slide-img" 
+                />
+              </div>
+            );
 
-          return (
-            <SwiperSlide key={index}>
-              {isExternal ? (
-                <a href={slide.link} target="_blank" rel="noopener noreferrer" className="hero-slide-link">
-                  {slideContent}
-                </a>
-              ) : (
-                <a href={slide.link} className="hero-slide-link">
-                  {slideContent}
-                </a>
-              )}
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+            return (
+              <SwiperSlide key={index}>
+                {isExternal ? (
+                  <a href={slide.link} target="_blank" rel="noopener noreferrer" className="hero-slide-link">
+                    {slideContent}
+                  </a>
+                ) : (
+                  <a href={slide.link} className="hero-slide-link">
+                    {slideContent}
+                  </a>
+                )}
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
     </section>
   );
 }

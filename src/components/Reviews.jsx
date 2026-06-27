@@ -60,7 +60,7 @@ export default function Reviews() {
   return (
     <section className="reviews-section section-padding" id="reviews" ref={sectionRef}>
       <div className="container">
-        
+
         {/* Section Header */}
         <div className="section-header" data-animate="fade-up">
           <span>Investor Feedback</span>
@@ -91,10 +91,10 @@ export default function Reviews() {
             </div>
           </div>
           <div className="aggregator-right">
-            <a 
-              href="https://www.google.com/search?hl=en-IN&gl=in&q=GHL+India+Asset" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.google.com/search?hl=en-IN&gl=in&q=GHL+India+Asset"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-primary google-direct-btn"
             >
               <span>Review us on Google</span>
@@ -147,11 +147,11 @@ function ReviewCard({ review }) {
     const rect = e.currentTarget.getBoundingClientRect();
     const clickX = rect.left + rect.width / 2;
     const clickY = rect.top + rect.height / 2;
-    
+
     // Calculate distance from screen center
     const deltaX = clickX - window.innerWidth / 2;
     const deltaY = clickY - window.innerHeight / 2;
-    
+
     setTransformDelta({ x: deltaX, y: deltaY });
     setShowModal(true);
   };
@@ -173,7 +173,7 @@ function ReviewCard({ review }) {
     <>
       <div className="review-card-item glass-panel">
         <MessageSquareQuote size={32} className="quote-icon" />
-        
+
         <div className="reviewer-info">
           <div className="avatar-circle">
             {review.avatarLetter}
@@ -208,10 +208,10 @@ function ReviewCard({ review }) {
 
       {showModal && createPortal(
         <div className={`review-modal-backdrop ${isClosing ? 'fade-out' : 'fade-in'}`} onClick={handleClose}>
-          <div 
-            className={`review-modal-content glass-panel ${isClosing ? 'zoom-out' : 'zoom-in'}`} 
+          <div
+            className={`review-modal-content glass-panel ${isClosing ? 'zoom-out' : 'zoom-in'}`}
             onClick={(e) => e.stopPropagation()}
-            style={{ 
+            style={{
               '--dx': `${transformDelta.x}px`,
               '--dy': `${transformDelta.y}px`
             }}
@@ -243,11 +243,11 @@ function ReviewCard({ review }) {
                 <p>"{review.text}"</p>
               </div>
             </div>
-            
+
             <div className="review-modal-footer">
-              <button className="btn btn-primary modal-bottom-close" onClick={handleClose}>
+              {/* <button className="btn btn-primary modal-bottom-close" onClick={handleClose}>
                 Close Review
-              </button>
+              </button> */}
             </div>
           </div>
         </div>,

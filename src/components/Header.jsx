@@ -69,7 +69,7 @@ export default function Header() {
       <header className={`header-main ${isScrolled ? 'header-scrolled' : ''}`}>
         <div className="container header-container">
           {/* Logo with clean styling */}
-          <a href="#" className="logo-area">
+          <a href="#/" className="logo-area">
             <div className="logo-symbol">G</div>
             <div className="logo-text">
               <span className="logo-highlight">GHL</span>
@@ -80,7 +80,7 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav className="desktop-navbar">
             <ul className="nav-links">
-              <li><a href="#" className="nav-item">Home</a></li>
+              <li><a href="#/" className="nav-item">Home</a></li>
               <li>
                 <a href="https://ghlindiaventures.com/" target="_blank" rel="noopener noreferrer" className="nav-item nav-aif">
                   AIF <span className="animated-dot"></span>
@@ -94,8 +94,8 @@ export default function Header() {
                   <ChevronDown size={14} className={activeDropdown === 'strategy' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'strategy' ? 'show-menu' : ''}`}>
-                  <li><a href="#what-we-do" onClick={() => setActiveDropdown(null)}>Fractional Investment</a></li>
-                  <li><a href="#what-we-do" onClick={() => setActiveDropdown(null)}>Debt Funding</a></li>
+                  <li><a href="#/fractional-ownership" onClick={() => setActiveDropdown(null)}>Fractional Investment</a></li>
+                  <li><a href="#/debt-financing" onClick={() => setActiveDropdown(null)}>Debt Funding</a></li>
                 </ul>
               </li>
 
@@ -157,7 +157,7 @@ export default function Header() {
         {/* Mobile Navigation Menu Drawer */}
         <div className={`mobile-navbar ${mobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-nav-links">
-            <li><a href="#" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
+            <li><a href="#/" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
             <li>
               <a href="https://ghlindiaventures.com/" target="_blank" rel="noopener noreferrer" className="mobile-item mobile-aif" onClick={() => setMobileMenuOpen(false)}>
                 AIF <span className="animated-dot"></span>
@@ -170,8 +170,8 @@ export default function Header() {
                 <ChevronDown size={16} />
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-strategy' ? 'open' : ''}`}>
-                <li><a href="#what-we-do" onClick={() => setMobileMenuOpen(false)}>Fractional Investment</a></li>
-                <li><a href="#what-we-do" onClick={() => setMobileMenuOpen(false)}>Debt Funding</a></li>
+                <li><a href="#/fractional-ownership" onClick={() => setMobileMenuOpen(false)}>Fractional Investment</a></li>
+                <li><a href="#/debt-financing" onClick={() => setMobileMenuOpen(false)}>Debt Funding</a></li>
               </ul>
             </li>
 
@@ -205,40 +205,38 @@ export default function Header() {
       </header>
 
       {/* Language Help Modal Popup */}
-      {langModalOpen && (
-        <div className="modal-backdrop" onClick={() => setLangModalOpen(false)}>
-          <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header-area">
-              <h3>{selectedLang} Support</h3>
-              <button className="modal-close" onClick={() => setLangModalOpen(false)}>
-                <X size={20} />
-              </button>
+      <div className={`modal-backdrop ${langModalOpen ? 'show' : ''}`} onClick={() => setLangModalOpen(false)}>
+        <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-header-area">
+            <h3>{selectedLang} Support</h3>
+            <button className="modal-close" onClick={() => setLangModalOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
+          <div className="modal-body-area">
+            <div className="modal-info-box">
+              <Globe size={32} className="modal-globe-icon" />
+              <p>Connect instantly with our GHL representatives speaking your preferred language.</p>
             </div>
-            <div className="modal-body-area">
-              <div className="modal-info-box">
-                <Globe size={32} className="modal-globe-icon" />
-                <p>Connect instantly with our GHL representatives speaking your preferred language.</p>
-              </div>
-              <div className="phone-numbers-list">
-                {phoneNumbers[selectedLang].map((number, idx) => (
-                  <div key={idx} className="phone-row">
-                    <Phone size={18} className="phone-icon" />
-                    <span className="phone-num-text">{number}</span>
-                    <a href={`tel:${number.replace(/\s+/g, '')}`} className="btn btn-primary call-btn">
-                      Call Now
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="modal-footer-area">
-              <button className="btn btn-secondary w-full" onClick={() => setLangModalOpen(false)}>
-                Close Window
-              </button>
+            <div className="phone-numbers-list">
+              {phoneNumbers[selectedLang] && phoneNumbers[selectedLang].map((number, idx) => (
+                <div key={idx} className="phone-row">
+                  <Phone size={18} className="phone-icon" />
+                  <span className="phone-num-text">{number}</span>
+                  <a href={`tel:${number.replace(/\s+/g, '')}`} className="btn btn-primary call-btn">
+                    Call Now
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
+          {/* <div className="modal-footer-area">
+            <button className="btn btn-secondary w-full" onClick={() => setLangModalOpen(false)}>
+              Close Window
+            </button>
+          </div> */}
         </div>
-      )}
+      </div>
     </>
   );
 }
