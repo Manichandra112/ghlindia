@@ -1,8 +1,3 @@
-/* ================================================================
-   GHL DEBT FINANCING PAGE STYLES
-   Minimalist, high-end white & light-gray design system.
- ================================================================ */
-
 .debt-page-wrapper {
   background-color: var(--text-white);
   color: var(--text-dark);
@@ -15,15 +10,21 @@
   width: 100%;
   position: relative;
   background-color: #f8f9fa;
-  margin-top: 0;
+  margin-top: -20px;
   line-height: 0;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 580px;
 }
 
 .debt-hero-img {
   width: 100%;
-  max-height: 520px;
-  object-fit: cover;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  object-position: bottom center;
   display: block;
+  transform: none;
 }
 
 /* 2. Common Layout Wrappers (Side-by-side Flex) */
@@ -186,8 +187,8 @@
   border-radius: var(--border-radius-md);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s ease;
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
   position: relative;
   overflow: hidden;
 }
@@ -433,6 +434,7 @@
   .debt-grid-row {
     gap: 20px;
   }
+
   .debt-grid-card {
     padding: 30px 20px;
   }
@@ -443,30 +445,38 @@
     flex-direction: column !important;
     gap: 35px;
   }
+
   .debt-col-flex {
     width: 100%;
   }
+
   .debt-content-col {
     text-align: center;
   }
+
   .debt-badge {
     margin-bottom: 12px;
   }
+
   .debt-content-col h2 {
     font-size: 26px;
   }
+
   .debt-intro-features {
     text-align: left;
   }
+
   .debt-grid-row {
     grid-template-columns: 1fr;
     gap: 25px;
     max-width: 480px;
     margin: 0 auto;
   }
+
   .why-benefits-stack {
     text-align: left;
   }
+
   .approach-highlight-box {
     text-align: left;
   }
@@ -478,6 +488,7 @@
     width: 100%;
     align-items: center;
   }
+
   .cta-actions-row .btn,
   .cta-actions-row .btn-cta-primary,
   .cta-actions-row .btn-cta-secondary {
