@@ -17,10 +17,15 @@
   --border-color: rgba(228, 31, 38, 0.15);
   --border-light: rgba(0, 0, 0, 0.06);
   --section-white: #ffffff;
-  --section-muted: #f3f5f9;
-  --card-border: rgba(15, 23, 42, 0.14);
-  --card-border-strong: rgba(15, 23, 42, 0.2);
-  --card-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+  --section-muted: #e8edf5;
+  --card-border: rgba(var(--primary-red-rgb), 0.22);
+  --card-border-strong: rgba(var(--primary-red-rgb), 0.34);
+  --card-border-subtle: rgba(15, 23, 42, 0.13);
+  --card-border-subtle-hover: rgba(15, 23, 42, 0.2);
+  --card-bg-tint: linear-gradient(180deg, rgba(var(--primary-red-rgb), 0.035), rgba(255, 255, 255, 0.96));
+  --card-shadow: 0 10px 26px rgba(15, 23, 42, 0.055);
+  --card-shadow-hover: 0 22px 46px rgba(15, 23, 42, 0.12),
+                       0 0 0 1px rgba(var(--primary-red-rgb), 0.18);
   
   /* Text */
   --text-dark: #0f172a;
@@ -41,8 +46,8 @@
   --transition-fast: all 0.15s ease;
   
   /* Glassmorphism Defaults */
-  --glass-bg: rgba(255, 255, 255, 0.9);
-  --glass-border: var(--card-border);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.45);
   --glass-shadow: var(--card-shadow);
 }
 
@@ -259,26 +264,46 @@ img {
               border-color 0.4s ease;
 }
 
-/* Clear section bands and visible card separation */
-.about-section.about-section,
+/* Clear page-wide section bands and visible card separation */
+.hero-section.hero-section,
+.products-section.products-section,
 .what-we-do-section.what-we-do-section,
 .media-section.media-section,
 .investment-plan-section.investment-plan-section,
 .reviews-section.reviews-section,
-.debt-intro.debt-intro,
-.debt-cards-grid.debt-cards-grid {
+.fractional-hero.fractional-hero,
+.fractional-example.fractional-example,
+.why-ghl-details.why-ghl-details,
+.process-timeline-section.process-timeline-section,
+.debt-hero-section.debt-hero-section,
+.debt-approach.debt-approach,
+.debt-why.debt-why,
+.calculator-section.calculator-section {
   background-color: var(--section-white);
 }
 
-.products-section.products-section,
+.about-section.about-section,
 .info-carousel-sec.info-carousel-sec,
 .achievements-section.achievements-section,
 .sectors-section.sectors-section,
 .how-section.how-section,
 .faq-section.faq-section,
-.debt-approach.debt-approach,
-.debt-why.debt-why {
+.fractional-intro.fractional-intro,
+.why-fractional-grid.why-fractional-grid,
+.property-flipping-expertise.property-flipping-expertise,
+.debt-intro.debt-intro,
+.debt-cards-grid.debt-cards-grid {
   background-color: var(--section-muted);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.stats-section.stats-section,
+.cta-registration-sec.cta-registration-sec,
+.debt-cta.debt-cta,
+.fractional-cta.fractional-cta {
+  border-top: 0;
+  border-bottom: 0;
 }
 
 .glass-panel.glass-panel,
@@ -288,7 +313,6 @@ img {
 .sector-card.sector-card,
 .plan-detail-card.plan-detail-card,
 .plan-image-card.plan-image-card,
-.step-card.step-card,
 .review-card-item.review-card-item,
 .faq-item.faq-item,
 .faq-help-box.faq-help-box,
@@ -297,9 +321,85 @@ img {
 .established-box.established-box,
 .about-middle-card.about-middle-card,
 .op-video-box.op-video-box,
-.info-card.info-card {
-  border: 1px solid var(--card-border);
+.info-card.info-card,
+.fractional-feat-card.fractional-feat-card,
+.reason-card.reason-card,
+.timeline-card-wrapper.timeline-card-wrapper,
+.partnership-note.partnership-note,
+.google-aggregator-panel.google-aggregator-panel,
+.calculator-left.calculator-left,
+.calculator-right.calculator-right {
+  border-color: var(--card-border-subtle);
   box-shadow: var(--card-shadow);
+}
+
+.glass-panel.glass-panel:hover,
+.product-video-card.product-video-card:hover,
+.media-main-card.media-main-card:hover,
+.media-interview-card.media-interview-card:hover,
+.sector-card.sector-card:hover,
+.plan-detail-card.plan-detail-card:hover,
+.plan-image-card.plan-image-card:hover,
+.review-card-item.review-card-item:hover,
+.faq-item.faq-item:hover,
+.faq-help-box.faq-help-box:hover,
+.debt-grid-card.debt-grid-card:hover,
+.benefit-card.benefit-card:hover,
+.established-box.established-box:hover,
+.about-middle-card.about-middle-card:hover,
+.op-video-box.op-video-box:hover,
+.info-card.info-card:hover,
+.fractional-feat-card.fractional-feat-card:hover,
+.reason-card.reason-card:hover,
+.timeline-card-wrapper.timeline-card-wrapper:hover,
+.partnership-note.partnership-note:hover,
+.google-aggregator-panel.google-aggregator-panel:hover,
+.calculator-left.calculator-left:hover,
+.calculator-right.calculator-right:hover {
+  border-color: var(--card-border-subtle-hover);
+}
+
+.products-section .product-video-card,
+.what-we-do-section .op-video-box,
+.media-section .media-main-card,
+.media-section .media-interview-card,
+.investment-plan-section .plan-detail-card,
+.investment-plan-section .plan-image-card,
+.reviews-section .google-aggregator-panel,
+.reviews-section .review-card-item,
+.fractional-example .example-glass-card,
+.why-ghl-details .reason-card,
+.process-timeline-section .timeline-card-wrapper,
+.process-timeline-section .timeline-step-badge,
+.debt-approach .approach-highlight-box,
+.debt-why .benefit-card,
+.debt-why .partnership-note,
+.calculator-section .calculator-left,
+.calculator-section .calculator-right {
+  border-color: var(--card-border);
+  background: var(--card-bg-tint);
+  box-shadow: var(--card-shadow);
+}
+
+.products-section .product-video-card:hover,
+.what-we-do-section .op-video-box:hover,
+.media-section .media-main-card:hover,
+.media-section .media-interview-card:hover,
+.investment-plan-section .plan-detail-card:hover,
+.investment-plan-section .plan-image-card:hover,
+.reviews-section .google-aggregator-panel:hover,
+.reviews-section .review-card-item:hover,
+.fractional-example .example-glass-card:hover,
+.why-ghl-details .reason-card:hover,
+.process-timeline-section .timeline-card-wrapper:hover,
+.process-timeline-section .timeline-step-badge:hover,
+.debt-approach .approach-highlight-box:hover,
+.debt-why .benefit-card:hover,
+.debt-why .partnership-note:hover,
+.calculator-section .calculator-left:hover,
+.calculator-section .calculator-right:hover {
+  border-color: var(--card-border-strong);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Animations */
@@ -381,7 +481,6 @@ img {
 
 .card-hover-effect:hover {
   transform: translateY(-10px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.07);
 }
 
 /* ================================================================

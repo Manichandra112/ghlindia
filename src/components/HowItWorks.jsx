@@ -75,10 +75,13 @@
 
 import React from "react";
 import {
-  ShieldCheck,
-  TrendingUp,
+  UserCheck,
+  ListChecks,
   FileText,
   Wallet,
+  BarChart3,
+  CircleDollarSign,
+  Repeat,
   ArrowRight,
 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
@@ -90,34 +93,52 @@ export default function HowItWorks() {
   const steps = [
     {
       id: "01",
-      title: "Complete KYC",
-      description: "Register with us and finish your KYC to activate your investor account securely.",
-      icon: ShieldCheck,
+      title: "Sign Up & Verify",
+      description: "Create your GHL account and complete a seamless online KYC verification in minutes.",
+      icon: UserCheck,
       color: "#ef4444",
     },
     {
       id: "02",
-      title: "Choose Plan",
-      description:
-        "Select an active investment plan that matches your financial goals.",
-      icon: TrendingUp,
+      title: "Pick Your Plan",
+      description: "Browse our active SPV listings and select the investment plan that matches your financial goals.",
+      icon: ListChecks,
       color: "#f59e0b",
     },
     {
       id: "03",
-      title: "Documentation",
-      description:
-        "Digitally sign all investment agreements and supporting documents.",
+      title: "Get Digital Details",
+      description: "Receive comprehensive document packages, debenture trust deeds, and security filings.",
       icon: FileText,
       color: "#3b82f6",
     },
     {
       id: "04",
-      title: "Earn Returns",
-      description:
-        "Track your investment performance and receive returns seamlessly.",
+      title: "Earn Regular Income",
+      description: "Sit back and watch fixed interest payouts transfer directly into your registered bank account.",
       icon: Wallet,
       color: "#10b981",
+    },
+    {
+      id: "05",
+      title: "Track Your Portfolio",
+      description: "Monitor yields, tax certificates, and progress report logs via your unified dashboard.",
+      icon: BarChart3,
+      color: "#8b5cf6",
+    },
+    {
+      id: "06",
+      title: "Maturity Payout",
+      description: "Retrieve your full principal capital automatically upon the completion of the investment term.",
+      icon: CircleDollarSign,
+      color: "#14b8a6",
+    },
+    {
+      id: "07",
+      title: "Reinvest & Compound",
+      description: "Roll over your capital into newer high-yield projects to compound your financial freedom.",
+      icon: Repeat,
+      color: "#d4af37",
     },
   ];
 
@@ -132,7 +153,7 @@ export default function HowItWorks() {
           <span>Simple Investment Journey</span>
           <h2>How It Works</h2>
           <p>
-            Begin your investment journey in four simple and secure steps.
+            Begin your investment journey through a simple, secure, and transparent process.
           </p>
         </div>
 
@@ -147,10 +168,7 @@ export default function HowItWorks() {
                 data-animate="zoom-in"
                 data-stagger-delay={`${index * 150}ms`}
               >
-                <div
-                  className="step-top"
-                  style={{ borderColor: step.color }}
-                >
+                <div className="step-top">
                   <span className="step-number">{step.id}</span>
 
                   <div

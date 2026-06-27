@@ -447,7 +447,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
-  background: linear-gradient(180deg, var(--gold-accent) 0%, rgba(212, 175, 55, 0.1) 100%);
+  background-color: rgba(var(--gold-accent-rgb), 0.7);
   z-index: 1;
 }
 
