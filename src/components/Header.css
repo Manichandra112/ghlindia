@@ -174,7 +174,8 @@
   border-radius: 6px;
 }
 
-.nav-item:hover {
+.nav-item:hover,
+.nav-item.active {
   color: var(--primary-red);
   background-color: rgba(var(--primary-red-rgb), 0.04);
 }
@@ -226,7 +227,8 @@
   transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.dropdown-menu li a:hover {
+.dropdown-menu li a:hover,
+.dropdown-menu li a.active {
   background-color: rgba(var(--primary-red-rgb), 0.04);
   color: var(--primary-red);
   padding-left: 24px;

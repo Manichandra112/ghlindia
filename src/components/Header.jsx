@@ -8,6 +8,7 @@ export default function Header() {
   const [langModalOpen, setLangModalOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState('English');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.hash || '#/');
 
   // Phone numbers configuration from original site
   const phoneNumbers = {
@@ -21,9 +22,23 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    const handleHashChange = () => {
+      setCurrentPath(window.location.hash || '#/');
+    };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
+
+  const isActiveLink = (hash) => {
+    if (hash === '#/' && (currentPath === '#/' || currentPath === '')) {
+      return true;
+    }
+    return currentPath === hash;
+  };
 
   const toggleDropdown = (name) => {
     if (activeDropdown === name) {
@@ -80,7 +95,7 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav className="desktop-navbar">
             <ul className="nav-links">
-              <li><a href="#/" className="nav-item">Home</a></li>
+              <li><a href="#/" className={`nav-item ${isActiveLink('#/') ? 'active' : ''}`}>Home</a></li>
               <li>
                 <a href="https://ghlindiaventures.com/" target="_blank" rel="noopener noreferrer" className="nav-item nav-aif">
                   AIF <span className="animated-dot"></span>
@@ -89,29 +104,29 @@ export default function Header() {
 
               {/* Strategy Dropdown */}
               <li className="dropdown-parent">
-                <button className="nav-item dropdown-toggle" onClick={() => toggleDropdown('strategy')}>
+                <button className={`nav-item dropdown-toggle ${isActiveLink('#/fractional-ownership') || isActiveLink('#/debt-financing') ? 'active' : ''}`} onClick={() => toggleDropdown('strategy')}>
                   <span>Strategy</span>
                   <ChevronDown size={14} className={activeDropdown === 'strategy' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'strategy' ? 'show-menu' : ''}`}>
-                  <li><a href="#/fractional-ownership" onClick={() => setActiveDropdown(null)}>Fractional Investment</a></li>
-                  <li><a href="#/debt-financing" onClick={() => setActiveDropdown(null)}>Debt Funding</a></li>
+                  <li><a href="#/fractional-ownership" className={isActiveLink('#/fractional-ownership') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Fractional Investment</a></li>
+                  <li><a href="#/debt-financing" className={isActiveLink('#/debt-financing') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Debt Funding</a></li>
                 </ul>
               </li>
 
               {/* Security Dropdown */}
               <li className="dropdown-parent">
-                <button className="nav-item dropdown-toggle" onClick={() => toggleDropdown('security')}>
+                <button className={`nav-item dropdown-toggle ${isActiveLink('#/charge-creation') ? 'active' : ''}`} onClick={() => toggleDropdown('security')}>
                   <span>Security</span>
                   <ChevronDown size={14} className={activeDropdown === 'security' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'security' ? 'show-menu' : ''}`}>
-                  <li><a href="#/charge-creation" onClick={() => setActiveDropdown(null)}>Charge Creation</a></li>
+                  <li><a href="#/charge-creation" className={isActiveLink('#/charge-creation') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Charge Creation</a></li>
                 </ul>
               </li>
 
-              <li><a href="#/why-us" className="nav-item">Why Us</a></li>
-              <li><a href="" className="nav-item">Our Team</a></li>
+              <li><a href="#/why-us" className={`nav-item ${isActiveLink('#/why-us') ? 'active' : ''}`}>Why Us</a></li>
+              <li><a href="#/our-team" className={`nav-item ${isActiveLink('#/our-team') ? 'active' : ''}`}>Our Team</a></li>
 
               {/* Intelligence Dropdown */}
               <li className="dropdown-parent">
@@ -184,8 +199,8 @@ export default function Header() {
               </ul>
             </li>
 
-            <li><a href="#/why-us" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Why Us</a></li>
-            <li><a href="" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Our team </a></li>
+            <li><a href="#/why-us" className={`mobile-item ${isActiveLink('#/why-us') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Why Us</a></li>
+            <li><a href="#/our-team" className={`mobile-item ${isActiveLink('#/our-team') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Our Team</a></li>
             <li><a href="#faq" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
             <li>
               <button className="mobile-item mobile-lang-trigger" onClick={() => { setMobileMenuOpen(false); setLangModalOpen(true); }}>

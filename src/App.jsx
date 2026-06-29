@@ -20,6 +20,7 @@ import FractionalOwnership from './components/FractionalOwnership';
 import DebtFinancing from './components/DebtFinancing';
 import ChargeCreation from './components/ChargeCreation';
 import WhyUs from './components/WhyUs';
+import OurTeam from './components/OurTeam';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -35,6 +36,8 @@ function App() {
         setCurrentView('charge-creation');
       } else if (hash === '#/why-us') {
         setCurrentView('why-us');
+      } else if (hash === '#/our-team') {
+        setCurrentView('our-team');
       } else {
         setCurrentView('home');
       }
@@ -57,6 +60,7 @@ function App() {
         {currentView === 'debt-financing' && <DebtFinancing />}
         {currentView === 'charge-creation' && <ChargeCreation />}
         {currentView === 'why-us' && <WhyUs />}
+        {currentView === 'our-team' && <OurTeam />}
         {currentView === 'home' && (
           <>
             <Hero />
