@@ -74,16 +74,7 @@
 
 
 import React from "react";
-import {
-  UserCheck,
-  ListChecks,
-  FileText,
-  Wallet,
-  BarChart3,
-  CircleDollarSign,
-  Repeat,
-  ArrowRight,
-} from "lucide-react";
+import { UserCheck, PieChart, FileText, TrendingUp, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import "./HowItWorks.css";
 
@@ -93,100 +84,78 @@ export default function HowItWorks() {
   const steps = [
     {
       id: "01",
-      title: "Sign Up & Verify",
-      description: "Create your GHL account and complete a seamless online KYC verification in minutes.",
+      title: "Register & Complete Your KYC",
+      description: "Create your GHL account and complete a seamless online KYC verification in just a few minutes.",
       icon: UserCheck,
-      color: "#ef4444",
+      color: "var(--primary-red)"
     },
     {
       id: "02",
-      title: "Pick Your Plan",
-      description: "Browse our active SPV listings and select the investment plan that matches your financial goals.",
-      icon: ListChecks,
-      color: "#f59e0b",
+      title: "Choose Active Plan & Invest",
+      description: "Browse our active high-yield investment plans and choose the SPV listing that matches your goals.",
+      icon: PieChart,
+      color: "var(--gold-accent)"
     },
     {
       id: "03",
-      title: "Get Digital Details",
-      description: "Receive comprehensive document packages, debenture trust deeds, and security filings.",
+      title: "Investment Documentation",
+      description: "Receive comprehensive document packages, debenture trust deeds, and security certificates.",
       icon: FileText,
-      color: "#3b82f6",
+      color: "var(--primary-red)"
     },
     {
       id: "04",
-      title: "Earn Regular Income",
-      description: "Sit back and watch fixed interest payouts transfer directly into your registered bank account.",
-      icon: Wallet,
-      color: "#10b981",
-    },
-    {
-      id: "05",
-      title: "Track Your Portfolio",
-      description: "Monitor yields, tax certificates, and progress report logs via your unified dashboard.",
-      icon: BarChart3,
-      color: "#8b5cf6",
-    },
-    {
-      id: "06",
-      title: "Maturity Payout",
-      description: "Retrieve your full principal capital automatically upon the completion of the investment term.",
-      icon: CircleDollarSign,
-      color: "#14b8a6",
-    },
-    {
-      id: "07",
-      title: "Reinvest & Compound",
-      description: "Roll over your capital into newer high-yield projects to compound your financial freedom.",
-      icon: Repeat,
-      color: "#d4af37",
-    },
+      title: "Monitor & Enjoy Returns",
+      description: "Track your yields via your dashboard and receive fixed interest payouts directly to your bank account.",
+      icon: TrendingUp,
+      color: "var(--gold-accent)"
+    }
   ];
 
   return (
-    <section
-      className="how-section section-padding"
-      id="how-it-works"
-      ref={sectionRef}
-    >
+    <section className="how-it-works-sec section-padding" id="how-it-works" ref={sectionRef}>
       <div className="container">
-        <div className="section-header" data-animate="fade-up">
-          <span>Simple Investment Journey</span>
-          <h2>How It Works</h2>
-          <p>
-            Begin your investment journey through a simple, secure, and transparent process.
+        {/* Section Header */}
+        <div className="how-header" data-animate="fade-up">
+          <span>Simple Onboarding</span>
+          <h2>How Does It Work?</h2>
+          <div className="how-header-line"></div>
+          <p className="how-header-desc">
+            Get started on your yield accumulation journey in four simple, secure stages.
           </p>
         </div>
 
-        <div className="steps-grid">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-
+        {/* Steps Grid */}
+        <div className="how-steps-grid">
+          {steps.map((step, idx) => {
+            const IconComponent = step.icon;
             return (
-              <div
-                className="step-card"
-                key={step.id}
-                data-animate="zoom-in"
-                data-stagger-delay={`${index * 150}ms`}
+              <div 
+                key={idx} 
+                className="how-step-card" 
+                data-animate="zoom-in" 
+                data-stagger-delay={`${idx * 150}ms`}
               >
-                <div className="step-top">
-                  <span className="step-number">{step.id}</span>
+                {/* Floating Card Step Number */}
+                <span className="how-step-badge">{step.id}</span>
 
-                  <div
-                    className="step-icon"
-                    style={{ background: step.color }}
-                  >
-                    <Icon size={30} />
-                  </div>
+                {/* Card Icon Container */}
+                <div className="how-step-icon-wrapper" style={{ "--step-theme-color": step.color }}>
+                  <IconComponent className="how-step-icon" size={28} />
                 </div>
 
-                <h3>{step.title}</h3>
+                {/* Card Content */}
+                <div className="how-step-info">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
 
-                <p>{step.description}</p>
-
-                <button className="step-btn">
-                  Continue
-                  <ArrowRight size={18} />
-                </button>
+                {/* Card Footer Flow Indicator */}
+                {idx < steps.length - 1 && (
+                  <div className="how-step-connector">
+                    <ArrowRight size={20} />
+                  </div>
+                )}
               </div>
             );
           })}

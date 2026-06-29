@@ -1,284 +1,208 @@
 /* ======================================================
-   HOW IT WORKS
-====================================================== */
+   HOW IT WORKS - MODERN 4-STEP ONBOARDING GUIDE
+===================================================== */
 
-.how-section {
-  background: #f8fafc;
+.how-it-works-sec {
+  background: #eef2f7;
   position: relative;
   overflow: hidden;
 }
 
-.how-section::before {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: rgba(var(--primary-red-rgb), 0.04);
-  border-radius: 50%;
-  top: -220px;
-  right: -220px;
-  filter: blur(80px);
+.how-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
 }
 
-.steps-grid {
-  margin-top: 60px;
+.how-header span {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--primary-red, #e41f26);
+  margin-bottom: 12px;
+}
+
+.how-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.how-header-line {
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-red, #e41f26);
+  margin: 18px auto;
+  border-radius: 2px;
+}
+
+.how-header-desc {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.how-steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 28px;
+  padding: 10px 0;
+  position: relative;
 }
 
-/* ===========================
-        CARD
-=========================== */
-
-.how-section.how-section .steps-grid .step-card {
-  background: #fff;
+.how-step-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.05);
   border-radius: 24px;
-  padding: 28px;
-  min-height: 330px;
+  padding: 42px 28px 32px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
   display: flex;
   flex-direction: column;
-  transition: all .4s cubic-bezier(.22, 1, .36, 1);
-  border: 1.5px solid rgba(var(--gold-accent-rgb), .55);
-  box-shadow: 0 12px 34px rgba(15, 23, 42, .06);
-  position: relative;
-  overflow: hidden;
+  align-items: flex-start;
+  z-index: 1;
 }
 
-.how-section.how-section .steps-grid .step-card::before {
-  content: "";
+.how-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(var(--primary-red-rgb, 228, 31, 38), 0.15);
+}
+
+/* Floating step badge */
+.how-step-badge {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--gold-accent), #f3d675);
-  transform: scaleX(1);
-  transition: .4s;
-  transform-origin: left;
-}
-
-.how-section.how-section .steps-grid .step-card:hover::before {
-  transform: scaleX(1);
-  background: linear-gradient(90deg, var(--primary-red), #ff7070);
-}
-
-.how-section.how-section .steps-grid .step-card:hover {
-  transform: translateY(-12px);
-  border-color: var(--primary-red);
-  box-shadow: 0 30px 60px rgba(var(--primary-red-rgb), .14),
-              0 0 0 1px rgba(var(--primary-red-rgb), .16);
-}
-
-/* ===========================
-     TOP
-=========================== */
-
-.step-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid rgba(var(--gold-accent-rgb), .38);
-}
-
-.step-number {
-
-  font-size: 42px;
-
-  font-weight: 800;
-
-  color: #d1d5db;
-
+  top: 24px;
+  right: 28px;
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.05);
   line-height: 1;
+  font-family: var(--font-heading, sans-serif);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.step-icon {
+.how-step-card:hover .how-step-badge {
+  color: rgba(var(--primary-red-rgb, 228, 31, 38), 0.08);
+  transform: scale(1.05);
+}
 
-  width: 68px;
-
-  height: 68px;
-
-  border-radius: 18px;
-
+/* Card Icon Wrapper */
+.how-step-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
   display: flex;
-
+  align-items: center;
   justify-content: center;
-
-  align-items: center;
-
-  color: #fff;
-
-  transition: .35s;
-}
-
-.step-card:hover .step-icon {
-
-  transform: rotate(-8deg) scale(1.08);
-}
-
-/* ===========================
-       TEXT
-=========================== */
-
-.step-card h3 {
-
-  font-size: 24px;
-
-  margin-bottom: 16px;
-
-  color: #1f2937;
-
-  font-weight: 700;
-}
-
-.step-card p {
-
-  color: #6b7280;
-
-  line-height: 1.8;
-
-  font-size: 15px;
-
-  flex: 1;
-}
-
-/* ===========================
-      BUTTON
-=========================== */
-
-.step-btn {
-
-  margin-top: 30px;
-
-  border: none;
-
-  background: #f3f4f6;
-
-  border-radius: 12px;
-
-  padding: 14px 18px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  cursor: pointer;
-
-  font-weight: 600;
-
-  transition: .35s;
-}
-
-.step-btn svg {
-
-  transition: .35s;
-}
-
-.step-card:hover .step-btn {
-
-  background: #e41f26;
-
-  color: #fff;
-}
-
-.step-card:hover .step-btn svg {
-
-  transform: translateX(6px);
-}
-
-/* ===========================
-      CARD GLOW
-=========================== */
-
-.step-card::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: radial-gradient(circle at top right,
-      rgba(228, 31, 38, .06),
-      transparent 45%);
-
-  opacity: 0;
-
-  transition: .4s;
-}
-
-.step-card:hover::after {
-
-  opacity: 1;
-}
-
-.step-card>* {
-
+  background-color: rgba(15, 23, 42, 0.03);
+  color: var(--step-theme-color, var(--primary-red));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
   position: relative;
-
-  z-index: 2;
 }
 
-/* ===========================
-      RESPONSIVE
-=========================== */
+/* Dynamic background tint based on color variable */
+.how-step-card:nth-child(odd) .how-step-icon-wrapper {
+  background-color: rgba(228, 31, 38, 0.07);
+}
 
-@media(max-width:1200px) {
+.how-step-card:nth-child(even) .how-step-icon-wrapper {
+  background-color: rgba(212, 175, 55, 0.09);
+}
 
-  .steps-grid {
+.how-step-card:hover .how-step-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
 
+.how-step-icon {
+  stroke-width: 2px;
+}
+
+/* Card Info/Content */
+.how-step-info {
+  margin-top: 24px;
+}
+
+.how-step-info h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+.how-step-info p {
+  font-size: 14.5px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Connector Line pointing to next step */
+.how-step-connector {
+  position: absolute;
+  top: 50px;
+  right: -24px;
+  width: 20px;
+  height: 20px;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  animation: floatArrow 2s infinite alternate;
+}
+
+@keyframes floatArrow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(4px);
+  }
+}
+
+/* Responsive configurations */
+@media (max-width: 1024px) {
+  .how-steps-grid {
     grid-template-columns: repeat(2, 1fr);
-
+    gap: 32px 24px;
   }
 
+  .how-step-connector {
+    display: none;
+  }
 }
 
-@media(max-width:768px) {
-
-  .steps-grid {
-
+@media (max-width: 640px) {
+  .how-steps-grid {
     grid-template-columns: 1fr;
-
+    gap: 28px;
   }
 
-  .step-card {
-
-    min-height: auto;
-
+  .how-step-card {
+    padding: 36px 24px 28px;
+    align-items: center;
+    text-align: center;
   }
 
-}
-
-@media(max-width:480px) {
-
-  .step-card {
-
-    padding: 22px;
-
+  .how-step-badge {
+    top: 20px;
+    right: 20px;
   }
 
-  .step-card h3 {
-
-    font-size: 20px;
-
+  .how-step-info {
+    margin-top: 20px;
   }
-
-  .step-number {
-
-    font-size: 34px;
-
-  }
-
-  .step-icon {
-
-    width: 58px;
-
-    height: 58px;
-
-  }
-
 }
