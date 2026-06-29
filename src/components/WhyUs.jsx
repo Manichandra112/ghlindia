@@ -7,32 +7,32 @@ export default function WhyUs() {
     {
       num: "01",
       title: "Demand of the Product",
-      icon: <TrendingUp size={28} />
+      icon: <TrendingUp size={26} />
     },
     {
       num: "02",
       title: "Ability of the Team",
-      icon: <Users size={28} />
+      icon: <Users size={26} />
     },
     {
       num: "03",
       title: "Irreplaceable Product & Team",
-      icon: <Award size={28} />
+      icon: <Award size={26} />
     },
     {
       num: "04",
       title: "Exclusive Network",
-      icon: <Globe size={28} />
+      icon: <Globe size={26} />
     },
     {
       num: "05",
       title: "Monetary Benefits",
-      icon: <Coins size={28} />
+      icon: <Coins size={26} />
     },
     {
       num: "06",
       title: "Safety of your capital",
-      icon: <ShieldCheck size={28} />
+      icon: <ShieldCheck size={26} />
     }
   ];
 
@@ -104,7 +104,6 @@ export default function WhyUs() {
                   <div className="timeline-icon-box">
                     {item.icon}
                   </div>
-                  <div className="timeline-connector-dot"></div>
                   <span className="timeline-item-title">{item.title}</span>
                 </li>
               ))}

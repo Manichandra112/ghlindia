@@ -53,7 +53,7 @@
 
 /* Interactive Timeline */
 .why-timeline-section {
-  padding: 30px 0 50px;
+  padding: 40px 0 50px;
   position: relative;
 }
 
@@ -61,16 +61,18 @@
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .timeline-horizontal-bar {
+  display: block;
   position: absolute;
-  top: 50px; /* center of icon boxes */
+  top: 38px; /* perfectly center aligned with 76px icons */
   left: 8%;
   right: 8%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(228, 31, 38, 0.3) 50%, transparent);
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
   z-index: 1;
 }
 
@@ -90,11 +92,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  cursor: pointer;
 }
 
 .timeline-icon-box {
-  width: 60px;
-  height: 60px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: #ffffff;
   color: var(--primary-red, #e41f26);
@@ -102,43 +105,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 15px rgba(228, 31, 38, 0.1);
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(228, 31, 38, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .timeline-item:hover .timeline-icon-box {
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-2px);
   background: var(--primary-red, #e41f26);
   color: #ffffff;
-  box-shadow: 0 8px 20px rgba(228, 31, 38, 0.25);
-}
-
-.timeline-connector-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary-red, #e41f26);
-  margin: 14px 0 10px;
-  position: relative;
-}
-
-.timeline-connector-dot::before {
-  content: "";
-  position: absolute;
-  top: -14px;
-  left: 3px;
-  width: 2px;
-  height: 14px;
-  border-left: 2px dotted var(--primary-red, #e41f26);
+  border-color: var(--primary-red, #e41f26);
+  box-shadow: 0 10px 25px rgba(228, 31, 38, 0.28);
 }
 
 .timeline-item-title {
-  font-size: 12.5px;
-  font-weight: 800;
-  color: #1f2937;
-  text-transform: uppercase;
-  line-height: 1.45;
-  letter-spacing: 0.2px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: capitalize;
+  line-height: 1.4;
+  margin-top: 24px;
+  max-width: 145px;
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover .timeline-item-title {
+  color: var(--primary-red, #e41f26);
 }
 
 /* Cards Section */
