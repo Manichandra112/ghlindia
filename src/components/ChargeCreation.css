@@ -1,0 +1,573 @@
+/* ======================================================
+   CHARGE CREATION - SECURITY STAGE
+====================================================== */
+
+.charge-creation-page {
+  background: var(--light-gray, #f8f9fd);
+  color: #1f2937;
+  overflow-x: hidden;
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Hero Section Banner */
+.charge-hero-banner {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 100px;
+  background: #0f172a;
+}
+
+.charge-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0 0 40px 40px;
+}
+
+@media (max-width: 768px) {
+  .charge-hero-banner {
+    margin-top: 80px;
+  }
+}
+
+/* Intro Section */
+.charge-intro-card {
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.03);
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.charge-intro-text h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.heading-line {
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary-red, #e41f26);
+  margin-bottom: 24px;
+  border-radius: 2px;
+}
+
+.charge-intro-text p {
+  font-size: 15.5px;
+  color: #4b5563;
+  line-height: 1.72;
+  margin-bottom: 16px;
+}
+
+.charge-intro-text p:last-child {
+  margin-bottom: 0;
+}
+
+.charge-intro-graphics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graphics-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px dashed rgba(228, 31, 38, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(228, 31, 38, 0.02);
+  animation: rotateDashed 20s linear infinite;
+}
+
+.graphics-circle > * {
+  animation: keepUpright 20s linear infinite;
+}
+
+.lock-icon-glow {
+  color: var(--primary-red, #e41f26);
+  filter: drop-shadow(0 4px 8px rgba(228, 31, 38, 0.25));
+}
+
+.graphics-circle span {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #1f2937;
+  letter-spacing: 1px;
+}
+
+@keyframes rotateDashed {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes keepUpright {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Debenture Section Flow */
+.charge-debenture {
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+/* Interactive Tree Flowchart */
+.debenture-flowchart-interactive {
+  margin: 60px auto 20px;
+  position: relative;
+  max-width: 1200px;
+}
+
+.flowchart-top-node-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.flowchart-top-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid var(--primary-red, #e41f26);
+  outline: 2px solid var(--primary-red, #e41f26);
+  outline-offset: -8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 12px 30px rgba(228, 31, 38, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.flowchart-top-circle:hover {
+  transform: scale(1.05);
+}
+
+.flowchart-top-circle span {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: var(--primary-red, #e41f26);
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.flowchart-branches {
+  position: relative;
+  height: 48px;
+  z-index: 2;
+}
+
+.flowchart-branches::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 56px;
+  background: var(--primary-red, #e41f26);
+}
+
+.flowchart-main-branch-line {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: var(--primary-red, #e41f26);
+}
+
+.flowchart-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.flowchart-step-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flowchart-drop-line {
+  width: 2px;
+  height: 36px;
+  border-left: 2px dashed var(--primary-red, #e41f26);
+  margin-bottom: 0;
+}
+
+.flowchart-step-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid var(--primary-red, #e41f26);
+  border-radius: 20px;
+  padding: 38px 20px 24px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.02);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+}
+
+.flowchart-step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(228, 31, 38, 0.1);
+  border-color: var(--primary-red-hover, #c6161c);
+}
+
+.flowchart-card-tab {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 28px;
+  background: var(--primary-red, #e41f26);
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 900;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(228, 31, 38, 0.25);
+  font-family: var(--font-heading, sans-serif);
+}
+
+.flowchart-card-content p {
+  font-size: 13.5px;
+  color: #4b5563;
+  line-height: 1.62;
+  margin: 0;
+}
+
+.flowchart-card-content strong {
+  color: var(--primary-red, #e41f26);
+  font-weight: 800;
+}
+
+.video-section-header {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+.video-section-header h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.35;
+}
+
+/* Debenture Video Box */
+.debenture-video-box {
+  margin-top: 32px;
+  background: #0f172a;
+  border-radius: 24px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.15);
+}
+
+.video-info h3 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.video-info p {
+  color: #94a3b8;
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.video-summary-highlight {
+  font-weight: 700;
+  color: var(--primary-red, #e41f26) !important;
+  margin-top: 16px;
+  border-left: 3px solid var(--primary-red, #e41f26);
+  padding-left: 12px;
+  font-style: italic;
+}
+
+.play-btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14.5px;
+  text-decoration: none;
+  background-color: var(--primary-red, #e41f26);
+  border: none;
+}
+
+.play-btn-link:hover {
+  background-color: var(--primary-red-hover, #c6161c);
+}
+
+.video-thumbnail-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-thumb-img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.video-thumbnail-container:hover .video-thumb-img {
+  transform: scale(1.03);
+}
+
+.play-button-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background 0.3s ease;
+}
+
+.video-thumbnail-container:hover .play-button-overlay {
+  background: rgba(15, 23, 42, 0.6);
+  color: var(--primary-red, #e41f26);
+}
+
+/* LLP Section */
+.charge-llp {
+  background: #fafafa;
+}
+
+.llp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.llp-card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.llp-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-accent, #d4af37);
+}
+
+.llp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.llp-card-num {
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(212, 175, 55, 0.15);
+  line-height: 1;
+}
+
+.llp-card:hover .llp-card-num {
+  color: rgba(212, 175, 55, 0.25);
+}
+
+.llp-icon {
+  color: var(--gold-accent, #d4af37);
+}
+
+.llp-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.llp-card p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.llp-flowchart-box {
+  margin-top: 48px;
+  text-align: center;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+}
+
+.llp-flowchart-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Safety Callout Section */
+.charge-safety {
+  background: #ffffff;
+}
+
+.safety-card {
+  background: #eef2f7; /* Matching the beautiful light grayish-blue background */
+  border-radius: 28px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.03);
+}
+
+.safety-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(228, 31, 38, 0.08);
+  border: 1px solid rgba(228, 31, 38, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  color: var(--primary-red, #e41f26);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.safety-text h2 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.safety-text p {
+  font-size: 15.5px;
+  color: #4b5563;
+  line-height: 1.72;
+  margin-bottom: 16px;
+}
+
+.safety-text p:last-child {
+  margin-bottom: 0;
+}
+
+.safety-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.safety-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* Responsive configurations */
+@media (max-width: 1024px) {
+  .flowchart-main-branch-line {
+    left: 12%;
+    right: 12%;
+  }
+
+  .flowchart-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 20px;
+  }
+
+  /* Adjust tree connections for wrapped layout */
+  .flowchart-branches {
+    display: none;
+  }
+
+  .flowchart-drop-line {
+    display: none;
+  }
+
+  .flowchart-step-card {
+    min-height: 160px;
+  }
+
+  .llp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .charge-intro-card,
+  .safety-card {
+    grid-template-columns: 1fr;
+    padding: 36px 24px;
+    gap: 30px;
+  }
+  
+  .debenture-video-box {
+    grid-template-columns: 1fr;
+    padding: 30px 24px;
+    gap: 30px;
+  }
+
+  .flowchart-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 20px;
+  }
+  
+  .llp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .flowchart-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

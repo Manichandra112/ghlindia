@@ -106,7 +106,7 @@ export default function Header() {
                   <ChevronDown size={14} className={activeDropdown === 'security' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'security' ? 'show-menu' : ''}`}>
-                  <li><a href="#what-we-do" onClick={() => setActiveDropdown(null)}>Charge Creation</a></li>
+                  <li><a href="#/charge-creation" onClick={() => setActiveDropdown(null)}>Charge Creation</a></li>
                   <li><a href="#faq" onClick={() => setActiveDropdown(null)}>Asset Mortgages</a></li>
                 </ul>
               </li>
@@ -181,8 +181,8 @@ export default function Header() {
                 <ChevronDown size={16} />
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-security' ? 'open' : ''}`}>
-                <li><a href="#what-we-do" onClick={() => setMobileMenuOpen(false)}>Charge Creation</a></li>
-                <li><a href="#faq" onClick={() => setMobileMenuOpen(false)}>Asset Mortgages</a></li>
+                <li><a href="#/charge-creation" onClick={() => setMobileMenuOpen(false)}>Charge Creation</a></li>
+                <li><a href="#/asset-mortgages" onClick={() => setMobileMenuOpen(false)}>Asset Mortgages</a></li>
               </ul>
             </li>
 

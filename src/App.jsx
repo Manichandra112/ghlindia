@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import FractionalOwnership from './components/FractionalOwnership';
 import DebtFinancing from './components/DebtFinancing';
+import ChargeCreation from './components/ChargeCreation';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -29,6 +30,8 @@ function App() {
         setCurrentView('fractional-ownership');
       } else if (hash === '#/debt-financing') {
         setCurrentView('debt-financing');
+      } else if (hash === '#/charge-creation') {
+        setCurrentView('charge-creation');
       } else {
         setCurrentView('home');
       }
@@ -49,6 +52,7 @@ function App() {
       <main>
         {currentView === 'fractional-ownership' && <FractionalOwnership />}
         {currentView === 'debt-financing' && <DebtFinancing />}
+        {currentView === 'charge-creation' && <ChargeCreation />}
         {currentView === 'home' && (
           <>
             <Hero />
