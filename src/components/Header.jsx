@@ -107,11 +107,10 @@ export default function Header() {
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'security' ? 'show-menu' : ''}`}>
                   <li><a href="#/charge-creation" onClick={() => setActiveDropdown(null)}>Charge Creation</a></li>
-                  <li><a href="#faq" onClick={() => setActiveDropdown(null)}>Asset Mortgages</a></li>
                 </ul>
               </li>
 
-              <li><a href="#stats" className="nav-item">Why Us</a></li>
+              <li><a href="#/why-us" className="nav-item">Why Us</a></li>
               <li><a href="" className="nav-item">Our Team</a></li>
 
               {/* Intelligence Dropdown */}
@@ -182,11 +181,10 @@ export default function Header() {
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-security' ? 'open' : ''}`}>
                 <li><a href="#/charge-creation" onClick={() => setMobileMenuOpen(false)}>Charge Creation</a></li>
-                <li><a href="#/asset-mortgages" onClick={() => setMobileMenuOpen(false)}>Asset Mortgages</a></li>
               </ul>
             </li>
 
-            <li><a href="#stats" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Why Us</a></li>
+            <li><a href="#/why-us" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Why Us</a></li>
             <li><a href="" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Our team </a></li>
             <li><a href="#faq" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
             <li>
