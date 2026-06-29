@@ -177,11 +177,27 @@ export default function ChargeCreation() {
             <span>Alternative Strategy</span>
             <h2>How is the charge creation process done for LLP plan?</h2>
             <div className="heading-line mx-auto"></div>
+          </div>
+
+          {/* Flowchart Image */}
+          <div className="llp-flowchart-box text-center">
+            <img 
+              src="/assets/img/debt/LLP-plan.png" 
+              alt="LLP Plan Flowchart" 
+              className="llp-flowchart-img img-fluid" 
+            />
+          </div>
+
+          {/* LLP Process Heading */}
+          <div className="section-header text-center mt-5">
+            <h2>LLP Fund Mobilization and Hypothecation Agreement Process</h2>
+            <div className="heading-line mx-auto"></div>
             <p>
               Under our Limited Liability Partnership plans, we execute strict asset hypothecation agreements registered directly with the Ministry of Corporate Affairs (MCA).
             </p>
           </div>
 
+          {/* LLP Cards Grid */}
           <div className="llp-grid">
             {llpSteps.map((step, idx) => (
               <div key={idx} className="llp-card">
@@ -193,14 +209,6 @@ export default function ChargeCreation() {
                 <p>{step.desc}</p>
               </div>
             ))}
-          </div>
-
-          <div className="llp-flowchart-box">
-            <img 
-              src="/assets/img/debt/LLP-plan.png" 
-              alt="LLP Plan Flowchart" 
-              className="llp-flowchart-img" 
-            />
           </div>
         </div>
       </section>

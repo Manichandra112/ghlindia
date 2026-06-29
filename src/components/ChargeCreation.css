@@ -434,7 +434,8 @@
 }
 
 .llp-flowchart-box {
-  margin-top: 48px;
+  margin: 32px auto 48px;
+  max-width: 650px;
   text-align: center;
   background: #ffffff;
   padding: 30px;
@@ -444,6 +445,7 @@
 }
 
 .llp-flowchart-img {
+  width: 100%;
   max-width: 100%;
   height: auto;
   border-radius: 12px;
