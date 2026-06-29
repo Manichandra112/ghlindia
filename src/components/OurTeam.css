@@ -1,498 +1,627 @@
 /* ======================================================
-   OUR TEAM PAGE - ADOBE XD TEMPLATE ALIGNED STYLING
+   OUR TEAM - PREMIUM EFFICIENT TABBED DESIGN STYLING
    ====================================================== */
 
-.team-page-xd {
-  background-color: #FAFAFA;
-  color: #000000;
+.team-page-efficient {
+  background-color: #F8FAFC;
+  color: #0F172A;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* ======================================================
-   1. TOP BANNER SLIDER
-   ====================================================== */
-
-.xd-slider-section {
-  width: 100%;
-  background: #FFFFFF;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.xd-swiper {
-  width: 100%;
-}
-
-.xd-slide-container {
-  width: 100%;
-  height: 380px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-}
-
-/* Color palettes matching XD slider mockups */
-.bg-sales { background: linear-gradient(135deg, #FFF5F5 0%, #FFE3E3 100%); }
-.bg-it { background: linear-gradient(135deg, #F0F4FF 0%, #DCE6FF 100%); }
-.bg-marketing { background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%); }
-.bg-accounts { background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); }
-
-.xd-slide-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.xd-slide-title {
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 900;
-  color: #111111;
-  letter-spacing: -0.04em;
-  margin: 0;
-}
-
-.xd-placeholder-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #666666;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: rgba(0, 0, 0, 0.04);
-  padding: 6px 16px;
-  border-radius: 4px;
-}
-
-/* Pagination / Swiper Dot Overrides */
-.xd-swiper .swiper-pagination-bullet-active {
-  background: #E41F26 !important;
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ======================================================
-   2. INTRO SECTION (MEDIUM GREY)
+   1. HERO HEADER AREA
    ====================================================== */
 
-.xd-intro-section {
-  background-color: #EDEDED;
-  padding: 60px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+.efficient-hero-section {
+  padding: 120px 0 50px;
+  background: radial-gradient(circle at top right, rgba(239, 68, 68, 0.03) 0%, transparent 40%),
+              radial-gradient(circle at top left, rgba(59, 130, 246, 0.03) 0%, transparent 40%);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
 }
 
-.xd-intro-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.xd-intro-left p {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.6;
-  color: #000000;
-  margin: 0;
-}
-
-.xd-intro-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 30px;
-}
-
-.xd-brand-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 0.95;
-}
-
-.stack-word {
-  font-size: 28px;
-  font-weight: 900;
-  color: #111111;
-  letter-spacing: -0.02em;
-}
-
-.stack-word.font-muted {
-  color: #888888;
-}
-
-.xd-pill-placeholder {
-  width: 90px;
-  height: 36px;
-  background-color: #C4C4C4;
-  border-radius: 30px;
-}
-
-/* ======================================================
-   3. FOUNDERS AND DIRECTORS
-   ====================================================== */
-
-.xd-founders-section {
-  padding: 80px 0;
-  background: #FAFAFA;
-}
-
-/* Top Row: Co-Founders side-by-side */
-.xd-founders-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.xd-founder-card-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.xd-founder-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 240px;
-  background: #FFFFFF;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-.xd-founder-details-block {
-  background-color: #2F2F2F;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #FFFFFF;
-}
-
-.xd-founder-name {
-  font-size: 22px;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
-  margin: 0 0 6px;
-}
-
-.xd-founder-role {
-  font-size: 14px;
-  color: #CCCCCC;
-  font-weight: 600;
-}
-
-.xd-linkedin-link {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #FFFFFF;
-  padding: 5px;
-  border-radius: 4px;
-  transition: transform 0.2s ease;
-}
-
-.xd-linkedin-link:hover {
-  transform: scale(1.08);
-}
-
-.xd-founder-image-block {
-  width: 100%;
-  height: 100%;
-  background: #EEF2F6;
-  overflow: hidden;
-}
-
-.xd-founder-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.xd-founder-subrole {
-  margin-top: 14px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #444444;
-  text-align: center;
-}
-
-/* Centered Director Landscape Card */
-.xd-director-row {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.xd-director-card-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 760px;
-}
-
-.xd-director-card {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  width: 100%;
-  height: 250px;
-  background: linear-gradient(135deg, #374151 0%, #1F2937 100%);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.xd-director-image-block {
-  width: 100%;
-  height: 100%;
-  background: #E5E7EB;
-  overflow: hidden;
-}
-
-.xd-director-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-.xd-director-details-block {
-  padding: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #FFFFFF;
-}
-
-.xd-director-name {
-  font-size: 22px;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.xd-director-aka {
+.efficient-badge {
   display: inline-block;
-  font-size: 15px;
-  color: #E5E7EB;
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.xd-director-subrole-block {
-  margin-top: 18px;
-  text-align: center;
-}
-
-.xd-director-title-under {
-  font-size: 18px;
-  font-weight: 800;
-  color: #111111;
-  margin: 0 0 4px;
-}
-
-.xd-director-subrole-under {
-  font-size: 15px;
-  color: #666666;
-  font-weight: 600;
-  margin: 0;
-}
-
-/* ======================================================
-   4 & 5. MEET OUR TEAM / RELATION MANAGERS GRID
-   ====================================================== */
-
-.xd-team-grid-section {
-  padding: 60px 0;
-  background: #FAFAFA;
-}
-
-.xd-section-header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 45px;
-}
-
-.xd-red-pill-badge {
-  background-color: #E41F26;
-  color: #FFFFFF;
-  padding: 10px 32px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 800;
+  background: rgba(239, 68, 68, 0.07);
+  color: #EF4444;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  box-shadow: 0 4px 15px rgba(228, 31, 38, 0.25);
+  margin-bottom: 20px;
 }
 
-/* Standard Cards Grids */
-.xd-cards-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 40px;
+.efficient-hero-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 900;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  line-height: 1.1;
 }
 
-.xd-cards-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+.efficient-hero-subtitle {
+  font-size: clamp(16px, 1.5vw, 19px);
+  color: #64748B;
+  line-height: 1.6;
   max-width: 760px;
   margin: 0 auto;
 }
 
-/* Team Card styling (Photo top, dark grey block below) */
-.xd-team-card {
+/* ======================================================
+   2. SLIDER CARD DIVISION PREVIEWS
+   ====================================================== */
+
+.efficient-slider-section {
+  padding: 30px 0;
+  background: #F8FAFC;
+}
+
+.efficient-swiper-container {
+  padding: 20px 10px 50px !important;
+}
+
+.efficient-slide-card {
   background: #FFFFFF;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  padding: 40px 30px;
+  min-height: 190px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  transition: transform 0.25s ease;
-}
-
-.xd-team-card:hover {
-  transform: translateY(-4px);
-}
-
-.xd-card-image-area {
-  width: 100%;
-  height: 290px;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
-  background: #EEF2F6;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
 }
 
-.xd-card-avatar {
+.efficient-slide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.slide-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.slide-card-desc {
+  font-size: 14.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Gradient details on slider cards */
+.bg-sales .slide-card-title { color: #EF4444; }
+.bg-it .slide-card-title { color: #3B82F6; }
+.bg-marketing .slide-card-title { color: #A855F7; }
+.bg-accounts .slide-card-title { color: #10B981; }
+
+.efficient-swiper-container .swiper-pagination-bullet-active {
+  background: #EF4444 !important;
+}
+
+/* ======================================================
+   3. TABBED FILTER MENU BAR
+   ====================================================== */
+
+.efficient-filter-section {
+  padding: 20px 0;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+  background: rgba(248, 250, 252, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.filter-tab-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.03);
+  padding: 6px;
+  border-radius: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.filter-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #64748B;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-tab-btn:hover {
+  color: #0F172A;
+}
+
+.filter-tab-btn.active {
+  background-color: #EF4444;
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+/* ======================================================
+   4. CONTENT LAYOUT BLOCKS
+   ====================================================== */
+
+.efficient-content-container {
+  padding: 20px 0 80px;
+}
+
+.efficient-team-block {
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+
+.efficient-team-block:last-child {
+  border-bottom: none;
+}
+
+.block-header {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.block-tagline {
+  font-size: 13px;
+  font-weight: 700;
+  color: #EF4444;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.block-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+}
+
+/* ======================================================
+   5. SPOTLIGHT BOARD OF DIRECTORS SHOWCASE
+   ====================================================== */
+
+.founders-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+
+.founder-executive-card {
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-executive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(239, 68, 68, 0.05);
+}
+
+.founder-img-wrapper {
+  width: 180px;
+  height: 240px;
+  overflow: hidden;
+  background-color: #F1F5F9;
+  flex-shrink: 0;
+}
+
+.founder-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
 }
 
-.xd-card-details-area {
-  background-color: #2F2F2F;
-  padding: 22px;
+.founder-info-block {
+  padding: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  color: #FFFFFF;
+  flex-grow: 1;
 }
 
-.xd-card-name {
-  font-size: 16px;
+.founder-title-meta h3 {
+  font-size: 19px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #0F172A;
   margin: 0 0 4px;
 }
 
-.xd-card-role {
-  font-size: 13px;
-  color: #CCCCCC;
+.founder-role {
+  font-size: 13.5px;
   font-weight: 600;
-  margin: 0;
+  color: #EF4444;
 }
 
-.xd-card-linkedin {
+.founder-subrole-badge {
+  align-self: flex-start;
+  background: rgba(15, 23, 42, 0.04);
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin: 12px 0;
+}
+
+.founder-linkedin {
   display: inline-flex;
-  background: #FFFFFF;
-  padding: 4px;
-  border-radius: 4px;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0077B5;
+  text-decoration: none;
+  align-self: flex-start;
 }
 
-/* IRM Cards without sub-roles */
-.xd-rm-card .xd-card-details-area {
-  padding: 25px 22px;
+.founder-linkedin:hover {
+  text-decoration: underline;
 }
 
-/* ======================================================
-   6. GALLERY SECTION (2 COLUMNS)
-   ====================================================== */
-
-.xd-gallery-section {
-  padding: 60px 0 80px;
-  background: #FAFAFA;
+/* Director Centered Landscape Card */
+.director-showcase-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.xd-gallery-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.xd-gallery-card {
-  border-radius: 12px;
+.director-executive-card {
+  display: flex;
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-  aspect-ratio: 16 / 10;
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.1);
+  width: 100%;
+  max-width: 680px;
+  color: #FFFFFF;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.xd-gallery-img {
+.director-executive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.15);
+}
+
+.director-img-wrapper {
+  width: 190px;
+  height: 250px;
+  overflow: hidden;
+  background-color: #334155;
+  flex-shrink: 0;
+}
+
+.director-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
+.director-info-block {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
 
+.director-title-meta h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.director-aka {
+  font-size: 13.5px;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.director-role {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #F87171;
+  margin-top: 4px;
+  display: block;
+}
+
+.director-subrole-badge {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  color: #CBD5E1;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin: 12px 0;
+}
+
+.director-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #38BDF8;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.director-linkedin:hover {
+  text-decoration: underline;
+}
 
 /* ======================================================
-   RESPONSIVE DESIGN BREAKPOINTS
+   6. UNIFIED GRIDS FOR FUNCTIONARIES & IRM
+   ====================================================== */
+
+.team-unified-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.team-profile-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+.team-profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+.profile-img-frame {
+  width: 100%;
+  height: 290px;
+  overflow: hidden;
+  background-color: #F1F5F9;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.profile-details {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.profile-title-row h4 {
+  font-size: 17px;
+  font-weight: 850;
+  color: #0F172A;
+  margin: 0 0 4px;
+}
+
+.profile-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #EF4444;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.profile-desc {
+  font-size: 13.5px;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 12px 0 0;
+  flex-grow: 1;
+}
+
+.profile-linkedin-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 119, 181, 0.08);
+  color: #0077B5;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.profile-linkedin-btn:hover {
+  background: #0077B5;
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+/* Adjust card height for IRMs (no descriptions) */
+.relation-manager-card .profile-details {
+  padding-bottom: 24px;
+}
+
+/* ======================================================
+   7. GALLERY MASONRY DESIGN
+   ====================================================== */
+
+.gallery-masonry-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gallery-masonry-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  aspect-ratio: 4 / 3;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-overlay span {
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 700;
+  transform: translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-masonry-card:hover {
+  transform: translateY(-4px);
+}
+
+.gallery-masonry-card:hover .gallery-photo {
+  transform: scale(1.08);
+}
+
+.gallery-masonry-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-masonry-card:hover .gallery-overlay span {
+  transform: translateY(0);
+}
+
+/* ======================================================
+   8. RESPONSIVE MEDIA QUERIES
    ====================================================== */
 
 @media (max-width: 1024px) {
-  .xd-founders-row {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .team-unified-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .xd-cards-grid-3 {
+  .gallery-masonry-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .xd-intro-grid {
+  .efficient-hero-section {
+    padding: 100px 0 40px;
+  }
+
+  .filter-tab-bar {
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  .filter-tab-btn {
+    padding: 8px 16px;
+    font-size: 13.5px;
+  }
+
+  .founders-showcase-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    max-width: 480px;
   }
 
-  .xd-intro-right {
-    justify-content: flex-start;
+  .founder-executive-card,
+  .director-executive-card {
+    flex-direction: column;
   }
 
-  .xd-founder-card,
-  .xd-director-card {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
-
-  .xd-founder-image-block,
-  .xd-director-image-block {
+  .founder-img-wrapper,
+  .director-img-wrapper {
+    width: 100%;
     height: 250px;
-    order: -1;
   }
 
-  .xd-cards-grid-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .xd-gallery-grid-2 {
-    grid-template-columns: 1fr;
+  .team-profile-card {
+    max-width: 440px;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 500px) {
-  .xd-cards-grid-3,
-  .xd-cards-grid-2 {
-    grid-template-columns: 1fr !important;
+@media (max-width: 580px) {
+  .team-unified-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-masonry-container {
+    grid-template-columns: 1fr;
   }
 }
