@@ -7,7 +7,16 @@ export default function WhatWeDo() {
   const [playingLeft, setPlayingLeft] = useState(false);
   const [playingRight, setPlayingRight] = useState(false);
   const [modalType, setModalType] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
   const sectionRef = useScrollAnimation();
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setModalType(null);
+      setIsClosing(false);
+    }, 280); // Wait for the transition to finish
+  };
 
   return (
     <section className="what-we-do-section section-padding" id="what-we-do" ref={sectionRef}>
@@ -49,8 +58,8 @@ export default function WhatWeDo() {
           </div>
 
           {/* CENTER CIRCULAR IMAGE TRIGGER */}
-          <div className="op-circle-trigger-col" data-animate="fade-up" data-stagger-delay="100ms">
-            <div className="circular-thumb-container" onClick={() => setModalType('trading')}>
+          <div className="op-circle-trigger-col" data-animate="fade-up" data-stagger-delay="100ms" onClick={() => setModalType('trading')} style={{ cursor: 'pointer' }}>
+            <div className="circular-thumb-container">
               <img 
                 src="/assets/img/home2026/others/PropertyFlipping.jpg" 
                 alt="Property Flipping" 
@@ -94,72 +103,29 @@ export default function WhatWeDo() {
 
       {/* Property Trading Modal */}
       {modalType === 'trading' && (
-        <div className="modal-backdrop" onClick={() => setModalType(null)}>
-          <div className="modal-content model-modal glass-panel" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header-area">
-              <div>
-                <span className="badge badge-red">Secured Debentures</span>
-                <h3 className="modal-service-title">Property Trading Model</h3>
-              </div>
-              <button className="modal-close" onClick={() => setModalType(null)}>
+        <div className={`modal-backdrop show ${isClosing ? 'backdrop-out' : 'backdrop-in'}`} onClick={handleClose}>
+          <div className={`modal-content model-modal glass-panel ${isClosing ? 'modal-out' : 'modal-in'}`} style={{ padding: 0, overflow: 'hidden', maxWidth: '500px', width: '90%' }} onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header-area" style={{ background: '#590306', color: '#ffffff', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
+              <h3 className="modal-service-title" style={{ margin: 0, fontSize: '20px', fontWeight: 'bold', color: '#ffffff' }}>Property Trading</h3>
+              <button className="modal-close" onClick={handleClose} style={{ background: 'transparent', border: 'none', color: '#ffffff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                 <X size={20} />
               </button>
             </div>
-            <div className="modal-body-area">
-              <div className="modal-circle-art-row">
+            <div className="modal-body-area" style={{ padding: '24px 20px', textAlign: 'center' }}>
+              <div className="modal-circle-art-row" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
                 <img 
                   src="/assets/img/home2026/others/PropertyFlipping.jpg" 
                   alt="Property Trading" 
                   className="modal-circle-thumbnail"
+                  style={{ width: '160px', height: '160px', borderRadius: '50%', objectFit: 'cover' }}
                 />
               </div>
-              <div className="op-steps-timeline theme-red">
-                <div className="op-timeline-item">
-                  <div className="op-timeline-badge">1</div>
-                  <div className="op-timeline-content">
-                    <p>
-                      <strong>GHL INDIA</strong> identifies the most demandable distressed properties at undervalued prices and lists them on our platform for funding from investors.
-                    </p>
-                  </div>
-                </div>
-                <div className="op-timeline-item">
-                  <div className="op-timeline-badge">2</div>
-                  <div className="op-timeline-content">
-                    <p>
-                      Once the required funds are mobilized, properties will be bought, developed, and sold to ready buyers within a short span for substantial profit.
-                    </p>
-                  </div>
-                </div>
-                <div className="op-timeline-item">
-                  <div className="op-timeline-badge">3</div>
-                  <div className="op-timeline-content">
-                    <p>
-                      Since properties are bought lower than market value, they do not require immediate appreciation to generate reasonable profit.
-                    </p>
-                  </div>
-                </div>
-                <div className="op-timeline-item">
-                  <div className="op-timeline-badge">4</div>
-                  <div className="op-timeline-content">
-                    <p>
-                      The funds are raised as debt through debenture issuance of a Special Purpose Vehicle (SPV). The individuals or entities purchasing debentures are considered lenders or creditors.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="modal-security-highlight theme-red-highlight">
-                <ShieldCheck size={24} className="security-icon-check" />
-                <div>
-                  <h5>Mortgage Asset Protection</h5>
-                  <p><strong>The debt from the creditors is secured by way of charge/mortgage/hypothecation of assets.</strong></p>
-                </div>
-              </div>
+              <p style={{ fontSize: '14.5px', color: '#374151', lineHeight: '1.65', textAlign: 'left', margin: 0 }}>
+                GHL INDIA identifies the most demandable distressed properties at undervalued price and list the properties in our platform for funding from the investors. Once the required fund is mobilized, properties will be bought, developed, and sold to the ready buyers within a short span for substantial profit.
+              </p>
             </div>
-            <div className="modal-footer-area">
-              <div className="modal-footer-actions">
-                <button className="btn btn-secondary" onClick={() => setModalType(null)}>Close</button>
-              </div>
+            <div className="modal-footer-area" style={{ padding: '15px 20px', display: 'flex', justifyContent: 'flex-end', borderTop: '1px solid #e5e7eb', background: '#ffffff' }}>
+              <button className="btn" onClick={handleClose} style={{ background: '#d9383a', color: '#ffffff', border: 'none', padding: '8px 16px', borderRadius: '4px', fontWeight: '600', cursor: 'pointer' }}>Close</button>
             </div>
           </div>
         </div>
