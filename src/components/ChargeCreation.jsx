@@ -48,10 +48,10 @@ export default function ChargeCreation() {
     <div className="charge-creation-page">
       {/* Hero Header Banner */}
       <section className="charge-hero-banner">
-        <img 
-          src="/assets/img/ownership/charge-creation.png" 
-          alt="Charge Creation Banner" 
-          className="charge-banner-img" 
+        <img
+          src="/assets/img/ownership/charge-creation.png"
+          alt="Charge Creation Banner"
+          className="charge-banner-img"
         />
       </section>
 
@@ -63,7 +63,7 @@ export default function ChargeCreation() {
               <h2>What is Charge Creation?</h2>
               <div className="heading-line"></div>
               <p>
-                Charge creation is a legal process where a borrower pledges specific assets as security to guarantee debt repayment. This gives lenders and investors absolute legal confidence that their capital is protected. 
+                Charge creation is a legal process where a borrower pledges specific assets as security to guarantee debt repayment. This gives lenders and investors absolute legal confidence that their capital is protected.
               </p>
               <p>
                 Even in the event of default or bankruptcy, the registered charge gives the trustee direct rights to liquidate or manage the pledged asset to recoup investor principal, making it one of the safest mechanisms in structured finance.
@@ -144,10 +144,10 @@ export default function ChargeCreation() {
               <p className="video-summary-highlight">
                 Now they have the funds, the land, and the proper legal steps to move forward.
               </p>
-              <a 
-                href="https://youtu.be/fMzRx4kVkfw" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://youtu.be/fMzRx4kVkfw"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary play-btn-link"
               >
                 <Play size={18} fill="white" />
@@ -156,10 +156,10 @@ export default function ChargeCreation() {
             </div>
             <div className="video-thumbnail-container">
               <a href="https://youtu.be/fMzRx4kVkfw" target="_blank" rel="noopener noreferrer">
-                <img 
-                  src="/assets/img/debt/debenture-plan.png" 
-                  alt="Debenture Plan Video Thumbnail" 
-                  className="video-thumb-img" 
+                <img
+                  src="/assets/img/debt/debenture-plan.png"
+                  alt="Debenture Plan Video Thumbnail"
+                  className="video-thumb-img"
                 />
                 <div className="play-button-overlay">
                   <Play size={44} fill="currentColor" />
@@ -181,10 +181,10 @@ export default function ChargeCreation() {
 
           {/* Flowchart Image */}
           <div className="llp-flowchart-box text-center">
-            <img 
-              src="/assets/img/debt/LLP-plan.png" 
-              alt="LLP Plan Flowchart" 
-              className="llp-flowchart-img img-fluid" 
+            <img
+              src="/assets/img/debt/LLP-plan.png"
+              alt="LLP Plan Flowchart"
+              className="llp-flowchart-img img-fluid"
             />
           </div>
 
@@ -224,17 +224,17 @@ export default function ChargeCreation() {
               </div>
               <h2>How GHL Secures Your Capital</h2>
               <p>
-                Once a charge is officially registered on an asset, it becomes legally locked and cannot be sold, transferred, or leveraged without the express consent of the trustee. 
+                Once a charge is officially registered on an asset, it becomes legally locked and cannot be sold, transferred, or leveraged without the express consent of the trustee.
               </p>
               <p>
                 In the rare case of asset liquidation, all proceeds are legally prioritised to refund investors. Additionally, GHL has policies in place to replace any assets with equivalent value properties if changes occur, ensuring your investment remains continuously protected.
               </p>
             </div>
             <div className="safety-img-container">
-              <img 
-                src="/assets/img/debt/secures-your-assets.png" 
-                alt="GHL Asset Protection Graphic" 
-                className="safety-img" 
+              <img
+                src="/assets/img/debt/secures-your-assets.png"
+                alt="GHL Asset Protection Graphic"
+                className="safety-img"
               />
             </div>
           </div>

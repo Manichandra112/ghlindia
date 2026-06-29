@@ -3,7 +3,7 @@
 ====================================================== */
 
 .charge-creation-page {
-  background: var(--light-gray, #f8f9fd);
+  background: var(--section-muted, #e8edf5);
   color: #1f2937;
   overflow-x: hidden;
   font-family: var(--font-body, sans-serif);
@@ -15,7 +15,8 @@
   position: relative;
   overflow: hidden;
   margin-top: 100px;
-  background: #0f172a;
+  background: transparent;
+  border-radius: 0 0 40px 40px;
 }
 
 .charge-banner-img {
@@ -23,7 +24,8 @@
   height: auto;
   display: block;
   object-fit: cover;
-  border-radius: 0 0 40px 40px;
+  transform: scale(1.03); /* slightly zoom in to hide bottom border line */
+  transform-origin: top center;
 }
 
 @media (max-width: 768px) {
@@ -36,7 +38,7 @@
 .charge-intro-card {
   background: #ffffff;
   border-radius: 28px;
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  border: 1.5px solid var(--card-border-subtle, rgba(15, 23, 42, 0.13));
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.03);
   padding: 50px;
   display: grid;
@@ -289,6 +291,7 @@
 .debenture-video-box {
   margin-top: 32px;
   background: #0f172a;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: 24px;
   padding: 40px;
   display: grid;
@@ -373,7 +376,7 @@
 
 /* LLP Section */
 .charge-llp {
-  background: #fafafa;
+  background: var(--section-muted, #e8edf5);
 }
 
 .llp-grid {
@@ -385,7 +388,7 @@
 
 .llp-card {
   background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.05);
+  border: 1.5px solid var(--card-border-subtle, rgba(15, 23, 42, 0.13));
   border-radius: 20px;
   padding: 36px 28px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
@@ -459,6 +462,7 @@
 .safety-card {
   background: #eef2f7; /* Matching the beautiful light grayish-blue background */
   border-radius: 28px;
+  border: 1.5px solid var(--card-border-subtle, rgba(15, 23, 42, 0.13));
   padding: 50px;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
