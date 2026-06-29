@@ -175,7 +175,7 @@ export default function ChargeCreation() {
         <div className="container">
           <div className="section-header text-center">
             <span>Alternative Strategy</span>
-            <h2>LLP Fund Mobilization & Hypothecation</h2>
+            <h2>How is the charge creation process done for LLP plan?</h2>
             <div className="heading-line mx-auto"></div>
             <p>
               Under our Limited Liability Partnership plans, we execute strict asset hypothecation agreements registered directly with the Ministry of Corporate Affairs (MCA).
