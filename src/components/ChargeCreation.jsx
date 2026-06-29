@@ -240,6 +240,18 @@ export default function ChargeCreation() {
           </div>
         </div>
       </section>
+
+      {/* Bottom Login/Register CTA Section */}
+      <section className="login-sec text-center">
+        <div className="container">
+          <h5>GHL INDIA is here to create a prosperous environment that serves the world at large</h5>
+          <p>Let us join together to live an opulent life</p>
+          <div className="login-sec-buttons">
+            <a href="#login" className="login-sec-btn-login">Login</a>
+            <a href="#register" className="login-sec-btn-register">Register</a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

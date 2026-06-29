@@ -513,6 +513,71 @@
   border-radius: 16px;
 }
 
+/* Login CTA Section */
+.login-sec {
+  background: var(--primary-red, #e41f26);
+  color: #ffffff;
+  padding: 60px 0;
+}
+
+.login-sec h5 {
+  font-size: clamp(20px, 3.5vw, 26px);
+  font-weight: 800;
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto 16px;
+  line-height: 1.4;
+}
+
+.login-sec p {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+}
+
+.login-sec-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.login-sec-btn-login {
+  background: #ffffff;
+  color: var(--primary-red, #e41f26) !important;
+  font-weight: 700;
+  padding: 12px 36px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+}
+
+.login-sec-btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  color: var(--primary-red-hover, #c6161c) !important;
+}
+
+.login-sec-btn-register {
+  background: transparent;
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 10px 34px;
+  border-radius: 12px;
+  border: 2px solid #ffffff;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  font-size: 15px;
+}
+
+.login-sec-btn-register:hover {
+  background: #ffffff;
+  color: var(--primary-red, #e41f26) !important;
+  transform: translateY(-2px);
+}
+
 /* Responsive configurations */
 @media (max-width: 1024px) {
   .flowchart-main-branch-line {
