@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, ShieldCheck, Cpu, Code, Megaphone, FileText, Landmark } from 'lucide-react';
+import { Users, ShieldCheck, Cpu, Code, Megaphone, FileText, Landmark, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import './OurTeam.css';
 
 // Inline SVG to avoid lucide version conflict
@@ -23,31 +23,34 @@ const LinkedinIcon = ({ size = 20, className = "" }) => (
 );
 
 export default function OurTeam() {
-  const [activeLeaderIdx, setActiveLeaderIdx] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isCarouselPlaying, setIsCarouselPlaying] = useState(true);
 
-  const leaders = [
+  const departmentSlides = [
     {
-      name: "Mr. Rajkumar",
-      role: "Co-founder & Business Analyzing Head",
-      img: "/assets/img/team/Rajkumar_photo-removebg-preview.png",
-      desc: "Experienced co-founder specializing in core market analysis, risk evaluation, and product demand validation.",
-      linkedin: "https://www.linkedin.com/in/raj-kumar-v-12191036/"
+      id: "founders",
+      title: "Founders & Directors Group",
+      img: "/assets/img/team/group-founders.jpg"
     },
     {
-      name: "Mr. Senthil",
-      role: "Co-founder & Legal Head",
-      img: "/assets/img/team/Senthil-cover.png",
-      desc: "Advocate and legal head governing charge creations, debenture security, and compliance protocols.",
-      linkedin: "https://www.linkedin.com/in/senthil-kumar-advocate/"
+      id: "heads",
+      title: "Department Heads Group",
+      img: "/assets/img/team/group-heads.jpg"
+    },
+    {
+      id: "sales",
+      title: "Investor Relations & Sales Group",
+      img: "/assets/img/team/group-sales.jpg"
     }
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveLeaderIdx((prev) => (prev === 0 ? 1 : 0));
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+    if (!isCarouselPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % departmentSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isCarouselPlaying, departmentSlides.length]);
 
   const teamMembers = [
     {
@@ -180,61 +183,86 @@ export default function OurTeam() {
 
   return (
     <div className="team-page">
-      {/* Intro Leaders Showcase Hero */}
-      <section className="team-hero-section section-padding">
+      {/* Immersive Department Carousel Hero */}
+      <section className="team-hero-section team-carousel-section section-padding">
         <div className="container">
-          <div className="team-hero-grid">
-            {/* Left Content Column */}
-            <div className="team-hero-content">
-              <span className="team-hero-badge">Executive leadership</span>
-              <h1 className="team-hero-title">GHL INDIA Leaders</h1>
-              <p className="team-hero-text">
-                Great things in business are never done by one person. They are done by a team of people who are committed, capable, and united under a common vision. Meet the architects of our secure investment platform.
-              </p>
-              
-              <div className="leader-bullets">
-                {leaders.map((leader, idx) => (
+          {/* Carousel Widget */}
+          <div 
+            className="dept-carousel-widget"
+            onMouseEnter={() => setIsCarouselPlaying(false)}
+            onMouseLeave={() => setIsCarouselPlaying(true)}
+          >
+            {/* Nav Arrows */}
+            <button 
+              className="carousel-arrow prev" 
+              onClick={() => setCurrentSlide((prev) => (prev === 0 ? departmentSlides.length - 1 : prev - 1))}
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <button 
+              className="carousel-arrow next" 
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % departmentSlides.length)}
+              aria-label="Next Slide"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Carousel Slides Container */}
+            <div className="dept-carousel-track-wrapper">
+              {departmentSlides.map((slide, idx) => {
+                let positionClass = "next-slide";
+                if (idx === currentSlide) {
+                  positionClass = "active-slide";
+                } else if (idx === (currentSlide - 1 + departmentSlides.length) % departmentSlides.length) {
+                  positionClass = "prev-slide";
+                }
+                
+                return (
                   <div 
-                    key={idx} 
-                    className={`leader-bullet-item ${activeLeaderIdx === idx ? 'active' : ''}`}
-                    onClick={() => setActiveLeaderIdx(idx)}
+                    key={slide.id} 
+                    className={`dept-carousel-slide ${positionClass}`}
                   >
-                    <h4>{leader.name}</h4>
-                    <p>{leader.role}</p>
+                    <div className="dept-image-only-pane">
+                      <div className="dept-img-placeholder">
+                        <Users className="placeholder-icon" size={64} />
+                        <span className="placeholder-label">{slide.title}</span>
+                        <span className="placeholder-sublabel">Image Placeholder (Replace later)</span>
+                      </div>
+                      {/* Once images are ready, the user can do: */}
+                      {/* <img src={slide.img} alt={slide.title} className="dept-group-img-only" /> */}
+                    </div>
                   </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Controls Indicator */}
+            <div className="dept-carousel-controls">
+              <button 
+                className="carousel-play-pause-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsCarouselPlaying(!isCarouselPlaying);
+                }}
+                title={isCarouselPlaying ? "Pause Autoplay" : "Play Autoplay"}
+              >
+                {isCarouselPlaying ? <Pause size={16} /> : <Play size={16} />}
+              </button>
+              
+              <div className="dept-carousel-dots">
+                {departmentSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    className={`dept-carousel-dot ${currentSlide === idx ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
                 ))}
               </div>
             </div>
 
-            {/* Right Display Column */}
-            <div className="team-hero-display-box">
-              <div className="leader-showcase-container">
-                {leaders.map((leader, idx) => {
-                  const isActive = activeLeaderIdx === idx;
-                  return (
-                    <div 
-                      key={idx} 
-                      className={`leader-slide-card ${isActive ? 'active' : ''}`}
-                    >
-                      <div className="leader-img-frame">
-                        <img src={leader.img} alt={leader.name} className="leader-showcase-img" />
-                      </div>
-                      <div className="leader-info-card">
-                        <h3>{leader.name}</h3>
-                        <span className="leader-role-tag">{leader.role}</span>
-                        <p>{leader.desc}</p>
-                        {leader.linkedin !== '#' && (
-                          <a href={leader.linkedin} target="_blank" rel="noopener noreferrer" className="leader-linkedin-btn">
-                            <LinkedinIcon size={18} />
-                            <span>Connect on LinkedIn</span>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </div>
       </section>
