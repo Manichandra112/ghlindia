@@ -328,123 +328,129 @@ export default function OurTeam() {
             </div>
           </div>
 
-          {/* Section Break / Our Team Heading */}
-          <div className="team-section-divider-xd text-center">
-            <span className="section-badge-red-xd">Our Team</span>
-          </div>
+          <div className="team-band-xd director-band-xd">
+            {/* Section Break / Our Team Heading */}
+            <div className="team-section-divider-xd text-center">
+              <span className="section-badge-red-xd">Our Team</span>
+            </div>
 
-          {/* Director Row: Mr. Karthikeyan (Guhan) centered */}
-          <div className="director-section-row-xd">
-            {teamMembers.filter(m => m.category === 'founders' && m.role === 'Director').map((member, idx) => (
-              <div key={idx} className="director-card-xd-container">
-                <div className="director-card-xd">
-                  <div className="director-card-header-xd">
-                    <div className="director-avatar-wrapper-xd">
-                      <img src={member.img} alt={member.name} className="director-avatar-xd" />
+            {/* Director Row: Mr. Karthikeyan (Guhan) centered */}
+            <div className="director-section-row-xd">
+              {teamMembers.filter(m => m.category === 'founders' && m.role === 'Director').map((member, idx) => (
+                <div key={idx} className="director-card-xd-container">
+                  <div className="director-card-xd">
+                    <div className="director-card-header-xd">
+                      <div className="director-avatar-wrapper-xd">
+                        <img src={member.img} alt={member.name} className="director-avatar-xd" />
+                      </div>
+                      <div className="director-header-info-xd">
+                        <h4 className="director-name-xd">
+                          MR.<br />
+                          KARTHIKEYAN<br />
+                          DHAYALAN<br />
+                          <span className="director-aka-xd">(AKA) GUHAN</span>
+                        </h4>
+                        {member.linkedin !== '#' && (
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="director-linkedin-xd">
+                            <LinkedinIcon size={20} />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <div className="director-header-info-xd">
-                      <h4 className="director-name-xd">
-                        MR.<br />
-                        KARTHIKEYAN<br />
-                        DHAYALAN<br />
-                        <span className="director-aka-xd">(AKA) GUHAN</span>
-                      </h4>
-                      {member.linkedin !== '#' && (
-                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="director-linkedin-xd">
-                          <LinkedinIcon size={20} />
-                        </a>
-                      )}
+                    <div className="director-card-body-xd">
+                      <h5 className="director-role-xd">{member.role}</h5>
+                      <p className="director-subrole-xd">{member.subRole}</p>
                     </div>
-                  </div>
-                  <div className="director-card-body-xd">
-                    <h5 className="director-role-xd">{member.role}</h5>
-                    <p className="director-subrole-xd">{member.subRole}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Section Break / Meet Our Team Heading */}
-          <div className="team-section-divider-xd text-center">
-            <span className="section-badge-red-xd">Meet Our Team</span>
-          </div>
+          <div className="team-band-xd meet-team-band-xd">
+            {/* Section Break / Meet Our Team Heading */}
+            <div className="team-section-divider-xd text-center">
+              <span className="section-badge-red-xd">Meet Our Team</span>
+            </div>
 
-          {/* Employee Directory Section */}
-          <div className="employee-directory-block-xd">
-            {/* Department Heads Block */}
-            <div className="team-category-block-clean-xd">
-              
-              {/* Top Row: Sivaraj, Teena, Arul Saravanan */}
-              <div className="heads-top-row-xd">
-                {teamMembers
-                  .filter(m => m.category === 'heads' && ['Mr. Sivaraj', 'Mrs. Teena', 'Mr. Arul Saravanan'].includes(m.name))
-                  .map((member, idx) => (
-                    <div key={idx} className="member-card-xd">
-                      <div className="member-avatar-wrapper-xd">
-                        <img src={member.img} alt={member.name} className="member-avatar-xd" />
+            {/* Employee Directory Section */}
+            <div className="employee-directory-block-xd">
+              {/* Department Heads Block */}
+              <div className="team-category-block-clean-xd">
+                
+                {/* Top Row: Sivaraj, Teena, Arul Saravanan */}
+                <div className="heads-top-row-xd">
+                  {teamMembers
+                    .filter(m => m.category === 'heads' && ['Mr. Sivaraj', 'Mrs. Teena', 'Mr. Arul Saravanan'].includes(m.name))
+                    .map((member, idx) => (
+                      <div key={idx} className="member-card-xd">
+                        <div className="member-avatar-wrapper-xd">
+                          <img src={member.img} alt={member.name} className="member-avatar-xd" />
+                        </div>
+                        <div className="member-details-xd">
+                          <h4 className="member-name-xd">{member.name}</h4>
+                          <p className="member-role-xd">{member.role}</p>
+                          {member.linkedin !== '#' && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                              <LinkedinIcon size={16} />
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="member-details-xd">
-                        <h4 className="member-name-xd">{member.name}</h4>
-                        <p className="member-role-xd">{member.role}</p>
-                        {member.linkedin !== '#' && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                            <LinkedinIcon size={16} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-              </div>
+                    ))}
+                </div>
 
-              {/* Bottom Row: Robin, Sumitha */}
-              <div className="heads-bottom-row-xd">
-                {teamMembers
-                  .filter(m => m.category === 'heads' && ['Mr. Robin', 'Ms. Sumitha'].includes(m.name))
-                  .map((member, idx) => (
-                    <div key={idx} className="member-card-xd">
-                      <div className="member-avatar-wrapper-xd">
-                        <img src={member.img} alt={member.name} className="member-avatar-xd" />
+                {/* Bottom Row: Robin, Sumitha */}
+                <div className="heads-bottom-row-xd">
+                  {teamMembers
+                    .filter(m => m.category === 'heads' && ['Mr. Robin', 'Ms. Sumitha'].includes(m.name))
+                    .map((member, idx) => (
+                      <div key={idx} className="member-card-xd">
+                        <div className="member-avatar-wrapper-xd">
+                          <img src={member.img} alt={member.name} className="member-avatar-xd" />
+                        </div>
+                        <div className="member-details-xd">
+                          <h4 className="member-name-xd">{member.name}</h4>
+                          <p className="member-role-xd">{member.role}</p>
+                          {member.linkedin !== '#' && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                              <LinkedinIcon size={16} />
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="member-details-xd">
-                        <h4 className="member-name-xd">{member.name}</h4>
-                        <p className="member-role-xd">{member.role}</p>
-                        {member.linkedin !== '#' && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                            <LinkedinIcon size={16} />
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Section Break / Investor Relationship Managers Heading */}
-          <div className="team-section-divider-xd text-center">
-            <span className="section-badge-red-xd">Investor Relationship Managers</span>
-          </div>
+          <div className="team-band-xd investor-band-xd">
+            {/* Section Break / Investor Relationship Managers Heading */}
+            <div className="team-section-divider-xd text-center">
+              <span className="section-badge-red-xd">Investor Relationship Managers</span>
+            </div>
 
-          {/* Investor Relations & Sales Block */}
-          <div className="team-category-block-clean-xd sales-section-block-xd">
-            <div className="team-members-grid">
-              {teamMembers.filter(m => m.category === 'sales').map((member, idx) => (
-                <div key={idx} className="member-card-xd">
-                  <div className="member-avatar-wrapper-xd">
-                    <img src={member.img} alt={member.name} className="member-avatar-xd" />
+            {/* Investor Relations & Sales Block */}
+            <div className="team-category-block-clean-xd sales-section-block-xd">
+              <div className="team-members-grid">
+                {teamMembers.filter(m => m.category === 'sales').map((member, idx) => (
+                  <div key={idx} className="member-card-xd">
+                    <div className="member-avatar-wrapper-xd">
+                      <img src={member.img} alt={member.name} className="member-avatar-xd" />
+                    </div>
+                    <div className="member-details-xd">
+                      <h4 className="member-name-xd">{member.name}</h4>
+                      <p className="member-role-xd">{member.role}</p>
+                      {member.linkedin !== '#' && (
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                          <LinkedinIcon size={16} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div className="member-details-xd">
-                    <h4 className="member-name-xd">{member.name}</h4>
-                    <p className="member-role-xd">{member.role}</p>
-                    {member.linkedin !== '#' && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                        <LinkedinIcon size={16} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
