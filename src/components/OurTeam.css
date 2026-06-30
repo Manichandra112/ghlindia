@@ -211,8 +211,8 @@
    ====================================================== */
 
 .team-directory-section {
-  padding: 72px 0 90px;
-  border-top: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 0 0 90px;
+  border-top: none;
 }
 
 .team-section-header {
@@ -446,7 +446,7 @@
 
 .team-gallery-section {
   padding: 86px 0 120px;
-  background: rgba(255, 255, 255, 0.72);
+  background: #ececec;
   border-top: 1px solid rgba(15, 23, 42, 0.05);
 }
 
@@ -519,7 +519,7 @@
    ====================================================== */
 
 .team-carousel-section {
-  padding: 90px 0 46px !important;
+  padding: 90px 0 0 !important;
 }
 
 .team-carousel-section .container {
@@ -1197,7 +1197,7 @@
   }
   
   .team-carousel-section {
-    padding: 70px 0 30px !important;
+    padding: 70px 0 0 !important;
   }
   
   .dept-carousel-widget {
