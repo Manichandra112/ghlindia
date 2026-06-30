@@ -21,6 +21,8 @@ import DebtFinancing from './components/DebtFinancing';
 import ChargeCreation from './components/ChargeCreation';
 import WhyUs from './components/WhyUs';
 import OurTeam from './components/OurTeam';
+import FinancialIQ from './components/FinancialIQ';
+import EconomyInsight from './components/EconomyInsight';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -38,13 +40,16 @@ function App() {
         setCurrentView('why-us');
       } else if (hash === '#/our-team') {
         setCurrentView('our-team');
+      } else if (hash === '#/financial-iq') {
+        setCurrentView('financial-iq');
+      } else if (hash === '#/economy-insight') {
+        setCurrentView('economy-insight');
       } else {
         setCurrentView('home');
       }
-      window.scrollTo(0, 0); // Always scroll to top on hash view changes
+      window.scrollTo(0, 0);
     };
 
-    // Initialize on mount
     handleHashChange();
 
     window.addEventListener('hashchange', handleHashChange);
@@ -61,6 +66,8 @@ function App() {
         {currentView === 'charge-creation' && <ChargeCreation />}
         {currentView === 'why-us' && <WhyUs />}
         {currentView === 'our-team' && <OurTeam />}
+        {currentView === 'financial-iq' && <FinancialIQ />}
+        {currentView === 'economy-insight' && <EconomyInsight />}
         {currentView === 'home' && (
           <>
             <Hero />
@@ -86,4 +93,3 @@ function App() {
 }
 
 export default App;
-
