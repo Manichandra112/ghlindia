@@ -28,6 +28,11 @@ export default function OurTeam() {
 
   const departmentSlides = [
     {
+      id: "sales",
+      title: "Investor Relations & Sales Group",
+      img: "/assets/img/team/group-sales.jpg"
+    },
+    {
       id: "founders",
       title: "Founders & Directors Group",
       img: "/assets/img/team/group-founders.jpg"
@@ -36,11 +41,6 @@ export default function OurTeam() {
       id: "heads",
       title: "Department Heads Group",
       img: "/assets/img/team/group-heads.jpg"
-    },
-    {
-      id: "sales",
-      title: "Investor Relations & Sales Group",
-      img: "/assets/img/team/group-sales.jpg"
     }
   ];
 
@@ -278,29 +278,73 @@ export default function OurTeam() {
           </div>
 
           {/* Founders Block */}
-          <div className="team-category-block">
+          <div className="team-category-block founders-section-block">
             <h3 className="category-title">Founders & Directors</h3>
-            <div className="team-members-grid">
-              {teamMembers.filter(m => m.category === 'founders').map((member, idx) => (
-                <div key={idx} className="member-card">
-                  <div className="member-image-frame">
-                    <img src={member.img} alt={member.name} className="member-avatar" />
-                  </div>
-                  <div className="member-details">
-                    <div className="member-badge-row">
-                      <span className="member-role-badge">
-                        {member.icon}
-                        {member.role}
-                      </span>
+            
+            {/* Top Row: Co-founders (Mr. Senthil and Mr. Rajkumar) */}
+            <div className="founders-top-row">
+              {teamMembers.filter(m => m.category === 'founders' && m.role === 'Co-founder').map((member, idx) => {
+                const cutoutImg = member.name.includes("Senthil") 
+                  ? "/assets/img/team/Senthil-cover.png" 
+                  : "/assets/img/team/Rajkumar_photo-removebg-preview.png";
+
+                const nameParts = member.name.split(" ");
+                const lastName = nameParts[1] ? nameParts[1].toUpperCase() : "";
+
+                return (
+                  <div key={idx} className="founder-card-xd-container">
+                    <div className="founder-card-xd">
+                      <div className="founder-card-header-xd">
+                        <div className="founder-header-info-xd">
+                          <h4 className="founder-name-xd">
+                            MR.<br />
+                            {lastName}
+                          </h4>
+                          <span className="founder-role-xd">{member.role}</span>
+                        </div>
+                        <img src={cutoutImg} alt={member.name} className="founder-avatar-xd" />
+                      </div>
+                      <div className="founder-card-body-xd">
+                        {member.linkedin !== '#' && (
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin-xd">
+                            <LinkedinIcon size={20} />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                    <h4 className="member-name">{member.name}</h4>
-                    <p className="member-sub-role">{member.subRole}</p>
-                    {member.linkedin !== '#' && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-link">
-                        <LinkedinIcon size={16} />
-                        <span>LinkedIn</span>
-                      </a>
-                    )}
+                    <p className="founder-designation-xd">{member.subRole}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Row: Director (Mr. Karthikeyan / Guhan) centered */}
+            <div className="directors-bottom-row">
+              {teamMembers.filter(m => m.category === 'founders' && m.role === 'Director').map((member, idx) => (
+                <div key={idx} className="director-card-xd-container">
+                  <div className="director-card-xd">
+                    <div className="director-card-header-xd">
+                      <div className="director-avatar-wrapper-xd">
+                        <img src={member.img} alt={member.name} className="director-avatar-xd" />
+                      </div>
+                      <div className="director-header-info-xd">
+                        <h4 className="director-name-xd">
+                          MR.<br />
+                          KARTHIKEYAN<br />
+                          DHAYALAN<br />
+                          <span className="director-aka-xd">(AKA) GUHAN</span>
+                        </h4>
+                        {member.linkedin !== '#' && (
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="director-linkedin-xd">
+                            <LinkedinIcon size={20} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                    <div className="director-card-body-xd">
+                      <h5 className="director-role-xd">{member.role}</h5>
+                      <p className="director-subrole-xd">{member.subRole}</p>
+                    </div>
                   </div>
                 </div>
               ))}
