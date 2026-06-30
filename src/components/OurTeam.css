@@ -233,6 +233,58 @@
   line-height: 1.5;
 }
 
+/* Split two-column team section header styles */
+.team-section-header-xd {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.header-left-col-xd {
+  width: 45%;
+  padding-top: 15px;
+}
+
+.header-desc-xd {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.65;
+  text-align: left;
+  margin: 0;
+  font-weight: 500;
+}
+
+.header-right-col-xd {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.header-title-xd {
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.05;
+  color: #0F172A;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  letter-spacing: 0.05em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header-pill-xd {
+  border: 1px solid #CBD5E1;
+  background: #ffffff;
+  border-radius: 50px;
+  width: 160px;
+  height: 38px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
 .team-category-block {
   margin-bottom: 80px;
 }
@@ -709,7 +761,6 @@
   padding: 0;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
-  overflow: hidden;
 }
 
 .founder-header-info-xd {
@@ -740,7 +791,7 @@
   font-size: 13px;
   color: #A3A3A3;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.05em;
 }
 
@@ -779,7 +830,7 @@
 
 .director-card-xd {
   width: 100%;
-  max-width: 375px;
+  max-width: 750px;
   height: 400px;
   background: #ffffff;
   border-radius: 20px;
@@ -838,7 +889,7 @@
 }
 
 .director-name-xd {
-  font-size: 17px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.25;
   color: #ffffff;
@@ -850,7 +901,7 @@
 
 .director-aka-xd {
   display: block;
-  font-size: 12px;
+  font-size: 15px;
   color: #e2e8f0;
   font-weight: 600;
   margin-top: 4px;
@@ -934,8 +985,170 @@
   color: #334155;
   text-align: center;
   margin-top: 18px;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.05em;
+}
+
+/* ======================================================
+   MEET OUR TEAM CUSTOM EMPLOYEE CARDS
+   ====================================================== */
+
+/* Custom grid layouts for Department Heads */
+.heads-top-row-xd {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.heads-bottom-row-xd {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 780px;
+  margin: 0 auto 50px;
+}
+
+/* Custom Employee Card container (Transparent background) */
+.member-card-xd {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible; /* Allows details box to overlap */
+}
+
+/* Avatar Wrapper */
+.member-avatar-wrapper-xd {
+  width: 100%;
+  height: 310px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cutout Avatar image */
+.member-avatar-xd {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.member-card-xd:hover .member-avatar-xd {
+  transform: scale(1.04);
+}
+
+/* Details Box (Overlaps the bottom of the avatar) */
+.member-details-xd {
+  background: #474747; /* Dark grey background */
+  border-radius: 16px;
+  width: 100%;
+  max-width: 320px;
+  margin-top: -55px; /* Overlaps avatar chest area */
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.member-card-xd:hover .member-details-xd {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Typography Inside Details Box */
+.member-name-xd {
+  font-size: 18.5px;
+  font-weight: 800;
+  color: #ffffff; /* Bold white */
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.member-role-xd {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #E2E8F0; /* Regular white/light-grey */
+  margin: 0;
+}
+
+/* Brand LinkedIn Button */
+.member-linkedin-xd {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: #ffffff;
+  background: #0077b5; /* Brand blue background */
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 5;
+}
+
+.member-linkedin-xd:hover {
+  transform: scale(1.15);
+  background: #005582;
+}
+
+/* Director Row centering and spacing */
+.director-section-row-xd {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto 55px;
+  padding: 0 15px;
+}
+
+/* Team section badge division */
+.team-section-divider-xd {
+  margin-top: 60px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.section-badge-red-xd {
+  background: #FF0000;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 8px 24px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.team-category-block-clean-xd {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.sales-section-block-xd .team-members-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px;
 }
 
 /* ======================================================
@@ -967,9 +1180,39 @@
   .directors-bottom-row .member-card {
     max-width: 340px;
   }
+
+  .heads-top-row-xd {
+    gap: 20px;
+  }
+
+  .heads-bottom-row-xd {
+    gap: 20px;
+    max-width: 700px;
+  }
 }
 
 @media (max-width: 768px) {
+  .team-section-header-xd {
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+  }
+  .header-left-col-xd, .header-right-col-xd {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+  .header-desc-xd {
+    text-align: center;
+    font-size: 15px;
+  }
+  .header-title-xd {
+    font-size: 36px;
+    text-align: center;
+  }
+
   .team-hero-section {
     padding: 70px 0 30px !important;
   }
@@ -980,6 +1223,8 @@
   }
 
   .gallery-mosaic-grid {
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
     grid-template-columns: 1fr;
   }
 
@@ -1011,6 +1256,22 @@
   .directors-bottom-row .member-card {
     max-width: 320px;
   }
+
+  .heads-top-row-xd {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .heads-bottom-row-xd {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 100%;
+  }
+
+  .sales-section-block-xd .team-members-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 500px) {
@@ -1028,5 +1289,24 @@
   
   .directors-bottom-row .member-card {
     max-width: 100%;
+  }
+
+  .heads-top-row-xd {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .heads-bottom-row-xd {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .member-avatar-wrapper-xd {
+    height: 260px;
+  }
+
+  .sales-section-block-xd .team-members-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
   }
 }

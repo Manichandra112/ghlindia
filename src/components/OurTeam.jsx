@@ -4,16 +4,16 @@ import './OurTeam.css';
 
 // Inline SVG to avoid lucide version conflict
 const LinkedinIcon = ({ size = 20, className = "" }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={className}
   >
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -187,22 +187,22 @@ export default function OurTeam() {
       <section className="team-hero-section team-carousel-section section-padding">
         <div className="container">
           {/* Carousel Widget */}
-          <div 
+          <div
             className="dept-carousel-widget"
             onMouseEnter={() => setIsCarouselPlaying(false)}
             onMouseLeave={() => setIsCarouselPlaying(true)}
           >
             {/* Nav Arrows */}
-            <button 
-              className="carousel-arrow prev" 
+            <button
+              className="carousel-arrow prev"
               onClick={() => setCurrentSlide((prev) => (prev === 0 ? departmentSlides.length - 1 : prev - 1))}
               aria-label="Previous Slide"
             >
               <ChevronLeft size={24} />
             </button>
 
-            <button 
-              className="carousel-arrow next" 
+            <button
+              className="carousel-arrow next"
               onClick={() => setCurrentSlide((prev) => (prev + 1) % departmentSlides.length)}
               aria-label="Next Slide"
             >
@@ -218,10 +218,10 @@ export default function OurTeam() {
                 } else if (idx === (currentSlide - 1 + departmentSlides.length) % departmentSlides.length) {
                   positionClass = "prev-slide";
                 }
-                
+
                 return (
-                  <div 
-                    key={slide.id} 
+                  <div
+                    key={slide.id}
                     className={`dept-carousel-slide ${positionClass}`}
                   >
                     <div className="dept-image-only-pane">
@@ -240,7 +240,7 @@ export default function OurTeam() {
 
             {/* Bottom Controls Indicator */}
             <div className="dept-carousel-controls">
-              <button 
+              <button
                 className="carousel-play-pause-btn"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -250,7 +250,7 @@ export default function OurTeam() {
               >
                 {isCarouselPlaying ? <Pause size={16} /> : <Play size={16} />}
               </button>
-              
+
               <div className="dept-carousel-dots">
                 {departmentSlides.map((_, idx) => (
                   <button
@@ -270,30 +270,41 @@ export default function OurTeam() {
       {/* Main Corporate Team Section */}
       <section className="team-directory-section section-padding">
         <div className="container">
-          <div className="team-section-header text-center">
-            <h2 className="team-section-title">Our Team</h2>
-            <p className="team-section-subtitle">
-              Professional experts managing our legal, financial, and operational frameworks to keep your capital safe.
-            </p>
+          <div className="team-section-header-xd">
+            <div className="header-left-col-xd">
+              <p className="header-desc-xd">
+                Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here
+              </p>
+            </div>
+            <div className="header-right-col-xd">
+              <h2 className="header-title-xd">
+                GHL<br />
+                INDIA<br />
+                ASSET
+              </h2>
+              <div className="header-pill-xd"></div>
+            </div>
           </div>
 
           {/* Founders Block */}
           <div className="team-category-block founders-section-block">
-            <h3 className="category-title">Founders & Directors</h3>
-            
+
             {/* Top Row: Co-founders (Mr. Senthil and Mr. Rajkumar) */}
             <div className="founders-top-row">
-              {teamMembers.filter(m => m.category === 'founders' && m.role === 'Co-founder').map((member, idx) => {
-                const cutoutImg = member.name.includes("Senthil") 
-                  ? "/assets/img/team/Senthil-cover.png" 
-                  : "/assets/img/team/Rajkumar_photo-removebg-preview.png";
+              {teamMembers
+                .filter(m => m.category === 'founders' && m.role === 'Co-founder')
+                .sort((a, b) => a.name.includes("Senthil") ? -1 : 1)
+                .map((member, idx) => {
+                  const cutoutImg = member.name.includes("Senthil")
+                    ? "/assets/img/team/Senthil-cover.png"
+                    : "/assets/img/team/Rajkumar_photo-removebg-preview.png";
 
-                const nameParts = member.name.split(" ");
-                const lastName = nameParts[1] ? nameParts[1].toUpperCase() : "";
+                  const nameParts = member.name.split(" ");
+                  const lastName = nameParts[1] ? nameParts[1].toUpperCase() : "";
 
-                return (
-                  <div key={idx} className="founder-card-xd-container">
-                    <div className="founder-card-xd">
+                  return (
+                    <div key={idx} className="founder-card-xd-container">
+                      <div className="founder-card-xd">
                       <div className="founder-card-header-xd">
                         <div className="founder-header-info-xd">
                           <h4 className="founder-name-xd">
@@ -317,92 +328,120 @@ export default function OurTeam() {
                 );
               })}
             </div>
+          </div>
 
-            {/* Bottom Row: Director (Mr. Karthikeyan / Guhan) centered */}
-            <div className="directors-bottom-row">
-              {teamMembers.filter(m => m.category === 'founders' && m.role === 'Director').map((member, idx) => (
-                <div key={idx} className="director-card-xd-container">
-                  <div className="director-card-xd">
-                    <div className="director-card-header-xd">
-                      <div className="director-avatar-wrapper-xd">
-                        <img src={member.img} alt={member.name} className="director-avatar-xd" />
+          {/* Section Break / Our Team Heading */}
+          <div className="team-section-divider-xd text-center">
+            <span className="section-badge-red-xd">Our Team</span>
+          </div>
+
+          {/* Director Row: Mr. Karthikeyan (Guhan) centered */}
+          <div className="director-section-row-xd">
+            {teamMembers.filter(m => m.category === 'founders' && m.role === 'Director').map((member, idx) => (
+              <div key={idx} className="director-card-xd-container">
+                <div className="director-card-xd">
+                  <div className="director-card-header-xd">
+                    <div className="director-avatar-wrapper-xd">
+                      <img src={member.img} alt={member.name} className="director-avatar-xd" />
+                    </div>
+                    <div className="director-header-info-xd">
+                      <h4 className="director-name-xd">
+                        MR.<br />
+                        KARTHIKEYAN<br />
+                        DHAYALAN<br />
+                        <span className="director-aka-xd">(AKA) GUHAN</span>
+                      </h4>
+                      {member.linkedin !== '#' && (
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="director-linkedin-xd">
+                          <LinkedinIcon size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="director-card-body-xd">
+                    <h5 className="director-role-xd">{member.role}</h5>
+                    <p className="director-subrole-xd">{member.subRole}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Section Break / Meet Our Team Heading */}
+          <div className="team-section-divider-xd text-center">
+            <span className="section-badge-red-xd">Meet Our Team</span>
+          </div>
+
+          {/* Employee Directory Section */}
+          <div className="employee-directory-block-xd">
+            {/* Department Heads Block */}
+            <div className="team-category-block-clean-xd">
+              
+              {/* Top Row: Sivaraj, Teena, Arul Saravanan */}
+              <div className="heads-top-row-xd">
+                {teamMembers
+                  .filter(m => m.category === 'heads' && ['Mr. Sivaraj', 'Mrs. Teena', 'Mr. Arul Saravanan'].includes(m.name))
+                  .map((member, idx) => (
+                    <div key={idx} className="member-card-xd">
+                      <div className="member-avatar-wrapper-xd">
+                        <img src={member.img} alt={member.name} className="member-avatar-xd" />
                       </div>
-                      <div className="director-header-info-xd">
-                        <h4 className="director-name-xd">
-                          MR.<br />
-                          KARTHIKEYAN<br />
-                          DHAYALAN<br />
-                          <span className="director-aka-xd">(AKA) GUHAN</span>
-                        </h4>
+                      <div className="member-details-xd">
+                        <h4 className="member-name-xd">{member.name}</h4>
+                        <p className="member-role-xd">{member.role}</p>
                         {member.linkedin !== '#' && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="director-linkedin-xd">
-                            <LinkedinIcon size={20} />
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                            <LinkedinIcon size={16} />
                           </a>
                         )}
                       </div>
                     </div>
-                    <div className="director-card-body-xd">
-                      <h5 className="director-role-xd">{member.role}</h5>
-                      <p className="director-subrole-xd">{member.subRole}</p>
+                  ))}
+              </div>
+
+              {/* Bottom Row: Robin, Sumitha */}
+              <div className="heads-bottom-row-xd">
+                {teamMembers
+                  .filter(m => m.category === 'heads' && ['Mr. Robin', 'Ms. Sumitha'].includes(m.name))
+                  .map((member, idx) => (
+                    <div key={idx} className="member-card-xd">
+                      <div className="member-avatar-wrapper-xd">
+                        <img src={member.img} alt={member.name} className="member-avatar-xd" />
+                      </div>
+                      <div className="member-details-xd">
+                        <h4 className="member-name-xd">{member.name}</h4>
+                        <p className="member-role-xd">{member.role}</p>
+                        {member.linkedin !== '#' && (
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                            <LinkedinIcon size={16} />
+                          </a>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
+                  ))}
+              </div>
             </div>
           </div>
 
-          {/* Department Heads Block */}
-          <div className="team-category-block">
-            <h3 className="category-title">Department Heads</h3>
-            <div className="team-members-grid">
-              {teamMembers.filter(m => m.category === 'heads').map((member, idx) => (
-                <div key={idx} className="member-card">
-                  <div className="member-image-frame">
-                    <img src={member.img} alt={member.name} className="member-avatar" />
-                  </div>
-                  <div className="member-details">
-                    <div className="member-badge-row">
-                      <span className="member-role-badge">
-                        {member.icon}
-                        {member.role}
-                      </span>
-                    </div>
-                    <h4 className="member-name">{member.name}</h4>
-                    <p className="member-sub-role">{member.subRole}</p>
-                    {member.linkedin !== '#' && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-link">
-                        <LinkedinIcon size={16} />
-                        <span>LinkedIn</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Section Break / Investor Relationship Managers Heading */}
+          <div className="team-section-divider-xd text-center">
+            <span className="section-badge-red-xd">Investor Relationship Managers</span>
           </div>
 
-          {/* Investor Relations Block */}
-          <div className="team-category-block">
-            <h3 className="category-title">Investor Relations & Sales</h3>
+          {/* Investor Relations & Sales Block */}
+          <div className="team-category-block-clean-xd sales-section-block-xd">
             <div className="team-members-grid">
               {teamMembers.filter(m => m.category === 'sales').map((member, idx) => (
-                <div key={idx} className="member-card">
-                  <div className="member-image-frame">
-                    <img src={member.img} alt={member.name} className="member-avatar" />
+                <div key={idx} className="member-card-xd">
+                  <div className="member-avatar-wrapper-xd">
+                    <img src={member.img} alt={member.name} className="member-avatar-xd" />
                   </div>
-                  <div className="member-details">
-                    <div className="member-badge-row">
-                      <span className="member-role-badge">
-                        {member.icon}
-                        {member.role}
-                      </span>
-                    </div>
-                    <h4 className="member-name">{member.name}</h4>
-                    <p className="member-sub-role">{member.subRole}</p>
+                  <div className="member-details-xd">
+                    <h4 className="member-name-xd">{member.name}</h4>
+                    <p className="member-role-xd">{member.role}</p>
                     {member.linkedin !== '#' && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-link">
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
                         <LinkedinIcon size={16} />
-                        <span>LinkedIn</span>
                       </a>
                     )}
                   </div>
@@ -421,7 +460,7 @@ export default function OurTeam() {
             <h2 className="team-section-title">Gallery</h2>
             <p className="team-section-subtitle">A glimpse of GHL India operations and team milestones.</p>
           </div>
-          
+
           <div className="gallery-mosaic-grid">
             <div className="gallery-item-wrapper large">
               <img src="https://www.ghlindia.com/assets/img/hero/gallery/g8.JPG" alt="GHL India Team Meeting" />
