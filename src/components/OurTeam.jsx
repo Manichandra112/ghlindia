@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Users, ShieldCheck, Cpu, Code, Megaphone, FileText, Landmark, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import './OurTeam.css';
+import galleryImage1 from '../assets/gallery image 1.png';
+import galleryImage2 from '../assets/gallery image 2.png';
+import galleryImage3 from '../assets/gallery image 3.png';
+import galleryImage4 from '../assets/gallery image 4.png';
+import galleryImage5 from '../assets/gallery image 5.png';
+import galleryImage6 from '../assets/gallery image 6.png';
 
 // Inline SVG to avoid lucide version conflict
 const LinkedinIcon = ({ size = 20, className = "" }) => (
@@ -25,6 +31,7 @@ const LinkedinIcon = ({ size = 20, className = "" }) => (
 export default function OurTeam() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isCarouselPlaying, setIsCarouselPlaying] = useState(true);
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState(0);
 
   const departmentSlides = [
     {
@@ -178,6 +185,39 @@ export default function OurTeam() {
       linkedin: "https://www.linkedin.com/in/nunavath-tirupathi/",
       category: "sales",
       icon: <Users size={20} />
+    }
+  ];
+
+  const galleryImages = [
+    {
+      src: galleryImage1,
+      alt: "GHL India office floor with team members working",
+      caption: "Team Floor"
+    },
+    {
+      src: galleryImage5,
+      alt: "GHL India team members working at office desks",
+      caption: "Daily Operations"
+    },
+    {
+      src: galleryImage3,
+      alt: "GHL India open office workspace",
+      caption: "Corporate Workspace"
+    },
+    {
+      src: galleryImage4,
+      alt: "GHL India office team working with laptops",
+      caption: "Client Coordination"
+    },
+    {
+      src: galleryImage2,
+      alt: "GHL India team working at desktop systems",
+      caption: "Investor Support Desk"
+    },
+    {
+      src: galleryImage6,
+      alt: "GHL India operations team at work",
+      caption: "Focused Operations"
     }
   ];
 
@@ -390,11 +430,9 @@ export default function OurTeam() {
                         <div className="member-details-xd">
                           <h4 className="member-name-xd">{member.name}</h4>
                           <p className="member-role-xd">{member.role}</p>
-                          {member.linkedin !== '#' && (
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                              <LinkedinIcon size={16} />
-                            </a>
-                          )}
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                            <LinkedinIcon size={16} />
+                          </a>
                         </div>
                       </div>
                     ))}
@@ -412,11 +450,9 @@ export default function OurTeam() {
                         <div className="member-details-xd">
                           <h4 className="member-name-xd">{member.name}</h4>
                           <p className="member-role-xd">{member.role}</p>
-                          {member.linkedin !== '#' && (
-                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                              <LinkedinIcon size={16} />
-                            </a>
-                          )}
+                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                            <LinkedinIcon size={16} />
+                          </a>
                         </div>
                       </div>
                     ))}
@@ -442,11 +478,9 @@ export default function OurTeam() {
                     <div className="member-details-xd">
                       <h4 className="member-name-xd">{member.name}</h4>
                       <p className="member-role-xd">{member.role}</p>
-                      {member.linkedin !== '#' && (
-                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
-                          <LinkedinIcon size={16} />
-                        </a>
-                      )}
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="member-linkedin-xd">
+                        <LinkedinIcon size={16} />
+                      </a>
                     </div>
                   </div>
                 ))}
@@ -465,18 +499,60 @@ export default function OurTeam() {
             <p className="team-section-subtitle">A glimpse of GHL India operations and team milestones.</p>
           </div>
 
-          <div className="gallery-mosaic-grid">
-            <div className="gallery-item-wrapper large">
-              <img src="https://www.ghlindia.com/assets/img/hero/gallery/g8.JPG" alt="GHL India Team Meeting" />
-              <div className="gallery-caption">Strategic Planning Session</div>
+          <div className="gallery-showcase-xd">
+            <div className="gallery-stage-xd">
+              <button
+                type="button"
+                className="gallery-nav-xd prev"
+                onClick={() => setSelectedGalleryImage((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1))}
+                aria-label="Previous gallery image"
+              >
+                <ChevronLeft size={22} />
+              </button>
+
+              {galleryImages.map((image, idx) => (
+                <div
+                  key={idx}
+                  className={`gallery-slide-xd ${
+                    idx === selectedGalleryImage
+                      ? "active"
+                      : idx === (selectedGalleryImage - 1 + galleryImages.length) % galleryImages.length
+                        ? "prev"
+                        : idx === (selectedGalleryImage + 1) % galleryImages.length
+                          ? "next"
+                          : "hidden"
+                  }`}
+                >
+                  <img src={image.src} alt="" />
+                  <div className="gallery-slide-caption-xd">
+                    <span>{String(idx + 1).padStart(2, "0")}</span>
+                    <h3>{image.caption}</h3>
+                  </div>
+                </div>
+              ))}
+
+              <button
+                type="button"
+                className="gallery-nav-xd next"
+                onClick={() => setSelectedGalleryImage((prev) => (prev + 1) % galleryImages.length)}
+                aria-label="Next gallery image"
+              >
+                <ChevronRight size={22} />
+              </button>
             </div>
-            <div className="gallery-item-wrapper">
-              <img src="https://www.ghlindia.com/assets/img/hero/gallery/g7.JPG" alt="GHL India Team Discussion" />
-              <div className="gallery-caption">Operations Alignment</div>
-            </div>
-            <div className="gallery-item-wrapper wide">
-              <img src="https://www.ghlindia.com/assets/img/hero/gallery/g4.JPG" alt="GHL India Main Office" />
-              <div className="gallery-caption">GHL Corporate Office</div>
+
+            <div className="gallery-dots-xd" aria-label="Gallery image selector">
+              {galleryImages.map((image, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={selectedGalleryImage === idx ? "active" : ""}
+                  onClick={() => setSelectedGalleryImage(idx)}
+                  aria-label={`Show ${image.caption}`}
+                >
+                  {String(idx + 1).padStart(2, "0")}
+                </button>
+              ))}
             </div>
           </div>
         </div>
