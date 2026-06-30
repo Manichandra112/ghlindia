@@ -270,24 +270,22 @@ export default function OurTeam() {
       {/* Main Corporate Team Section */}
       <section className="team-directory-section section-padding">
         <div className="container">
-          <div className="team-section-header-xd">
-            <div className="header-left-col-xd">
-              <p className="header-desc-xd">
-                Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here
-              </p>
+          <div className="leadership-showcase-xd">
+            <div className="team-section-header-xd">
+              <div className="header-left-col-xd">
+                <p className="header-desc-xd">
+                  Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here
+                </p>
+              </div>
+              <div className="header-right-col-xd">
+                <h2 className="header-title-xd">
+                  GHL<br />
+                  INDIA<br />
+                  ASSET
+                </h2>
+                <div className="header-pill-xd"></div>
+              </div>
             </div>
-            <div className="header-right-col-xd">
-              <h2 className="header-title-xd">
-                GHL<br />
-                INDIA<br />
-                ASSET
-              </h2>
-              <div className="header-pill-xd"></div>
-            </div>
-          </div>
-
-          {/* Founders Block */}
-          <div className="team-category-block founders-section-block">
 
             {/* Top Row: Co-founders (Mr. Senthil and Mr. Rajkumar) */}
             <div className="founders-top-row">
@@ -305,28 +303,28 @@ export default function OurTeam() {
                   return (
                     <div key={idx} className="founder-card-xd-container">
                       <div className="founder-card-xd">
-                      <div className="founder-card-header-xd">
-                        <div className="founder-header-info-xd">
-                          <h4 className="founder-name-xd">
-                            MR.<br />
-                            {lastName}
-                          </h4>
-                          <span className="founder-role-xd">{member.role}</span>
+                        <div className="founder-card-header-xd">
+                          <div className="founder-header-info-xd">
+                            <h4 className="founder-name-xd">
+                              MR.<br />
+                              {lastName}
+                            </h4>
+                            <span className="founder-role-xd">{member.role}</span>
+                          </div>
+                          <img src={cutoutImg} alt={member.name} className="founder-avatar-xd" />
                         </div>
-                        <img src={cutoutImg} alt={member.name} className="founder-avatar-xd" />
+                        <div className="founder-card-body-xd">
+                          {member.linkedin !== '#' && (
+                            <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin-xd">
+                              <LinkedinIcon size={20} />
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="founder-card-body-xd">
-                        {member.linkedin !== '#' && (
-                          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="founder-linkedin-xd">
-                            <LinkedinIcon size={20} />
-                          </a>
-                        )}
-                      </div>
+                      <p className="founder-designation-xd">{member.subRole}</p>
                     </div>
-                    <p className="founder-designation-xd">{member.subRole}</p>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
 
