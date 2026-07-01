@@ -26,6 +26,7 @@ import EconomyInsight from './components/EconomyInsight';
 import EducationalVideos from './components/EducationalVideos';
 import AboutUs from './components/AboutUs';
 import FAQPage from './components/FAQPage';
+import BlogsPage from './components/BlogsPage';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -53,6 +54,8 @@ function App() {
         setCurrentView('about-us');
       } else if (hash === '#/faq') {
         setCurrentView('faq');
+      } else if (hash === '#/blogs') {
+        setCurrentView('blogs');
       } else {
         setCurrentView('home');
       }
@@ -80,6 +83,7 @@ function App() {
         {currentView === 'educational-videos' && <EducationalVideos />}
         {currentView === 'about-us' && <AboutUs />}
         {currentView === 'faq' && <FAQPage />}
+        {currentView === 'blogs' && <BlogsPage />}
         {currentView === 'home' && (
           <>
             <Hero />

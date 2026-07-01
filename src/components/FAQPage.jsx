@@ -248,23 +248,21 @@ export default function FAQPage() {
       {/* 1. Cinematic Header Banner */}
       <div className="faq-hero-section">
         <div className="faq-hero-wrapper">
-          <div className="faq-hero-overlay">
-            <div className="container text-center">
-              <span className="badge-tag">Help Center</span>
-              <h1>Frequently Asked Questions</h1>
-              <p>Search our comprehensive knowledge base for questions about KYC, investments, taxation, and security.</p>
-              
-              {/* Central Search Bar */}
-              <div className="faq-search-box-container">
-                <Search className="search-icon" size={20} />
-                <input 
-                  type="text" 
-                  placeholder="Search questions, keywords, or topics..." 
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="faq-search-input"
-                />
-              </div>
+          <div className="faq-hero-overlay text-center">
+            <span className="badge-tag">Help Center</span>
+            <h1>Frequently Asked Questions</h1>
+            <p>Search our comprehensive knowledge base for questions about KYC, investments, taxation, and security.</p>
+            
+            {/* Central Search Bar */}
+            <div className="faq-search-box-container">
+              <Search className="faq-search-icon" size={20} />
+              <input 
+                type="text" 
+                placeholder="Search questions, keywords, or topics..." 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="faq-search-input"
+              />
             </div>
           </div>
         </div>
