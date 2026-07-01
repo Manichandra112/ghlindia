@@ -27,9 +27,9 @@ export default function AboutUs() {
         <div className="about-hero-wrapper">
           <picture>
             <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/about/About-us-Mob.jpg" />
-            <img 
-              src="https://www.ghlindia.com/assets/img/about/About-us.jpg" 
-              alt="About Us Banner" 
+            <img
+              src="https://www.ghlindia.com/assets/img/about/About-us.jpg"
+              alt="About Us Banner"
               className="about-hero-img"
             />
           </picture>
@@ -72,9 +72,9 @@ export default function AboutUs() {
           <div className="about-road-map-container">
             <picture>
               <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/about/mobile-image.png" />
-              <img 
-                src="https://www.ghlindia.com/assets/img/about/Road-Desktop.png" 
-                alt="GHL Timeline Road Map" 
+              <img
+                src="https://www.ghlindia.com/assets/img/about/Road-Desktop.png"
+                alt="GHL Timeline Road Map"
                 className="roadmap-graphic"
               />
             </picture>
@@ -86,7 +86,7 @@ export default function AboutUs() {
               <div className="about-card-badge">Founded on Value</div>
               <h3>A Day to Remember</h3>
               <p>
-                GHL India was born from the vision of passionate venture builders determined to support young entrepreneurs and potential alternate investors. 
+                GHL India was born from the vision of passionate venture builders determined to support young entrepreneurs and potential alternate investors.
                 Our mission is to unlock value, balance risk, and secure consistent profits to ensure a stress-free investment journey.
               </p>
               <p>
@@ -95,9 +95,9 @@ export default function AboutUs() {
             </div>
             <div className="about-split-col image-content-col">
               <div className="journey-artwork-card">
-                <img 
-                  src="https://www.ghlindia.com/assets/img/about/Sapling.png" 
-                  alt="Nurturing Growth Sapling" 
+                <img
+                  src="https://www.ghlindia.com/assets/img/about/Sapling.png"
+                  alt="Nurturing Growth Sapling"
                   className="sapling-artwork"
                 />
               </div>
@@ -116,7 +116,7 @@ export default function AboutUs() {
               <p>
                 We operate with absolute transparency, maintaining a rigorously audited pipeline. Every opportunity we offer goes through five core verification gates.
               </p>
-              
+
               <div className="efficiency-card">
                 <div className="efficiency-metric">99%</div>
                 <div className="efficiency-text">
@@ -163,7 +163,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="diagram-legend">
-                <span className="legend-title">Diagram Details:</span>
+                {/* <span className="legend-title">Diagram Details:</span> */}
                 <ul>
                   <li>
                     <div className="legend-label">
@@ -203,7 +203,7 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="diagram-legend">
-                <span className="legend-title">Diagram Details:</span>
+                {/* <span className="legend-title">Diagram Details:</span> */}
                 <ul>
                   <li>
                     <div className="legend-label">
@@ -252,12 +252,30 @@ export default function AboutUs() {
               </div>
             ))}
           </div>
+
+          {/* PESTLE Efficiency Summary Callout */}
+          <div className="pestle-summary-callout">
+            <div className="callout-icon">
+              <CheckCircle2 size={22} />
+            </div>
+            <p>
+              By evaluating these factors, we anticipate changes, adjust our strategy, and manage risks effectively.
+              This thorough approach enables us to achieve a <strong>99% efficiency</strong> in risk management.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* 6. Vision & Mission Section */}
       <section className="about-vision-mission-section">
         <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">Curious About Our <span className="red-highlight">Vision & Mission</span>?</h2>
+            <p className="section-subtitle">
+              Learn more about our forward-looking guidance and core values.
+            </p>
+          </div>
+
           <div className="vision-mission-row">
             {/* Vision Card */}
             <div className="vision-mission-card">

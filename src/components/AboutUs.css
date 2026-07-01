@@ -417,7 +417,7 @@
 .analysis-card-top {
   display: flex;
   gap: 24px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .analysis-icon-box {
@@ -560,9 +560,9 @@
 }
 
 .pestle-icon-box {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 20px auto;
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 24px auto;
 }
 
 .pestle-icon-box img {
@@ -658,6 +658,48 @@
 @media (max-width: 600px) {
   .pestle-interactive-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.pestle-summary-callout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(228, 31, 38, 0.03);
+  border: 1px solid rgba(228, 31, 38, 0.15);
+  border-radius: 16px;
+  padding: 24px 30px;
+  max-width: 800px;
+  margin: 50px auto 0 auto;
+  box-shadow: 0 4px 20px rgba(228, 31, 38, 0.02);
+}
+
+.callout-icon {
+  color: var(--primary-red, #e41f26);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pestle-summary-callout p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.pestle-summary-callout p strong {
+  color: var(--primary-red, #e41f26);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .pestle-summary-callout {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
   }
 }
 

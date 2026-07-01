@@ -31,7 +31,7 @@ export default function Footer() {
     { label: 'Blog & Insights', href: '#reviews' },
     { label: 'Operational Model', href: '#what-we-do' },
     { label: 'Achievements', href: '#achievements' },
-    { label: 'FAQ', href: '#faq' }
+    { label: 'FAQ', href: '#/faq' }
   ];
 
   const serviceLinks = [
