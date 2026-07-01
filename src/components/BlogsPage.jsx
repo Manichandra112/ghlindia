@@ -1,283 +1,183 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Calendar, User, ChevronRight, ArrowLeft, ArrowRight, Share2, MessageSquare, Clock, BookOpen } from 'lucide-react';
+import { Search, Calendar, User, ChevronRight, ArrowLeft, ArrowRight, Clock, BookOpen } from 'lucide-react';
 import './BlogsPage.css';
+
+/* ─── All blog data extracted from https://www.ghlindia.com/blogs (pages 1–19) ─── */
+const GHL_IMG = 'https://www.ghlindia.com/assets/img/blogimages';
+
+const blogs = [
+  /* ── Page 1 ── */
+  { id:   1, title: "Property Flipping vs Rental Income: Which Creates Wealth Faster?", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_8.jpg`, link: 'property-flipping-vs-rental-income-which-creates-wealth-faster' },
+  { id:   2, title: "How Professional Investors Identify Undervalued Real Estate Opportunities", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_7.jpg`, link: 'how-professional-investors-identify-undervalued-real-estate-opportunities' },
+  { id:   3, title: "NCDs Explained: How They Work and Who Should Invest", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_6.jpg`, link: 'ncds-explained-how-they-work-and-who-should-invest' },
+  { id:   4, title: "Fractional Real Estate vs Buying an Entire Property: Which Investment Choice Is Right for You?", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_5.jpg`, link: 'fractional-real-estate-vs-buying-entire-property' },
+  { id:   5, title: "Five Benefits of Fractional Investing Beyond Affordability", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_4.jpg`, link: 'benefits-of-fractional-investing-beyond-affordability' },
+  { id:   6, title: "5 Common Myths About Property Flipping in India", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_3.jpg`, link: 'property-flipping-india-common-myths-debunked' },
+  { id:   7, title: "The Property Flipping Lifecycle: From Acquisition to Exit. 5 Steps You Need to Follow", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_2.jpg`, link: 'property-flipping-lifecycle-acquisition-to-exit-guide' },
+  { id:   8, title: "How AIFs Are Opening New Opportunities in Property Flipping, NCDs, and Fractional Investing", date: '26/06/2026', author: 'Sumitha', image: `${GHL_IMG}/June_BTB_Blog_1.jpg`, link: 'alternative-investment-funds-india-property-flipping-ncds-fractional-investing' },
+  { id:   9, title: "Why Property Flipping Is Becoming Popular in India?", date: '19/06/2026', author: 'Sumitha', image: `${GHL_IMG}/19th_Jun_Blog.jpg.jpeg`, link: 'why-property-flipping-is-becoming-popular-in-india' },
+  /* ── Page 2 ── */
+  { id:  10, title: "How to Start Property Flipping in India With Low Capital:", date: '12/06/2026', author: 'Sumitha', image: `${GHL_IMG}/12th_Jun_Blog.jpg.jpeg`, link: 'property-flipping-in-india-with-low-capital' },
+  { id:  11, title: "How to Invest Money Outside the Stock Market Safely", date: '05/06/2026', author: 'Sumitha', image: `${GHL_IMG}/5th_Jun_Blog.jpg.jpeg`, link: 'how-to-invest-money-outside-stock-market-safely' },
+  { id:  12, title: "Why Is Property Flipping Gaining Popularity in Recent Times?", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-8.jpg.jpeg`, link: 'why-property-flipping-is-gaining-popularity' },
+  { id:  13, title: "AIF vs Mutual Funds: Comprehending the Difference & Where do NCDs fit?", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-7.jpg.jpeg`, link: 'aif-vs-mutual-funds-and-how-ncds-fit-in' },
+  { id:  14, title: "Understanding Category II AIFs: A Strategic Guide for Sophisticated Investors", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-6.jpg.jpeg`, link: 'understanding-category-ii-aifs-guide-for-sophisticated-investors' },
+  { id:  15, title: "Risks and Rewards in Alternative Investment Platforms: An Overview", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-5.jpg.jpeg`, link: 'risks-and-rewards-of-alternative-investment-platforms' },
+  { id:  16, title: "Are Alternative Investments Suitable for Salaried Professionals?", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-4.jpg.jpeg`, link: 'are-alternative-investments-suitable-for-salaried-professionals' },
+  { id:  17, title: "Why More Investors Are Exploring Fixed-Income Alternatives Beyond FDs", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-3.jpg.jpeg`, link: 'fixed-income-alternatives-beyond-fds' },
+  { id:  18, title: "NCDs vs Fixed Deposits: Which Investment Fits Your Goals Better?", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-2.jpg.jpeg`, link: 'ncds-vs-fixed-deposits-which-investment-fits-your-goals' },
+  /* ── Page 3 ── */
+  { id:  19, title: "What are Secured NCDs, and How Do They Work?", date: '01/06/2026', author: 'Sumitha', image: `${GHL_IMG}/May-BTB-Blog-1.jpg.jpeg`, link: 'secured-ncds-how-they-work-benefits-investment-guide' },
+  { id:  20, title: "Safe Investment Options for Beginners With Low Risk:", date: '29/05/2026', author: 'Sumitha', image: `${GHL_IMG}/29-05-Blog.jpg.jpeg`, link: 'safe-investment-options-for-beginners-low-risk' },
+  { id:  21, title: "Real Estate Investing Is Changing—Are You Keeping Up?", date: '23/05/2026', author: 'Sumitha', image: `${GHL_IMG}/BTB-Blog-3.jpg.jpeg`, link: 'modern-real-estate-investing-fractional-ownership-opportunities' },
+  { id:  22, title: "How Smart Investors Build Multi-Asset Portfolios", date: '23/05/2026', author: 'Sumitha', image: `${GHL_IMG}/BTB-Blog-4.jpg.jpeg`, link: 'how-smart-investors-build-multi-asset-portfolios-with-ncds' },
+  { id:  23, title: "Rental Yield vs Capital Appreciation: What Matters More?", date: '23/05/2026', author: 'Sumitha', image: `${GHL_IMG}/BTB-Blog-5.jpg.jpeg`, link: 'rental-yield-vs-capital-appreciation-real-estate-investment' },
+  { id:  24, title: "Are NCDs Safe in India? Risk Analysis for First-Time Investors", date: '23/05/2026', author: 'Sumitha', image: `${GHL_IMG}/BTB-Blog-2.jpg.jpeg`, link: 'Are-NCDs-Safe-in-India-Risk-Analysis-for-First-Time-Investors' },
+  { id:  25, title: "Why Investors Are Shifting from Stocks to Alternative Assets", date: '23/05/2026', author: 'Sumitha', image: `${GHL_IMG}/BTB-Blog-1.jpg.jpeg`, link: 'Why-Investors-Are-Shifting-from-to-Alternative-Assets' },
+  { id:  26, title: "Are REITs a Good Investment in India? Pros and Cons Explained", date: '22/05/2026', author: 'Sumitha', image: `${GHL_IMG}/22-05-Blog.jpg.jpeg`, link: 'are-reits-a-good-investment-in-india-pros-and-cons' },
+  { id:  27, title: "How to Diversify Your Investments Beyond Mutual Funds", date: '15/05/2026', author: 'Sumitha', image: `${GHL_IMG}/15th_May_Blog.jpg.jpeg`, link: 'diversify-investments-beyond-mutual-funds-india' },
+  /* ── Page 4 ── */
+  { id:  28, title: "How to Earn Monthly Income from Investments in 2025", date: '08/05/2026', author: 'Sumitha', image: `${GHL_IMG}/8th-May-blog.jpg.jpeg`, link: 'monthly-income-from-investments-india-2025' },
+  { id:  29, title: "Investor Protection in India: Rights, Risks, and How to Safeguard Your Investments", date: '01/05/2026', author: 'Sumitha', image: `${GHL_IMG}/1st_May_Blog.jpg.jpeg`, link: 'investor-protection-india-rights-risks-and-safeguard' },
+  { id:  30, title: "Fractional Ownership in India: A Complete Guide for New-Age Investors", date: '24/04/2026', author: 'Sumitha', image: `${GHL_IMG}/24th_Apr_Blog.jpg.jpeg`, link: 'fractional-ownership-india-complete-guide-investors' },
+  { id:  31, title: "Alternative Investment Plans in India: Explore Beyond Traditional Options", date: '17/04/2026', author: 'Sumitha', image: `${GHL_IMG}/17th_Apr_Blog.jpg.jpeg`, link: 'alternative-investment-plans-india-explore-options' },
+  { id:  32, title: "Best Investment Options in India for 2025: A Smart Investor's Guide", date: '10/04/2026', author: 'Sumitha', image: `${GHL_IMG}/10th_Apr_Blog.jpg.jpeg`, link: 'best-investment-options-india-2025-guide' },
+  { id:  33, title: "Difference Between Shares and Debentures: Everything You Need to Know", date: '03/04/2026', author: 'Sumitha', image: `${GHL_IMG}/3rd_Apr_Blog.jpg.jpeg`, link: 'difference-between-shares-and-debentures' },
+  { id:  34, title: "How to Grow Your Business: A Strategic Guide to Business Growth", date: '27/03/2026', author: 'Sumitha', image: `${GHL_IMG}/27th_Mar_Blog.jpg.jpeg`, link: 'how-to-grow-your-business-strategic-guide' },
+  { id:  35, title: "Types of Investment in India : A Complete Guide for 2025", date: '20/03/2026', author: 'Sumitha', image: `${GHL_IMG}/20th_Mar_Blog.jpg.jpeg`, link: 'types-of-investment-in-india-complete-guide-2025' },
+  { id:  36, title: "Risk Management in Investment: Protecting your Wealth", date: '13/03/2026', author: 'Sumitha', image: `${GHL_IMG}/13th_mar_Blog.jpg.jpeg`, link: 'risk-management-in-investment' },
+  /* ── Page 5 ── */
+  { id:  37, title: "What is Systematic Investment Plan: Benefits and How to Start?", date: '06/03/2026', author: 'Sumitha', image: `${GHL_IMG}/6th_Mar_Blog.jpg.jpeg`, link: 'systematic-investment-plan-benefits' },
+  { id:  38, title: "Investment vs Trading: Key Differences Every Investor Should Know", date: '27/02/2026', author: 'Sumitha', image: `${GHL_IMG}/27th_Feb_Blog.jpg.jpeg`, link: 'investment-vs-trading-key-differences' },
+  { id:  39, title: "What are Debentures: Types, Benefits and How They Work?", date: '20/02/2026', author: 'Sumitha', image: `${GHL_IMG}/20th_feb_Blog.jpg.jpeg`, link: 'what-are-debentures-types-benefits' },
+  { id:  40, title: "Investing vs. Saving – Which is Better for Your Future?", date: '13/02/2026', author: 'Sumitha', image: `${GHL_IMG}/13th_feb_Blog.jpg.jpeg`, link: 'investing-vs-saving-which-is-better' },
+  { id:  41, title: "What is Asset Allocation? A Smart Investor's Guide to Portfolio Diversification", date: '06/02/2026', author: 'Sumitha', image: `${GHL_IMG}/6th_Feb_Blog.jpg.jpeg`, link: 'asset-allocation-portfolio-diversification-guide' },
+  { id:  42, title: "Why Smart Investing is Important in 2025?", date: '30/01/2026', author: 'Sumitha', image: `${GHL_IMG}/30th_jan_Blog.jpg.jpeg`, link: 'why-smart-investing-is-important' },
+  { id:  43, title: "How to Make Your Money Work for You: A Smart Investor Guide", date: '23/01/2026', author: 'Sumitha', image: `${GHL_IMG}/23rd_jan_Blog.jpg.jpeg`, link: 'how-to-make-your-money-work-for-you' },
+  { id:  44, title: "The Impact of the Union Budget 2025 on Investments in India", date: '16/01/2026', author: 'Sumitha', image: `${GHL_IMG}/16th_jan_Blog.jpg.jpeg`, link: 'union-budget-2025-impact-on-investments' },
+  { id:  45, title: "How to Protect Your Investments from Market Volatility?", date: '09/01/2026', author: 'Sumitha', image: `${GHL_IMG}/09th_jan_Blog.jpg.jpeg`, link: 'protect-investments-from-market-volatility' },
+  /* ── Page 6 ── */
+  { id:  46, title: "How to Read and Analyze Financial Statements for Investments?", date: '02/01/2026', author: 'Sumitha', image: `${GHL_IMG}/02nd_jan_Blog.jpg.jpeg`, link: 'how-to-read-analyze-financial-statements' },
+  { id:  47, title: "The Role of Technology in Modern Investing", date: '26/12/2025', author: 'Sumitha', image: `${GHL_IMG}/26th_Dec_Blog.jpg.jpeg`, link: 'role-of-technology-in-modern-investing' },
+  { id:  48, title: "The Benefits of Investing in Real Estate", date: '19/12/2025', author: 'Sumitha', image: `${GHL_IMG}/19th_Dec_Blog.jpg.jpeg`, link: 'benefits-of-investing-in-real-estate' },
+  { id:  49, title: "Passive Income Investments", date: '12/12/2025', author: 'Sumitha', image: `${GHL_IMG}/12th_Dec_Blog.jpg.jpeg`, link: 'passive-income-investments' },
+  { id:  50, title: "How to Create an Investment Plan", date: '05/12/2025', author: 'Sumitha', image: `${GHL_IMG}/5th_Dec_Blog.jpg.jpeg`, link: 'how-to-create-an-investment-plan' },
+  { id:  51, title: "Key Strategies for Building a Strong Investment Portfolio", date: '28/11/2025', author: 'Sumitha', image: `${GHL_IMG}/28th_nov_Blog.jpg.jpeg`, link: 'key-strategies-strong-investment-portfolio' },
+  { id:  52, title: "Introduction to Asset Management", date: '21/11/2025', author: 'Sumitha', image: `${GHL_IMG}/21st_nov_Blog.jpg.jpeg`, link: 'introduction-to-asset-management' },
+  { id:  53, title: "Power of Compound Interest in Investments", date: '14/11/2025', author: 'Sumitha', image: `${GHL_IMG}/14th_nov_Blog.jpg.jpeg`, link: 'power-of-compound-interest-in-investments' },
+  { id:  54, title: "Financial Literacy and its Importance", date: '07/11/2025', author: 'Sumitha', image: `${GHL_IMG}/07th_nov_Blog.jpg.jpeg`, link: 'financial-literacy-and-its-importance' },
+  /* ── Page 7 ── */
+  { id:  55, title: "Understanding the Stock Market", date: '31/10/2025', author: 'Sumitha', image: `${GHL_IMG}/31st_oct_Blog.jpg.jpeg`, link: 'understanding-the-stock-market' },
+  { id:  56, title: "How to Start Investing as a Beginner", date: '24/10/2025', author: 'Sumitha', image: `${GHL_IMG}/24th_oct_Blog.jpg.jpeg`, link: 'how-to-start-investing-as-a-beginner' },
+  { id:  57, title: "What Are Investment Bonds: Types, Benefits, and How to Invest?", date: '17/10/2025', author: 'Sumitha', image: `${GHL_IMG}/17th_Oct_Blog.jpg.jpeg`, link: 'what-are-investment-bonds' },
+  { id:  58, title: "How to Start a Hedge Fund", date: '10/10/2025', author: 'Sumitha', image: `${GHL_IMG}/10th_oct_Blog.jpg.jpeg`, link: 'how-to-start-a-hedge-fund' },
+  { id:  59, title: "Top Investment Strategies for Beginners", date: '03/10/2025', author: 'Sumitha', image: `${GHL_IMG}/3rd_oct_Blog.jpg.jpeg`, link: 'top-investment-strategies-for-beginners' },
+  { id:  60, title: "What is Venture Capital Investing?", date: '26/09/2025', author: 'Sumitha', image: `${GHL_IMG}/26th_Sep_Blog.jpg.jpeg`, link: 'what-is-venture-capital-investing' },
+  { id:  61, title: "What is Equity Funding?", date: '19/09/2025', author: 'Sumitha', image: `${GHL_IMG}/19th_sep_Blog.jpg.jpeg`, link: 'what-is-equity-funding' },
+  { id:  62, title: "What is Business Valuation?", date: '12/09/2025', author: 'Sumitha', image: `${GHL_IMG}/12th_sep_Blog.jpg.jpeg`, link: 'what-is-business-valuation' },
+  { id:  63, title: "Portfolio Investment", date: '05/09/2025', author: 'Sumitha', image: `${GHL_IMG}/5th_sep_Blog.jpg.jpeg`, link: 'portfolio-investment' },
+  /* ── Page 8 ── */
+  { id:  64, title: "What is Alternative Investment Fund?", date: '29/08/2025', author: 'Sumitha', image: `${GHL_IMG}/29th_aug_Blog.jpg.jpeg`, link: 'what-is-alternative-investment-fund' },
+  { id:  65, title: "How To Invest in Stocks?", date: '22/08/2025', author: 'Sumitha', image: `${GHL_IMG}/22nd_aug_Blog.jpg.jpeg`, link: 'how-to-invest-in-stocks' },
+  { id:  66, title: "What is Inflation?", date: '15/08/2025', author: 'Sumitha', image: `${GHL_IMG}/15th_aug_Blog.jpg.jpeg`, link: 'what-is-inflation' },
+  { id:  67, title: "What are Real Estate Investment Trusts (REITs)?", date: '08/08/2025', author: 'Sumitha', image: `${GHL_IMG}/8th_aug_Blog.jpg.jpeg`, link: 'what-are-real-estate-investment-trusts' },
+  { id:  68, title: "Know What is Private Equity?", date: '01/08/2025', author: 'Sumitha', image: `${GHL_IMG}/1st_aug_Blog.jpg.jpeg`, link: 'know-what-is-private-equity' },
+  { id:  69, title: "Mutual Funds vs Index Funds", date: '25/07/2025', author: 'Sumitha', image: `${GHL_IMG}/25th_jul_Blog.jpg.jpeg`, link: 'mutual-funds-vs-index-funds' },
+  { id:  70, title: "Is Cryptocurrency a Good Investment?", date: '18/07/2025', author: 'Sumitha', image: `${GHL_IMG}/18th_Jul_Blog.jpg.jpeg`, link: 'is-cryptocurrency-a-good-investment' },
+  { id:  71, title: "How to Invest in Real Estate", date: '11/07/2025', author: 'Sumitha', image: `${GHL_IMG}/11th_Jul_Blog.jpg.jpeg`, link: 'how-to-invest-in-real-estate' },
+  { id:  72, title: "What Are Exchange Traded Funds (ETFs)", date: '04/07/2025', author: 'Sumitha', image: `${GHL_IMG}/4th_Jul_Blog.jpg.jpeg`, link: 'what-are-exchange-traded-funds-etfs' },
+  /* ── Page 9 ── */
+  { id:  73, title: "Investing in gold: A Beginner guide", date: '27/06/2025', author: 'Sumitha', image: `${GHL_IMG}/27th_Jun_Blog.jpg.jpeg`, link: 'investing-in-gold-a-beginner-guide' },
+  { id:  74, title: "Bonds vs Stocks: Which is better?", date: '20/06/2025', author: 'Sumitha', image: `${GHL_IMG}/20th_Jun_Blog.jpg.jpeg`, link: 'bonds-vs-stocks-which-is-better' },
+  { id:  75, title: "What is Financial Planning?", date: '13/06/2025', author: 'Sumitha', image: `${GHL_IMG}/13th_Jun_Blog.jpg.jpeg`, link: 'what-is-financial-planning' },
+  { id:  76, title: "What is Crowdfunding?", date: '06/06/2025', author: 'Sumitha', image: `${GHL_IMG}/6th_Jun_Blog.jpg.jpeg`, link: 'what-is-crowdfunding' },
+  { id:  77, title: "What is Angel Investing?", date: '30/05/2025', author: 'Sumitha', image: `${GHL_IMG}/30th_may_Blog.jpg.jpeg`, link: 'what-is-angel-investing' },
+  { id:  78, title: "What is Index Fund: Benefits, Types, and How to Invest?", date: '23/05/2025', author: 'Sumitha', image: `${GHL_IMG}/23rd_may_Blog.jpg.jpeg`, link: 'what-is-index-fund-benefits-types-how-to-invest' },
+  { id:  79, title: "What is Dividend Investing?", date: '16/05/2025', author: 'Sumitha', image: `${GHL_IMG}/16th_may_Blog.jpg.jpeg`, link: 'what-is-dividend-investing' },
+  { id:  80, title: "What is Mutual Fund?", date: '09/05/2025', author: 'Sumitha', image: `${GHL_IMG}/9th_may_Blog.jpg.jpeg`, link: 'what-is-mutual-fund' },
+  { id:  81, title: "Impact Investing: A Way of Life", date: '02/05/2025', author: 'Sumitha', image: `${GHL_IMG}/2nd_may_Blog.jpg.jpeg`, link: 'impact-investing-a-way-of-life' },
+  /* ── Page 10 ── */
+  { id:  82, title: "What is ESG Investing?", date: '25/04/2025', author: 'Sumitha', image: `${GHL_IMG}/25th_Apr_Blog.jpg.jpeg`, link: 'what-is-esg-investing' },
+  { id:  83, title: "What is Property Flipping?", date: '18/04/2025', author: 'Sumitha', image: `${GHL_IMG}/18th_Apr_Blog.jpg.jpeg`, link: 'what-is-property-flipping' },
+  { id:  84, title: "What is Fractional Ownership?", date: '11/04/2025', author: 'Sumitha', image: `${GHL_IMG}/11th_Apr_Blog.jpg.jpeg`, link: 'what-is-fractional-ownership' },
+  { id:  85, title: "Debt Instruments: A Key to Financial Stability", date: '04/04/2025', author: 'Sumitha', image: `${GHL_IMG}/4th_Apr_Blog.jpg.jpeg`, link: 'debt-instruments-key-to-financial-stability' },
+  { id:  86, title: "What is SPV (Special Purpose Vehicle)?", date: '28/03/2025', author: 'Sumitha', image: `${GHL_IMG}/28th_Mar_Blog.jpg.jpeg`, link: 'what-is-spv-special-purpose-vehicle' },
+  { id:  87, title: "What are NCDs (Non-Convertible Debentures)?", date: '21/03/2025', author: 'Sumitha', image: `${GHL_IMG}/21st_Mar_Blog.jpg.jpeg`, link: 'what-are-ncds-non-convertible-debentures' },
+  { id:  88, title: "What is Value Investing?", date: '14/03/2025', author: 'Sumitha', image: `${GHL_IMG}/14th_Mar_Blog.jpg.jpeg`, link: 'what-is-value-investing' },
+  { id:  89, title: "Why do we need Investment?", date: '07/03/2025', author: 'Sumitha', image: `${GHL_IMG}/7th_Mar_Blog.jpg.jpeg`, link: 'why-do-we-need-investment' },
+  { id:  90, title: "What is Debt Funding?", date: '28/02/2025', author: 'Sumitha', image: `${GHL_IMG}/28th_Feb_Blog.jpg.jpeg`, link: 'what-is-debt-funding' },
+  /* ── Page 11 ── */
+  { id:  91, title: "Best Types of Real Estate Investment in India", date: '21/02/2025', author: 'Sumitha', image: `${GHL_IMG}/21st_Feb_Blog.jpg.jpeg`, link: 'best-types-of-real-estate-investment-in-india' },
+  { id:  92, title: "Types of Alternative Investments", date: '14/02/2025', author: 'Sumitha', image: `${GHL_IMG}/14th_Feb_Blog.jpg.jpeg`, link: 'types-of-alternative-investments' },
+  { id:  93, title: "What is Investment in Finance?", date: '07/02/2025', author: 'Sumitha', image: `${GHL_IMG}/7th_Feb_Blog.jpg.jpeg`, link: 'what-is-investment-in-finance' },
+  { id:  94, title: "What is Alternative Investment?", date: '31/01/2025', author: 'Sumitha', image: `${GHL_IMG}/31st_Jan_Blog.jpg.jpeg`, link: 'what-is-alternative-investment' },
+  { id:  95, title: "What is Stock Market?", date: '24/01/2025', author: 'Sumitha', image: `${GHL_IMG}/24th_Jan_Blog.jpg.jpeg`, link: 'what-is-stock-market' },
+  { id:  96, title: "What is Sustainable Investing?", date: '17/01/2025', author: 'Sumitha', image: `${GHL_IMG}/17th_jan_Blog.jpg.jpeg`, link: 'what-is-sustainable-investing' },
+  { id:  97, title: "What is Portfolio Management?", date: '10/01/2025', author: 'Sumitha', image: `${GHL_IMG}/10th_Jan_Blog.jpg.jpeg`, link: 'what-is-portfolio-management' },
+  { id:  98, title: "What is Financial Investment?", date: '03/01/2025', author: 'Sumitha', image: `${GHL_IMG}/3rd_Jan_Blog.jpg.jpeg`, link: 'what-is-financial-investment' },
+  { id:  99, title: "Advantages of Alternative Investment", date: '27/12/2024', author: 'Sumitha', image: `${GHL_IMG}/27th_Dec_Blog.jpg.jpeg`, link: 'advantages-of-alternative-investment' },
+  /* ── Page 12 ── */
+  { id: 100, title: "What is Real Estate Investment?", date: '20/12/2024', author: 'Sumitha', image: `${GHL_IMG}/blog59_01.jpg`, link: 'what-is-real-estate-investment' },
+  { id: 101, title: "Smart Investments for Beginners", date: '20/12/2024', author: 'Sumitha', image: `${GHL_IMG}/blog60_01.jpg`, link: 'smart-investments-for-beginners' },
+  { id: 102, title: "Best ROI Investments", date: '14/12/2024', author: 'Sumitha', image: `${GHL_IMG}/blog57_01.jpg`, link: 'best-roi-investments' },
+  { id: 103, title: "NRI Investment in India", date: '07/12/2024', author: 'Sumitha', image: `${GHL_IMG}/blog55_01.jpg`, link: 'nri-investment-in-india' },
+  { id: 104, title: "Investments with good returns", date: '30/11/2024', author: 'Sumitha', image: `${GHL_IMG}/blog52_01.jpg`, link: 'investments-with-good-returns' },
+  { id: 105, title: "Retirement Planning in India", date: '23/11/2024', author: 'Sumitha', image: `${GHL_IMG}/blog51_01.jpg`, link: 'retirement-planning-in-india' },
+  { id: 106, title: "Short-Term Investment Plans", date: '16/11/2024', author: 'Sumitha', image: `${GHL_IMG}/blog50_01.jpg`, link: 'short-term-investment-plans' },
+  { id: 107, title: "Invest in Alternative Assets", date: '09/11/2024', author: 'Sumitha', image: `${GHL_IMG}/blog48_01.jpg`, link: 'invest-in-alternative-assets' },
+  { id: 108, title: "Safe Investments with High Returns in India", date: '02/11/2024', author: 'Sumitha', image: `${GHL_IMG}/blog47_01.jpg`, link: 'safe-investments-with-high-returns-in-india' },
+  /* ── Page 13 ── */
+  { id: 109, title: "Common Mistakes in Financial Planning", date: '26/10/2024', author: 'Sumitha', image: `${GHL_IMG}/blog46_01.jpg`, link: 'Common-mistakes-in-financial-planning' },
+  { id: 110, title: "Short term investing vs Long term investing", date: '19/10/2024', author: 'Sumitha', image: `${GHL_IMG}/blog45_01.jpg`, link: 'short-term-investing-vs-long-term-investing' },
+  { id: 111, title: "Best Investment Plan with High Returns", date: '12/10/2024', author: 'Sumitha', image: `${GHL_IMG}/blog43_01.jpg`, link: 'best-investment-plan-with-high-returns' },
+  { id: 112, title: "Long-Term Investment Plans", date: '05/10/2024', author: 'Sumitha', image: `${GHL_IMG}/blog42_01.jpg`, link: 'long-term-investment-plans' },
+  { id: 113, title: "Investment Company in India", date: '21/09/2024', author: 'Sumitha', image: `${GHL_IMG}/blog39_01.jpg`, link: 'investment-company-in-india' },
+  { id: 114, title: "Top Alternative Investment Funds in India", date: '21/09/2024', author: 'Sumitha', image: `${GHL_IMG}/blog37_01.jpg`, link: 'top-alternative-investment-funds-in-india' },
+  { id: 115, title: "Best Real Estate Investment Company in India", date: '14/09/2024', author: 'Sumitha', image: `${GHL_IMG}/blog35_01.jpg`, link: 'best-real-estate-investment-company-in-india' },
+  { id: 116, title: "Real Estate Investing in India", date: '08/09/2024', author: 'Sumitha', image: `${GHL_IMG}/blog34_01.jpg`, link: 'real-estate-investing-in-india' },
+  { id: 117, title: "Key features of debt funding", date: '31/08/2024', author: 'Sumitha', image: `${GHL_IMG}/blog32_01.jpg`, link: 'key-features-of-debt-funding' },
+  /* ── Page 14 ── */
+  { id: 118, title: "Wealth Management Company", date: '24/08/2024', author: 'Sumitha', image: `${GHL_IMG}/blog30_01.jpg`, link: 'wealth-management-company' },
+  { id: 119, title: "Real Estate Investing", date: '17/08/2024', author: 'Sumitha', image: `${GHL_IMG}/blog29_01.jpg`, link: 'real-estate-investing' },
+  { id: 120, title: "Asset Management Company", date: '10/08/2024', author: 'Sumitha', image: `${GHL_IMG}/blog28_01.jpg`, link: 'asset-management-company' },
+  { id: 121, title: "Best Alternative Investment Company", date: '03/08/2024', author: 'Sumitha', image: `${GHL_IMG}/blog27_01.jpg`, link: 'best-alternative-investment-company' },
+  { id: 122, title: "Fractional Investment Model", date: '27/07/2024', author: 'Sumitha', image: `${GHL_IMG}/blog26_01.jpg`, link: 'fractional-investment-model' },
+  { id: 123, title: "Alternative Investment Platform", date: '17/07/2024', author: 'Sumitha', image: `${GHL_IMG}/blog25_01.jpg`, link: 'alternative-investment-platform' },
+  { id: 124, title: "Overcoming Fear: A Path to Investment Success", date: '10/07/2024', author: 'Sumitha', image: `${GHL_IMG}/blog24_01.jpg`, link: 'path-to-investment-success' },
+  { id: 125, title: "Embracing Financial Wisdom", date: '03/07/2024', author: 'Sumitha', image: `${GHL_IMG}/blog21_01.jpg`, link: 'embracing-financial-wisdom' },
+  { id: 126, title: "Path to Riches & Happiness, Away from the Usual Hustle", date: '26/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog20_01.jpg`, link: 'alternative-path-to-wealth-and-happiness' },
+  /* ── Page 15 ── */
+  { id: 127, title: "Navigating Path to Happiness and Wealth", date: '19/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog19_01.jpg`, link: 'how-to-achieve-happiness-and-wealth-with-smart-investing' },
+  { id: 128, title: "Viha's Journey to Financial Freedom", date: '12/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog18_01.jpg`, link: 'difference-between-assets-and-liabilities' },
+  { id: 129, title: "Is Giving Money the Key to Receiving?", date: '05/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog17_01.jpg`, link: 'the-power-of-giving-money-in-financial-success' },
+  { id: 130, title: "Prioritizing ourselves on the path to financial freedom", date: '29/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog16_01.jpg`, link: 'prioritizing-financial-freedom-achieving-success' },
+  { id: 131, title: "Role of Financial Education in Achieving True Wealth", date: '22/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog15_01.jpg`, link: 'role-financial-education-achieving-true-wealth' },
+  { id: 132, title: "A Conversation with Viha on Investing and Building Assets", date: '15/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog14_01.jpg`, link: 'investing-tips-and-building-assets' },
+  { id: 133, title: "Curious about smart investments? Come along with Viha!", date: '07/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog13_01.jpg`, link: 'smart-investing-tips-and-strategies' },
+  { id: 134, title: "Is saving the only path to a wealthy life?", date: '01/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog12_01.jpg`, link: 'wealth-building-beyond-savings-vs-investments' },
+  { id: 135, title: "Do you know about GHL's secured debentures and wholesale trading plans?", date: '24/04/2024', author: 'Sumitha', image: `${GHL_IMG}/blog11_01.jpg`, link: 'exploring-secured-debentures-and-wholesale-trading-investments' },
+  /* ── Page 16 ── */
+  { id: 136, title: "Distressed Property", date: '01/04/2024', author: 'Sumitha', image: `${GHL_IMG}/blog10_01.jpeg`, link: 'investing-in-distressed-properties' },
+  { id: 137, title: "It's all about ROI & IRR", date: '23/03/2024', author: 'Sumitha', image: `${GHL_IMG}/blog09-02.jpeg`, link: 'understanding-roi-vs-irr-investment-returns' },
+  { id: 138, title: "Capital gain Vs Cash flow", date: '26/02/2024', author: 'Sumitha', image: `${GHL_IMG}/b8_01.jpeg`, link: 'capital-gain-vs-cash-flow-investments-explained' },
+  { id: 139, title: "Financial Freedom", date: '09/12/2023', author: 'Sumitha', image: `${GHL_IMG}/1.jpg`, link: 'achieve-financial-freedom-discover-true-wealth' },
+  { id: 140, title: "More Dhan from Diwali", date: '09/11/2023', author: 'Sumitha', image: `${GHL_IMG}/blog6_01.jpg`, link: 'dhanteras-diwali-celebrations-financial-planning-tips' },
+  { id: 141, title: "GHL India Vs Others", date: '11/10/2023', author: 'Sumitha', image: `${GHL_IMG}/blog5_02.jpeg`, link: 'high-returns-investment-ghl-india-vs-banks-fintech' },
+  { id: 142, title: "Charge Creation", date: '19/09/2023', author: 'Sumitha', image: `${GHL_IMG}/Charge Creation and Asset-Backed Investments.jpg`, link: 'benefits-of-charge-creation-for-investors' },
+  { id: 143, title: "What is Bank Guarantee?", date: '03/08/2023', author: 'Sumitha', image: `${GHL_IMG}/WhatsApp Image 2023-08-02 at 12.40.02 PM.jpg`, link: 'benefits-of-bank-guarantees-for-secure-investments' },
+  { id: 144, title: "Debt Funding", date: '13/06/2023', author: 'Sumitha', image: `${GHL_IMG}/Blog-Debt-+-Funding1 (1).jpg`, link: 'debt-funds-investment-guide-stability-growth' },
+  /* ── Page 17–19 (remaining) ── */
+  { id: 145, title: "What is the best definition of investing", date: '14/05/2023', author: 'Sumitha', image: `${GHL_IMG}/post_1.jpeg`, link: 'what-is-the-best-definition-of-investing' },
+];
 
 export default function BlogsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedBlog, setSelectedBlog] = useState(null);
-
-  const categories = ['All', 'Property Flipping', 'NCDs & Debt', 'Fractional Ownership', 'Wealth Strategy'];
-
-  const blogs = [
-    {
-      id: 1,
-      title: 'Property Flipping vs Rental Income: Which Creates Wealth Faster?',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '6 min read',
-      summary: 'An analytical comparison between quick capital turnaround through property flipping and passive long-term cash flow from rental yields.',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>For decades, real estate has been a cornerstone of wealth creation. However, the strategies deployed by successful investors differ wildly. Two of the most popular strategies are <strong>Property Flipping</strong> and <strong>Rental Income</strong>. While both have their merits, they cater to different financial goals and risk tolerances.</p>
-        
-        <h3>The Velocity of Wealth: Property Flipping</h3>
-        <p>Property flipping focuses on capital appreciation in the shortest time possible. The lifecycle is simple: find an undervalued asset, acquire it, perform strategic value-add renovations, and exit at market value. This strategy relies on the compounding effect of velocity.</p>
-        <p>If you flip a property and generate a 20% return in 6 months, you can deploy that larger capital pool into a subsequent project. Over a 3-year period, compounding these returns can create substantial capital far faster than traditional rental yields which hover around 3% to 5% annually in India.</p>
-        
-        <h3>The Stability of Cash Flow: Rental Income</h3>
-        <p>Conversely, rental income offers peace of mind. It provides steady, predictable monthly cash flows and long-term equity growth. However, the timeline to double your capital is significantly longer. Rental yields rarely exceed inflation in fast-developing markets like India, meaning rental assets are primarily an inflation hedge rather than a wealth accelerator.</p>
-        
-        <h3>Conclusion</h3>
-        <p>If your objective is rapid capital expansion, property flipping is the clear winner. By utilizing structured SPVs like GHL India's models, retail investors can access these high-velocity flips without managing construction themselves.</p>
-      `
-    },
-    {
-      id: 2,
-      title: 'How Professional Investors Identify Undervalued Real Estate Opportunities',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Wealth Strategy',
-      readTime: '7 min read',
-      summary: 'Unlocking the criteria and diligence frameworks institutional real estate funds use to find mispriced residential assets.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Successful real estate investing isn't about luck—it's about applying rigorous, data-driven frameworks to identify mispriced opportunities. Professional investment managers rely on specific markers to source under-valued deals before the general public notices them.</p>
-        
-        <h3>1. Micro-Market Demographic Shifts</h3>
-        <p>Institutions look at micro-demographics: localized employment opportunities, infrastructural completions (like new metro lines or expressways), and population inflows. A property located 500 meters from a major tech park under construction is often undervalued during the initial excavation phase.</p>
-        
-        <h3>2. Distress Sourcing</h3>
-        <p>Properties owned by developers facing liquidity crunches, or individual sellers needing urgent capital, offer high bargaining power. Professional firms maintain active networks of bankers, brokers, and developers to access these non-public distressed inventories at 20-30% discounts.</p>
-        
-        <h3>3. Structural & Cosmetic Arbitrage</h3>
-        <p>Identifying assets with sound foundations but outdated layouts or cosmetics allows investors to perform arbitrage. Simple layout upgrades can dramatically increase the property's market value far exceeding the renovation cost.</p>
-      `
-    },
-    {
-      id: 3,
-      title: 'NCDs Explained: How They Work and Who Should Invest',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'NCDs & Debt',
-      readTime: '5 min read',
-      summary: 'Demystifying Non-Convertible Debentures, asset-backed security charges, and fixed interest structures for alternate finance.',
-      image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>For investors seeking fixed income yields higher than traditional bank fixed deposits, <strong>Non-Convertible Debentures (NCDs)</strong> represent a powerful alternate vehicle. But what exactly are they, and how do they secure your capital?</p>
-        
-        <h3>What is an NCD?</h3>
-        <p>An NCD is a debt instrument issued by corporations to raise long-term capital. Unlike convertible bonds, NCDs cannot be converted into company equity. In exchange, they offer higher interest rates (coupon yields) to reward debenture holders.</p>
-        
-        <h3>The Importance of Secured Charges</h3>
-        <p>Secured NCDs are backed by the tangible assets of the company. When you invest in a secured NCD via an SPV, a legal mortgage/charge is registered in favor of an independent Debenture Trustee (such as Axis Trustee Services Ltd). This charge is filed with the Ministry of Corporate Affairs (MCA), ensuring that in the event of default, the land assets are liquidated to repay the debenture holders first.</p>
-        
-        <h3>Who Should Invest?</h3>
-        <p>Secured NCDs are ideal for conservative to moderate investors seeking consistent monthly income, protection from stock market volatility, and legal safety backed by physical real estate assets.</p>
-      `
-    },
-    {
-      id: 4,
-      title: 'Fractional Real Estate vs Buying an Entire Property: Which Is Right for You?',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Fractional Ownership',
-      readTime: '8 min read',
-      summary: 'A head-to-head comparison of capital allocation, management overhead, and liquidity between full ownership and fractional investments.',
-      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Owning physical property has historically meant writing massive cheques, securing high-interest home loans, and taking on the role of a landlord. Today, the rise of <strong>Fractional Ownership</strong> has democratized this landscape. Let's compare the two models.</p>
-        
-        <h3>Capital Allocation & Diversification</h3>
-        <p>Buying an entire property concentrates your capital in a single asset. If you have ₹50 Lakhs, buying one apartment exposes you to 100% of that asset's vacancy risks. With fractional investing, you can distribute that ₹50 Lakhs across five different institutional-grade SPVs, achieving instant diversification across geographies and asset classes.</p>
-        
-        <h3>Management & Landlord Stress</h3>
-        <p>Full ownership requires listing properties, dealing with tenants, fixing leaks, and navigating local legalities. Fractional ownership is entirely hands-free. A professional management company handles maintenance, rent collection, and legal compliance, distributing yields directly to your account.</p>
-      `
-    },
-    {
-      id: 5,
-      title: 'Five Benefits of Fractional Investing Beyond Affordability',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Fractional Ownership',
-      readTime: '5 min read',
-      summary: 'Discovering how fractional models enable risk diversification, professional management, high yields, and institutional-grade deal flow.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>While the lower entry ticket is the most obvious benefit of fractional real estate investing, the model offers several advanced strategic benefits that institutional investors have leveraged for decades.</p>
-        
-        <h3>1. Access to Premium Asset Sectors</h3>
-        <p>Individual retail buyers are usually locked out of Grade-A commercial buildings, tech parks, and luxury warehousing hubs due to ₹10 Crore+ pricing. Fractional investing lets you participate in these high-performing assets for a fraction of the price.</p>
-        
-        <h3>2. Professional Due Diligence</h3>
-        <p>SPV sponsors perform rigorous legal searches, title clearances, and environmental audits before presenting a property. This mitigates title dispute risks which affect over 25% of properties in India.</p>
-        
-        <h3>3. Institutional Tenant Quality</h3>
-        <p>Grade-A properties attract corporate MNCs, banks, and established retailers with 5-10 year lease contracts and annual escalation clauses, guaranteeing yield security.</p>
-      `
-    },
-    {
-      id: 6,
-      title: '5 Common Myths About Property Flipping in India',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '6 min read',
-      summary: 'Dispelling misconceptions around high capital entry barriers, regulatory compliance, legal timelines, and market volatility in property flipping.',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Property flipping has exploded in popularity in metropolitan India, yet many traditional investors avoid it due to persistent myths. Let's debunk the top five misconceptions.</p>
-        
-        <h3>Myth 1: You Need Crores of Capital</h3>
-        <p><strong>Reality:</strong> While full acquisitions require massive capital, fractional SPV co-ownership models allow investors to pool resources, making property flipping accessible from ₹5 Lakhs onwards.</p>
-        
-        <h3>Myth 2: It is Too Risky Due to RERA</h3>
-        <p><strong>Reality:</strong> RERA has actually cleaned up the industry. By working exclusively with RERA-registered projects and fully complete assets, flipping SPVs eliminate construction delay risks.</p>
-        
-        <h3>Myth 3: Flipping Is Just Cosmetic Renovation</h3>
-        <p><strong>Reality:</strong> Real value creation lies in legal remediation (solving title disputes), structural enhancements, and zoning shifts rather than just a fresh coat of paint.</p>
-      `
-    },
-    {
-      id: 7,
-      title: 'The Property Flipping Lifecycle: From Acquisition to Exit. 5 Steps You Need to Follow',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '7 min read',
-      summary: 'A walkthrough from legal due diligence, title inspections, purchase, structural enhancement, to finding the ultimate buyer.',
-      image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Successful property flipping is a structured, linear process. To generate consistent 18-24% yields, GHL India and other professional flippers follow a strict five-stage operational framework.</p>
-        
-        <h3>Step 1: Sourcing & Value Diligence</h3>
-        <p>This phase involves analyzing local micro-markets and identifying distressed inventories, unfinished developer stock, or properties with complex legal titles that can be cleared.</p>
-        
-        <h3>Step 2: Legal Remediation & Title Clearance</h3>
-        <p>Clearing pending structural approvals, tax liabilities, or minor litigation instantly unlocks the property's intrinsic value.</p>
-        
-        <h3>Step 3: Tactical Refurbishment</h3>
-        <p>Investing in high-ROI improvements (e.g. modular kitchens, modern layouts, exterior upgrades) that increase visual appeal and market value.</p>
-        
-        <h3>Step 4: Marketing & Positioning</h3>
-        <p>Staging the property and launching high-visibility digital campaigns targeting qualified end-user buyers.</p>
-        
-        <h3>Step 5: Capital Exit & Distribution</h3>
-        <p>Executing the registry sale, closing the SPV accounts, and distributing the principal and accumulated yields back to co-investors.</p>
-      `
-    },
-    {
-      id: 8,
-      title: 'How AIFs Are Opening New Opportunities in Alternate Investing',
-      date: '26/06/2026',
-      author: 'Sumitha',
-      category: 'Wealth Strategy',
-      readTime: '6 min read',
-      summary: 'Exploring Alternative Investment Funds, regulatory safety parameters, and institutional capital access in property flipping.',
-      image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Alternative Investment Funds (AIFs) are reshaping the investment landscape in India, providing wealthy investors and HNIs with regulated pathways to access high-yielding assets outside public equity markets.</p>
-        
-        <h3>The Rise of AIFs in India</h3>
-        <p>An AIF is a privately pooled investment vehicle established in India to collect capital from sophisticated domestic and foreign investors. These funds deploy capital into specialized strategies like venture debt, private equity, real estate SPVs, and hedge funds.</p>
-        
-        <h3>Regulatory Standards</h3>
-        <p>AIFs operate under SEBI guidelines, which mandate strict transparency, reporting standards, and manager fiduciary duties. This structural oversight ensures that capital is deployed strictly as outlined in the Private Placement Memorandum (PPM).</p>
-      `
-    },
-    {
-      id: 9,
-      title: 'Why Property Flipping Is Becoming Popular in India?',
-      date: '19/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '6 min read',
-      summary: 'Analyzing macroeconomic factors, urban expansion demand, and regulatory safety under RERA boosting property flipping yields.',
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Historically, property flipping was associated with unregulated real estate markets. Today, India is seeing a massive institutional surge in property flipping. Let's look at why.</p>
-        
-        <h3>RERA and MCA Formalization</h3>
-        <p>The introduction of the Real Estate (Regulation and Development) Act (RERA) has driven out fraudulent players, creating transparent title tracing registries. This makes it safe for alternate investment platforms to execute short-term flipping strategies.</p>
-        
-        <h3>Rapid Urban Infrastructure expansion</h3>
-        <p>Cities like Bengaluru, Hyderabad, and Mumbai are expanding outward rapidly. New ring roads and transit systems create pockets of sudden real estate demand, allowing flippers to buy cheap peripheral land and exit at premium prices within 24 to 36 months.</p>
-      `
-    },
-    {
-      id: 10,
-      title: 'How to Start Property Flipping in India With Low Capital: A Complete Guide',
-      date: '12/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '5 min read',
-      summary: 'Practical steps for retail investors to participate in high-yield acquisitions through fractional SPVs and alternate debt.',
-      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Think you need crores in the bank to flip properties in India? Not anymore. The landscape has changed, and co-investment models are making short-term real estate arbitrage accessible to individual salaried professionals.</p>
-        
-        <h3>The Fractional co-ownership Path</h3>
-        <p>By investing in a project-specific Special Purpose Vehicle (SPV) alongside other like-minded investors, you can participate in a property purchase for as little as ₹5 Lakhs to ₹10 Lakhs. The SPV buys the property, manages the refurbishment, clears the legal details, and splits the final profits proportionally.</p>
-        
-        <h3>Step-by-Step Action Plan</h3>
-        <p>1. **Choose a Regulated Sponsor Platform:** Research platforms with a proven track record, independent trustees, and MCA-registered SPVs.<br/>
-        2. **Evaluate Project Financials:** Look at the targeted acquisition discount, refurb costs, and conservative exit assumptions.<br/>
-        3. **Complete e-KYC & Sign Agreements:** Fund the SPV through bank transfer and receive your digital share certificates or NCD deeds.</p>
-      `
-    },
-    {
-      id: 11,
-      title: 'How to Invest Money Outside the Stock Market Safely',
-      date: '05/06/2026',
-      author: 'Sumitha',
-      category: 'Wealth Strategy',
-      readTime: '6 min read',
-      summary: 'Diversifying your portfolio with secure land-backed assets, debt debentures, and real estate SPVs outside equity market volatility.',
-      image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>While the stock market offers high liquidity, it is highly sensitive to geopolitical issues, inflation spikes, and global monetary policy cycles. For a truly resilient wealth structure, investors must diversify into alternate assets that are uncorrelated with the stock market.</p>
-        
-        <h3>The Power of Non-Correlated Assets</h3>
-        <p>Real estate, structured debt, and agricultural trade flows operate on different microeconomic cycles than the Nifty or Sensex. When stocks correction occurs, a physical commercial building still collects corporate rent, and an asset-backed NCD continues paying monthly interest yields.</p>
-        
-        <h3>Secured Debentures as a FD Replacement</h3>
-        <p>Secured NCDs issued by SPVs offer yields of 18-24% annually while providing land-backed collateral, making them a premium addition to balance your mutual fund and stock allocations.</p>
-      `
-    },
-    {
-      id: 12,
-      title: 'Why Is Property Flipping Gaining Popularity in Recent Times?',
-      date: '01/06/2026',
-      author: 'Sumitha',
-      category: 'Property Flipping',
-      readTime: '6 min read',
-      summary: 'Looking at how low mortgage interest cycles and inflation-hedging properties make short-term real estate investments attractive.',
-      image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80',
-      content: `
-        <p>Over the past 24 months, real estate transaction volumes in India have broken records. In this booming market, property flipping has emerged as a preferred strategy for private wealth managers. Here is what is driving this trend.</p>
-        
-        <h3>1. The Inflation Arbitrage</h3>
-        <p>With high wholesale price indices, holding cash is a losing game. Investors are turning to real estate because raw land values and construction prices naturally adjust upward with inflation, preserving real purchasing power.</p>
-        
-        <h3>2. Speed of Return</h3>
-        <p>Traditional property developers wait 5 to 7 years to see project completion. Flippers target ready-to-move-in or near-completion inventory, renovating and selling within 12 to 24 months, unlocking high capital turnover and mitigation of cycle risks.</p>
-      `
-    }
-  ];
-
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
   const filteredBlogs = useMemo(() => {
-    return blogs.filter(blog => {
-      const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            blog.summary.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = selectedCategory === 'All' || blog.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
+    return blogs.filter(blog => blog.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [searchQuery]);
 
   const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
 
@@ -293,260 +193,147 @@ export default function BlogsPage() {
     }
   };
 
-  const handleCategorySelect = (cat) => {
-    setSelectedCategory(cat);
-    setCurrentPage(1);
-  };
-
-  const getRecentBlogs = (currentBlogId) => {
-    return blogs.filter(b => b.id !== currentBlogId).slice(0, 3);
+  /* Build smart pagination numbers */
+  const getPaginationNumbers = () => {
+    const pages = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (currentPage > 3) pages.push('...');
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      if (currentPage < totalPages - 2) pages.push('...');
+      pages.push(totalPages);
+    }
+    return pages;
   };
 
   return (
     <div className="blogs-page-view">
-      {selectedBlog ? (
-        /* Blog Detail View */
-        <div className="blog-details-view">
-          {/* Breadcrumbs inside Detail */}
-          <div className="blog-breadcrumbs">
-            <div className="container">
-              <button className="back-to-blogs-btn" onClick={() => setSelectedBlog(null)}>
-                <ArrowLeft size={16} />
-                <span>Back to Articles</span>
-              </button>
+      {/* 1. Hero Banner */}
+      <div className="blogs-hero-section">
+        <div className="blogs-hero-wrapper">
+          <div className="blogs-hero-overlay text-center">
+            <span className="badge-tag">Knowledge Center</span>
+            <h1>GHL India Blogs & Insights</h1>
+            <p>Stay updated with expert real estate analyses, structured debt resources, and fractional investment guides.</p>
+            <div className="blogs-search-box-container">
+              <Search className="blogs-search-icon" size={20} />
+              <input 
+                type="text" 
+                placeholder="Search articles, keywords, or guides..." 
+                value={searchQuery}
+                onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+                className="blogs-search-input"
+              />
             </div>
           </div>
+        </div>
+      </div>
 
-          <article className="blog-full-article">
-            <div className="container-small">
-              <header className="article-header">
-                <span className="badge-tag">{selectedBlog.category}</span>
-                <h1>{selectedBlog.title}</h1>
-                <div className="article-meta">
-                  <div className="meta-item">
-                    <User size={16} />
-                    <span>By {selectedBlog.author}</span>
-                  </div>
-                  <div className="meta-item">
-                    <Calendar size={16} />
-                    <span>{selectedBlog.date}</span>
-                  </div>
-                  <div className="meta-item">
-                    <Clock size={16} />
-                    <span>{selectedBlog.readTime}</span>
-                  </div>
-                </div>
-              </header>
+      {/* 2. Breadcrumbs */}
+      <div className="blogs-breadcrumbs">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li>Resources</li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Blogs</li>
+          </ul>
+        </div>
+      </div>
 
-              <div className="article-featured-image">
-                <img src={selectedBlog.image} alt={selectedBlog.title} />
-              </div>
-
-              {/* Long-form Content */}
-              <div 
-                className="article-body-content"
-                dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
-              />
-
-              <div className="article-footer-actions">
-                <button className="action-pill-btn" onClick={() => alert('Article link copied to clipboard!')}>
-                  <Share2 size={16} />
-                  <span>Share Article</span>
-                </button>
-                <div className="flex-grow"></div>
-                <div className="article-comments-count">
-                  <MessageSquare size={16} />
-                  <span>0 Comments</span>
-                </div>
-              </div>
+      {/* 3. Blog Grid */}
+      <section className="blogs-grid-section">
+        <div className="container">
+          {filteredBlogs.length === 0 ? (
+            <div className="blogs-no-results text-center">
+              <BookOpen size={48} className="no-results-icon" />
+              <h3>No articles found</h3>
+              <p>We couldn't find any articles matching "{searchQuery}".</p>
+              <button onClick={() => { setSearchQuery(''); }} className="btn btn-primary reset-btn">Clear Search</button>
             </div>
-          </article>
-
-          {/* Related/Recent Posts Footer */}
-          <section className="related-blogs-section">
-            <div className="container-small">
-              <h3 className="related-title">Recent Articles</h3>
+          ) : (
+            <>
+              <div className="blogs-results-count">
+                Showing {(currentPage - 1) * itemsPerPage + 1}–{Math.min(currentPage * itemsPerPage, filteredBlogs.length)} of {filteredBlogs.length} articles
+              </div>
               <div className="blogs-grid">
-                {getRecentBlogs(selectedBlog.id).map(blog => (
-                  <div key={blog.id} className="blog-card glass-panel">
+                {currentBlogs.map(blog => (
+                  <a
+                    key={blog.id}
+                    href={`https://www.ghlindia.com/blogdetails?${blog.link}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="blog-card glass-panel"
+                  >
                     <div className="blog-card-img-box">
-                      <img src={blog.image} alt={blog.title} />
-                      <span className="category-label">{blog.category}</span>
+                      <img src={blog.image} alt={blog.title} loading="lazy" />
                     </div>
                     <div className="blog-card-body">
                       <div className="blog-card-meta">
-                        <span>{blog.date}</span>
-                        <span>&bull;</span>
-                        <span>{blog.readTime}</span>
+                        <span><Calendar size={13} /> {blog.date}</span>
                       </div>
                       <h4 className="blog-card-title">{blog.title}</h4>
-                      <p className="blog-card-desc">{blog.summary}</p>
-                      <button className="read-more-btn" onClick={() => { setSelectedBlog(blog); window.scrollTo(0, 0); }}>
-                        <span>Read Article</span>
-                        <ChevronRight size={14} />
-                      </button>
+                      <div className="blog-card-footer">
+                        <div className="blog-card-author">
+                          <User size={14} />
+                          <span>{blog.author}</span>
+                        </div>
+                        <span className="read-more-btn">
+                          <span>Read More</span>
+                          <ChevronRight size={14} />
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
-            </div>
-          </section>
-        </div>
-      ) : (
-        /* Blog List View */
-        <>
-          {/* 1. Cinematic Header Banner */}
-          <div className="blogs-hero-section">
-            <div className="blogs-hero-wrapper">
-              <div className="blogs-hero-overlay text-center">
-                <span className="badge-tag">Knowledge Center</span>
-                <h1>GHL India Blogs & Insights</h1>
-                <p>Stay updated with expert real estate analyses, structured debt resources, and fractional investment guides.</p>
-                
-                {/* Search Bar */}
-                <div className="blogs-search-box-container">
-                  <Search className="blogs-search-icon" size={20} />
-                  <input 
-                    type="text" 
-                    placeholder="Search articles, keywords, or guides..." 
-                    value={searchQuery}
-                    onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
-                    className="blogs-search-input"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
 
-          {/* 2. Breadcrumbs */}
-          <div className="blogs-breadcrumbs">
-            <div className="container">
-              <ul className="breadcrumbs-list">
-                <li><a href="#/">Home</a></li>
-                <span className="separator"><ChevronRight size={12} /></span>
-                <li>Resources</li>
-                <span className="separator"><ChevronRight size={12} /></span>
-                <li className="active">Blogs</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* 3. Categories Navigation Bar */}
-          <div className="blogs-filter-bar">
-            <div className="container">
-              <div className="category-pills-list">
-                {categories.map((cat, idx) => {
-                  const isActive = selectedCategory === cat;
-                  return (
-                    <button
-                      key={idx}
-                      className={`category-pill ${isActive ? 'active' : ''}`}
-                      onClick={() => handleCategorySelect(cat)}
-                    >
-                      {cat}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* 4. Blog Post Cards Grid */}
-          <section className="blogs-grid-section">
-            <div className="container">
-              {filteredBlogs.length === 0 ? (
-                <div className="blogs-no-results text-center">
-                  <BookOpen size={48} className="no-results-icon" />
-                  <h3>No articles found</h3>
-                  <p>We couldn't find any articles matching "{searchQuery}" in category "{selectedCategory}".</p>
-                  <button 
-                    onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}
-                    className="btn btn-primary reset-btn"
-                  >
-                    Clear Filters
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="blogs-pagination">
+                  <button className="page-nav-btn" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                    <ArrowLeft size={16} /><span>Prev</span>
+                  </button>
+                  <div className="page-numbers">
+                    {getPaginationNumbers().map((pageNum, idx) =>
+                      pageNum === '...' ? (
+                        <span key={`dots-${idx}`} className="page-dots">…</span>
+                      ) : (
+                        <button key={pageNum} className={`page-num-btn ${currentPage === pageNum ? 'active' : ''}`} onClick={() => handlePageChange(pageNum)}>
+                          {pageNum}
+                        </button>
+                      )
+                    )}
+                  </div>
+                  <button className="page-nav-btn" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                    <span>Next</span><ArrowRight size={16} />
                   </button>
                 </div>
-              ) : (
-                <>
-                  <div className="blogs-grid">
-                    {currentBlogs.map(blog => (
-                      <div key={blog.id} className="blog-card glass-panel">
-                        <div className="blog-card-img-box">
-                          <img src={blog.image} alt={blog.title} />
-                          <span className="category-label">{blog.category}</span>
-                        </div>
-                        <div className="blog-card-body">
-                          <div className="blog-card-meta">
-                            <span>{blog.date}</span>
-                            <span>&bull;</span>
-                            <span>{blog.readTime}</span>
-                          </div>
-                          <h4 className="blog-card-title">{blog.title}</h4>
-                          <p className="blog-card-desc">{blog.summary}</p>
-                          <button className="read-more-btn" onClick={() => { setSelectedBlog(blog); window.scrollTo(0, 0); }}>
-                            <span>Read Article</span>
-                            <ChevronRight size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* 5. Pagination */}
-                  {totalPages > 1 && (
-                    <div className="blogs-pagination">
-                      <button 
-                        className="page-nav-btn"
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                      >
-                        <ArrowLeft size={16} />
-                        <span>Prev</span>
-                      </button>
-                      
-                      <div className="page-numbers">
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
-                          <button
-                            key={pageNum}
-                            className={`page-num-btn ${currentPage === pageNum ? 'active' : ''}`}
-                            onClick={() => handlePageChange(pageNum)}
-                          >
-                            {pageNum}
-                          </button>
-                        ))}
-                      </div>
-
-                      <button 
-                        className="page-nav-btn"
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                      >
-                        <span>Next</span>
-                        <ArrowRight size={16} />
-                      </button>
-                    </div>
-                  )}
-                </>
               )}
-            </div>
-          </section>
+            </>
+          )}
+        </div>
+      </section>
 
-          {/* 6. Newsletter Subscription Banner */}
-          <section className="blogs-newsletter-section">
-            <div className="container">
-              <div className="newsletter-card glass-panel">
-                <span className="badge-tag">Newsletter</span>
-                <h2>Get Real Estate Insights Delivered Weekly</h2>
-                <p>Join over 10,000+ smart investors receiving our analytical market write-ups and campaign alerts.</p>
-                <div className="newsletter-form">
-                  <input type="email" placeholder="Enter your email address" className="newsletter-input" />
-                  <button className="btn btn-primary submit-btn">Subscribe Now</button>
-                </div>
-              </div>
+      {/* Newsletter */}
+      <section className="blogs-newsletter-section">
+        <div className="container">
+          <div className="newsletter-card glass-panel">
+            <span className="badge-tag">Newsletter</span>
+            <h2>Get Real Estate Insights Delivered Weekly</h2>
+            <p>Join over 10,000+ smart investors receiving our analytical market write-ups and campaign alerts.</p>
+            <div className="newsletter-form">
+              <input type="email" placeholder="Enter your email address" className="newsletter-input" />
+              <button className="btn btn-primary submit-btn">Subscribe Now</button>
             </div>
-          </section>
-        </>
-      )}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
