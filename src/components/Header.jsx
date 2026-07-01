@@ -40,6 +40,15 @@ export default function Header() {
     return currentPath === hash;
   };
 
+  const isActiveSection = (hashes) => hashes.some((hash) => isActiveLink(hash));
+
+  const sectorLinks = [
+    { label: 'Biotech', href: '#/biotech' },
+    { label: 'Real Estate', href: '#/real-estate' },
+    { label: 'Food & Beverage', href: '#/food-beverage' },
+    { label: 'Agri', href: '#/agri' }
+  ];
+
   const toggleDropdown = (name) => {
     if (activeDropdown === name) {
       setActiveDropdown(null);
@@ -143,15 +152,40 @@ export default function Header() {
 
               {/* Resources Dropdown */}
               <li className="dropdown-parent">
-                <button className="nav-item dropdown-toggle" onClick={() => toggleDropdown('resources')}>
+                <button
+                  className={`nav-item dropdown-toggle ${isActiveSection(['#/about-us', '#/faq', '#/blogs', '#/biotech', '#/real-estate', '#/food-beverage', '#/agri']) ? 'active' : ''}`}
+                  onClick={() => toggleDropdown('resources')}
+                >
                   <span>Resources</span>
                   <ChevronDown size={14} className={activeDropdown === 'resources' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'resources' ? 'show-menu' : ''}`}>
-                  <li><a href="#/about-us" onClick={() => setActiveDropdown(null)}>About Us</a></li>
-                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>FAQ</a></li>
-                  <li><a href="#/blogs" onClick={() => setActiveDropdown(null)}>Blog & News</a></li>
+                  <li><a href="#/about-us" className={isActiveLink('#/about-us') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>About Us</a></li>
+                  <li><a href="#/faq" className={isActiveLink('#/faq') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>FAQ</a></li>
+                  <li><a href="#/blogs" className={isActiveLink('#/blogs') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Blog</a></li>
+                  <li className="sector-menu-block">
+                    <button className={`sector-menu-trigger ${isActiveSection(sectorLinks.map((sector) => sector.href)) ? 'active' : ''}`}>
+                      <span>Sectors</span>
+                      <ChevronDown size={14} />
+                    </button>
+                    <ul className="sector-nested-menu">
+                      {sectorLinks.map((sector) => (
+                        <li key={sector.href}>
+                          <a
+                            href={sector.href}
+                            className={isActiveLink(sector.href) ? 'active' : ''}
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            {sector.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Become A Channel Partner</a></li>
+                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Career</a></li>
                   <li><a href="#footer" onClick={() => setActiveDropdown(null)}>Contact Us</a></li>
+                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Brochure</a></li>
                 </ul>
               </li>
             </ul>
@@ -216,6 +250,25 @@ export default function Header() {
             <li><a href="#/about-us" className={`mobile-item ${isActiveLink('#/about-us') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>About Us</a></li>
             <li><a href="#/faq" className={`mobile-item ${isActiveLink('#/faq') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
             <li><a href="#/blogs" className={`mobile-item ${isActiveLink('#/blogs') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Blogs</a></li>
+            <li className="mobile-dropdown-parent">
+              <button className="mobile-item" onClick={() => toggleDropdown('mob-sectors')}>
+                <span>Sectors</span>
+                <ChevronDown size={16} />
+              </button>
+              <ul className={`mobile-submenu mobile-sector-submenu ${activeDropdown === 'mob-sectors' ? 'open' : ''}`}>
+                {sectorLinks.map((sector) => (
+                  <li key={sector.href}>
+                    <a
+                      href={sector.href}
+                      className={isActiveLink(sector.href) ? 'active' : ''}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {sector.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
             <li>
               <button className="mobile-item mobile-lang-trigger" onClick={() => { setMobileMenuOpen(false); setLangModalOpen(true); }}>
                 <Globe size={16} />

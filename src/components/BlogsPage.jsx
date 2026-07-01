@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Calendar, User, ChevronRight, ArrowLeft, ArrowRight, Clock, BookOpen } from 'lucide-react';
+import { BLOG_CONTENT } from '../data/blogContent';
 import './BlogsPage.css';
 
 /* ─── All blog data extracted from https://www.ghlindia.com/blogs (pages 1–19) ─── */
@@ -310,49 +311,57 @@ export default function BlogsPage() {
                 </div>
 
                 <div className="article-body-content">
-                  <p>
-                    In today's dynamic investment landscape, {blog.title.toLowerCase()} has become increasingly important for investors looking to diversify their portfolios and achieve sustainable wealth growth.
-                  </p>
-                  
-                  <h3>Understanding the Basics</h3>
-                  <p>
-                    This comprehensive guide explores the fundamental concepts and strategies that successful investors employ. Whether you're a beginner or an experienced investor, understanding these principles is crucial for making informed decisions.
-                  </p>
+                  {blog.content ? (
+                    blog.content.split('\n\n').map((para, idx) => (
+                      para.trim() && <p key={idx}>{para.trim()}</p>
+                    ))
+                  ) : (
+                    <>
+                      <p>
+                        In today's dynamic investment landscape, {blog.title.toLowerCase()} has become increasingly important for investors looking to diversify their portfolios and achieve sustainable wealth growth.
+                      </p>
+                      
+                      <h3>Understanding the Basics</h3>
+                      <p>
+                        This comprehensive guide explores the fundamental concepts and strategies that successful investors employ. Whether you're a beginner or an experienced investor, understanding these principles is crucial for making informed decisions.
+                      </p>
 
-                  <p>
-                    The investment world has evolved significantly over the years. What worked a decade ago might not be as effective today. That's why staying informed and continuously learning is essential for long-term success.
-                  </p>
+                      <p>
+                        The investment world has evolved significantly over the years. What worked a decade ago might not be as effective today. That's why staying informed and continuously learning is essential for long-term success.
+                      </p>
 
-                  <h3>Key Strategies for Success</h3>
-                  <p>
-                    There are several proven strategies that can help you maximize returns while managing risk effectively. Let's explore some of the most effective approaches:
-                  </p>
+                      <h3>Key Strategies for Success</h3>
+                      <p>
+                        There are several proven strategies that can help you maximize returns while managing risk effectively. Let's explore some of the most effective approaches:
+                      </p>
 
-                  <p>
-                    <strong>1. Diversification:</strong> Don't put all your eggs in one basket. Spreading your investments across different asset classes reduces risk.
-                  </p>
+                      <p>
+                        <strong>1. Diversification:</strong> Don't put all your eggs in one basket. Spreading your investments across different asset classes reduces risk.
+                      </p>
 
-                  <p>
-                    <strong>2. Research and Due Diligence:</strong> Before investing, thoroughly research the opportunity. Understand the market, the competition, and potential risks.
-                  </p>
+                      <p>
+                        <strong>2. Research and Due Diligence:</strong> Before investing, thoroughly research the opportunity. Understand the market, the competition, and potential risks.
+                      </p>
 
-                  <p>
-                    <strong>3. Long-term Perspective:</strong> Successful investors think long-term. Market volatility is normal, and patience often pays off.
-                  </p>
+                      <p>
+                        <strong>3. Long-term Perspective:</strong> Successful investors think long-term. Market volatility is normal, and patience often pays off.
+                      </p>
 
-                  <h3>Real-World Applications</h3>
-                  <p>
-                    Let's look at how these principles apply in real-world scenarios. Real estate investment, for example, combines the tangibility of physical assets with the potential for significant returns through both appreciation and rental income.
-                  </p>
+                      <h3>Real-World Applications</h3>
+                      <p>
+                        Let's look at how these principles apply in real-world scenarios. Real estate investment, for example, combines the tangibility of physical assets with the potential for significant returns through both appreciation and rental income.
+                      </p>
 
-                  <p>
-                    Similarly, fractional investing has democratized access to premium real estate opportunities that were previously only available to high-net-worth individuals. This approach allows investors to participate in quality projects with lower capital requirements.
-                  </p>
+                      <p>
+                        Similarly, fractional investing has democratized access to premium real estate opportunities that were previously only available to high-net-worth individuals. This approach allows investors to participate in quality projects with lower capital requirements.
+                      </p>
 
-                  <h3>Conclusion</h3>
-                  <p>
-                    Whether you're exploring {blog.title.toLowerCase()} or considering other investment options, the key is to make informed decisions based on your financial goals and risk tolerance. At GHL India, we're committed to providing you with the insights and opportunities you need to build sustainable wealth.
-                  </p>
+                      <h3>Conclusion</h3>
+                      <p>
+                        Whether you're exploring {blog.title.toLowerCase()} or considering other investment options, the key is to make informed decisions based on your financial goals and risk tolerance. At GHL India, we're committed to providing you with the insights and opportunities you need to build sustainable wealth.
+                      </p>
+                    </>
+                  )}
                 </div>
 
                 <div className="article-footer-actions">
