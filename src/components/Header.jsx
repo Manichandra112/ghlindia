@@ -148,7 +148,7 @@ export default function Header() {
                   <ChevronDown size={14} className={activeDropdown === 'resources' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'resources' ? 'show-menu' : ''}`}>
-                  <li><a href="#stats" onClick={() => setActiveDropdown(null)}>About Us</a></li>
+                  <li><a href="#/about-us" onClick={() => setActiveDropdown(null)}>About Us</a></li>
                   <li><a href="#faq" onClick={() => setActiveDropdown(null)}>FAQ</a></li>
                   <li><a href="#reviews" onClick={() => setActiveDropdown(null)}>Blog & News</a></li>
                   <li><a href="#footer" onClick={() => setActiveDropdown(null)}>Contact Us</a></li>
@@ -213,6 +213,7 @@ export default function Header() {
 
             <li><a href="#/why-us" className={`mobile-item ${isActiveLink('#/why-us') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Why Us</a></li>
             <li><a href="#/our-team" className={`mobile-item ${isActiveLink('#/our-team') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Our Team</a></li>
+            <li><a href="#/about-us" className={`mobile-item ${isActiveLink('#/about-us') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>About Us</a></li>
             <li><a href="#faq" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
             <li>
               <button className="mobile-item mobile-lang-trigger" onClick={() => { setMobileMenuOpen(false); setLangModalOpen(true); }}>

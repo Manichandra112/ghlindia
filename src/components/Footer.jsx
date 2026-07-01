@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   const companyLinks = [
-    { label: 'About Us', href: '#stats' },
+    { label: 'About Us', href: '#/about-us' },
     { label: 'Blog & Insights', href: '#reviews' },
     { label: 'Operational Model', href: '#what-we-do' },
     { label: 'Achievements', href: '#achievements' },

@@ -24,6 +24,7 @@ import OurTeam from './components/OurTeam';
 import FinancialIQ from './components/FinancialIQ';
 import EconomyInsight from './components/EconomyInsight';
 import EducationalVideos from './components/EducationalVideos';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -47,6 +48,8 @@ function App() {
         setCurrentView('economy-insight');
       } else if (hash === '#/educational-videos') {
         setCurrentView('educational-videos');
+      } else if (hash === '#/about-us') {
+        setCurrentView('about-us');
       } else {
         setCurrentView('home');
       }
@@ -72,6 +75,7 @@ function App() {
         {currentView === 'financial-iq' && <FinancialIQ />}
         {currentView === 'economy-insight' && <EconomyInsight />}
         {currentView === 'educational-videos' && <EducationalVideos />}
+        {currentView === 'about-us' && <AboutUs />}
         {currentView === 'home' && (
           <>
             <Hero />
