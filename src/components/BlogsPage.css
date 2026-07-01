@@ -599,13 +599,13 @@
 .blog-details-view {
   background-color: #ffffff;
   min-height: 100vh;
+  margin-top: var(--header-height, 90px);
 }
 
 .blog-details-view .blog-breadcrumbs {
   background-color: #f8fafc;
   padding: 16px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.05);
-  margin-top: var(--header-height, 90px);
 }
 
 @media (max-width: 768px) {
@@ -625,7 +625,9 @@
   font-weight: 600;
   cursor: pointer;
   transition: color 0.2s ease;
-  padding: 0;
+  padding: 12px 0;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .back-to-blogs-btn:hover {
@@ -639,7 +641,7 @@
 }
 
 .blog-full-article {
-  padding: 60px 0 80px 0;
+  padding: 0 0 80px 0;
 }
 
 .article-header {

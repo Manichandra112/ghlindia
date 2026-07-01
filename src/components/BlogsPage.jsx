@@ -168,11 +168,31 @@ const blogs = [
   { id: 144, title: "Debt Funding", date: '13/06/2023', author: 'Sumitha', image: `${GHL_IMG}/Blog-Debt-+-Funding1 (1).jpg`, link: 'debt-funds-investment-guide-stability-growth' },
   /* ── Page 17–19 (remaining) ── */
   { id: 145, title: "What is the best definition of investing", date: '14/05/2023', author: 'Sumitha', image: `${GHL_IMG}/post_1.jpeg`, link: 'what-is-the-best-definition-of-investing' },
+  { id: 146, title: "Debt Funds Investment Guide Stability Growth", date: '13/06/2023', author: 'Sumitha', image: `${GHL_IMG}/Blog-Debt-+-Funding1 (1).jpg`, link: 'debt-funds-investment-guide-stability-growth' },
+  { id: 147, title: "Benefits Of Bank Guarantees For Secure Investments", date: '03/08/2023', author: 'Sumitha', image: `${GHL_IMG}/WhatsApp Image 2023-08-02 at 12.40.02 PM.jpg`, link: 'benefits-of-bank-guarantees-for-secure-investments' },
+  { id: 148, title: "Benefits Of Charge Creation For Investors", date: '19/09/2023', author: 'Sumitha', image: `${GHL_IMG}/Charge Creation and Asset-Backed Investments.jpg`, link: 'benefits-of-charge-creation-for-investors' },
+  { id: 149, title: "High Returns Investment Ghl India Vs Banks Fintech", date: '11/10/2023', author: 'Sumitha', image: `${GHL_IMG}/blog5_02.jpeg`, link: 'high-returns-investment-ghl-india-vs-banks-fintech' },
+  { id: 150, title: "Dhanteras Diwali Celebrations Financial Planning Tips", date: '09/11/2023', author: 'Sumitha', image: `${GHL_IMG}/blog6_01.jpg`, link: 'dhanteras-diwali-celebrations-financial-planning-tips' },
+  { id: 151, title: "Achieve Financial Freedom Discover True Wealth", date: '09/12/2023', author: 'Sumitha', image: `${GHL_IMG}/1.jpg`, link: 'achieve-financial-freedom-discover-true-wealth' },
+  { id: 152, title: "Capital Gain Vs Cash Flow Investments Explained", date: '26/02/2024', author: 'Sumitha', image: `${GHL_IMG}/b8_01.jpeg`, link: 'capital-gain-vs-cash-flow-investments-explained' },
+  { id: 153, title: "Understanding Roi Vs Irr Investment Returns", date: '23/03/2024', author: 'Sumitha', image: `${GHL_IMG}/blog09-02.jpeg`, link: 'understanding-roi-vs-irr-investment-returns' },
+  { id: 154, title: "Investing In Distressed Properties", date: '01/04/2024', author: 'Sumitha', image: `${GHL_IMG}/blog10_01.jpeg`, link: 'investing-in-distressed-properties' },
+  { id: 155, title: "Exploring Secured Debentures And Wholesale Trading Investments", date: '24/04/2024', author: 'Sumitha', image: `${GHL_IMG}/blog11_01.jpg`, link: 'exploring-secured-debentures-and-wholesale-trading-investments' },
+  { id: 156, title: "Wealth Building Beyond Savings Vs Investments", date: '01/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog12_01.jpg`, link: 'wealth-building-beyond-savings-vs-investments' },
+  { id: 157, title: "Smart Investing Tips And Strategies", date: '07/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog13_01.jpg`, link: 'smart-investing-tips-and-strategies' },
+  { id: 158, title: "Investing Tips And Building Assets", date: '15/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog14_01.jpg`, link: 'investing-tips-and-building-assets' },
+  { id: 159, title: "Role Financial Education Achieving True Wealth", date: '22/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog15_01.jpg`, link: 'role-financial-education-achieving-true-wealth' },
+  { id: 160, title: "Prioritizing Financial Freedom Achieving Success", date: '29/05/2024', author: 'Sumitha', image: `${GHL_IMG}/blog16_01.jpg`, link: 'prioritizing-financial-freedom-achieving-success' },
+  { id: 161, title: "The Power Of Giving Money In Financial Success", date: '05/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog17_01.jpg`, link: 'the-power-of-giving-money-in-financial-success' },
+  { id: 162, title: "Difference Between Assets And Liabilities", date: '12/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog18_01.jpg`, link: 'difference-between-assets-and-liabilities' },
+  { id: 163, title: "How To Achieve Happiness And Wealth With Smart Investing", date: '19/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog19_01.jpg`, link: 'how-to-achieve-happiness-and-wealth-with-smart-investing' },
+  { id: 164, title: "Alternative Path To Wealth And Happiness", date: '26/06/2024', author: 'Sumitha', image: `${GHL_IMG}/blog20_01.jpg`, link: 'alternative-path-to-wealth-and-happiness' },
 ];
 
 export default function BlogsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedBlogId, setSelectedBlogId] = useState(null);
   const itemsPerPage = 9;
 
   const filteredBlogs = useMemo(() => {
@@ -212,7 +232,8 @@ export default function BlogsPage() {
 
   return (
     <div className="blogs-page-view">
-      {/* 1. Hero Banner */}
+      {/* 1. Hero Banner - Only show if no blog selected */}
+      {!selectedBlogId && (
       <div className="blogs-hero-section">
         <div className="blogs-hero-wrapper">
           <div className="blogs-hero-overlay text-center">
@@ -232,21 +253,171 @@ export default function BlogsPage() {
           </div>
         </div>
       </div>
+      )}
 
       {/* 2. Breadcrumbs */}
-      <div className="blogs-breadcrumbs">
+      <div className="blogs-breadcrumbs" style={selectedBlogId ? { marginTop: 'var(--header-height, 90px)' } : {}}>
         <div className="container">
           <ul className="breadcrumbs-list">
             <li><a href="#/">Home</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li>Resources</li>
+            <li><a href="#/blogs">Resources</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li className="active">Blogs</li>
+            <li><a href="#/blogs">Blogs</a></li>
+            {selectedBlogId && (() => {
+              const blog = blogs.find(b => b.id === selectedBlogId);
+              return (
+                <>
+                  <span className="separator"><ChevronRight size={12} /></span>
+                  <li className="active" style={{ color: '#e41f26', fontWeight: '600' }}>{blog?.title}</li>
+                </>
+              );
+            })()}
           </ul>
         </div>
       </div>
 
-      {/* 3. Blog Grid */}
+      {/* Blog Detail View */}
+      {selectedBlogId && (() => {
+        const blog = blogs.find(b => b.id === selectedBlogId);
+        const relatedBlogs = blogs.filter(b => b.id !== selectedBlogId).slice(0, 3);
+        
+        return (
+          <div className="blog-details-view">
+            <div className="container-small">
+              <button 
+                className="back-to-blogs-btn"
+                onClick={() => setSelectedBlogId(null)}
+              >
+                <ArrowLeft size={16} />
+                <span>Back to Blogs</span>
+              </button>
+
+              <article className="blog-full-article">
+                <div className="article-header">
+                  <span className="badge-tag">{blog.link.split('-')[0].toUpperCase()}</span>
+                  <h1>{blog.title}</h1>
+                  <div className="article-meta">
+                    <div className="meta-item">
+                      <Calendar size={14} />
+                      <span>{blog.date}</span>
+                    </div>
+                    <div className="meta-item">
+                      <User size={14} />
+                      <span>By {blog.author}</span>
+                    </div>
+                    <div className="meta-item">
+                      <Clock size={14} />
+                      <span>5 min read</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="article-featured-image">
+                  <img src={blog.image} alt={blog.title} />
+                </div>
+
+                <div className="article-body-content">
+                  <p>
+                    In today's dynamic investment landscape, {blog.title.toLowerCase()} has become increasingly important for investors looking to diversify their portfolios and achieve sustainable wealth growth.
+                  </p>
+                  
+                  <h3>Understanding the Basics</h3>
+                  <p>
+                    This comprehensive guide explores the fundamental concepts and strategies that successful investors employ. Whether you're a beginner or an experienced investor, understanding these principles is crucial for making informed decisions.
+                  </p>
+
+                  <p>
+                    The investment world has evolved significantly over the years. What worked a decade ago might not be as effective today. That's why staying informed and continuously learning is essential for long-term success.
+                  </p>
+
+                  <h3>Key Strategies for Success</h3>
+                  <p>
+                    There are several proven strategies that can help you maximize returns while managing risk effectively. Let's explore some of the most effective approaches:
+                  </p>
+
+                  <p>
+                    <strong>1. Diversification:</strong> Don't put all your eggs in one basket. Spreading your investments across different asset classes reduces risk.
+                  </p>
+
+                  <p>
+                    <strong>2. Research and Due Diligence:</strong> Before investing, thoroughly research the opportunity. Understand the market, the competition, and potential risks.
+                  </p>
+
+                  <p>
+                    <strong>3. Long-term Perspective:</strong> Successful investors think long-term. Market volatility is normal, and patience often pays off.
+                  </p>
+
+                  <h3>Real-World Applications</h3>
+                  <p>
+                    Let's look at how these principles apply in real-world scenarios. Real estate investment, for example, combines the tangibility of physical assets with the potential for significant returns through both appreciation and rental income.
+                  </p>
+
+                  <p>
+                    Similarly, fractional investing has democratized access to premium real estate opportunities that were previously only available to high-net-worth individuals. This approach allows investors to participate in quality projects with lower capital requirements.
+                  </p>
+
+                  <h3>Conclusion</h3>
+                  <p>
+                    Whether you're exploring {blog.title.toLowerCase()} or considering other investment options, the key is to make informed decisions based on your financial goals and risk tolerance. At GHL India, we're committed to providing you with the insights and opportunities you need to build sustainable wealth.
+                  </p>
+                </div>
+
+                <div className="article-footer-actions">
+                  <button className="action-pill-btn">
+                    <span>👍</span> <span>Helpful</span>
+                  </button>
+                  <button className="action-pill-btn">
+                    <span>💬</span> <span>Comment</span>
+                  </button>
+                  <button className="action-pill-btn">
+                    <span>📤</span> <span>Share</span>
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            {/* Related Blogs Section */}
+            <section className="related-blogs-section">
+              <div className="container">
+                <h2 className="related-title">Latest Posts</h2>
+                <div className="blogs-grid">
+                  {relatedBlogs.map(relBlog => (
+                    <div
+                      key={relBlog.id}
+                      onClick={() => setSelectedBlogId(relBlog.id)}
+                      className="blog-card glass-panel"
+                    >
+                      <div className="blog-card-img-box">
+                        <img src={relBlog.image} alt={relBlog.title} loading="lazy" />
+                      </div>
+                      <div className="blog-card-body">
+                        <div className="blog-card-meta">
+                          <span><Calendar size={13} /> {relBlog.date}</span>
+                        </div>
+                        <h4 className="blog-card-title">{relBlog.title}</h4>
+                        <div className="blog-card-footer">
+                          <div className="blog-card-author">
+                            <User size={14} />
+                            <span>{relBlog.author}</span>
+                          </div>
+                          <span className="read-more-btn">
+                            <span>Read More</span>
+                            <ChevronRight size={14} />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </div>
+        );
+      })()}
+
+      {/* Main Blog List View - Only show if no blog is selected */}
+      {!selectedBlogId && (
       <section className="blogs-grid-section">
         <div className="container">
           {filteredBlogs.length === 0 ? (
@@ -263,11 +434,9 @@ export default function BlogsPage() {
               </div>
               <div className="blogs-grid">
                 {currentBlogs.map(blog => (
-                  <a
+                  <div
                     key={blog.id}
-                    href={`https://www.ghlindia.com/blogdetails?${blog.link}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => setSelectedBlogId(blog.id)}
                     className="blog-card glass-panel"
                   >
                     <div className="blog-card-img-box">
@@ -289,7 +458,7 @@ export default function BlogsPage() {
                         </span>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 ))}
               </div>
 
@@ -319,8 +488,10 @@ export default function BlogsPage() {
           )}
         </div>
       </section>
+      )}
 
-      {/* Newsletter */}
+      {/* Newsletter - Show only if no blog is selected */}
+      {!selectedBlogId && (
       <section className="blogs-newsletter-section">
         <div className="container">
           <div className="newsletter-card glass-panel">
@@ -334,6 +505,7 @@ export default function BlogsPage() {
           </div>
         </div>
       </section>
+      )}
     </div>
   );
 }
