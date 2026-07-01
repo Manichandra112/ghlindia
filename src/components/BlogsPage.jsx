@@ -261,9 +261,9 @@ export default function BlogsPage() {
           <ul className="breadcrumbs-list">
             <li><a href="#/">Home</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li><a href="#/blogs">Resources</a></li>
+            <li><a href="#/" onClick={() => setSelectedBlogId(null)}>Resources</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li><a href="#/blogs">Blogs</a></li>
+            <li><a href="#/" onClick={() => setSelectedBlogId(null)}>Blogs</a></li>
             {selectedBlogId && (() => {
               const blog = blogs.find(b => b.id === selectedBlogId);
               return (
@@ -285,14 +285,6 @@ export default function BlogsPage() {
         return (
           <div className="blog-details-view">
             <div className="container-small">
-              <button 
-                className="back-to-blogs-btn"
-                onClick={() => setSelectedBlogId(null)}
-              >
-                <ArrowLeft size={16} />
-                <span>Back to Blogs</span>
-              </button>
-
               <article className="blog-full-article">
                 <div className="article-header">
                   <span className="badge-tag">{blog.link.split('-')[0].toUpperCase()}</span>
