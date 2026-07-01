@@ -19,11 +19,11 @@ export default function FinancialIQ() {
         const pageQuery = currentPage === 1 ? '' : `?page_no=${currentPage}`;
         const response = await fetch(`/financial-iq${pageQuery}`);
         if (!response.ok) throw new Error('Network response error');
-        
+
         const htmlText = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
-        
+
         const articleElements = doc.querySelectorAll('.posts-list article');
         if (articleElements.length === 0) throw new Error('No articles found');
 
@@ -31,14 +31,14 @@ export default function FinancialIQ() {
         articleElements.forEach((el) => {
           const imgEl = el.querySelector('.post-img img');
           const titleLink = el.querySelector('.title a');
-          
+
           if (titleLink) {
             const href = titleLink.getAttribute('href') || '';
             const slug = href.split('?')[1] || '';
             const title = titleLink.textContent.trim();
             const imagePath = imgEl ? imgEl.getAttribute('src') : '';
             const imageUrl = imagePath.startsWith('http') ? imagePath : `https://www.ghlindia.com/${imagePath}`;
-            
+
             // Look up exact date from local fallback list to sync perfectly
             let date = '15/04/2026';
             const matchedLocal = localData.find(x => x.slug === slug);
@@ -116,20 +116,20 @@ export default function FinancialIQ() {
         setLoadingDetail(true);
         const response = await fetch(`/financial-iqdetails?${article.slug}`);
         if (!response.ok) throw new Error('Detail fetch error');
-        
+
         const htmlText = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
-        
+
         const detailArticle = doc.querySelector('.blog-details article');
         if (detailArticle) {
           const imgBlock = detailArticle.querySelector('.post-img');
           if (imgBlock) imgBlock.remove();
-          
+
           let contentHtml = detailArticle.innerHTML;
           // Strip empty tags to measure real content length
           const stripped = contentHtml.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, '').trim();
-          
+
           if (stripped.length > 50) {
             // Live page has real content — fix image URLs and use it
             contentHtml = fixContentImageUrls(contentHtml);
@@ -143,7 +143,7 @@ export default function FinancialIQ() {
       } catch (err) {
         console.warn('Live fetch error, using local fallback:', err);
       }
-      
+
       // If live content was empty or fetch failed, use local database
       if (!contentSet) {
         const localMatch = localData.find(x => x.slug === article.slug);
@@ -222,9 +222,9 @@ export default function FinancialIQ() {
 
             {selectedArticle.image && (
               <div className="detail-img-wrapper">
-                <img 
-                  src={getImageUrl(selectedArticle.image)} 
-                  alt={selectedArticle.title} 
+                <img
+                  src={getImageUrl(selectedArticle.image)}
+                  alt={selectedArticle.title}
                   className="detail-img"
                 />
               </div>
@@ -288,15 +288,15 @@ export default function FinancialIQ() {
     <div className="financial-iq-container">
       <div className="fiq-banner-section">
         <div className="fiq-banner-wrapper">
-          <img 
-            src="https://www.ghlindia.com/assets/img/financial-iq-A.jpg" 
-            alt="Financial IQ Desktop Banner" 
-            className="fiq-banner-img desktop-banner" 
+          <img
+            src="https://www.ghlindia.com/assets/img/financial-iq-A.jpg"
+            alt="Financial IQ Desktop Banner"
+            className="fiq-banner-img desktop-banner"
           />
-          <img 
-            src="https://www.ghlindia.com/assets/img/financial-IQ-MOB.jpg" 
-            alt="Financial IQ Mobile Banner" 
-            className="fiq-banner-img mobile-banner" 
+          <img
+            src="https://www.ghlindia.com/assets/img/financial-IQ-MOB.jpg"
+            alt="Financial IQ Mobile Banner"
+            className="fiq-banner-img mobile-banner"
           />
         </div>
       </div>
@@ -355,14 +355,14 @@ export default function FinancialIQ() {
               <div className="blog-pagination flex-center">
                 <ul className="justify-content-center">
                   <li className={currentPage === 1 ? 'disabled' : ''}>
-                    <button 
+                    <button
                       onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
                     >
                       &lt;
                     </button>
                   </li>
-                  
+
                   {/* Dynamic page numbers (pages 1 to 11) */}
                   {Array.from({ length: 11 }, (_, i) => i + 1).map((pageNo) => (
                     <li key={pageNo} className={currentPage === pageNo ? 'active' : ''}>
@@ -371,16 +371,16 @@ export default function FinancialIQ() {
                       </button>
                     </li>
                   ))}
-                  
+
                   <li className={currentPage === 11 ? 'disabled' : ''}>
-                    <button 
+                    <button
                       onClick={() => currentPage < 11 && handlePageChange(currentPage + 1)}
                       disabled={currentPage === 11}
                     >
                       &gt;
                     </button>
                   </li>
-                  
+
                   <li>
                     <button onClick={() => handlePageChange(11)}>
                       &gt;&gt;
@@ -396,3 +396,4 @@ export default function FinancialIQ() {
     </div>
   );
 }
+

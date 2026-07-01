@@ -130,14 +130,14 @@ export default function Header() {
 
               {/* Intelligence Dropdown */}
               <li className="dropdown-parent">
-                <button className={`nav-item dropdown-toggle ${isActiveLink('#/financial-iq') || isActiveLink('#/economy-insight') ? 'active' : ''}`} onClick={() => toggleDropdown('intelligence')}>
+                <button className={`nav-item dropdown-toggle ${isActiveLink('#/financial-iq') || isActiveLink('#/economy-insight') || isActiveLink('#/educational-videos') ? 'active' : ''}`} onClick={() => toggleDropdown('intelligence')}>
                   <span>Intelligence</span>
                   <ChevronDown size={14} className={activeDropdown === 'intelligence' ? 'rotate-180' : ''} />
                 </button>
                 <ul className={`dropdown-menu ${activeDropdown === 'intelligence' ? 'show-menu' : ''}`}>
                   <li><a href="#/economy-insight" className={isActiveLink('#/economy-insight') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Economy Insight</a></li>
                   <li><a href="#/financial-iq" className={isActiveLink('#/financial-iq') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Financial IQ</a></li>
-                  <li><a href="#products" onClick={() => setActiveDropdown(null)}>Educational Videos</a></li>
+                  <li><a href="#/educational-videos" className={isActiveLink('#/educational-videos') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Educational Videos</a></li>
                 </ul>
               </li>
 
@@ -207,7 +207,7 @@ export default function Header() {
               <ul className={`mobile-submenu ${activeDropdown === 'mob-intelligence' ? 'open' : ''}`}>
                 <li><a href="#/economy-insight" onClick={() => setMobileMenuOpen(false)}>Economy Insight</a></li>
                 <li><a href="#/financial-iq" onClick={() => setMobileMenuOpen(false)}>Financial IQ</a></li>
-                <li><a href="#products" onClick={() => setMobileMenuOpen(false)}>Educational Videos</a></li>
+                <li><a href="#/educational-videos" onClick={() => setMobileMenuOpen(false)}>Educational Videos</a></li>
               </ul>
             </li>
 

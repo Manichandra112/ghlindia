@@ -2,7 +2,7 @@
   background-color: var(--text-white);
   color: var(--text-dark);
   font-family: var(--font-default);
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 /* 1. Hero Section */

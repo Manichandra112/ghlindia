@@ -5,7 +5,7 @@
 .charge-creation-page {
   background: var(--section-muted, #e8edf5);
   color: #1f2937;
-  overflow-x: hidden;
+  overflow: visible;
   font-family: var(--font-body, sans-serif);
 }
 
