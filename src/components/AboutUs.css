@@ -399,6 +399,7 @@
 
 .analysis-card {
   display: flex;
+  flex-direction: column;
   gap: 24px;
   background-color: #f8fafc;
   padding: 30px;
@@ -413,18 +414,24 @@
   border-color: rgba(15, 23, 42, 0.1);
 }
 
+.analysis-card-top {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
 .analysis-icon-box {
-  width: 80px;
-  height: 80px;
+  width: 190px;
+  height: 190px;
   background-color: #ffffff;
-  border-radius: 16px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   flex-shrink: 0;
   overflow: hidden;
-  padding: 8px;
+  padding: 10px;
 }
 
 .analysis-icon-box img {
@@ -448,9 +455,10 @@
 }
 
 .diagram-legend {
-  margin-top: 18px;
-  padding-top: 14px;
+  margin-top: 0;
+  padding-top: 20px;
   border-top: 1px dashed rgba(15, 23, 42, 0.08);
+  width: 100%;
 }
 
 .legend-title {
@@ -460,7 +468,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .diagram-legend ul {
@@ -469,16 +477,29 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .diagram-legend li {
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: #475569;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: start;
+  gap: 16px;
+  line-height: 1.5;
+}
+
+.legend-label {
   display: flex;
   align-items: center;
   gap: 8px;
-  line-height: 1.4;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.legend-desc {
+  color: #475569;
 }
 
 .diagram-legend .bullet {
@@ -503,6 +524,30 @@
 @media (max-width: 768px) {
   .analysis-split-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .analysis-card-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .analysis-icon-box {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .diagram-legend li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    text-align: left;
+  }
+  
+  .legend-label {
+    justify-content: flex-start;
   }
 }
 

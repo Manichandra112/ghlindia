@@ -151,42 +151,82 @@ export default function AboutUs() {
 
           <div className="analysis-split-grid">
             <div className="analysis-card">
-              <div className="analysis-icon-box">
-                <img src="https://www.ghlindia.com/assets/img/about/Micro-analysis.png" alt="Micro Analysis icon" />
-              </div>
-              <div className="analysis-card-content">
-                <h3>Micro Market Analysis</h3>
-                <p>
-                  We examine individual sectors, product demands, and asset margins. By evaluating competitor dynamics and user demographics, we identify target yields that are sustainable.
-                </p>
-                <div className="diagram-legend">
-                  <span className="legend-title">Diagram Details:</span>
-                  <ul>
-                    <li><span className="bullet red-dot"></span> <strong>Consumer Need & User Demand:</strong> Demographics and market alignment.</li>
-                    <li><span className="bullet yellow-dot"></span> <strong>Consumer Behavior:</strong> Customer dynamics and buying cycles.</li>
-                    <li><span className="bullet orange-dot"></span> <strong>Support & Relationship:</strong> Competitor margins and ecosystem values.</li>
-                  </ul>
+              <div className="analysis-card-top">
+                <div className="analysis-icon-box">
+                  <img src="https://www.ghlindia.com/assets/img/about/Micro-analysis.png" alt="Micro Analysis icon" />
                 </div>
+                <div className="analysis-card-content">
+                  <h3>Micro Market Analysis</h3>
+                  <p>
+                    We examine individual sectors, product demands, and asset margins. By evaluating competitor dynamics and user demographics, we identify target yields that are sustainable.
+                  </p>
+                </div>
+              </div>
+              <div className="diagram-legend">
+                <span className="legend-title">Diagram Details:</span>
+                <ul>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet red-dot"></span>
+                      <strong>Immense Need of the People:</strong>
+                    </div>
+                    <div className="legend-desc">Understanding deep consumer demand.</div>
+                  </li>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet yellow-dot"></span>
+                      <strong>Consumer Behavior:</strong>
+                    </div>
+                    <div className="legend-desc">Analyzing buyer choices and patterns.</div>
+                  </li>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet orange-dot"></span>
+                      <strong>Supply, Demand & Competitors:</strong>
+                    </div>
+                    <div className="legend-desc">Assessing market saturation and competition.</div>
+                  </li>
+                </ul>
               </div>
             </div>
 
             <div className="analysis-card">
-              <div className="analysis-icon-box">
-                <img src="https://www.ghlindia.com/assets/img/about/Macro-analysis.png" alt="Macro Analysis icon" />
-              </div>
-              <div className="analysis-card-content">
-                <h3>Macroeconomic Analysis</h3>
-                <p>
-                  We study country-specific regulations, fiscal policy changes, and international asset classes. This positions our portfolios to buffer against inflation and market cycles.
-                </p>
-                <div className="diagram-legend">
-                  <span className="legend-title">Diagram Details:</span>
-                  <ul>
-                    <li><span className="bullet yellow-dot"></span> <strong>Regulations & Framework:</strong> Local and national policy parameters.</li>
-                    <li><span className="bullet orange-dot"></span> <strong>Fiscal & Geopolitical:</strong> Inflation indices and interest cycles.</li>
-                    <li><span className="bullet red-dot"></span> <strong>Global Trends & Assets:</strong> Broad market movements and valuations.</li>
-                  </ul>
+              <div className="analysis-card-top">
+                <div className="analysis-icon-box">
+                  <img src="https://www.ghlindia.com/assets/img/about/Macro-analysis.png" alt="Macro Analysis icon" />
                 </div>
+                <div className="analysis-card-content">
+                  <h3>Macroeconomic Analysis</h3>
+                  <p>
+                    We study country-specific regulations, fiscal policy changes, and international asset classes. This positions our portfolios to buffer against inflation and market cycles.
+                  </p>
+                </div>
+              </div>
+              <div className="diagram-legend">
+                <span className="legend-title">Diagram Details:</span>
+                <ul>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet yellow-dot"></span>
+                      <strong>Regulations of Business:</strong>
+                    </div>
+                    <div className="legend-desc">Understanding local and national policy compliance.</div>
+                  </li>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet orange-dot"></span>
+                      <strong>Fiscal Policies of Nation:</strong>
+                    </div>
+                    <div className="legend-desc">Monitoring tax structures and government spend.</div>
+                  </li>
+                  <li>
+                    <div className="legend-label">
+                      <span className="bullet red-dot"></span>
+                      <strong>Global Financial System:</strong>
+                    </div>
+                    <div className="legend-desc">Evaluating international asset classes and currency cycles.</div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
