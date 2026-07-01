@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Play, ArrowLeft, ArrowRight, Video } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info } from 'lucide-react';
 import localVideos from '../data/educational_videos_data.json';
 import './EducationalVideos.css';
 
@@ -23,29 +23,44 @@ const YoutubeIcon = ({ size = 16, className }) => (
 
 export default function EducationalVideos() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedVideo, setSelectedVideo] = useState(null); // For lightbox modal
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [playingId, setPlayingId] = useState(null); // stores index of playing video
-  const [totalVideos, setTotalVideos] = useState(localVideos.length);
 
   const videosPerPage = 9;
 
-  useEffect(() => {
-    // Scroll to top when view loads or page changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    loadVideos(currentPage);
-  }, [currentPage]);
+  // Categorization logic based on title keywords
+  const getCategory = (title) => {
+    const t = title.toLowerCase();
+    if (t.includes('structure') || t.includes('corporate') || t.includes('explained')) {
+      return 'Structure';
+    }
+    if (t.includes('real estate') || t.includes('profit') || t.includes('invest') || t.includes('deal') || t.includes('exit') || t.includes('price')) {
+      return 'Strategy';
+    }
+    if (t.includes('protect') || t.includes('support') || t.includes('capital') || t.includes('faq')) {
+      return 'Protection';
+    }
+    if (t.includes('sunday') || t.includes('reel') || t.includes('short')) {
+      return 'Shorts';
+    }
+    return 'General';
+  };
 
-  const loadVideos = async (page) => {
+  useEffect(() => {
+    loadVideos();
+  }, []);
+
+  const loadVideos = async () => {
     setLoading(true);
-    setPlayingId(null);
     let loadedVideos = [];
     let success = false;
 
     try {
-      // Try to fetch live content dynamically on production
-      const pageQuery = page === 1 ? '' : `?page_no=${page}`;
-      const response = await fetch(`/educational-videos${pageQuery}`);
+      // Fetch live HTML from server to parse live list
+      const response = await fetch('/educational-videos');
       if (response.ok) {
         const htmlText = await response.text();
         const parser = new DOMParser();
@@ -77,37 +92,28 @@ export default function EducationalVideos() {
                 title: title.trim(),
                 thumbnail: thumbnail.trim(),
                 videoUrl: videoUrl.trim(),
-                isNew: hasRibbon
+                isNew: hasRibbon,
+                category: getCategory(title)
               });
             }
           });
-
           if (loadedVideos.length > 0) {
             setVideos(loadedVideos);
-            // Dynamic count estimation based on pagination count
-            const paginationItems = doc.querySelectorAll('.blog-pagination li');
-            let maxPage = 8;
-            paginationItems.forEach(item => {
-              const num = parseInt(item.textContent);
-              if (!isNaN(num) && num > maxPage) {
-                maxPage = num;
-              }
-            });
-            setTotalVideos(maxPage * videosPerPage);
             success = true;
           }
         }
       }
     } catch (err) {
-      console.warn('Live video fetch failed, using local database:', err);
+      console.warn('Live dynamic video parse failed, using fallback database:', err);
     }
 
-    // Local Fallback slice
     if (!success) {
-      const startIndex = (page - 1) * videosPerPage;
-      const endIndex = startIndex + videosPerPage;
-      setVideos(localVideos.slice(startIndex, endIndex));
-      setTotalVideos(localVideos.length);
+      // Fallback with categorized fields
+      const fallbackCategorized = localVideos.map(video => ({
+        ...video,
+        category: getCategory(video.title)
+      }));
+      setVideos(fallbackCategorized);
     }
     setLoading(false);
   };
@@ -131,17 +137,44 @@ export default function EducationalVideos() {
     return videoId;
   };
 
+  // Real-time Filtering & Search
+  const filteredVideos = useMemo(() => {
+    return videos.filter((video) => {
+      const matchesSearch = video.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = activeCategory === 'All' || video.category === activeCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [videos, searchQuery, activeCategory]);
+
+  // Reset pagination when search query or category filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, activeCategory]);
+
+  // Slice list for current page
+  const paginatedVideos = useMemo(() => {
+    const startIndex = (currentPage - 1) * videosPerPage;
+    return filteredVideos.slice(startIndex, startIndex + videosPerPage);
+  }, [filteredVideos, currentPage]);
+
+  const totalPages = Math.ceil(filteredVideos.length / videosPerPage);
+
   const handlePageChange = (pageNo) => {
-    if (pageNo >= 1 && pageNo <= Math.ceil(totalVideos / videosPerPage)) {
+    if (pageNo >= 1 && pageNo <= totalPages) {
       setCurrentPage(pageNo);
+      // Clean page transition scroll
+      const gridElement = document.querySelector('.edu-content-anchor');
+      if (gridElement) {
+        gridElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
-  const totalPages = Math.ceil(totalVideos / videosPerPage);
+  const categories = ['All', 'Strategy', 'Structure', 'Protection', 'Shorts'];
 
   return (
     <div className="edu-videos-page">
-      {/* Banner Section */}
+      {/* Cinematic Banner Header */}
       <div className="edu-banner-section">
         <div className="edu-banner-wrapper">
           <img
@@ -154,21 +187,48 @@ export default function EducationalVideos() {
             alt="Educational Videos Mobile Banner"
             className="edu-banner-img mobile-banner"
           />
+          <div className="banner-overlay-content">
+            <span className="badge-tag">GHL Academy</span>
+            <h1>Educational Video Resources</h1>
+            <p>Smart structural insights, real estate architecture, and capital protection strategies.</p>
+          </div>
         </div>
       </div>
 
-      {/* Breadcrumbs Navigation */}
-      <div className="edu-breadcrumbs">
-        <div className="container">
-          <ol className="breadcrumbs-list">
-            <li><a href="#/">Home</a></li>
-            <li className="separator">/</li>
-            <li>Intelligence</li>
-            <li className="separator">/</li>
-            <li className="active">Educational Videos</li>
-          </ol>
+      {/* Control Panel Bar (Filters + Search) */}
+      <div className="edu-control-panel-bar">
+        <div className="container panel-inner">
+          <div className="categories-filter-wrapper">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`category-pill ${activeCategory === cat ? 'active' : ''}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="search-bar-wrapper">
+            <Search className="search-icon" size={18} />
+            <input
+              type="text"
+              placeholder="Search videos..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="search-input"
+            />
+            {searchQuery && (
+              <button className="clear-search-btn" onClick={() => setSearchQuery('')}>
+                <X size={16} />
+              </button>
+            )}
+          </div>
         </div>
       </div>
+
+      <div className="edu-content-anchor"></div>
 
       {/* Video Content Grid */}
       <section className="edu-videos-section">
@@ -176,49 +236,53 @@ export default function EducationalVideos() {
           {loading ? (
             <div className="edu-loading-container">
               <div className="edu-spinner"></div>
-              <p>Loading Videos...</p>
+              <p>Fetching resources...</p>
+            </div>
+          ) : filteredVideos.length === 0 ? (
+            <div className="edu-empty-state">
+              <Info size={40} className="empty-icon" />
+              <h3>No videos found</h3>
+              <p>We couldn't find any videos matching your filter or search query. Try clearing them.</p>
+              <button
+                className="btn-reset-filters"
+                onClick={() => {
+                  setSearchQuery('');
+                  setActiveCategory('All');
+                }}
+              >
+                Reset Filters
+              </button>
             </div>
           ) : (
             <>
               <div className="edu-videos-grid">
-                {videos.map((video, index) => {
-                  const isPlaying = playingId === index;
-                  const videoId = extractYouTubeID(video.videoUrl);
-
+                {paginatedVideos.map((video, idx) => {
+                  const index = (currentPage - 1) * videosPerPage + idx;
                   return (
                     <div key={index} className="edu-video-card">
                       <div className="video-card-inner">
                         <div className="video-media-wrapper">
-                          {isPlaying && videoId ? (
-                            <iframe
-                              className="video-iframe"
-                              src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-                              title={video.title}
-                              frameBorder="0"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                            ></iframe>
-                          ) : (
-                            <>
-                              <img
-                                src={getThumbnailUrl(video.thumbnail)}
-                                alt={video.title}
-                                className="video-thumbnail"
-                              />
-                              {video.isNew && (
-                                <div className="video-card-ribbon">
-                                  <span>New</span>
-                                </div>
-                              )}
-                              <button
-                                className="video-play-btn"
-                                onClick={() => setPlayingId(index)}
-                                aria-label="Play video"
-                              >
-                                <Play size={24} fill="#ffffff" stroke="none" />
-                              </button>
-                            </>
+                          <img
+                            src={getThumbnailUrl(video.thumbnail)}
+                            alt={video.title}
+                            className="video-thumbnail"
+                            loading="lazy"
+                          />
+                          <div className="category-label-tag">{video.category}</div>
+                          {video.isNew && (
+                            <div className="video-card-ribbon">
+                              <span>New</span>
+                            </div>
                           )}
+                          <button
+                            className="video-play-overlay-btn"
+                            onClick={() => setSelectedVideo(video)}
+                            aria-label="Play video"
+                          >
+                            <div className="btn-circle-ripple">
+                              <Play size={20} fill="#ffffff" stroke="none" />
+                            </div>
+                          </button>
                         </div>
                         <div className="video-content-body">
                           <h3 className="video-title">{video.title}</h3>
@@ -230,18 +294,16 @@ export default function EducationalVideos() {
                             rel="noopener noreferrer"
                             className="video-action-btn subscribe-btn"
                           >
-                            <Youtube size={16} className="btn-icon" />
+                            <YoutubeIcon size={14} className="btn-icon" />
                             Subscribe
                           </a>
-                          <a
-                            href={video.videoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button
+                            onClick={() => setSelectedVideo(video)}
                             className="video-action-btn watch-btn"
                           >
-                            <Video size={16} className="btn-icon" />
+                            <Video size={14} className="btn-icon" />
                             Watch Video
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -285,6 +347,71 @@ export default function EducationalVideos() {
           )}
         </div>
       </section>
+
+      {/* Login & Register CTA Section */}
+      <section className="edu-login-cta-section">
+        <div className="container">
+          <div className="edu-login-cta-content">
+            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
+            <p>Let us join together to live an opulent life</p>
+            <div className="edu-login-cta-actions">
+              <a href="#login" className="cta-btn btn-white-glass">
+                <span>Login</span>
+                <ArrowRight size={16} />
+              </a>
+              <a href="#register" className="cta-btn btn-white-solid">
+                <span>Register</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cinematic Lightbox Modal */}
+      {selectedVideo && (
+        <div className="cinematic-lightbox-overlay" onClick={() => setSelectedVideo(null)}>
+          <div className="lightbox-content-box" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close-btn" onClick={() => setSelectedVideo(null)}>
+              <X size={24} />
+            </button>
+            <div className="lightbox-video-frame-wrapper">
+              <iframe
+                className="lightbox-iframe"
+                src={`https://www.youtube.com/embed/${extractYouTubeID(selectedVideo.videoUrl)}?autoplay=1`}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="lightbox-metadata">
+              <span className="lightbox-category">{selectedVideo.category}</span>
+              <h2 className="lightbox-title">{selectedVideo.title}</h2>
+              <div className="lightbox-actions-row">
+                <a
+                  href={selectedVideo.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lightbox-btn yt-link-btn"
+                >
+                  <Film size={16} />
+                  Open on YouTube
+                </a>
+                <a
+                  href="https://www.youtube.com/@ghlindiaasset"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lightbox-btn channel-sub-btn"
+                >
+                  <YoutubeIcon size={16} />
+                  Subscribe
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
