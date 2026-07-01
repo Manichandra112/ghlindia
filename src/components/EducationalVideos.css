@@ -4,21 +4,23 @@
   background-color: var(--light-gray, #f8f9fd);
   color: var(--text-dark, #0f172a);
   font-family: var(--font-body, 'Inter', sans-serif);
-  padding-bottom: 0px; /* Reset so CTA aligns to bottom */
+  padding-bottom: 0px;
+  /* Reset so CTA aligns to bottom */
 }
 
 /* 1. Cinematic Banner Header */
 .edu-banner-section {
   position: relative;
   width: 100%;
-  margin-top: calc(var(--header-height, 90px) + 16px);
+  margin-top: var(--header-height, 90px);
   overflow: hidden;
 }
 
 .edu-banner-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 6;
+  aspect-ratio: 21 / 7.5;
+  /* Taller height */
   background-color: #0b0f19;
 }
 
@@ -26,8 +28,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
+  /* Shift image slightly up */
   display: block;
-  opacity: 0.45; /* Darken image to highlight typography overlay */
+  opacity: 0.45;
+  /* Darken image to highlight typography overlay */
   filter: grayscale(20%) brightness(90%);
 }
 
@@ -70,6 +75,8 @@
   margin: 0 0 12px 0;
   letter-spacing: -0.02em;
   line-height: 1.15;
+  color: #ffffff;
+  /* Make text color white for high readability */
 }
 
 .banner-overlay-content p {
@@ -84,16 +91,20 @@
   .edu-banner-section {
     margin-top: 70px;
   }
+
   .edu-banner-wrapper {
     aspect-ratio: 16 / 9;
   }
+
   .edu-banner-img.desktop-banner {
     display: none;
   }
+
   .edu-banner-img.mobile-banner {
     display: block;
     opacity: 0.4;
   }
+
   .banner-overlay-content {
     padding: 0 24px;
   }
@@ -105,7 +116,8 @@
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   padding: 16px 0;
   position: sticky;
-  top: 70px; /* Aligns perfectly with the scrolled header height */
+  top: 70px;
+  /* Aligns perfectly with the scrolled header height */
   z-index: 10;
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
 }
@@ -129,11 +141,13 @@
   gap: 8px;
   overflow-x: auto;
   padding-bottom: 4px;
-  scrollbar-width: none; /* Hide scrollbar on Firefox */
+  scrollbar-width: none;
+  /* Hide scrollbar on Firefox */
 }
 
 .categories-filter-wrapper::-webkit-scrollbar {
-  display: none; /* Hide scrollbar on Chrome/Safari */
+  display: none;
+  /* Hide scrollbar on Chrome/Safari */
 }
 
 .category-pill {
@@ -218,6 +232,7 @@
     align-items: stretch;
     gap: 12px;
   }
+
   .search-bar-wrapper {
     max-width: 100%;
   }
@@ -409,6 +424,7 @@
     transform: scale(1);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0;
@@ -579,8 +595,13 @@
 }
 
 @keyframes edu-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .lightbox-content-box {
@@ -596,8 +617,15 @@
 }
 
 @keyframes edu-zoom-in {
-  from { transform: scale(0.92); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .lightbox-close-btn {
@@ -702,14 +730,17 @@
   .lightbox-metadata {
     padding: 20px;
   }
+
   .lightbox-title {
     font-size: 16px;
     margin-bottom: 16px;
   }
+
   .lightbox-actions-row {
     flex-direction: column;
     gap: 8px;
   }
+
   .lightbox-btn {
     width: 100%;
   }
@@ -724,7 +755,8 @@
   margin-top: 50px;
 }
 
-.pagination-arrow, .pagination-num {
+.pagination-arrow,
+.pagination-num {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -741,7 +773,8 @@
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.01);
 }
 
-.pagination-arrow:hover:not(:disabled), .pagination-num:hover {
+.pagination-arrow:hover:not(:disabled),
+.pagination-num:hover {
   border-color: var(--primary-red, #e41f26);
   color: var(--primary-red, #e41f26);
   transform: translateY(-1px);
@@ -780,8 +813,13 @@
 }
 
 @keyframes edu-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* 9. Login & Register CTA Section */
