@@ -159,6 +159,14 @@ export default function AboutUs() {
                 <p>
                   We examine individual sectors, product demands, and asset margins. By evaluating competitor dynamics and user demographics, we identify target yields that are sustainable.
                 </p>
+                <div className="diagram-legend">
+                  <span className="legend-title">Diagram Details:</span>
+                  <ul>
+                    <li><span className="bullet red-dot"></span> <strong>Consumer Need & User Demand:</strong> Demographics and market alignment.</li>
+                    <li><span className="bullet yellow-dot"></span> <strong>Consumer Behavior:</strong> Customer dynamics and buying cycles.</li>
+                    <li><span className="bullet orange-dot"></span> <strong>Support & Relationship:</strong> Competitor margins and ecosystem values.</li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -171,6 +179,14 @@ export default function AboutUs() {
                 <p>
                   We study country-specific regulations, fiscal policy changes, and international asset classes. This positions our portfolios to buffer against inflation and market cycles.
                 </p>
+                <div className="diagram-legend">
+                  <span className="legend-title">Diagram Details:</span>
+                  <ul>
+                    <li><span className="bullet yellow-dot"></span> <strong>Regulations & Framework:</strong> Local and national policy parameters.</li>
+                    <li><span className="bullet orange-dot"></span> <strong>Fiscal & Geopolitical:</strong> Inflation indices and interest cycles.</li>
+                    <li><span className="bullet red-dot"></span> <strong>Global Trends & Assets:</strong> Broad market movements and valuations.</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
