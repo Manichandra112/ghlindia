@@ -27,7 +27,7 @@ import EducationalVideos from './components/EducationalVideos';
 import AboutUs from './components/AboutUs';
 import FAQPage from './components/FAQPage';
 import BlogsPage from './components/BlogsPage';
-import SectorPage from './components/SectorPage';
+import BiotechSector from './components/BiotechSector';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -93,10 +93,7 @@ function App() {
         {currentView === 'about-us' && <AboutUs />}
         {currentView === 'faq' && <FAQPage />}
         {currentView === 'blogs' && <BlogsPage />}
-        {currentView === 'biotech' && <SectorPage sector="biotech" />}
-        {currentView === 'real-estate' && <SectorPage sector="real-estate" />}
-        {currentView === 'food-beverage' && <SectorPage sector="food-beverage" />}
-        {currentView === 'agri' && <SectorPage sector="agri" />}
+        {currentView === 'biotech' && <BiotechSector />}
         {currentView === 'home' && (
           <>
             <Hero />
