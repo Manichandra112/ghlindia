@@ -193,37 +193,43 @@ export default function OurTeam() {
     }
   ];
 
-  const galleryImages = [
-    {
-      src: galleryImage1,
-      alt: "GHL India office floor with team members working",
-      caption: "Team Floor"
-    },
-    {
-      src: galleryImage5,
-      alt: "GHL India team members working at office desks",
-      caption: "Daily Operations"
-    },
-    {
-      src: galleryImage3,
-      alt: "GHL India open office workspace",
-      caption: "Corporate Workspace"
-    },
-    {
-      src: galleryImage4,
-      alt: "GHL India office team working with laptops",
-      caption: "Client Coordination"
-    },
-    {
-      src: galleryImage2,
-      alt: "GHL India team working at desktop systems",
-      caption: "Investor Support Desk"
-    },
-    {
-      src: galleryImage6,
-      alt: "GHL India operations team at work",
-      caption: "Focused Operations"
-    }
+  const gallerySlides = [
+    [
+      {
+        src: galleryImage1,
+        alt: "GHL India office floor with team members working",
+        caption: "Team Floor"
+      },
+      {
+        src: galleryImage2,
+        alt: "GHL India team working at desktop systems",
+        caption: "Investor Support Desk"
+      }
+    ],
+    [
+      {
+        src: galleryImage3,
+        alt: "GHL India open office workspace",
+        caption: "Corporate Workspace"
+      },
+      {
+        src: galleryImage4,
+        alt: "GHL India office team working with laptops",
+        caption: "Client Coordination"
+      }
+    ],
+    [
+      {
+        src: galleryImage5,
+        alt: "GHL India team members working at office desks",
+        caption: "Daily Operations"
+      },
+      {
+        src: galleryImage6,
+        alt: "GHL India operations team at work",
+        caption: "Focused Operations"
+      }
+    ]
   ];
 
   return (
@@ -497,29 +503,34 @@ export default function OurTeam() {
               <button
                 type="button"
                 className="gallery-nav-xd prev"
-                onClick={() => setSelectedGalleryImage((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1))}
+                onClick={() => setSelectedGalleryImage((prev) => (prev === 0 ? gallerySlides.length - 1 : prev - 1))}
                 aria-label="Previous gallery image"
               >
                 <ChevronLeft size={22} />
               </button>
 
-              {galleryImages.map((image, idx) => (
+              {gallerySlides.map((slide, idx) => (
                 <div
                   key={idx}
                   className={`gallery-slide-xd ${
                     idx === selectedGalleryImage
                       ? "active"
-                      : idx === (selectedGalleryImage - 1 + galleryImages.length) % galleryImages.length
+                      : idx === (selectedGalleryImage - 1 + gallerySlides.length) % gallerySlides.length
                         ? "prev"
-                        : idx === (selectedGalleryImage + 1) % galleryImages.length
+                        : idx === (selectedGalleryImage + 1) % gallerySlides.length
                           ? "next"
                           : "hidden"
                   }`}
                 >
-                  <img src={image.src} alt="" />
-                  <div className="gallery-slide-caption-xd">
-                    <span>{String(idx + 1).padStart(2, "0")}</span>
-                    <h3>{image.caption}</h3>
+                  <div className="gallery-slide-grid">
+                    {slide.map((image, imageIdx) => (
+                      <div className="gallery-image-card" key={`${image.caption}-${imageIdx}`}>
+                        <img src={image.src} alt={image.alt} />
+                        <div className="gallery-image-caption">
+                          <span>{image.caption}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -527,7 +538,7 @@ export default function OurTeam() {
               <button
                 type="button"
                 className="gallery-nav-xd next"
-                onClick={() => setSelectedGalleryImage((prev) => (prev + 1) % galleryImages.length)}
+                onClick={() => setSelectedGalleryImage((prev) => (prev + 1) % gallerySlides.length)}
                 aria-label="Next gallery image"
               >
                 <ChevronRight size={22} />
@@ -535,13 +546,13 @@ export default function OurTeam() {
             </div>
 
             <div className="gallery-dots-xd" aria-label="Gallery image selector">
-              {galleryImages.map((image, idx) => (
+              {gallerySlides.map((slide, idx) => (
                 <button
                   key={idx}
                   type="button"
                   className={selectedGalleryImage === idx ? "active" : ""}
                   onClick={() => setSelectedGalleryImage(idx)}
-                  aria-label={`Show ${image.caption}`}
+                  aria-label={`Show gallery set ${idx + 1}`}
                 >
                   {String(idx + 1).padStart(2, "0")}
                 </button>

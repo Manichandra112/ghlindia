@@ -553,6 +553,51 @@
   filter: brightness(0.75) saturate(0.6);
 }
 
+.gallery-slide-grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.gallery-image-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f8fafc;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+.gallery-image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0) 30%, rgba(15, 23, 42, 0.2) 100%);
+  pointer-events: none;
+}
+
+.gallery-image-caption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+}
+
+.gallery-image-caption span {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .gallery-slide-xd.active {
   opacity: 1;
   visibility: visible;
@@ -594,64 +639,18 @@
   transform: scale(1.01);
 }
 
-/* Gallery slide caption overlay - PROFESSIONAL VERSION */
-.gallery-slide-caption-xd {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 36px;
-  background: linear-gradient(
-    180deg, 
-    rgba(15, 23, 42, 0) 0%, 
-    rgba(15, 23, 42, 0.3) 30%,
-    rgba(15, 23, 42, 0.88) 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
-  color: #ffffff;
-  z-index: 5;
-  backdrop-filter: blur(6px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+@media (max-width: 768px) {
+  .gallery-slide-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .gallery-image-card {
+    min-height: 200px;
+  }
 }
 
-.gallery-slide-caption-xd::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #EF4444 0%, #FCA5A5 40%, transparent 100%);
-  z-index: 6;
-}
-
-.gallery-slide-caption-xd span {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-  min-width: 24px;
-  padding: 4px 8px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.22);
-  border-radius: 5px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-}
-
-.gallery-slide-caption-xd h3 {
-  margin: 0;
-  font-size: clamp(18px, 3.2vw, 36px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.012em;
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
 
 /* ===== NAVIGATION BUTTONS - OPTIMIZED GLASS ===== */
 .gallery-nav-xd {
