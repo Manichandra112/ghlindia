@@ -7,6 +7,10 @@ import galleryImage3 from '../assets/gallery image 3.png';
 import galleryImage4 from '../assets/gallery image 4.png';
 import galleryImage5 from '../assets/gallery image 5.png';
 import galleryImage6 from '../assets/gallery image 6.png';
+import accountsTeamImage from '../assets/Team-Photos-Web/Accounts Team.png';
+import creativeTeamImage from '../assets/Team-Photos-Web/Creative Team.png';
+import itDocumentationTeamImage from '../assets/Team-Photos-Web/IT & Documentation team.png';
+import salesTeamImage from '../assets/Team-Photos-Web/Sales team.png';
 
 // Inline SVG to avoid lucide version conflict
 const LinkedinIcon = ({ size = 20, className = "" }) => (
@@ -34,22 +38,23 @@ export default function OurTeam() {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState(0);
 
   const departmentSlides = [
-    {
-      id: "sales",
-      title: "Investor Relations & Sales Group",
-      img: "/assets/img/team/group-sales.jpg"
-    },
-    {
-      id: "founders",
-      title: "Founders & Directors Group",
-      img: "/assets/img/team/group-founders.jpg"
-    },
-    {
-      id: "heads",
-      title: "Department Heads Group",
-      img: "/assets/img/team/group-heads.jpg"
-    }
+    { id: "accounts", title: "Accounts Team", role: "Financial governance", img: accountsTeamImage },
+    { id: "creative", title: "Creative Team", role: "Brand and content", img: creativeTeamImage },
+    { id: "it-documentation", title: "IT & Documentation Team", role: "Technology and process", img: itDocumentationTeamImage },
+    { id: "sales", title: "Sales Team", role: "Investor relations", img: salesTeamImage }
   ];
+
+  const renderAnimatedWords = (text) => (
+    text.split(" ").map((word, wordIndex) => (
+      <span
+        className="team-slide-word"
+        style={{ '--word-delay': `${wordIndex * 120}ms` }}
+        key={`${word}-${wordIndex}`}
+      >
+        {word}
+      </span>
+    ))
+  );
 
   useEffect(() => {
     if (!isCarouselPlaying) return;
@@ -226,28 +231,17 @@ export default function OurTeam() {
       {/* Immersive Department Carousel Hero */}
       <section className="team-hero-section team-carousel-section section-padding">
         <div className="container">
-          {/* Carousel Widget */}
+            <div className="team-slider-heading">
+              <span>Our People</span>
+              <h1>Meet The Team</h1>
+            </div>
+
+            {/* Carousel Widget */}
           <div
             className="dept-carousel-widget"
             onMouseEnter={() => setIsCarouselPlaying(false)}
             onMouseLeave={() => setIsCarouselPlaying(true)}
           >
-            {/* Nav Arrows */}
-            <button
-              className="carousel-arrow prev"
-              onClick={() => setCurrentSlide((prev) => (prev === 0 ? departmentSlides.length - 1 : prev - 1))}
-              aria-label="Previous Slide"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            <button
-              className="carousel-arrow next"
-              onClick={() => setCurrentSlide((prev) => (prev + 1) % departmentSlides.length)}
-              aria-label="Next Slide"
-            >
-              <ChevronRight size={24} />
-            </button>
 
             {/* Carousel Slides Container */}
             <div className="dept-carousel-track-wrapper">
@@ -262,16 +256,15 @@ export default function OurTeam() {
                 return (
                   <div
                     key={slide.id}
-                    className={`dept-carousel-slide ${positionClass}`}
+                    className={`dept-carousel-slide ${positionClass} ${slide.id}-slide`}
                   >
                     <div className="dept-image-only-pane">
-                      <div className="dept-img-placeholder">
-                        <Users className="placeholder-icon" size={64} />
-                        <span className="placeholder-label">{slide.title}</span>
-                        <span className="placeholder-sublabel">Image Placeholder (Replace later)</span>
+                      <img src={slide.img} alt={slide.title} className="dept-group-img-only" />
+                      <div className="team-slide-overlay">
+                        <h2 className="team-slide-title" key={`${slide.id}-${currentSlide}`}>
+                          {renderAnimatedWords(slide.title)}
+                        </h2>
                       </div>
-                      {/* Once images are ready, the user can do: */}
-                      {/* <img src={slide.img} alt={slide.title} className="dept-group-img-only" /> */}
                     </div>
                   </div>
                 );

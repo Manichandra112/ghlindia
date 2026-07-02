@@ -28,6 +28,7 @@ import AboutUs from './components/AboutUs';
 import FAQPage from './components/FAQPage';
 import BlogsPage from './components/BlogsPage';
 import BiotechSector from './components/BiotechSector';
+import RealEstateSector from './components/RealEstateSector';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -94,6 +95,7 @@ function App() {
         {currentView === 'faq' && <FAQPage />}
         {currentView === 'blogs' && <BlogsPage />}
         {currentView === 'biotech' && <BiotechSector />}
+        {currentView === 'real-estate' && <RealEstateSector />}
         {currentView === 'home' && (
           <>
             <Hero />
