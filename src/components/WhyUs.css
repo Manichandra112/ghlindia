@@ -17,9 +17,9 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  margin-top: 100px;
+  margin-top: var(--header-height);
   background: transparent;
-  border-radius: 0 0 40px 40px;
+  border-radius: 0;
 }
 
 .why-banner-img {
@@ -27,13 +27,13 @@
   height: auto;
   display: block;
   object-fit: cover;
-  transform: scale(1.02);
+  transform: none;
   transform-origin: top center;
 }
 
 @media (max-width: 768px) {
   .why-hero-banner {
-    margin-top: 80px;
+    margin-top: var(--header-height);
   }
 }
 

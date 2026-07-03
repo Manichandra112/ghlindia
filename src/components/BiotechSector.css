@@ -1060,7 +1060,7 @@
   justify-content: flex-start;
   padding: clamp(56px, 8vw, 96px) 0;
   background:
-    linear-gradient(90deg, rgba(4, 10, 20, 0.86), rgba(4, 10, 20, 0.46), rgba(4, 10, 20, 0.12));
+    linear-gradient(90deg, rgba(4, 10, 20, 0.28), rgba(4, 10, 20, 0.06), transparent);
 }
 
 .biotech-marquee-wrap {
@@ -1068,22 +1068,54 @@
 }
 
 .biotech-trend-content {
-  max-width: 680px;
+  max-width: 760px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: end;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.biotech-trend-content::after {
+  display: none;
+}
+
+.biotech-trend-content > span {
+  min-height: 132px;
+  padding: 10px 6px;
+  margin: 0;
+  border-left: 3px solid #94f6d0;
+  background: rgba(4, 14, 26, 0.18);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  border-radius: 999px;
 }
 
 .biotech-trend-content h2 {
   color: #ffffff;
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 1.05;
+  max-width: 680px;
+  font-size: clamp(25px, 3.7vw, 44px);
+  line-height: 1.1;
   letter-spacing: 0;
-  margin: 14px 0 18px;
+  margin: 0 0 12px;
+  text-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
 }
 
 .biotech-trend-content p {
   max-width: 580px;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.75;
+  grid-column: 2;
 }
 
 .biotech-why-section {
@@ -1377,4 +1409,8 @@
     white-space: normal;
     width: 720px;
   }
+}
+
+.biotech-marquee-wrap {
+  display: none !important;
 }

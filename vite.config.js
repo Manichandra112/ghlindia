@@ -7,5 +7,22 @@ export default defineConfig({
   server: {
     host: true,
     allowedHosts: true,
+    proxy: {
+      '/career': {
+        target: 'https://www.ghlindia.com',
+        changeOrigin: true,
+        secure: true,
+      },
+      '/apply_now': {
+        target: 'https://www.ghlindia.com',
+        changeOrigin: true,
+        secure: true,
+      },
+      '/apply_now1': {
+        target: 'https://www.ghlindia.com',
+        changeOrigin: true,
+        secure: true,
+      },
+    },
   },
 })

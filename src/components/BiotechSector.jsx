@@ -338,7 +338,7 @@ export default function BiotechSector() {
         <div className="biotech-trend-overlay">
           <div className="container">
             <div className="biotech-trend-content" data-animate="fade-up">
-              <span>Health demand signal</span>
+              <span>Market Insight</span>
               <h2>More than 100 million diabetics are likely in India by 2030</h2>
               <p>
                 With nearly half of patients undiagnosed, diagnostics, preventive care,

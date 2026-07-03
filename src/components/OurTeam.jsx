@@ -38,10 +38,10 @@ export default function OurTeam() {
   const [selectedGalleryImage, setSelectedGalleryImage] = useState(0);
 
   const departmentSlides = [
-    { id: "accounts", title: "Accounts Team", role: "Financial governance", img: accountsTeamImage },
-    { id: "creative", title: "Creative Team", role: "Brand and content", img: creativeTeamImage },
-    { id: "it-documentation", title: "IT & Documentation Team", role: "Technology and process", img: itDocumentationTeamImage },
-    { id: "sales", title: "Sales Team", role: "Investor relations", img: salesTeamImage }
+    { id: "accounts", title: "Accounts Team", role: "Accounts Team", img: accountsTeamImage },
+    { id: "creative", title: "Creative Team", role: "Creative Team", img: creativeTeamImage },
+    { id: "it-documentation", title: "IT & Documentation Team", role: "IT & Documentation Team", img: itDocumentationTeamImage },
+    { id: "sales", title: "Sales Team", role: "Sales Team", img: salesTeamImage }
   ];
 
   const renderAnimatedWords = (text) => (
@@ -234,22 +234,15 @@ export default function OurTeam() {
 
   return (
     <div className="team-page">
-      {/* Immersive Department Carousel Hero */}
-      <section className="team-hero-section team-carousel-section section-padding">
+      {/* <section className="team-hero-section team-carousel-section section-padding">
         <div className="container">
-            <div className="team-slider-heading">
-              <span>Our People</span>
-              <h1>Meet The Team</h1>
-            </div>
-
-            {/* Carousel Widget */}
+           
           <div
             className="dept-carousel-widget"
             onMouseEnter={() => setIsCarouselPlaying(false)}
             onMouseLeave={() => setIsCarouselPlaying(true)}
           >
 
-            {/* Carousel Slides Container */}
             <div className="dept-carousel-track-wrapper">
               {departmentSlides.map((slide, idx) => {
                 let positionClass = "next-slide";
@@ -267,6 +260,7 @@ export default function OurTeam() {
                     <div className="dept-image-only-pane">
                       <img src={slide.img} alt={slide.title} className="dept-group-img-only" />
                       <div className="team-slide-overlay">
+                        <span className="team-slide-role">{slide.role}</span>
                         <h2 className="team-slide-title" key={`${slide.id}-${currentSlide}`}>
                           {renderAnimatedWords(slide.title)}
                         </h2>
@@ -277,7 +271,6 @@ export default function OurTeam() {
               })}
             </div>
 
-            {/* Bottom Controls Indicator */}
             <div className="dept-carousel-controls">
               <button
                 className="carousel-play-pause-btn"
@@ -304,7 +297,108 @@ export default function OurTeam() {
 
           </div>
         </div>
-      </section>
+      </section> */}
+      <section className="team-hero-section team-carousel-section">
+
+  <div
+    className="dept-carousel-widget"
+    onMouseEnter={() => setIsCarouselPlaying(false)}
+    onMouseLeave={() => setIsCarouselPlaying(true)}
+  >
+
+    <div className="dept-carousel-track-wrapper">
+
+      {departmentSlides.map((slide, idx) => {
+
+        let positionClass = "next-slide";
+
+        if (idx === currentSlide) {
+          positionClass = "active-slide";
+        } else if (
+          idx ===
+          (currentSlide - 1 + departmentSlides.length) %
+            departmentSlides.length
+        ) {
+          positionClass = "prev-slide";
+        }
+
+        return (
+
+          <div
+            key={slide.id}
+            className={`dept-carousel-slide ${positionClass}`}
+          >
+
+            <div className="dept-image-only-pane">
+
+              <img
+                src={slide.img}
+                alt={slide.title}
+                className="dept-group-img-only"
+              />
+
+              <div className="team-slide-overlay">
+
+                <span className="team-slide-role">
+                  {slide.role}
+                </span>
+
+                {/* <h2
+                  className="team-slide-title"
+                  key={`${slide.id}-${currentSlide}`}
+                >
+                  {renderAnimatedWords(slide.title)}
+                </h2> */}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        );
+
+      })}
+
+    </div>
+
+    <div className="dept-carousel-controls">
+
+      <button
+        className="carousel-play-pause-btn"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsCarouselPlaying(!isCarouselPlaying);
+        }}
+      >
+        {isCarouselPlaying ? (
+          <Pause size={16} />
+        ) : (
+          <Play size={16} />
+        )}
+      </button>
+
+      <div className="dept-carousel-dots">
+
+        {departmentSlides.map((_, idx) => (
+
+          <button
+            key={idx}
+            className={`dept-carousel-dot ${
+              currentSlide === idx ? "active" : ""
+            }`}
+            onClick={() => setCurrentSlide(idx)}
+          />
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* Main Corporate Team Section */}
       <section className="team-directory-section section-padding">

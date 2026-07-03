@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Phone, Mail, Globe } from 'lucide-react';
 import './Header.css';
 
+const BROCHURE_URL = 'https://www.ghlindia.com/brochure/E-broucher-11-10-2024.pdf';
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -153,7 +155,7 @@ export default function Header() {
               {/* Resources Dropdown */}
               <li className="dropdown-parent">
                 <button
-                  className={`nav-item dropdown-toggle ${isActiveSection(['#/about-us', '#/faq', '#/blogs', '#/biotech', '#/real-estate', '#/food-beverage', '#/agri']) ? 'active' : ''}`}
+                  className={`nav-item dropdown-toggle ${isActiveSection(['#/about-us', '#/faq', '#/blogs', '#/biotech', '#/real-estate', '#/food-beverage', '#/agri', '#/channel-partner', '#/career', '#/contact']) ? 'active' : ''}`}
                   onClick={() => toggleDropdown('resources')}
                 >
                   <span>Resources</span>
@@ -182,10 +184,10 @@ export default function Header() {
                       ))}
                     </ul>
                   </li>
-                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Become A Channel Partner</a></li>
-                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Career</a></li>
-                  <li><a href="#footer" onClick={() => setActiveDropdown(null)}>Contact Us</a></li>
-                  <li><a href="#/faq" onClick={() => setActiveDropdown(null)}>Brochure</a></li>
+                  <li><a href="#/channel-partner" className={isActiveLink('#/channel-partner') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Become A Channel Partner</a></li>
+                  <li><a href="#/career" className={isActiveLink('#/career') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Career</a></li>
+                  <li><a href="#/contact" className={isActiveLink('#/contact') ? 'active' : ''} onClick={() => setActiveDropdown(null)}>Contact Us</a></li>
+                  <li><a href={BROCHURE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)}>Brochure</a></li>
                 </ul>
               </li>
             </ul>
@@ -250,6 +252,10 @@ export default function Header() {
             <li><a href="#/about-us" className={`mobile-item ${isActiveLink('#/about-us') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>About Us</a></li>
             <li><a href="#/faq" className={`mobile-item ${isActiveLink('#/faq') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
             <li><a href="#/blogs" className={`mobile-item ${isActiveLink('#/blogs') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Blogs</a></li>
+            <li><a href="#/channel-partner" className={`mobile-item ${isActiveLink('#/channel-partner') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Become A Channel Partner</a></li>
+            <li><a href="#/career" className={`mobile-item ${isActiveLink('#/career') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Career</a></li>
+            <li><a href="#/contact" className={`mobile-item ${isActiveLink('#/contact') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Contact Us</a></li>
+            <li><a href={BROCHURE_URL} target="_blank" rel="noopener noreferrer" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Brochure</a></li>
             <li className="mobile-dropdown-parent">
               <button className="mobile-item" onClick={() => toggleDropdown('mob-sectors')}>
                 <span>Sectors</span>

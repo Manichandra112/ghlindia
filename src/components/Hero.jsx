@@ -56,7 +56,7 @@ export default function Hero() {
           pagination={{
             clickable: true,
           }}
-          navigation={true}
+          navigation={false}
           modules={[Autoplay, Pagination, Navigation]}
           className="hero-swiper"
         >

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
+  ArrowUpRight,
   ArrowRight,
   ChevronRight,
   Globe2,
@@ -21,15 +22,16 @@ const highlights = [
   { value: '1B', label: 'internet users likely in India by 2025', Icon: UsersRound },
 ];
 
-const marketShares = [
-  { label: 'Household & personal care', value: 50, tone: 'household' },
-  { label: 'Healthcare', value: 31, tone: 'healthcare' },
-  { label: 'Food & beverages', value: 19, tone: 'food' },
+const chartData = [
+  { name: "2020", value: 7 },
+  { name: "2022", value: 12 },
+  { name: "2025", value: 32 },
+  { name: "2030", value: 49 },
 ];
 
 const marketContext = [
   'FMCG is the fourth-largest sector in the Indian economy.',
-  'India’s household and personal care is the leading segment, accounting for 50% of the overall market. Healthcare (31%) and food and beverages (F&B) (19%) comes next in terms of market share.',
+  'Household and personal care leads with 50% share, followed by healthcare at 31% and food & beverages at 19%.',
   'Growing awareness, easier access and changing lifestyles have been the key growth drivers for the sector.',
   'The number of internet users in India is likely to reach 1 billion by 2025.',
   'Real household spending is projected to increase at 9.1% YoY in 2021.',
@@ -169,51 +171,23 @@ export default function FoodBeverage() {
             <span>Market Signal</span>
             <h2>Market size of Food &amp; Beverage Sector</h2>
             <p>
-              FMCG is the fourth-largest sector in the Indian economy. Household and personal care leads the market,
-              while food and beverages continue to gain from changing lifestyles, easier access, and stronger digital adoption.
+              FMCG is the fourth-largest sector in India. Household and personal care leads today, while food and beverages
+              continue gaining from lifestyle shifts, better access, and stronger digital adoption.
             </p>
           </div>
 
           <div className="food-market-grid">
-            <div className="food-market-card" data-animate="fade-right">
-              <div className="food-market-card-head">
-                <span>Market signal</span>
-                <strong>US$ 220B</strong>
-                <p>The expected size of India&apos;s FMCG market by 2025, with e-commerce adding another layer of scale.</p>
-              </div>
+            <div className="food-market-shell" data-animate="fade-right">
+              <div className="food-market-top">
+                <div className="food-market-card-head">
+                  {/* <span>Market signal</span>
+                  <strong>US$ 220B</strong>
+                  <p>The expected size of India&apos;s FMCG market by 2025, with digital commerce accelerating category scale.</p> */}
 
-              <div className="food-market-body">
-                <div className="food-donut-wrap" aria-label="FMCG category share chart">
-                  <div className="food-donut" />
-                  <div className="food-donut-center">
-                    <span>FMCG</span>
-                    <strong>100%</strong>
-                  </div>
-                  <div className="food-chart-label left">Household 50%</div>
-                  <div className="food-chart-label top">Healthcare 31%</div>
-                  <div className="food-chart-label right">F&amp;B 19%</div>
-                </div>
-
-                <div className="food-market-side">
-                  <div className="food-market-context">
-                    {marketContext.map((item) => (
-                      <p key={item}>{item}</p>
-                    ))}
-                  </div>
-
-                  <div className="food-share-legend">
-                    {marketShares.map((item) => (
-                      <div className={`food-share-pill ${item.tone}`} key={item.label}>
-                        <span>{item.value}%</span>
-                        <small>{item.label}</small>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="food-compact-stats">
+                  <div className="food-market-top-stats">
                     {highlights.map(({ value, label, Icon }) => (
-                      <div key={label} className="food-compact-stat">
-                        <Icon size={18} />
+                      <div key={label} className="food-market-stat-tile">
+                        <Icon size={17} />
                         <div>
                           <strong>{value}</strong>
                           <p>{label}</p>
@@ -223,9 +197,47 @@ export default function FoodBeverage() {
                   </div>
                 </div>
               </div>
+
+              <div className="food-market-body">
+                <div className="food-growth-panel">
+                  <div className="food-growth-head">
+                    <span>Online FMCG contribution</span>
+                    <h3>Digital channels are becoming a larger growth lane</h3>
+                  </div>
+                  <div className="food-growth-flow">
+                    {chartData.map((item, index) => (
+                      <div className="food-growth-step" key={item.name}>
+                        <div className="food-growth-node">
+                          <strong>{item.value}%</strong>
+                          <span>{item.name}</span>
+                        </div>
+                        <div className="food-growth-track">
+                          <div style={{ width: `${item.value * 2}%` }} />
+                        </div>
+                        {index < chartData.length - 1 && <ArrowUpRight size={18} className="food-growth-arrow" />}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="food-market-side">
+                  <div className="food-market-side-head">
+                    <h3>Growth narrative</h3>
+                    <p>A blend of category leadership, digital adoption and consumption expansion is supporting long-term momentum.</p>
+                  </div>
+
+                  <div className="food-market-context">
+                    {marketContext.map((item, index) => (
+                      <div key={item} className="food-market-context-item">
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        <p>{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            
           </div>
         </div>
       </section>
@@ -272,6 +284,54 @@ export default function FoodBeverage() {
         </div>
       </section>
 
+
+      <section className="food-image-feature">
+        <img
+          src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Food-Mid-Web.jpg"
+          alt="Food & Beverage"
+        />
+        <div className="food-image-feature-overlay">
+          <div className="container">
+            <div className="food-feature-insight">
+              <span className="food-image-tag">Market Insight</span>
+              <h3>India's Online Grocery Market is Accelerating</h3>
+              <p>
+                The Indian online grocery market is estimated to exceed
+                <strong> Rs. 1,310.93 billion (US$ 17.12 billion)</strong> by
+                <strong> 2026</strong>, growing at a
+                <strong> CAGR of 28.99%</strong>, driven by rising digital
+                adoption, changing consumer preferences, and expanding
+                e-commerce infrastructure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="food-image-insight">
+  <span className="food-image-tag">Market Insight</span>
+
+  <h3>India's Online Grocery Market is Accelerating</h3>
+
+  <p>
+    The Indian online grocery market is estimated to exceed
+    <strong> ₹1,310.93 billion (US$ 17.12 billion)</strong> by
+    <strong> 2026</strong>, growing at a
+    <strong> CAGR of 28.99%</strong>, driven by rising digital
+    adoption, changing consumer preferences, and expanding
+    e-commerce infrastructure.
+  </p>
+</div>
+      <section className="food-image-section">
+  <div className="food-image-card">
+    <img
+      src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Food-Mid-Web.jpg"
+      alt="Food & Beverage"
+    />
+  </div>
+</section>
+
+
       <section className="food-why-section">
         <div className="container">
           <div className="food-section-header" data-animate="fade-up">
@@ -291,6 +351,19 @@ export default function FoodBeverage() {
           </div>
         </div>
       </section>
+      <section className="real-cta-section">
+              <div className="container">
+                <div className="real-cta-content" data-animate="fade-up">
+                  <span>Build With GHL India</span>
+                  <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
+                  <p>Let us join together to live an opulent life</p>
+                  <div className="real-cta-actions">
+                    <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
+                    <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
+                  </div>
+                </div>
+              </div>
+            </section>
     </div>
   );
 }

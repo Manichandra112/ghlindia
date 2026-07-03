@@ -215,18 +215,21 @@ export default function DebtFinancing() {
       </section>
 
       {/* 5. Bottom CTA Section */}
-      <section className="debt-cta">
+      <section className="about-login-cta-section">
         <div className="container">
-          <h2 className="cta-title">GHL India is here to create a prosperous environment that serves the world at large</h2>
-          <p className="cta-desc">Let us join together to live an opulent life. Start your co-ownership journey today.</p>
-          <div className="cta-actions-row">
-            <a href="#login" className="btn btn-cta-primary">
-              Login to Portal
-              <ArrowRight size={16} />
-            </a>
-            <a href="#register" className="btn btn-cta-secondary">
-              Register Account
-            </a>
+          <div className="about-login-cta-content">
+            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
+            <p>Let us join together to live an opulent life</p>
+            <div className="about-login-cta-actions">
+              <a href="#login" className="cta-btn btn-white-glass">
+                <span>Login</span>
+                <ArrowRight size={16} />
+              </a>
+              <a href="#register" className="cta-btn btn-white-solid">
+                <span>Register</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
           </div>
         </div>
       </section>

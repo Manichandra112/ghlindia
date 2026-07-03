@@ -403,13 +403,10 @@ export default function RealEstateSector() {
           />
         </picture>
         <div className="real-fdi-overlay">
-          <div className="real-fdi-marquee-wrap">
-            <div className="real-fdi-marquee">
-              <span>
-                The Government has allowed 100% FDI for townships and settlements development projects.
-                &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                The Government has allowed 100% FDI for townships and settlements development projects.
-              </span>
+          <div className="container">
+            <div className="real-fdi-insight">
+              <span>Market Insight</span>
+              <h2>The Government has allowed 100% FDI for townships and settlements development projects.</h2>
             </div>
           </div>
         </div>

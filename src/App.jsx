@@ -30,6 +30,11 @@ import BlogsPage from './components/BlogsPage';
 import BiotechSector from './components/BiotechSector';
 import RealEstateSector from './components/RealEstateSector';
 import FoodBeverage from './components/FoodBeverage';
+import AgriSector from './components/AgriSector';
+import ChannelPartner from './components/ChannelPartner';
+import CareerPage from './components/CareerPage';
+import ContactPage from './components/ContactPage';
+import CareerApplyPage from './components/CareerApplyPage';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -67,6 +72,14 @@ function App() {
         setCurrentView('food-beverage');
       } else if (hash === '#/agri') {
         setCurrentView('agri');
+      } else if (hash === '#/channel-partner') {
+        setCurrentView('channel-partner');
+      } else if (hash === '#/career') {
+        setCurrentView('career');
+      } else if (hash === '#/apply_now' || hash === '#/apply_now1') {
+        setCurrentView('career-apply');
+      } else if (hash === '#/contact') {
+        setCurrentView('contact');
       } else {
         setCurrentView('home');
       }
@@ -98,6 +111,11 @@ function App() {
         {currentView === 'biotech' && <BiotechSector />}
         {currentView === 'real-estate' && <RealEstateSector />}
         {currentView === 'food-beverage' && <FoodBeverage />}
+        {currentView === 'agri' && <AgriSector />}
+        {currentView === 'channel-partner' && <ChannelPartner />}
+        {currentView === 'career' && <CareerPage />}
+        {currentView === 'career-apply' && <CareerApplyPage />}
+        {currentView === 'contact' && <ContactPage />}
         {currentView === 'home' && (
           <>
             <Hero />
