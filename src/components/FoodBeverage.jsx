@@ -21,6 +21,20 @@ const highlights = [
   { value: '1B', label: 'internet users likely in India by 2025', Icon: UsersRound },
 ];
 
+const marketShares = [
+  { label: 'Household & personal care', value: 50, tone: 'household' },
+  { label: 'Healthcare', value: 31, tone: 'healthcare' },
+  { label: 'Food & beverages', value: 19, tone: 'food' },
+];
+
+const marketContext = [
+  'FMCG is the fourth-largest sector in the Indian economy.',
+  'India’s household and personal care is the leading segment, accounting for 50% of the overall market. Healthcare (31%) and food and beverages (F&B) (19%) comes next in terms of market share.',
+  'Growing awareness, easier access and changing lifestyles have been the key growth drivers for the sector.',
+  'The number of internet users in India is likely to reach 1 billion by 2025.',
+  'Real household spending is projected to increase at 9.1% YoY in 2021.',
+];
+
 const opportunities = [
   {
     title: 'Sourcing base',
@@ -161,33 +175,57 @@ export default function FoodBeverage() {
           </div>
 
           <div className="food-market-grid">
-            <div className="food-highlight-grid" data-animate="fade-right">
-              {highlights.map(({ value, label, Icon }) => (
-                <article key={label} className="food-highlight-card">
-                  <Icon size={20} />
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </article>
-              ))}
-            </div>
+            <div className="food-market-card" data-animate="fade-right">
+              <div className="food-market-card-head">
+                <span>Market signal</span>
+                <strong>US$ 220B</strong>
+                <p>The expected size of India&apos;s FMCG market by 2025, with e-commerce adding another layer of scale.</p>
+              </div>
 
-            <div className="food-story-card" data-animate="fade-left" data-stagger-delay="120ms">
-              <img
-                src={`${GHL}/assets/img/sectors/bennar-desktop/Food-Mid-Web.jpg`}
-                alt="Food and beverage market visual"
-                className="food-story-image"
-              />
-              <div className="food-story-copy">
-                <p>
-                  The market is supported by rising awareness, growing internet access, and evolving consumer habits.
-                  E-commerce is projected to contribute meaningfully to FMCG sales by 2030.
-                </p>
-                <p>
-                  Real household spending is projected to rise, creating room for premiumisation, stronger distribution,
-                  and more organised market participation.
-                </p>
+              <div className="food-market-body">
+                <div className="food-donut-wrap" aria-label="FMCG category share chart">
+                  <div className="food-donut" />
+                  <div className="food-donut-center">
+                    <span>FMCG</span>
+                    <strong>100%</strong>
+                  </div>
+                  <div className="food-chart-label left">Household 50%</div>
+                  <div className="food-chart-label top">Healthcare 31%</div>
+                  <div className="food-chart-label right">F&amp;B 19%</div>
+                </div>
+
+                <div className="food-market-side">
+                  <div className="food-market-context">
+                    {marketContext.map((item) => (
+                      <p key={item}>{item}</p>
+                    ))}
+                  </div>
+
+                  <div className="food-share-legend">
+                    {marketShares.map((item) => (
+                      <div className={`food-share-pill ${item.tone}`} key={item.label}>
+                        <span>{item.value}%</span>
+                        <small>{item.label}</small>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="food-compact-stats">
+                    {highlights.map(({ value, label, Icon }) => (
+                      <div key={label} className="food-compact-stat">
+                        <Icon size={18} />
+                        <div>
+                          <strong>{value}</strong>
+                          <p>{label}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
+
+            
           </div>
         </div>
       </section>
@@ -227,10 +265,7 @@ export default function FoodBeverage() {
                   <h3>{item.title}</h3>
                 </div>
                 <p>{item.summary}</p>
-                <div className="food-read-link">
-                  <span>Read insight</span>
-                  <ArrowRight size={14} />
-                </div>
+               
               </article>
             ))}
           </div>
