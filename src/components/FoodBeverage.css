@@ -1,0 +1,447 @@
+.food-page {
+  background: #f7f8fc;
+  overflow-x: hidden;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+.food-hero {
+  position: relative;
+  margin-top: var(--header-height, 90px);
+  min-height: clamp(320px, 44vw, 540px);
+  overflow: hidden;
+}
+
+.food-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.food-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(12, 18, 30, 0.62) 0%, rgba(12, 18, 30, 0.28) 58%, rgba(12, 18, 30, 0.08) 100%);
+}
+
+.food-hero-pattern {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.14), transparent 18%),
+    radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.08), transparent 16%);
+  pointer-events: none;
+}
+
+.food-hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(26px, 4vw, 52px) 0;
+}
+
+.food-hero-copy {
+  max-width: 760px;
+}
+
+.food-eyebrow,
+.food-section-header > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #f2d08a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.food-hero-copy h1 {
+  margin: 14px 0 12px;
+  color: #ffffff;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.food-hero-copy p {
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(15px, 1.7vw, 18px);
+  line-height: 1.8;
+}
+
+.food-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.food-btn {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 0;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.food-btn.primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #e41f26, #b6151b);
+  box-shadow: 0 18px 34px rgba(228, 31, 38, 0.28);
+}
+
+.food-btn.secondary {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.food-btn:hover {
+  transform: translateY(-2px);
+}
+
+.food-hero-panel {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 24px;
+  background: rgba(8, 14, 24, 0.42);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.16);
+}
+
+.food-hero-panel span {
+  color: #f2d08a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.food-hero-panel strong {
+  display: block;
+  margin: 14px 0 10px;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1;
+}
+
+.food-hero-panel p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.food-breadcrumb {
+  padding: 12px 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.food-breadcrumb ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.food-breadcrumb li {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.food-breadcrumb li a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.food-breadcrumb li.active,
+.food-breadcrumb li a:hover {
+  color: #e41f26;
+}
+
+.food-breadcrumb svg {
+  color: #94a3b8;
+}
+
+.food-market-section,
+.food-opportunities-section,
+.food-why-section {
+  padding: clamp(64px, 8vw, 104px) 0;
+}
+
+.food-market-section {
+  background:
+    radial-gradient(circle at 15% 15%, rgba(199, 154, 43, 0.12), transparent 22%),
+    #ffffff;
+}
+
+.food-section-header {
+  max-width: 860px;
+  margin: 0 auto clamp(30px, 5vw, 52px);
+  text-align: center;
+}
+
+.food-section-header h2 {
+  margin: 10px 0 0;
+  color: #0f172a;
+  font-size: clamp(30px, 4.8vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.food-section-header p {
+  max-width: 780px;
+  margin: 14px auto 0;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.food-market-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: stretch;
+}
+
+.food-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.food-highlight-card,
+.food-opportunity-card,
+.food-why-card {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+}
+
+.food-highlight-card {
+  min-height: 164px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.food-highlight-card svg {
+  color: #c79a2b;
+}
+
+.food-highlight-card strong {
+  color: #0f172a;
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1;
+}
+
+.food-highlight-card span {
+  color: #475569;
+  line-height: 1.65;
+}
+
+.food-story-card {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
+}
+
+.food-story-image {
+  width: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.food-story-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.food-story-copy p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.food-opportunities-section {
+  background: linear-gradient(180deg, #f9fafb 0%, #f7f8fc 100%);
+}
+
+.food-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.food-filter-tab {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #334155;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.food-filter-tab.active,
+.food-filter-tab:hover {
+  color: #ffffff;
+  border-color: #e41f26;
+  background: linear-gradient(135deg, #e41f26, #b6151b);
+  box-shadow: 0 14px 28px rgba(228, 31, 38, 0.18);
+}
+
+.food-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.food-opportunity-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+}
+
+.food-opportunity-top {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.food-opportunity-index {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  background: linear-gradient(135deg, #e41f26, #b6151b);
+  box-shadow: 0 12px 24px rgba(228, 31, 38, 0.16);
+}
+
+.food-opportunity-card h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.food-opportunity-card p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.food-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e41f26;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.food-why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.food-why-card {
+  padding: 20px;
+}
+
+.food-why-card svg {
+  color: #c79a2b;
+}
+
+.food-why-card h3 {
+  margin: 14px 0 8px;
+  color: #0f172a;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.food-why-card p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .food-hero-content,
+  .food-market-grid,
+  .food-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-highlight-grid,
+  .food-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .food-story-image {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 760px) {
+  .food-hero-content {
+    padding: 28px 0 34px;
+  }
+
+  .food-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .food-btn {
+    width: 100%;
+  }
+
+  .food-market-section,
+  .food-opportunities-section,
+  .food-why-section {
+    padding: 56px 0;
+  }
+}
