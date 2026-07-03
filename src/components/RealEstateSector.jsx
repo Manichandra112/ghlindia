@@ -292,19 +292,57 @@ export default function RealEstateSector() {
         </div>
       </section>
 
-      <section className="real-policy-section">
-        <div className="container">
-          <div className="real-section-header" data-animate="fade-up">
-            <span>Policy Tailwinds</span>
-            <h2>The Government launched 10 key policies for the real estate sector</h2>
-          </div>
-          <div className="real-policy-grid" data-animate="fade-up" data-stagger-delay="100ms">
-            {realEstatePolicies.map((policy, index) => (
-              <div className="real-policy-item" key={policy}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <p>{policy}</p>
+      <section className="real-policy-section py-16 bg-white">
+        <div className="container max-w-7xl mx-auto px-6 policy-container">
+          <div className="policy-stack" data-animate="fade-up">
+            <div className="policy-intro">
+              <div className="mb-4">
+                <div className="policy-accent" />
               </div>
-            ))}
+              <h3 className="policy-label">Policy Tailwinds</h3>
+              <h2 className="policy-title">Policies accelerating a more investable market</h2>
+              <p className="policy-lead">A curated set of government reforms and incentives that improve market transparency, boost liquidity, and unlock foreign and domestic capital across housing, commercial and infrastructure projects.</p>
+
+              <ul className="policy-highlights">
+                <li><strong>Transparency:</strong> Regulatory clarity through RERA and GST harmonisation.</li>
+                <li><strong>Liquidity:</strong> Incentives for affordable housing &amp; access to finance.</li>
+                <li><strong>Investment:</strong> Eased FDI norms and tax reforms to attract global capital.</li>
+              </ul>
+
+              
+            </div>
+
+            <div className="policy-cards-grid" data-animate="fade-up" data-stagger-delay="120ms" role="list">
+              {(() => {
+                const summaries = [
+                  'Improves buyer protection and project disclosures, increasing market confidence.',
+                  'Targets benami transactions to reduce black money in real estate.',
+                  'Fiscal incentives and schemes to accelerate affordable housing supply.',
+                  'Interest subsidies to lower borrowing costs for homebuyers, boosting demand.',
+                  'Faster dispute resolution and investor certainty through arbitration reforms.',
+                  'Reduces compliance costs for developers by exempting certain services from tax.',
+                  'Tax relief measures encouraging developer reinvestment and dividend flows.',
+                  'Streamlines indirect taxes and improves input credit mechanisms for developers.',
+                  'Removal of old cash dependencies and move towards formalisation of transactions.',
+                  'Measures to attract long-term foreign capital and institutional investors.',
+                ];
+
+                return realEstatePolicies.map((policy, index) => (
+                  <article key={policy} role="listitem" className="policy-card">
+                    <div className="policy-card-inner">
+                      <div className="policy-badge">{index + 1}</div>
+                      <div className="policy-card-copy">
+                        <h4 className="policy-card-title">{policy}</h4>
+                        <p className="policy-card-summary">{summaries[index]}</p>
+                      </div>
+                    </div>
+
+                  </article>
+                ));
+              })()}
+            </div>
+
+            
           </div>
         </div>
       </section>

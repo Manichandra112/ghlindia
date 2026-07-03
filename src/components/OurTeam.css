@@ -2020,15 +2020,23 @@
 
 .team-carousel-section {
   padding: 0 0 34px !important;
-  background: linear-gradient(180deg, #ffffff 0%, #ececec 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #ececec 100%);
 }
 
 .team-slider-heading {
-  display: none;
+  display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 22px;
+  margin: 0 24px 22px;
+  padding: 18px 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  position: relative;
+  z-index: 5;
 }
 
 .team-slider-heading span {
@@ -2074,6 +2082,7 @@
   object-position: center;
   background: transparent;
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, object-position;
 }
 
 /* .dept-image-only-pane::after {
@@ -2088,14 +2097,31 @@
 } */
 
 .dept-carousel-slide.active-slide .dept-group-img-only {
-  transform: none;
+  transform: scale(1);
 }
 
-.it-documentation-slide .dept-group-img-only,
-.accounts-slide .dept-group-img-only,
-.creative-slide .dept-group-img-only,
+.accounts-slide .dept-group-img-only {
+  object-fit: cover;
+  object-position: center 24%;
+  transform: scale(1.03);
+}
+
+.creative-slide .dept-group-img-only {
+  object-fit: cover;
+  object-position: center 18%;
+  transform: scale(1.08);
+}
+
+.it-documentation-slide .dept-group-img-only {
+  object-fit: cover;
+  object-position: center 16%;
+  transform: scale(1.12);
+}
+
 .sales-slide .dept-group-img-only {
-  object-position: center;
+  object-fit: cover;
+  object-position: center 22%;
+  transform: scale(1.06);
 }
 
 .team-slide-overlay {
@@ -2186,6 +2212,8 @@
   .team-slider-heading {
     align-items: flex-start;
     flex-direction: column;
+    margin: 0 16px 18px;
+    padding: 16px 18px;
   }
 
   .dept-carousel-track-wrapper {
