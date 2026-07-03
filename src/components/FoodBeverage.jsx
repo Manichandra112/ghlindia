@@ -85,6 +85,13 @@ export default function FoodBeverage() {
   const [activeOpportunity, setActiveOpportunity] = useState('All');
   const pageRef = useScrollAnimation();
 
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   const visibleOpportunities = useMemo(
     () => (activeOpportunity === 'All' ? opportunities : opportunities.filter((item) => item.title === activeOpportunity)),
     [activeOpportunity]
@@ -111,10 +118,10 @@ export default function FoodBeverage() {
               distribution depth, and the shift toward premium, digital, and rural demand.
             </p>
             <div className="food-hero-actions">
-              <button type="button" className="food-btn primary">
+              <button type="button" className="food-btn primary" onClick={() => scrollToSection('food-market')}>
                 Explore market size <ArrowRight size={16} />
               </button>
-              <button type="button" className="food-btn secondary">
+              <button type="button" className="food-btn secondary" onClick={() => scrollToSection('food-opportunities')}>
                 View opportunities
               </button>
             </div>
