@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FractionalOwnership.css';
+import fractionalInvestment from '../assets/fractional invesment.png';
 
 export default function FractionalOwnership() {
   const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
@@ -26,6 +27,10 @@ export default function FractionalOwnership() {
   const sectionRef4 = useScrollAnimation(animOptions);
   const sectionRef5 = useScrollAnimation(animOptions);
   const sectionRef6 = useScrollAnimation(animOptions);
+  const handleLearnMoreClick = (event) => {
+    event.preventDefault();
+    sectionRef1.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const whyFractional = [
     {
@@ -116,15 +121,39 @@ export default function FractionalOwnership() {
     <div className="fractional-page-wrapper">
       {/* Hero Banner Section */}
       <section className="fractional-hero">
-        <div className="fractional-hero-banner">
-          <picture>
-            <source media="(max-width: 768px)" srcSet="/assets/img/ownership/Fractional-Investment-mob.jpg" />
-            <img 
-              src="/assets/img/ownership/Fractional-Investment-A.jpg" 
-              alt="Fractional Ownership Banner" 
-              className="fractional-hero-img" 
-            />
-          </picture>
+        <div className="fractional-hero-content-wrap container">
+          <div className="fractional-hero-content">
+            <span className="fractional-hero-tag">SMART ACCESS. BIG OPPORTUNITIES.</span>
+            <h1>
+              Small Investments,
+              <span> Big Opportunities</span>
+            </h1>
+            <p>
+              Start with affordable capital and co-own high-value assets through fractional
+              investing built for secure, long-term wealth growth.
+            </p>
+
+            <div className="fractional-hero-points">
+              <span>Low Entry Barrier</span>
+              <span>Premium Asset Access</span>
+              <span>Diversified Growth</span>
+            </div>
+
+            <div className="fractional-hero-actions">
+              <a href="#learn-more" className="fractional-hero-btn" onClick={handleLearnMoreClick}>
+                Explore Fractional Investment
+                <ArrowRight size={18} />
+              </a>
+              <a href="#/contact" className="fractional-hero-btn fractional-hero-btn-secondary">
+                Talk to Advisor
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="fractional-hero-image-container container">
+          <div className="fractional-hero-img-card">
+            <img src={fractionalInvestment} alt="Fractional Investment Banner" className="fractional-hero-display-img" />
+          </div>
         </div>
       </section>
 

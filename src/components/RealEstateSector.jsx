@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
+// import realEstateHero from '../assets/real estate-1.png';
+import realEstateHero from '../assets/realestate 2.png';
 
 const segments = [
   {
@@ -186,15 +188,7 @@ export default function RealEstateSector() {
 
   return (
     <div className="real-page" ref={pageRef}>
-      <section className="real-hero">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/sectors/bennar-mobile/RE-Mob.jpg" />
-          <img
-            src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/RE-Web.jpg"
-            alt="GHL India real estate sector"
-            className="real-hero-bg"
-          />
-        </picture>
+      <section className="real-hero" style={{ backgroundImage: `url(${realEstateHero})` }}>
         <div className="real-hero-overlay" />
         <div className="container real-hero-content">
           <div className="real-hero-copy" data-animate="fade-up">

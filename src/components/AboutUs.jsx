@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { ArrowRight, ShieldCheck, Target, Award, CheckCircle2, ChevronRight } from 'lucide-react';
 import './AboutUs.css';
+import aboutHero from '../assets/about us.png';
 
 export default function AboutUs() {
+  const narrativeRef = useRef(null);
+  const handleExploreClick = (event) => {
+    event.preventDefault();
+    narrativeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const steps = [
     { num: '01', title: 'Market Size Analysis', desc: 'We analyze the target business\'s market size historically and currently.' },
     { num: '02', title: 'Risk & Opportunity Evaluation', desc: 'We conduct rigorous stress-testing to highlight risks and uncover value.' },
@@ -23,27 +30,30 @@ export default function AboutUs() {
   return (
     <div className="about-us-page">
       {/* 1. Cinematic Hero Banner */}
-      <div className="about-hero-section">
-        <div className="about-hero-wrapper">
-          <picture>
-            <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/about/About-us-Mob.jpg" />
-            <img
-              src="https://www.ghlindia.com/assets/img/about/About-us.jpg"
-              alt="About Us Banner"
-              className="about-hero-img"
-            />
-          </picture>
-          <div className="about-hero-overlay">
-            <div className="container">
-              <div className="about-hero-content">
-                <span className="badge-tag">Our Journey & Mission</span>
-                <h1>Who We Are & What We Stand For</h1>
-                <p>Establishing security and transparency in alternate investments to help investors build wealth confidently.</p>
-              </div>
+      <section
+        className="about-hero-section about-hero-bg"
+        style={{ backgroundImage: `url(${aboutHero})` }}
+      >
+        <div className="about-hero-content-wrap container">
+          <div className="about-hero-content">
+            <span className="badge-tag">About Us</span>
+            <h1>Building stronger relationships, creating lasting impact</h1>
+            <p>
+              We build trust-led partnerships through transparent investing, responsible execution,
+              and long-term wealth creation for every stakeholder.
+            </p>
+            <div className="about-hero-actions">
+              <a href="#about-narrative" className="about-hero-btn" onClick={handleExploreClick}>
+                Explore About Us
+                <ArrowRight size={16} />
+              </a>
+              <a href="#/contact" className="about-hero-btn about-hero-btn-secondary">
+                Talk to Advisor
+              </a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* 2. Breadcrumbs */}
       <div className="about-breadcrumbs">
@@ -59,7 +69,7 @@ export default function AboutUs() {
       </div>
 
       {/* 3. Core Narrative & Journey Section */}
-      <section className="about-narrative-section">
+      <section className="about-narrative-section" id="about-narrative" ref={narrativeRef}>
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Our Journey from <span className="red-highlight">2019</span> to <span className="red-highlight">2024</span></h2>

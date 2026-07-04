@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FoodBeverage.css';
+import foodMidImage from '../assets/food2.png';
 
 const GHL = 'https://www.ghlindia.com';
 
@@ -287,7 +288,7 @@ export default function FoodBeverage() {
 
       <section className="food-image-feature">
         <img
-          src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Food-Mid-Web.jpg"
+          src={foodMidImage}
           alt="Food & Beverage"
         />
         <div className="food-image-feature-overlay">
@@ -325,7 +326,7 @@ export default function FoodBeverage() {
       <section className="food-image-section">
   <div className="food-image-card">
     <img
-      src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Food-Mid-Web.jpg"
+      src={foodMidImage}
       alt="Food & Beverage"
     />
   </div>

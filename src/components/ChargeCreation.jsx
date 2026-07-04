@@ -1,8 +1,15 @@
-import React from 'react';
-import { Shield, Building, Users, FileText, CheckCircle, Lock, Play, Layers, ShieldCheck } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Shield, Building, Users, FileText, CheckCircle, Lock, Play, Layers, ShieldCheck, ArrowRight } from 'lucide-react';
 import './ChargeCreation.css';
+import chargeHero from '../assets/charge creation.png';
 
 export default function ChargeCreation() {
+  const introRef = useRef(null);
+  const handleExploreClick = (event) => {
+    event.preventDefault();
+    introRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const debentureSteps = [
     {
       num: "01",
@@ -47,16 +54,36 @@ export default function ChargeCreation() {
   return (
     <div className="charge-creation-page">
       {/* Hero Header Banner */}
-      <section className="charge-hero-banner">
-        <img
-          src="/assets/img/ownership/charge-creation.png"
-          alt="Charge Creation Banner"
-          className="charge-banner-img"
-        />
+      <section
+        className="charge-hero-banner charge-hero-bg"
+        style={{ backgroundImage: `url(${chargeHero})` }}
+      >
+        <div className="charge-hero-content-wrap container">
+          <div className="charge-hero-content">
+            <span className="charge-hero-tag">SECURED STRUCTURE. LEGAL PROTECTION.</span>
+            <h1>
+              Charge Creation
+              <span> that protects every investment</span>
+            </h1>
+            <p>
+              Understand how legally registered charges secure assets, protect investor capital,
+              and create a transparent repayment framework.
+            </p>
+            <div className="charge-hero-actions">
+              <a href="#charge-intro" className="charge-hero-btn" onClick={handleExploreClick}>
+                Explore Charge Creation
+                <ArrowRight size={18} />
+              </a>
+              <a href="#/contact" className="charge-hero-btn charge-hero-btn-secondary">
+                Talk to Advisor
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Introduction Container */}
-      <section className="charge-intro section-padding">
+      <section className="charge-intro section-padding" id="charge-intro" ref={introRef}>
         <div className="container">
           <div className="charge-intro-card">
             <div className="charge-intro-text">

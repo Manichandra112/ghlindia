@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, ArrowLeft, Calendar, FileText, Loader2, Clock } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronRight, ArrowLeft, Calendar, FileText, Loader2, Clock, ArrowRight } from 'lucide-react';
 import localData from '../data/financial_iq_data.json';
 import CallToAction from './CallToAction';
 import './FinancialIQ.css';
+import financialIqHero from '../assets/financial iq.png';
 
 export default function FinancialIQ() {
   const [articles, setArticles] = useState([]);
@@ -10,6 +11,7 @@ export default function FinancialIQ() {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const contentRef = useRef(null);
 
   // Fetch Financial IQ articles list for active page
   useEffect(() => {
@@ -82,12 +84,17 @@ export default function FinancialIQ() {
   const handlePageChange = (pageNo) => {
     setCurrentPage(pageNo);
     // Smooth scroll to the content section start
-    const contentSec = document.querySelector('.fiq-content-section');
+    const contentSec = contentRef.current;
     if (contentSec) {
       contentSec.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const handleExploreClick = (event) => {
+    event.preventDefault();
+    contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // Shared helper: fix all relative image paths in article HTML content
@@ -178,7 +185,7 @@ export default function FinancialIQ() {
   // RENDER: Detailed Reading View
   if (selectedArticle) {
     return (
-      <div className="financial-iq-container animate-fade-in">
+      <div className="financial-iq-container financial-iq-detail-view animate-fade-in">
         <div className="breadcrumbs">
           <div className="container">
             <span className="section-subtitle">Financial Education</span>
@@ -285,24 +292,37 @@ export default function FinancialIQ() {
 
   // RENDER: Main Grid Articles List View
   return (
-    <div className="financial-iq-container">
-      <div className="fiq-banner-section">
-        <div className="fiq-banner-wrapper">
-          <img
-            src="https://www.ghlindia.com/assets/img/financial-iq-A.jpg"
-            alt="Financial IQ Desktop Banner"
-            className="fiq-banner-img desktop-banner"
-          />
-          <img
-            src="https://www.ghlindia.com/assets/img/financial-IQ-MOB.jpg"
-            alt="Financial IQ Mobile Banner"
-            className="fiq-banner-img mobile-banner"
-          />
+    <div className="financial-iq-container financial-iq-list-view">
+      <section
+        className="fiq-hero fiq-hero-bg"
+        style={{ backgroundImage: `url(${financialIqHero})` }}
+      >
+        <div className="fiq-hero-content-wrap container">
+          <div className="fiq-hero-content">
+            <span className="fiq-hero-tag">LEARN SMART. INVEST BETTER.</span>
+            <h1>
+              Financial IQ
+              <span> for smarter wealth decisions</span>
+            </h1>
+            <p>
+              Explore practical insights, market concepts, and investor-first knowledge to build
+              long-term financial confidence.
+            </p>
+            <div className="fiq-hero-actions">
+              <a href="#fiq-content" className="fiq-hero-btn" onClick={handleExploreClick}>
+                Explore Financial IQ
+                <ArrowRight size={18} />
+              </a>
+              <a href="#/contact" className="fiq-hero-btn fiq-hero-btn-secondary">
+                Talk to Advisor
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Downside section containing breadcrumbs, cards and pagination */}
-      <div className="fiq-content-section">
+      <div className="fiq-content-section" id="fiq-content" ref={contentRef}>
         {/* Page Header & Breadcrumbs */}
         <div className="breadcrumbs">
           <div className="container">
@@ -396,4 +416,3 @@ export default function FinancialIQ() {
     </div>
   );
 }
-

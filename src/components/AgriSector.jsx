@@ -21,6 +21,7 @@ import {
 } from 'recharts';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './AgriSector.css';
+import agriMidImage from '../assets/agri2.png';
 
 const GHL = 'https://www.ghlindia.com';
 
@@ -278,13 +279,10 @@ export default function AgriSector() {
       </section>
 
       <section className="agri-image-section">
-        <picture>
-          <source media="(max-width: 768px)" srcSet={`${GHL}/assets/img/sectors/bennar-mobile/Agri-Mid-Mob.jpg`} />
-          <img
-            src={`${GHL}/assets/img/sectors/bennar-desktop/AGRI-Mid-Web.jpg`}
-            alt="Asset management company"
-          />
-        </picture>
+        <img
+          src={agriMidImage}
+          alt="Asset management company"
+        />
         <div className="agri-image-overlay">
           <div className="container">
             <div className="agri-image-insight">

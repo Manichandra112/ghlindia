@@ -1,9 +1,3 @@
-/* ==============================
-   BiotechSector — Premium Redesign
-   Matches ghlindia.com/biotech
-   ============================== */
-
-/* ── Page wrapper ── */
 .biotech-page {
   background: #f8f9fd;
   overflow-x: hidden;
@@ -33,12 +27,10 @@
 .biotech-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(5, 10, 18, 0.55) 0%,
-    rgba(5, 10, 18, 0.18) 60%,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      rgba(5, 10, 18, 0.55) 0%,
+      rgba(5, 10, 18, 0.18) 60%,
+      transparent);
 }
 
 /* Green bottom accent bar — mirroring original */
@@ -394,11 +386,9 @@
 .biotech-trend-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 10, 18, 0.25) 0%,
-    rgba(5, 10, 18, 0.75) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(5, 10, 18, 0.25) 0%,
+      rgba(5, 10, 18, 0.75) 100%);
   display: flex;
   align-items: flex-end;
   padding-bottom: 28px;
@@ -430,8 +420,13 @@
 }
 
 @keyframes bioMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ────────────────────────────────────────
@@ -649,10 +644,10 @@
 }
 
 .biotech-eyebrow,
-.biotech-section-header > span,
-.biotech-trend-content > span,
-.biotech-why-copy > span,
-.biotech-cta-content > span {
+.biotech-section-header>span,
+.biotech-trend-content>span,
+.biotech-why-copy>span,
+.biotech-cta-content>span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1018,7 +1013,7 @@
   background: #e8fff6;
 }
 
-.biotech-segment-topline > span {
+.biotech-segment-topline>span {
   color: var(--bio-red);
   font-size: 12px;
   font-weight: 800;
@@ -1086,7 +1081,7 @@
   display: none;
 }
 
-.biotech-trend-content > span {
+.biotech-trend-content>span {
   min-height: 132px;
   padding: 10px 6px;
   margin: 0;
@@ -1228,7 +1223,7 @@
   margin: 0 auto;
 }
 
-.biotech-cta-content > span {
+.biotech-cta-content>span {
   color: #ffe1e3;
   margin-bottom: 12px;
 }
@@ -1249,6 +1244,7 @@
 }
 
 @media (max-width: 900px) {
+
   .biotech-hero-content,
   .biotech-market-grid,
   .biotech-why-grid {

@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { TrendingUp, Users, Award, Globe, Coins, ShieldCheck } from 'lucide-react';
+import { TrendingUp, Users, Award, Globe, Coins, ShieldCheck, ArrowRight } from 'lucide-react';
 import './WhyUs.css';
+import whyHero from '../assets/whyghl.png';
 
 export default function WhyUs() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const introRef = useRef(null);
 
   const criteriaList = [
     {
@@ -78,6 +80,10 @@ export default function WhyUs() {
   ];
 
   const cardRefs = useRef([]);
+  const handleExploreClick = (event) => {
+    event.preventDefault();
+    introRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const handleItemClick = (idx) => {
     setActiveIdx(idx);
@@ -93,16 +99,36 @@ export default function WhyUs() {
   return (
     <div className="why-us-page">
       {/* Hero Header Banner */}
-      <section className="why-hero-banner">
-        <img 
-          src="/assets/img/home/Why-Us.jpg" 
-          alt="Why GHL India Banner" 
-          className="why-banner-img" 
-        />
-      </section>
+    <section
+      className="why-hero-banner why-hero-bg"
+      style={{ backgroundImage: `url(${whyHero})` }}
+    >
+      <div className="why-hero-content-wrap container">
+        <div className="why-hero-content">
+          <span className="why-hero-tag">TRUST. TRANSPARENCY. CONSISTENCY.</span>
+          <h1>
+            Why GHL is
+            <span> built for long-term investors</span>
+          </h1>
+          <p>
+            Discover the key pillars behind our model: strong market demand, experienced
+            execution, secured capital structures, and consistent wealth-building opportunities.
+          </p>
+          <div className="why-hero-actions">
+            <a href="#why-intro" className="why-hero-btn" onClick={handleExploreClick}>
+              Explore Why GHL
+              <ArrowRight size={18} />
+            </a>
+            <a href="#/contact" className="why-hero-btn why-hero-btn-secondary">
+              Talk to Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      {/* Intro Description */}
-      <section className="why-intro section-padding">
+    {/* Intro Description */}
+    <section className="why-intro section-padding" id="why-intro" ref={introRef}>
         <div className="container">
           <div className="why-intro-card">
             <p>

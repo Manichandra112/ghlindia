@@ -18,6 +18,10 @@ export default function DebtFinancing() {
   const sectionRef2 = useScrollAnimation(animOptions);
   const sectionRef3 = useScrollAnimation(animOptions);
   const sectionRef4 = useScrollAnimation(animOptions);
+  const handleExploreClick = (event) => {
+    event.preventDefault();
+    sectionRef1.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="debt-page-wrapper">
@@ -36,7 +40,7 @@ export default function DebtFinancing() {
 <section
   className="debt-hero debt-hero-bg"
   style={{
-    backgroundImage: `linear-gradient(110deg, rgba(8, 10, 14, 0.5) 0%, rgba(8, 10, 14, 0.3) 42%, rgba(8, 10, 14, 0.15) 100%), url(${debit})`
+    backgroundImage: `linear-gradient(110deg, rgba(14, 26, 40, 0.46) 0%, rgba(14, 26, 40, 0.28) 42%, rgba(14, 26, 40, 0.12) 100%), url(${debit})`
   }}
 >
   <div className="debt-container debt-hero-container">
@@ -86,11 +90,11 @@ export default function DebtFinancing() {
       </div>
 
       <div className="hero-actions">
-        <a href="#register" className="hero-btn">
+        <a href="#debt-intro" className="hero-btn" onClick={handleExploreClick}>
           Explore Debt Financing
           <ArrowRight size={18} />
         </a>
-        <a href="#contact" className="hero-btn hero-btn-secondary">
+        <a href="#/contact" className="hero-btn hero-btn-secondary">
           Talk to Advisor
         </a>
       </div>
