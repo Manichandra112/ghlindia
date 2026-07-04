@@ -33,88 +33,69 @@ export default function DebtFinancing() {
         </picture>
       </section> */}
       {/* Hero Section */}
-<section className="debt-hero">
-
-  <div className="debt-container">
-
+<section
+  className="debt-hero debt-hero-bg"
+  style={{
+    backgroundImage: `linear-gradient(110deg, rgba(8, 10, 14, 0.5) 0%, rgba(8, 10, 14, 0.3) 42%, rgba(8, 10, 14, 0.15) 100%), url(${debit})`
+  }}
+>
+  <div className="debt-container debt-hero-container">
     <div className="debt-content">
-
-      <span className="hero-tag">
-        SMART CAPITAL. STRONGER GROWTH.
-      </span>
+      <span className="hero-tag">SMART CAPITAL. STRONGER GROWTH.</span>
 
       <h1>
-        Scale confidently
-        <br />
-        with <span>debt funding!</span>
+        Accelerate your business with
+        <span> Debt Funding</span>
       </h1>
 
       <p>
-        Fuel your ambition with flexible, structured debt solutions
-        designed for sustainable business growth.
+        Access structured debt solutions built for secure growth, predictable returns, and
+        faster expansion without giving up equity.
       </p>
 
       <div className="hero-features">
-
         <div className="feature">
-
           <div className="icon">
-            <Percent size={22} />
+            <Percent size={20} />
           </div>
-
           <div>
-            <h4>Competitive Interest Rates</h4>
-            <span>Up to 24% Returns</span>
+            <h4>High Yield Plans</h4>
+            <span>Returns up to 24%</span>
           </div>
-
         </div>
 
         <div className="feature">
-
           <div className="icon">
-            <ShieldCheck size={22} />
+            <ShieldCheck size={20} />
           </div>
-
           <div>
-            <h4>Secured Funding</h4>
-            <span>Reliable & Protected</span>
+            <h4>Secured Structure</h4>
+            <span>Asset-backed protection</span>
           </div>
-
         </div>
 
         <div className="feature">
-
           <div className="icon">
-            <TrendingUp size={22} />
+            <TrendingUp size={20} />
           </div>
-
           <div>
-            <h4>Business Growth</h4>
-            <span>Scale with Confidence</span>
+            <h4>Growth Ready</h4>
+            <span>Built to scale operations</span>
           </div>
-
         </div>
-
       </div>
 
-      <a href="#register" className="hero-btn">
-        Explore Debt Financing
-        <ArrowRight size={18} />
-      </a>
-
+      <div className="hero-actions">
+        <a href="#register" className="hero-btn">
+          Explore Debt Financing
+          <ArrowRight size={18} />
+        </a>
+        <a href="#contact" className="hero-btn hero-btn-secondary">
+          Talk to Advisor
+        </a>
+      </div>
     </div>
-
-    <div className="debt-image">
-
-      <img
-        src={debit}
-        alt="Debt Funding"
-      />
-
-    </div>
-
   </div>
-
 </section>
 
       {/* 1. What is Debt Funding Section */}
