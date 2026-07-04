@@ -7,6 +7,13 @@
   color: #1f2937;
   overflow: visible;
   font-family: var(--font-body, sans-serif);
+  padding-top: var(--header-height, 80px);
+}
+
+@media (max-width: 600px) {
+  .charge-creation-page {
+    padding-top: var(--header-height, 72px);
+  }
 }
 
 /* Hero Section Banner */
@@ -19,33 +26,50 @@
   border-radius: 0;
 }
 
-.charge-hero-bg {
-  min-height: clamp(300px, 40vw, 500px);
-  background-size: cover;
-  background-position: center 54%;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
+.charge-hero-media-wrap {
+  position: relative;
+  width: 100%;
+  display: block;
 }
 
-.charge-hero-bg::before {
-  content: '';
+.charge-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.charge-hero-overlay-mask {
   position: absolute;
   inset: 0;
-  background: rgba(70, 78, 92, 0.34);
-  pointer-events: none;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(15, 23, 42, 0.15) 100%);
+  z-index: 1;
 }
 
 .charge-hero-content-wrap {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   width: 100%;
-  padding-top: calc(var(--header-height, 80px) + 42px);
-  padding-bottom: 26px;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 993px) {
+  .charge-hero-content-wrap {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
 }
 
 .charge-hero-content {
   max-width: 760px;
+  color: #ffffff;
+  padding-left: 0;
 }
 
 .charge-hero-tag {
@@ -124,21 +148,56 @@
   color: #fff;
 }
 
+@media (max-width: 992px) {
+  .charge-hero-content {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+
+  .charge-hero-actions {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 768px) {
-  .charge-hero-banner {
-    margin-top: 0;
+  .charge-hero-media-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .charge-hero-overlay-mask {
+    display: none;
   }
 
   .charge-hero-content-wrap {
-    padding-top: var(--header-height, 72px);
+    position: relative;
+    inset: auto;
+    background: #0f172a;
+    padding: 40px 20px;
+    z-index: 2;
+  }
+
+  .charge-hero-img {
+    order: 2;
+  }
+
+  .charge-hero-content {
+    order: 1;
+    max-width: 100%;
+    text-align: left;
   }
 
   .charge-hero-content h1 {
-    font-size: 38px;
+    font-size: 32px !important;
   }
 
   .charge-hero-content p {
-    font-size: 16px;
+    font-size: 15px !important;
+  }
+
+  .charge-hero-actions {
+    justify-content: flex-start !important;
   }
 }
 
@@ -201,7 +260,7 @@
   animation: rotateDashed 20s linear infinite;
 }
 
-.graphics-circle > * {
+.graphics-circle>* {
   animation: keepUpright 20s linear infinite;
 }
 
@@ -219,13 +278,23 @@
 }
 
 @keyframes rotateDashed {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes keepUpright {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
 /* Debenture Section Flow */
@@ -335,8 +404,8 @@
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.02);
   position: relative;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s ease;
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -566,7 +635,8 @@
 }
 
 .safety-card {
-  background: #eef2f7; /* Matching the beautiful light grayish-blue background */
+  background: #eef2f7;
+  /* Matching the beautiful light grayish-blue background */
   border-radius: 28px;
   border: 1.5px solid var(--card-border-subtle, rgba(15, 23, 42, 0.13));
   padding: 50px;
@@ -719,13 +789,14 @@
 }
 
 @media (max-width: 768px) {
+
   .charge-intro-card,
   .safety-card {
     grid-template-columns: 1fr;
     padding: 36px 24px;
     gap: 30px;
   }
-  
+
   .debenture-video-box {
     grid-template-columns: 1fr;
     padding: 30px 24px;
@@ -736,7 +807,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 36px 20px;
   }
-  
+
   .llp-grid {
     grid-template-columns: 1fr;
   }

@@ -36,7 +36,7 @@ export default function AboutUs() {
       >
         <div className="about-hero-content-wrap container">
           <div className="about-hero-content">
-            <span className="badge-tag">About Us</span>
+            {/* <span className="badge-tag">About Us</span> */}
             <h1>Building stronger relationships, creating lasting impact</h1>
             <p>
               We build trust-led partnerships through transparent investing, responsible execution,

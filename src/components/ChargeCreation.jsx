@@ -54,29 +54,30 @@ export default function ChargeCreation() {
   return (
     <div className="charge-creation-page">
       {/* Hero Header Banner */}
-      <section
-        className="charge-hero-banner charge-hero-bg"
-        style={{ backgroundImage: `url(${chargeHero})` }}
-      >
-        <div className="charge-hero-content-wrap container">
-          <div className="charge-hero-content">
-            <span className="charge-hero-tag">SECURED STRUCTURE. LEGAL PROTECTION.</span>
-            <h1>
-              Charge Creation
-              <span> that protects every investment</span>
-            </h1>
-            <p>
-              Understand how legally registered charges secure assets, protect investor capital,
-              and create a transparent repayment framework.
-            </p>
-            <div className="charge-hero-actions">
-              <a href="#charge-intro" className="charge-hero-btn" onClick={handleExploreClick}>
-                Explore Charge Creation
-                <ArrowRight size={18} />
-              </a>
-              <a href="#/contact" className="charge-hero-btn charge-hero-btn-secondary">
-                Talk to Advisor
-              </a>
+      <section className="charge-hero-banner">
+        <div className="charge-hero-media-wrap">
+          <img src={chargeHero} alt="Charge Creation Banner" className="charge-hero-img" />
+          <div className="charge-hero-overlay-mask" />
+          <div className="charge-hero-content-wrap container">
+            <div className="charge-hero-content">
+              <span className="charge-hero-tag">SECURED STRUCTURE. LEGAL PROTECTION.</span>
+              <h1>
+                Charge Creation
+                <span> that protects every investment</span>
+              </h1>
+              <p>
+                Understand how legally registered charges secure assets, protect investor capital,
+                and create a transparent repayment framework.
+              </p>
+              <div className="charge-hero-actions">
+                <a href="#charge-intro" className="charge-hero-btn" onClick={handleExploreClick}>
+                  Explore Charge Creation
+                  <ArrowRight size={18} />
+                </a>
+                <a href="#/contact" className="charge-hero-btn charge-hero-btn-secondary">
+                  Talk to Advisor
+                </a>
+              </div>
             </div>
           </div>
         </div>

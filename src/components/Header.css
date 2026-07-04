@@ -18,7 +18,8 @@
   width: 100%;
 }
 
-.topbar-left, .topbar-right {
+.topbar-left,
+.topbar-right {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -57,7 +58,8 @@
   transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.lang-btn:hover, .lang-btn.active {
+.lang-btn:hover,
+.lang-btn.active {
   background-color: var(--primary-red);
   color: var(--text-white);
   border-color: var(--primary-red);
@@ -211,7 +213,7 @@
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.nav-links > .dropdown-parent:last-child .dropdown-menu {
+.nav-links>.dropdown-parent:last-child .dropdown-menu {
   left: 0;
   right: auto;
   min-width: 250px;
@@ -373,11 +375,11 @@
   .desktop-navbar {
     display: none;
   }
-  
+
   .mobile-toggle {
     display: block;
   }
-  
+
   .mobile-navbar {
     display: block;
     position: absolute;
@@ -391,12 +393,12 @@
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
   }
-  
+
   .mobile-navbar.open {
     max-height: 500px;
     overflow-y: auto;
   }
-  
+
   .mobile-nav-links {
     list-style: none;
     padding: 16px 24px;
@@ -404,7 +406,7 @@
     flex-direction: column;
     gap: 8px;
   }
-  
+
   .mobile-item {
     display: flex;
     align-items: center;
@@ -416,13 +418,13 @@
     font-weight: 600;
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
-  
+
   .mobile-aif {
     color: var(--primary-red);
     justify-content: flex-start;
     gap: 8px;
   }
-  
+
   .mobile-submenu {
     list-style: none;
     padding-left: 16px;
@@ -430,7 +432,7 @@
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
   }
-  
+
   .mobile-submenu.open {
     max-height: 160px;
     margin-bottom: 8px;
@@ -439,7 +441,7 @@
   .mobile-sector-submenu.open {
     max-height: 190px;
   }
-  
+
   .mobile-submenu li a {
     display: block;
     padding: 8px 0;
@@ -452,7 +454,7 @@
     color: var(--primary-red);
     font-weight: 700;
   }
-  
+
   .mobile-lang-trigger {
     color: var(--primary-red);
     justify-content: flex-start;
@@ -460,11 +462,11 @@
     width: 100%;
     text-align: left;
   }
-  
+
   .mobile-login-li {
     margin-top: 12px;
   }
-  
+
   .w-full {
     width: 100%;
   }

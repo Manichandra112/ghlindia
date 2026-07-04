@@ -99,33 +99,34 @@ export default function WhyUs() {
   return (
     <div className="why-us-page">
       {/* Hero Header Banner */}
-    <section
-      className="why-hero-banner why-hero-bg"
-      style={{ backgroundImage: `url(${whyHero})` }}
-    >
-      <div className="why-hero-content-wrap container">
-        <div className="why-hero-content">
-          <span className="why-hero-tag">TRUST. TRANSPARENCY. CONSISTENCY.</span>
-          <h1>
-            Why GHL is
-            <span> built for long-term investors</span>
-          </h1>
-          <p>
-            Discover the key pillars behind our model: strong market demand, experienced
-            execution, secured capital structures, and consistent wealth-building opportunities.
-          </p>
-          <div className="why-hero-actions">
-            <a href="#why-intro" className="why-hero-btn" onClick={handleExploreClick}>
-              Explore Why GHL
-              <ArrowRight size={18} />
-            </a>
-            <a href="#/contact" className="why-hero-btn why-hero-btn-secondary">
-              Talk to Advisor
-            </a>
+      <section className="why-hero-banner">
+        <div className="why-hero-media-wrap">
+          <img src={whyHero} alt="Why GHL Banner" className="why-hero-img" />
+          <div className="why-hero-overlay-mask" />
+          <div className="why-hero-content-wrap container">
+            <div className="why-hero-content">
+              <span className="why-hero-tag">TRUST. TRANSPARENCY. CONSISTENCY.</span>
+              <h1>
+                Why GHL is
+                <span> built for long-term investors</span>
+              </h1>
+              <p>
+                Discover the key pillars behind our model: strong market demand, experienced
+                execution, secured capital structures, and consistent wealth-building opportunities.
+              </p>
+              <div className="why-hero-actions">
+                <a href="#why-intro" className="why-hero-btn" onClick={handleExploreClick}>
+                  Explore Why GHL
+                  <ArrowRight size={18} />
+                </a>
+                <a href="#/contact" className="why-hero-btn why-hero-btn-secondary">
+                  Talk to Advisor
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     {/* Intro Description */}
     <section className="why-intro section-padding" id="why-intro" ref={introRef}>

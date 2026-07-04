@@ -5,6 +5,7 @@
   color: var(--text-dark, #0f172a);
   font-family: var(--font-body, 'Inter', sans-serif);
   overflow-x: hidden;
+  padding-top: calc(var(--header-height, 80px) + 20px);
 }
 
 /* 1. Cinematic Hero Banner */
@@ -36,7 +37,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: calc(var(--header-height, 80px) + 42px);
+  padding-top: 0;
   padding-bottom: 26px;
 }
 

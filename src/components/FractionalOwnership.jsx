@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  Coins, 
-  ShieldCheck, 
-  TrendingUp, 
-  Sparkles, 
-  Activity, 
-  FileText, 
-  CheckCircle, 
-  BarChart3, 
-  Users, 
+import {
+  Coins,
+  ShieldCheck,
+  TrendingUp,
+  Sparkles,
+  Activity,
+  FileText,
+  CheckCircle,
+  BarChart3,
+  Users,
   ArrowRight,
   Percent,
   Search,
@@ -112,47 +112,45 @@ export default function FractionalOwnership() {
     {
       step: "07",
       icon: <Users size={20} />,
-      title: "Reinvest & Compund",
+      title: "Reinvest & Compound",
       desc: "Roll over your capital into newer high-yield projects to compound your financial freedom."
     }
   ];
 
   return (
     <div className="fractional-page-wrapper">
-      {/* Hero Banner Section */}
       <section className="fractional-hero">
-        <div className="fractional-hero-content-wrap container">
-          <div className="fractional-hero-content">
-            <span className="fractional-hero-tag">SMART ACCESS. BIG OPPORTUNITIES.</span>
-            <h1>
-              Small Investments,
-              <span> Big Opportunities</span>
-            </h1>
-            <p>
-              Start with affordable capital and co-own high-value assets through fractional
-              investing built for secure, long-term wealth growth.
-            </p>
+        <div className="fractional-hero-media-wrap">
+          <img src={fractionalInvestment} alt="Fractional Investment Banner" className="fractional-hero-img" />
+          <div className="fractional-hero-overlay-mask" />
+          <div className="fractional-hero-content-wrap container">
+            <div className="fractional-hero-content">
+              <span className="fractional-hero-tag">SMART ACCESS. BIG OPPORTUNITIES.</span>
+              <h1>
+                Small Investments,
+                <span> Big Opportunities</span>
+              </h1>
+              <p>
+                Start with affordable capital and co-own high-value assets through fractional
+                investing built for secure, long-term wealth growth.
+              </p>
 
-            <div className="fractional-hero-points">
-              <span>Low Entry Barrier</span>
-              <span>Premium Asset Access</span>
-              <span>Diversified Growth</span>
-            </div>
+              <div className="fractional-hero-points">
+                <span>Low Entry Barrier</span>
+                <span>Premium Asset Access</span>
+                <span>Diversified Growth</span>
+              </div>
 
-            <div className="fractional-hero-actions">
-              <a href="#learn-more" className="fractional-hero-btn" onClick={handleLearnMoreClick}>
-                Explore Fractional Investment
-                <ArrowRight size={18} />
-              </a>
-              <a href="#/contact" className="fractional-hero-btn fractional-hero-btn-secondary">
-                Talk to Advisor
-              </a>
+              <div className="fractional-hero-actions">
+                <a href="#learn-more" className="fractional-hero-btn" onClick={handleLearnMoreClick}>
+                  Explore Fractional Investment
+                  <ArrowRight size={18} />
+                </a>
+                {/* <a href="#/contact" className="fractional-hero-btn fractional-hero-btn-secondary">
+                  Talk to Advisor
+                </a> */}
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="fractional-hero-image-container container">
-          <div className="fractional-hero-img-card">
-            <img src={fractionalInvestment} alt="Fractional Investment Banner" className="fractional-hero-display-img" />
           </div>
         </div>
       </section>
@@ -162,9 +160,9 @@ export default function FractionalOwnership() {
         <div className="container">
           <div className="fractional-row-flex">
             <div className="fractional-col-flex intro-image-container" data-animate="fade-right">
-              <img 
-                src="/assets/img/debt/about-fractional-investment_.png" 
-                alt="About Fractional Investment" 
+              <img
+                src="/assets/img/debt/about-fractional-investment_.png"
+                alt="About Fractional Investment"
                 className="fractional-intro-img"
               />
             </div>
@@ -174,7 +172,7 @@ export default function FractionalOwnership() {
               <p>
                 <strong>Fractional investment</strong> refers to the practice of investing in a part or fraction of an asset or investment, rather than purchasing it in full. This allows individuals to invest smaller amounts in expensive assets, such as real estate or stocks without needing the full amount to buy the entire asset.
               </p>
-              
+
               <div className="intro-features">
                 <div className="intro-feat-item">
                   <div className="intro-feat-icon-wrapper">
@@ -224,8 +222,8 @@ export default function FractionalOwnership() {
 
           <div className="fractional-grid-row">
             {whyFractional.map((feat, idx) => (
-              <div 
-                className="fractional-feat-card glass-panel" 
+              <div
+                className="fractional-feat-card glass-panel"
                 key={idx}
                 data-animate="fade-up"
                 style={{ animationDelay: `${idx * 150}ms` }}
@@ -250,8 +248,8 @@ export default function FractionalOwnership() {
 
           <div className="ghl-reasons-matrix">
             {whyChooseGhl.map((reason) => (
-              <div 
-                className="reason-card" 
+              <div
+                className="reason-card"
                 key={reason.id}
                 data-animate="fade-up"
               >
@@ -271,9 +269,9 @@ export default function FractionalOwnership() {
         <div className="container">
           <div className="fractional-row-flex">
             <div className="fractional-col-flex" data-animate="fade-right">
-              <img 
-                src="/assets/img/debt/our-expertise.png" 
-                alt="Property Flipping Expertise" 
+              <img
+                src="/assets/img/debt/our-expertise.png"
+                alt="Property Flipping Expertise"
                 className="fractional-intro-img"
               />
             </div>
@@ -307,8 +305,8 @@ export default function FractionalOwnership() {
           <div className="timeline-block">
             <div className="timeline-connector-line"></div>
             {timelineSteps.map((step, idx) => (
-              <div 
-                className={`timeline-step-row ${idx % 2 === 0 ? 'left-align' : 'right-align'}`} 
+              <div
+                className={`timeline-step-row ${idx % 2 === 0 ? 'left-align' : 'right-align'}`}
                 key={idx}
                 data-animate="fade-up"
               >

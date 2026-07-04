@@ -1,34 +1,58 @@
-.debt-hero{
+.debt-hero {
+  position: relative;
   width: 100%;
-  margin-top: 34px;
+  margin-top: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-.debt-hero-bg {
-  background-size: cover;
-  background-position: center 56%;
-  background-repeat: no-repeat;
-  min-height: clamp(320px, 44vw, 560px);
-  display: flex;
-  align-items: center;
+.debt-hero-media-wrap {
+  position: relative;
+  width: 100%;
+  display: block;
 }
 
-.debt-container{
+.debt-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.debt-hero-overlay-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 20, 35, 0.88) 0%, rgba(10, 20, 35, 0.45) 50%, rgba(10, 20, 35, 0.15) 100%);
+  z-index: 1;
+}
+
+.debt-container {
   width: min(1280px, 92%);
   margin: auto;
 }
 
 .debt-hero-container {
-  display: grid;
-  grid-template-columns: minmax(0, 760px);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
   align-items: center;
-  height: 100%;
-  padding-top: calc(var(--header-height, 80px) + 42px);
-  padding-bottom: 28px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 993px) {
+  .debt-hero-container {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
 }
 
 .debt-hero .debt-content {
   padding: 0;
+  max-width: 760px;
 }
 
 .hero-tag{
@@ -192,24 +216,74 @@
   }
 }
 
-@media (max-width:600px) {
-  .debt-hero {
-    margin-top: 24px;
-  }
-
-  .debt-hero-bg {
-    background-position: center 54%;
-  }
-
+@media (max-width: 992px) {
   .debt-hero-container {
-    padding-top: var(--header-height, 72px);
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-features {
+    justify-content: center;
+  }
+  .hero-actions {
+    justify-content: center;
   }
 }
+
+@media (max-width: 768px) {
+  .debt-hero-media-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .debt-hero-overlay-mask {
+    display: none;
+  }
+  .debt-hero-container {
+    position: relative;
+    inset: auto;
+    background: #0b1422;
+    padding: 40px 20px;
+    z-index: 2;
+  }
+  .debt-hero-img {
+    order: 2;
+  }
+  .debt-content {
+    order: 1;
+    max-width: 100% !important;
+    text-align: left;
+  }
+  .debt-content h1 {
+    font-size: 32px !important;
+  }
+  .debt-content p {
+    font-size: 15px !important;
+  }
+  .hero-features {
+    justify-content: flex-start !important;
+  }
+  .hero-actions {
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .debt-hero {
+    margin-top: 0;
+  }
+}
+
 .debt-page-wrapper {
   background-color: var(--text-white);
   color: var(--text-dark);
   font-family: var(--font-default);
   overflow: visible;
+  padding-top: calc(var(--header-height, 80px) + 20px);
+}
+
+@media (max-width: 600px) {
+  .debt-page-wrapper {
+    padding-top: var(--header-height, 72px);
+  }
 }
 
 /* 1. Hero Section */

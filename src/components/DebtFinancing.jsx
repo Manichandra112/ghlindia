@@ -1,8 +1,8 @@
 import React from 'react';
-import { 
-  ShieldCheck, 
-  TrendingUp, 
-  Sparkles, 
+import {
+  ShieldCheck,
+  TrendingUp,
+  Sparkles,
   ArrowRight,
   Check,
   Building,
@@ -37,79 +37,78 @@ export default function DebtFinancing() {
         </picture>
       </section> */}
       {/* Hero Section */}
-<section
-  className="debt-hero debt-hero-bg"
-  style={{
-    backgroundImage: `linear-gradient(110deg, rgba(14, 26, 40, 0.46) 0%, rgba(14, 26, 40, 0.28) 42%, rgba(14, 26, 40, 0.12) 100%), url(${debit})`
-  }}
->
-  <div className="debt-container debt-hero-container">
-    <div className="debt-content">
-      <span className="hero-tag">SMART CAPITAL. STRONGER GROWTH.</span>
+      <section className="debt-hero">
+        <div className="debt-hero-media-wrap">
+          <img src={debit} alt="Debt Financing Banner" className="debt-hero-img" />
+          <div className="debt-hero-overlay-mask" />
+          <div className="debt-container debt-hero-container">
+            <div className="debt-content">
+              <span className="hero-tag">SMART CAPITAL. STRONGER GROWTH.</span>
 
-      <h1>
-        Accelerate your business with
-        <span> Debt Funding</span>
-      </h1>
+              <h1>
+                Accelerate your business with
+                <span> Debt Funding</span>
+              </h1>
 
-      <p>
-        Access structured debt solutions built for secure growth, predictable returns, and
-        faster expansion without giving up equity.
-      </p>
+              <p>
+                Access structured debt solutions built for secure growth, predictable returns, and
+                faster expansion without giving up equity.
+              </p>
 
-      <div className="hero-features">
-        <div className="feature">
-          <div className="icon">
-            <Percent size={20} />
-          </div>
-          <div>
-            <h4>High Yield Plans</h4>
-            <span>Returns up to 24%</span>
+              <div className="hero-features">
+                <div className="feature">
+                  <div className="icon">
+                    <Percent size={20} />
+                  </div>
+                  <div>
+                    <h4>High Yield Plans</h4>
+                    <span>Returns up to 24%</span>
+                  </div>
+                </div>
+
+                <div className="feature">
+                  <div className="icon">
+                    <ShieldCheck size={20} />
+                  </div>
+                  <div>
+                    <h4>Secured Structure</h4>
+                    <span>Asset-backed protection</span>
+                  </div>
+                </div>
+
+                <div className="feature">
+                  <div className="icon">
+                    <TrendingUp size={20} />
+                  </div>
+                  <div>
+                    <h4>Growth Ready</h4>
+                    <span>Built to scale operations</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hero-actions">
+                <a href="#debt-intro" className="hero-btn" onClick={handleExploreClick}>
+                  Explore Debt Financing
+                  <ArrowRight size={18} />
+                </a>
+                {/* <a href="#/contact" className="hero-btn hero-btn-secondary">
+                  Talk to Advisor
+                </a> */}
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="feature">
-          <div className="icon">
-            <ShieldCheck size={20} />
-          </div>
-          <div>
-            <h4>Secured Structure</h4>
-            <span>Asset-backed protection</span>
-          </div>
-        </div>
-
-        <div className="feature">
-          <div className="icon">
-            <TrendingUp size={20} />
-          </div>
-          <div>
-            <h4>Growth Ready</h4>
-            <span>Built to scale operations</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-actions">
-        <a href="#debt-intro" className="hero-btn" onClick={handleExploreClick}>
-          Explore Debt Financing
-          <ArrowRight size={18} />
-        </a>
-        <a href="#/contact" className="hero-btn hero-btn-secondary">
-          Talk to Advisor
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* 1. What is Debt Funding Section */}
       <section className="debt-intro section-padding" ref={sectionRef1}>
         <div className="container">
           <div className="debt-row-flex">
             <div className="debt-col-flex debt-image-container" data-animate="fade-right">
-              <img 
-                src="/assets/img/debt/do-you-know.png" 
-                alt="What is Debt Funding" 
+              <img
+                src="/assets/img/debt/do-you-know.png"
+                alt="What is Debt Funding"
                 className="debt-section-img"
               />
             </div>
@@ -119,7 +118,7 @@ export default function DebtFinancing() {
               <p>
                 <strong>Debt funding</strong> is a method of raising capital for a business or project by borrowing money. Instead of selling equity or ownership in the company, debt funding involves the business taking out loans or issuing bonds that must be repaid over time with interest.
               </p>
-              
+
               <div className="debt-intro-features">
                 <div className="debt-feat-item">
                   <div className="debt-feat-icon-wrapper">
@@ -148,9 +147,9 @@ export default function DebtFinancing() {
         <div className="container">
           <div className="debt-row-flex row-reverse">
             <div className="debt-col-flex debt-image-container" data-animate="fade-left" data-stagger-delay="150ms">
-              <img 
-                src="/assets/img/debt/approaching.png" 
-                alt="GHL's Approach to Debt Funding" 
+              <img
+                src="/assets/img/debt/approaching.png"
+                alt="GHL's Approach to Debt Funding"
                 className="debt-section-img"
               />
             </div>
@@ -241,9 +240,9 @@ export default function DebtFinancing() {
 
           <div className="debt-row-flex align-items-center">
             <div className="debt-col-flex debt-image-container" data-animate="fade-right">
-              <img 
-                src="/assets/img/debt/why-us.png" 
-                alt="Why Invest with GHL" 
+              <img
+                src="/assets/img/debt/why-us.png"
+                alt="Why Invest with GHL"
                 className="debt-section-img"
               />
             </div>
@@ -251,7 +250,7 @@ export default function DebtFinancing() {
               <p className="why-intro-lead">
                 When you choose to invest with us, you enjoy the following benefits:
               </p>
-              
+
               <div className="why-benefits-stack">
                 <div className="benefit-card">
                   <div className="benefit-icon-wrapper">
