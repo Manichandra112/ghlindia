@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './DebtFinancing.css';
+import debit from '../assets/debitfunding.png';
 
 export default function DebtFinancing() {
   const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
@@ -21,7 +22,7 @@ export default function DebtFinancing() {
   return (
     <div className="debt-page-wrapper">
       {/* Hero Section */}
-      <section className="debt-hero-section">
+      {/* <section className="debt-hero-section">
         <picture>
           <source media="(max-width: 768px)" srcSet="/assets/img/debt/debt-funding-mob.jpg" />
           <img 
@@ -30,7 +31,91 @@ export default function DebtFinancing() {
             className="debt-hero-img"
           />
         </picture>
-      </section>
+      </section> */}
+      {/* Hero Section */}
+<section className="debt-hero">
+
+  <div className="debt-container">
+
+    <div className="debt-content">
+
+      <span className="hero-tag">
+        SMART CAPITAL. STRONGER GROWTH.
+      </span>
+
+      <h1>
+        Scale confidently
+        <br />
+        with <span>debt funding!</span>
+      </h1>
+
+      <p>
+        Fuel your ambition with flexible, structured debt solutions
+        designed for sustainable business growth.
+      </p>
+
+      <div className="hero-features">
+
+        <div className="feature">
+
+          <div className="icon">
+            <Percent size={22} />
+          </div>
+
+          <div>
+            <h4>Competitive Interest Rates</h4>
+            <span>Up to 24% Returns</span>
+          </div>
+
+        </div>
+
+        <div className="feature">
+
+          <div className="icon">
+            <ShieldCheck size={22} />
+          </div>
+
+          <div>
+            <h4>Secured Funding</h4>
+            <span>Reliable & Protected</span>
+          </div>
+
+        </div>
+
+        <div className="feature">
+
+          <div className="icon">
+            <TrendingUp size={22} />
+          </div>
+
+          <div>
+            <h4>Business Growth</h4>
+            <span>Scale with Confidence</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <a href="#register" className="hero-btn">
+        Explore Debt Financing
+        <ArrowRight size={18} />
+      </a>
+
+    </div>
+
+    <div className="debt-image">
+
+      <img
+        src={debit}
+        alt="Debt Funding"
+      />
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* 1. What is Debt Funding Section */}
       <section className="debt-intro section-padding" ref={sectionRef1}>
