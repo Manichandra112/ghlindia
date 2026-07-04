@@ -35,8 +35,9 @@
 .charge-hero-img {
   width: 100%;
   height: auto;
+  max-height: 560px;
   display: block;
-  object-fit: contain;
+  margin: 0 auto;
 }
 
 .charge-hero-overlay-mask {

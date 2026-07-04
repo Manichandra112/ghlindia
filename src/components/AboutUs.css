@@ -5,7 +5,7 @@
   color: var(--text-dark, #0f172a);
   font-family: var(--font-body, 'Inter', sans-serif);
   overflow-x: hidden;
-  padding-top: calc(var(--header-height, 80px) + 20px);
+  padding-top: calc(var(--header-height, 80px));
 }
 
 /* 1. Cinematic Hero Banner */
@@ -16,34 +16,138 @@
   overflow: hidden;
 }
 
-.about-hero-bg {
+/* .about-hero-bg {
   min-height: clamp(300px, 40vw, 500px);
   background-size: cover;
   background-position: center 54%;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-}
+} */
 
-.about-hero-bg::before {
+
+/* .about-hero-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   background: rgba(70, 78, 92, 0.34);
   pointer-events: none;
+} */
+ .about-hero-section{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.about-hero-content-wrap {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 26px;
+.about-hero-media-wrap{
+    position: relative;
+    width: 100%;
 }
 
-.about-hero-content {
-  max-width: 760px;
+.about-hero-img{
+    width:100%;
+    max-height:560px;
+    height:auto;
+    display:block;
 }
+.about-hero-overlay-mask{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(15,23,42,.82) 0%,
+        rgba(15,23,42,.45) 50%,
+        rgba(15,23,42,.15) 100%
+    );
+    z-index: 1;
+}
+
+.about-hero-content-wrap{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.about-hero-content{
+    max-width: 620px;
+}
+
+/* @media (min-width:993px){
+
+  .about-hero-section{
+      height:auto;
+  }
+
+  .about-hero-media-wrap{
+      height:auto;
+  }
+
+  .about-hero-img{
+      width:100%;
+      height:auto;
+      max-height:530px;
+      object-fit:contain;
+      display:block;
+      margin:0 auto;
+  }
+
+} 
+*/
+@media (max-width:768px){
+
+  .about-hero-media-wrap{
+      display:flex;
+      flex-direction:column;
+  }
+
+  .about-hero-overlay-mask{
+      display:none;
+  }
+
+  .about-hero-img{
+      width:100%;
+      height:auto;
+      max-height:none;
+      display:block;
+      order:1;
+  }
+
+  .about-hero-content-wrap{
+      position:relative;
+      inset:auto;
+      background:#0f172a;
+      padding:40px 20px;
+      order:2;
+  }
+
+  .about-hero-content{
+      max-width:100%;
+  }
+
+  .about-hero-content h1{
+      font-size:34px;
+      line-height:1.15;
+  }
+
+  .about-hero-content p{
+      font-size:16px;
+      line-height:1.7;
+  }
+
+  .about-hero-actions{
+      flex-direction:column;
+      gap:14px;
+  }
+
+  .about-hero-btn,
+  .about-hero-btn-secondary{
+      width:100%;
+      justify-content:center;
+  }
+}
+
 
 .about-hero-content .badge-tag {
   background-color: var(--primary-red, #e41f26);

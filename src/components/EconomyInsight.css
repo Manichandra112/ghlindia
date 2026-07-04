@@ -1,8 +1,9 @@
 /* EconomyInsight.css - Light Premium Theme */
 
 .economy-insight-container {
-  padding-top: 100px; /* Further decreased gap to pull heading closer to header */
-  padding-bottom: 0; /* Set to 0 to let CTA banner touch the footer directly */
+  padding-top: var(--header-height, 80px);
+  padding-bottom: 0;
+  /* Set to 0 to let CTA banner touch the footer directly */
   color: #0f172a;
   background: #ffffff;
   min-height: 100vh;
@@ -10,7 +11,8 @@
 
 /* Breadcrumbs Styling */
 .breadcrumbs {
-  padding: 0; /* Fully minimized padding */
+  padding: 0;
+  /* Fully minimized padding */
   background: transparent;
   border-bottom: none;
   margin-bottom: 15px;
@@ -24,7 +26,8 @@
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  color: #e41f26; /* Brand red accent */
+  color: #e41f26;
+  /* Brand red accent */
   font-weight: 700;
   display: block;
   margin-bottom: 6px;
@@ -40,7 +43,8 @@
 }
 
 .page-title .highlight {
-  color: #e41f26; /* Highlight last word in brand red */
+  color: #e41f26;
+  /* Highlight last word in brand red */
 }
 
 .breadcrumbs nav {
@@ -56,7 +60,7 @@
   font-size: 14px;
 }
 
-.breadcrumbs ol li + li::before {
+.breadcrumbs ol li+li::before {
   display: inline-block;
   padding-right: 10px;
   padding-left: 10px;
@@ -129,11 +133,13 @@
   scroll-behavior: smooth;
   gap: 12px;
   padding: 10px 5px;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .date-tabs-container::-webkit-scrollbar {
-  display: none; /* Safari/Chrome */
+  display: none;
+  /* Safari/Chrome */
 }
 
 .date-tab {
@@ -169,7 +175,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
-  margin-bottom: 60px; /* Added spacing between cards grid and red CTA banner */
+  margin-bottom: 60px;
+  /* Added spacing between cards grid and red CTA banner */
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -186,7 +193,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Stretch automatically to match row height */
+  height: 100%;
+  /* Stretch automatically to match row height */
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
 }
@@ -200,7 +208,8 @@
 .card-img-wrapper {
   position: relative;
   width: 100%;
-  height: auto; /* Let it size naturally to prevent vertical gaps */
+  height: auto;
+  /* Let it size naturally to prevent vertical gaps */
   overflow: hidden;
   background: #ffffff;
   border-bottom: 1px solid rgba(15, 23, 42, 0.04);
@@ -208,7 +217,8 @@
 
 .card-img {
   width: 100%;
-  height: auto; /* Scale proportionally without cropping */
+  height: auto;
+  /* Scale proportionally without cropping */
   display: block;
   object-fit: contain;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -234,7 +244,8 @@
   color: #0f172a;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Tighter 3-line limit */
+  -webkit-line-clamp: 3;
+  /* Tighter 3-line limit */
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-grow: 1;
@@ -254,7 +265,8 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: auto; /* Push button to the bottom of the card content area */
+  margin-top: auto;
+  /* Push button to the bottom of the card content area */
 }
 
 .read-more-btn:hover {
@@ -274,8 +286,10 @@
 
 /* Detail View Layout */
 .detail-view {
-  max-width: 1050px; /* Increased from 860px for a wider layout */
-  margin: 0 auto 60px auto; /* Added 60px bottom margin to separate from CTA */
+  max-width: 1050px;
+  /* Increased from 860px for a wider layout */
+  margin: 0 auto 60px auto;
+  /* Added 60px bottom margin to separate from CTA */
   padding: 0 20px;
   animation: fadeInUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
@@ -316,7 +330,8 @@
 
 .article-header {
   margin-bottom: 30px;
-  border-left: 4px solid #e41f26; /* Premium brand accent highlight */
+  border-left: 4px solid #e41f26;
+  /* Premium brand accent highlight */
   padding-left: 20px;
 }
 
@@ -357,7 +372,8 @@
   height: auto;
   overflow: hidden;
   border-radius: 12px;
-  margin-bottom: 20px; /* Reduced from 40px */
+  margin-bottom: 20px;
+  /* Reduced from 40px */
   border: 1px solid rgba(15, 23, 42, 0.08);
   background: #ffffff;
 }
@@ -418,6 +434,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -436,20 +453,257 @@
   .page-title {
     font-size: 28px;
   }
+
   .breadcrumbs .page-header {
     padding: 20px 0;
   }
+
   .article-header h1 {
     font-size: 24px;
   }
+
   .article-body-wrapper {
     padding: 20px;
   }
+
   .date-selector-wrapper {
     padding: 0 30px;
   }
+
   .scroll-btn {
     width: 32px;
     height: 32px;
+  }
+}
+
+/* ==========================================================================
+   Cinematic Hero Banner for Economy Insight
+   ========================================================================== */
+.economy-hero {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.economy-hero-img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  display: block;
+  margin: 0 auto;
+}
+
+.economy-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45); /* Dark overlay to keep text extremely readable */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.economy-hero-content-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 993px) {
+  .economy-hero-content-wrap {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+.economy-hero-content {
+  max-width: 550px;
+  color: #ffffff;
+}
+
+.economy-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #f8fbff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.economy-hero-content h1 {
+  font-size: clamp(30px, 4.2vw, 46px);
+  line-height: 1.08;
+  color: #f8fbff;
+  margin-bottom: 12px;
+  font-weight: 800;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.economy-hero-content h1 span {
+  display: block;
+  color: #e41f26;
+  /* Brand red accent */
+}
+
+.economy-hero-content p {
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.45;
+  color: rgba(248, 251, 255, 0.9);
+  margin-bottom: 20px;
+  font-weight: 400;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.economy-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.economy-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  gap: 8px;
+  transition: all 0.3s ease;
+  background-color: #e41f26;
+  color: #ffffff;
+  border: 2px solid #e41f26;
+  box-shadow: 0 4px 14px rgba(228, 31, 38, 0.35);
+  text-decoration: none;
+}
+
+.economy-hero-btn:hover {
+  background-color: #c6161c;
+  border-color: #c6161c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(228, 31, 38, 0.45);
+}
+
+.economy-hero-btn-secondary {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.58);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.economy-hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+/* @media (max-width: 768px) {
+  .economy-hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .economy-hero-img {
+    order: 2;
+    height: auto;
+    width: 100%;
+  }
+
+  .economy-hero-content-wrap {
+    position: relative;
+    inset: auto;
+    background: #0f172a;
+    padding: 40px 20px;
+    z-index: 2;
+    order: 1;
+  }
+
+  .economy-hero-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .economy-hero-content h1 {
+    font-size: 32px !important;
+  }
+
+  .economy-hero-content p {
+    font-size: 15px !important;
+  }
+
+  .economy-hero-actions {
+    justify-content: flex-start;
+  }
+} */
+@media (max-width: 768px) {
+
+  .economy-hero{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .economy-hero::before{
+    display: none;
+  }
+
+  .economy-hero-img{
+    width: 100%;
+    height: auto;
+    max-height: none;
+    display: block;
+    order: 1;
+  }
+
+  .economy-hero-content-wrap{
+    position: relative;
+    inset: auto;
+    background: #0f172a;
+    padding: 40px 20px;
+    order: 2;
+  }
+
+  .economy-hero-content{
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .economy-hero-content h1{
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .economy-hero-content p{
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .economy-hero-actions{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .economy-hero-btn,
+  .economy-hero-btn-secondary{
+    width: 100%;
+    justify-content: center;
   }
 }

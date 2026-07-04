@@ -1,11 +1,36 @@
 /* Fractional Ownership Stylesheet */
+/* Desktop & Laptop */
+/* @media (min-width: 993px) {
+  .fractional-hero-img {
+    width: 100%;
+    height: 530px;
+    object-fit: cover;
+    display: block;
+  }
+} */
 
+/* Tablet */
+@media (min-width: 769px) and (max-width: 992px) {
+  .fractional-hero-img {
+    height: 450px;
+    object-fit: cover;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .fractional-hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
 .fractional-page-wrapper {
   background-color: var(--light-gray);
   color: var(--text-dark);
   font-family: var(--font-body);
   overflow: visible;
-  padding-top: calc(var(--header-height, 80px) + 20px);
+  padding-top: var(--header-height, 80px);
 }
 
 @media (max-width: 600px) {
@@ -32,6 +57,7 @@
 .fractional-hero-img {
   width: 100%;
   height: auto;
+  max-height: 550px;
   display: block;
 }
 
@@ -206,22 +232,51 @@
   }
 
   .fractional-hero-img {
-    order: 2;
+    order: 1;
   }
+  .fractional-hero-content-wrap {
+  order: 2;
+}
 
   .fractional-hero-content {
-    order: 1;
-    max-width: 100%;
-    text-align: left;
-  }
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+}
+.fractional-hero-actions {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
 
-  .fractional-hero-content h1 {
-    font-size: 32px;
-  }
+/* .fractional-hero-btn,
+.fractional-hero-btn-secondary {
+  width: 100%;
+  justify-content: center;
+} */
+ .fractional-hero-btn,
+.fractional-hero-btn-secondary{
+    width:100%;
+    padding:13px 18px;
+    font-size:15px;
+}
+.fractional-hero-content-wrap {
+  padding: 36px 20px;
+}
 
-  .fractional-hero-content p {
-    font-size: 15px;
-  }
+.fractional-hero-content h1 {
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.fractional-hero-content p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+  
+
+  
 }
 
 /* 2. Intro Section */
@@ -328,6 +383,11 @@
   min-width: 0;
 }
 
+@media (max-width: 480px) {
+  .fractional-hero-points {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   .fractional-row-flex {
     flex-direction: column;

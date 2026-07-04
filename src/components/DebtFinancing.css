@@ -1,3 +1,69 @@
+@media (max-width: 768px) {
+
+  .debt-hero-media-wrap{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .debt-hero-overlay-mask{
+    display: none;
+  }
+
+  .debt-hero-img{
+    width: 100%;
+    height: auto;
+    max-height: none;
+    display: block;
+    order: 1;
+  }
+
+  .debt-hero-container{
+    position: relative;
+    inset: auto;
+    background: #0b1422;
+    padding: 40px 20px;
+    order: 2;
+    z-index: 2;
+  }
+
+  .debt-content{
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .debt-content h1{
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .debt-content p{
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .hero-features{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .feature{
+    width: 100%;
+  }
+
+  .hero-actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btn,
+  .hero-btn-secondary{
+    width: 100%;
+    justify-content: center;
+  }
+}
 .debt-hero {
   position: relative;
   width: 100%;
@@ -12,12 +78,6 @@
   display: block;
 }
 
-.debt-hero-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
 
 .debt-hero-overlay-mask {
   position: absolute;
@@ -55,7 +115,7 @@
   max-width: 760px;
 }
 
-.hero-tag{
+.hero-tag {
   display: inline-flex;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.34);
@@ -69,7 +129,7 @@
   margin-bottom: 18px;
 }
 
-.debt-content h1{
+.debt-content h1 {
   font-size: clamp(40px, 5.6vw, 70px);
   line-height: 1.03;
   color: #f8fbff;
@@ -79,11 +139,11 @@
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.38);
 }
 
-.debt-content h1 span{
+.debt-content h1 span {
   color: #ffd778;
 }
 
-.debt-content p{
+.debt-content p {
   font-size: 18px;
   color: rgba(240, 247, 255, 0.92);
   line-height: 1.75;
@@ -92,21 +152,21 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
-.hero-features{
+.hero-features {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
   margin-bottom: 34px;
 }
 
-.feature{
+.feature {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 0;
 }
 
-.icon{
+.icon {
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -118,7 +178,7 @@
   flex-shrink: 0;
 }
 
-.feature h4{
+.feature h4 {
   font-size: 14px;
   color: #f3f8ff;
   margin-bottom: 3px;
@@ -126,14 +186,14 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.feature span{
+.feature span {
   color: rgba(228, 239, 250, 0.9);
   font-size: 12px;
   line-height: 1.3;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
-.hero-btn{
+.hero-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +209,7 @@
   transition: 0.25s ease;
 }
 
-.hero-btn:hover{
+.hero-btn:hover {
   background: #c4161b;
   transform: translateY(-2px);
   color: #fff;
@@ -173,17 +233,17 @@
   color: #fff;
 }
 
-@media(max-width:992px){
-  .debt-hero-container{
+@media(max-width:992px) {
+  .debt-hero-container {
     text-align: center;
     justify-content: center;
   }
 
-  .hero-features{
+  .hero-features {
     justify-content: center;
   }
 
-  .debt-content p{
+  .debt-content p {
     margin: 0 auto 30px;
   }
 
@@ -192,20 +252,20 @@
   }
 }
 
-@media(max-width:768px){
+@media(max-width:768px) {
   .debt-hero .debt-content {
     padding: 0;
   }
 
-  .debt-content h1{
+  .debt-content h1 {
     font-size: 38px;
   }
 
-  .debt-content p{
+  .debt-content p {
     font-size: 16px;
   }
 
-  .hero-features{
+  .hero-features {
     grid-template-columns: 1fr;
     max-width: 420px;
     margin: 0 auto 30px;
@@ -221,49 +281,64 @@
     justify-content: center;
     text-align: center;
   }
+
   .hero-features {
     justify-content: center;
   }
+
   .hero-actions {
     justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .debt-hero-media-wrap {
-    display: flex;
-    flex-direction: column;
-  }
-  .debt-hero-overlay-mask {
-    display: none;
-  }
-  .debt-hero-container {
-    position: relative;
-    inset: auto;
-    background: #0b1422;
-    padding: 40px 20px;
-    z-index: 2;
-  }
-  .debt-hero-img {
-    order: 2;
-  }
-  .debt-content {
-    order: 1;
-    max-width: 100% !important;
-    text-align: left;
-  }
-  .debt-content h1 {
-    font-size: 32px !important;
-  }
-  .debt-content p {
-    font-size: 15px !important;
-  }
-  .hero-features {
-    justify-content: flex-start !important;
-  }
-  .hero-actions {
-    justify-content: flex-start !important;
-  }
+  .debt-hero-img{
+    width:100%;
+    height:auto;
+    max-height:none;
+    display:block;
+    order:1;
+}
+.debt-hero-container{
+    position:relative;
+    inset:auto;
+    background:#0b1422;
+    padding:28px 20px;
+    order:2;
+    z-index:2;
+}
+.debt-content{
+    max-width:100%;
+    margin:0;
+    text-align:left;
+}
+.debt-content h1{
+    font-size:34px;
+    line-height:1.15;
+}
+
+.debt-content p{
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:22px;
+}
+.hero-features{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:24px;
+}
+.hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:14px;
+}
+
+.hero-btn,
+.hero-btn-secondary{
+    width:100%;
+    justify-content:center;
+}
 }
 
 @media (max-width: 600px) {
@@ -277,7 +352,7 @@
   color: var(--text-dark);
   font-family: var(--font-default);
   overflow: visible;
-  padding-top: calc(var(--header-height, 80px) + 20px);
+  padding-top: var(--header-height, 80px);
 }
 
 @media (max-width: 600px) {
@@ -287,7 +362,7 @@
 }
 
 /* 1. Hero Section */
-.debt-hero-section {
+/* .debt-hero-section {
   width: 100%;
   position: relative;
   background-color: #f8f9fa;
@@ -296,16 +371,13 @@
   overflow: hidden;
   height: 100vh;
   min-height: 580px;
-}
+} */
 
 .debt-hero-img {
   width: 100%;
-  height: 100%;
-  max-height: none;
-  object-fit: contain;
-  object-position: bottom center;
+  height: 560px;
+  object-position: left center;
   display: block;
-  transform: none;
 }
 
 /* 2. Common Layout Wrappers (Side-by-side Flex) */
@@ -721,47 +793,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .debt-row-flex {
-    flex-direction: column !important;
-    gap: 35px;
-  }
-
-  .debt-col-flex {
-    width: 100%;
-  }
-
-  .debt-content-col {
-    text-align: center;
-  }
-
-  .debt-badge {
-    margin-bottom: 12px;
-  }
-
-  .debt-content-col h2 {
-    font-size: 26px;
-  }
-
-  .debt-intro-features {
-    text-align: left;
-  }
-
-  .debt-grid-row {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .why-benefits-stack {
-    text-align: left;
-  }
-
-  .approach-highlight-box {
-    text-align: left;
-  }
-}
 
 @media (max-width: 480px) {
   .cta-actions-row {

@@ -119,17 +119,17 @@ export default function WhyUs() {
                   Explore Why GHL
                   <ArrowRight size={18} />
                 </a>
-                <a href="#/contact" className="why-hero-btn why-hero-btn-secondary">
+                {/* <a href="#/contact" className="why-hero-btn why-hero-btn-secondary">
                   Talk to Advisor
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-    {/* Intro Description */}
-    <section className="why-intro section-padding" id="why-intro" ref={introRef}>
+      {/* Intro Description */}
+      <section className="why-intro section-padding" id="why-intro" ref={introRef}>
         <div className="container">
           <div className="why-intro-card">
             <p>
@@ -142,7 +142,7 @@ export default function WhyUs() {
       {/* Why Choose Us Premium Fintech Timeline Section */}
       <section className="why-timeline-section">
         <div className="container">
-          
+
           {/* Premium Section Header */}
           <div className="timeline-section-header text-center">
             <h2 className="timeline-section-title">Why Choose Us</h2>
@@ -155,8 +155,8 @@ export default function WhyUs() {
             {/* Horizontal Line behind timeline items */}
             <div className="timeline-horizontal-bar">
               {/* Dynamic red progress segment based on selection */}
-              <div 
-                className="timeline-progress-bar" 
+              <div
+                className="timeline-progress-bar"
                 style={{ width: `${(activeIdx / 5) * 100}%` }}
               ></div>
             </div>
@@ -165,8 +165,8 @@ export default function WhyUs() {
               {criteriaList.map((item, idx) => {
                 const isActive = activeIdx === idx;
                 return (
-                  <li 
-                    key={idx} 
+                  <li
+                    key={idx}
                     className={`timeline-item ${isActive ? 'active' : ''}`}
                     onClick={() => handleItemClick(idx)}
                   >
@@ -197,8 +197,8 @@ export default function WhyUs() {
             {cardsData.map((card, idx) => {
               const isActive = activeIdx === idx;
               return (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className={`why-detail-card ${isActive ? 'highlight-focus' : ''}`}
                   ref={(el) => (cardRefs.current[idx] = el)}
                 >

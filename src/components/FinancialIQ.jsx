@@ -293,29 +293,32 @@ export default function FinancialIQ() {
   // RENDER: Main Grid Articles List View
   return (
     <div className="financial-iq-container financial-iq-list-view">
-      <section
-        className="fiq-hero fiq-hero-bg"
-        style={{ backgroundImage: `url(${financialIqHero})` }}
-      >
-        <div className="fiq-hero-content-wrap container">
-          <div className="fiq-hero-content">
-            <span className="fiq-hero-tag">LEARN SMART. INVEST BETTER.</span>
-            <h1>
-              Financial IQ
-              <span> for smarter wealth decisions</span>
-            </h1>
-            <p>
-              Explore practical insights, market concepts, and investor-first knowledge to build
-              long-term financial confidence.
-            </p>
-            <div className="fiq-hero-actions">
-              <a href="#fiq-content" className="fiq-hero-btn" onClick={handleExploreClick}>
-                Explore Financial IQ
-                <ArrowRight size={18} />
-              </a>
-              <a href="#/contact" className="fiq-hero-btn fiq-hero-btn-secondary">
-                Talk to Advisor
-              </a>
+      <section className="fiq-hero">
+        <div className="fiq-hero-media-wrap">
+          <img
+            src={financialIqHero}
+            alt="Financial IQ Banner"
+            className="fiq-hero-img"
+          />
+          <div className="fiq-hero-overlay-mask" />
+          <div className="fiq-hero-content-wrap container">
+            <div className="fiq-hero-content">
+              <span className="fiq-hero-tag">LEARN SMART. INVEST BETTER.</span>
+              <h1>
+                Financial IQ
+                <span> for smarter wealth decisions</span>
+              </h1>
+              <p>
+                Explore practical insights, market concepts, and investor-first knowledge to build
+                long-term financial confidence.
+              </p>
+              <div className="fiq-hero-actions">
+                <a href="#fiq-content" className="fiq-hero-btn" onClick={handleExploreClick}>
+                  Explore Financial IQ
+                  <ArrowRight size={18} />
+                </a>
+                
+              </div>
             </div>
           </div>
         </div>
