@@ -1008,42 +1008,108 @@
 }
 
 .real-fdi-banner {
-  position: relative;
-  min-height: clamp(300px, 35vw, 430px);
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: stretch;
+  background: #020e14;
+  max-width: 1200px;
+  margin: 60px auto;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 20px 48px rgba(2, 14, 20, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 340px;
+  position: relative;
 }
 
-.real-fdi-banner img {
+/* Background animated blobs for Real Estate */
+.real-fdi-banner::before,
+.real-fdi-banner::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.real-fdi-banner::before {
+  width: 300px;
+  height: 300px;
+  background: #0d7377;
+  left: 10%;
+  top: 20%;
+  animation: realBlobMove1 15s infinite alternate ease-in-out;
+}
+
+.real-fdi-banner::after {
+  width: 250px;
+  height: 250px;
+  background: #14a8a8;
+  right: 15%;
+  bottom: 10%;
+  animation: realBlobMove2 12s infinite alternate ease-in-out;
+}
+
+@keyframes realBlobMove1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes realBlobMove2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-40px, -60px) scale(1.1); }
 }
 
 .real-fdi-banner picture {
-  position: absolute;
-  inset: 0;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  position: static;
+  z-index: 2;
+}
+
+.real-fdi-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: static;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.real-fdi-banner:hover img {
+  transform: scale(1.03);
 }
 
 .real-fdi-overlay {
-  position: absolute;
-  inset: 0;
+  grid-column: 1;
+  grid-row: 1;
+  position: static;
+  background: transparent;
   display: flex;
-  align-items: flex-end;
-  padding: clamp(18px, 3vw, 34px) 0;
-  background:
-    linear-gradient(90deg, rgba(10, 13, 20, 0.3), rgba(10, 13, 20, 0.06), transparent),
-    linear-gradient(180deg, transparent 52%, rgba(10, 13, 20, 0.24));
+  align-items: center;
+  padding: 44px;
+  z-index: 2;
+}
+
+.real-fdi-overlay .container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .real-fdi-insight {
   position: relative;
-  max-width: 720px;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 16px;
-  align-items: end;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -1059,32 +1125,52 @@
 .real-fdi-insight span {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-height: 132px;
-  padding: 10px 6px;
-  margin: 0;
-  border-left: 3px solid var(--real-accent);
-  color: #cce3f8;
-  background: rgba(10, 13, 20, 0.18);
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  text-align: center;
-  line-height: 1;
-  border-radius: 999px;
-  font-size: 12px;
+  color: #14a8a8;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-bottom: 16px;
+  border: 1px solid rgba(20, 168, 168, 0.25);
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(20, 168, 168, 0.06);
+  writing-mode: horizontal-tb;
+  transform: none;
+  min-height: auto;
+  line-height: 1.2;
 }
 
 .real-fdi-insight h2 {
   margin: 0;
   color: #ffffff;
-  max-width: 660px;
-  font-size: clamp(24px, 3.4vw, 42px);
-  line-height: 1.12;
-  letter-spacing: 0;
-  text-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  max-width: 100%;
+  font-size: clamp(17px, 2.2vw, 24px);
+  line-height: 1.55;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .real-fdi-banner {
+    grid-template-columns: 1fr;
+    margin: 40px 16px;
+    min-height: auto;
+  }
+  .real-fdi-banner picture {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .real-fdi-banner img {
+    height: 240px;
+    border-left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .real-fdi-overlay {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 30px 24px;
+  }
 }
 
 .real-fdi-marquee-wrap {

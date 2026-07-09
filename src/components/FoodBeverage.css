@@ -657,51 +657,95 @@
    6. TREND BANNER
    ──────────────────────────────────────── */
 .food-trend-banner {
-  position: relative;
-  width: 100%;
-  height: clamp(220px, 35vw, 440px);
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  align-items: stretch;
+  background: #170a03;
+  max-width: 1200px;
+  margin: 60px auto;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 20px 48px rgba(28, 15, 2, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 340px;
 }
 
 .food-trend-img {
-  position: absolute;
-  inset: 0;
+  grid-column: 2;
+  grid-row: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  position: static;
+  transition: transform 0.6s ease;
+}
+
+.food-trend-banner:hover .food-trend-img {
+  transform: scale(1.04);
 }
 
 .food-trend-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 8, 1, 0.2) 0%, rgba(15, 8, 1, 0.72) 100%);
+  grid-column: 1;
+  grid-row: 1;
+  position: static;
+  background: linear-gradient(135deg, #2e1a0b 0%, #170a03 100%);
   display: flex;
-  align-items: flex-end;
-  padding-bottom: 36px;
+  align-items: center;
+  padding: 44px;
+}
+
+.food-trend-overlay .container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .food-trend-content {
-  max-width: 820px;
+  max-width: 100%;
 }
 
 .food-trend-content>span {
   display: inline-flex;
   align-items: center;
   color: #fde68a;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(253, 230, 138, 0.2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: rgba(253, 230, 138, 0.06);
 }
 
 .food-trend-content h2 {
   color: #ffffff;
-  font-size: clamp(16px, 2.4vw, 28px);
-  line-height: 1.4;
+  font-size: clamp(17px, 2.2vw, 24px);
+  line-height: 1.55;
+  font-weight: 500;
   margin: 0;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .food-trend-banner {
+    grid-template-columns: 1fr;
+    margin: 40px 16px;
+    min-height: auto;
+  }
+  .food-trend-img {
+    grid-column: 1;
+    grid-row: 1;
+    height: 240px;
+  }
+  .food-trend-overlay {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 30px 24px;
+  }
 }
 
 /* ────────────────────────────────────────
