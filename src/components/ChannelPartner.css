@@ -470,7 +470,7 @@
   }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
   .channel-hero {
     display: flex;
@@ -494,15 +494,26 @@
     order: 2;
     width: 100%;
     background: #0f172a;
-    padding: 32px 20px;
+    padding: 40px 24px;
   }
 
   .channel-hero-content {
     max-width: 100%;
+    padding: 0 !important;
   }
 
   .channel-hero-copy {
     text-align: left;
+  }
+
+  .channel-hero-copy h1 {
+    line-height: 1.22 !important;
+    margin: 12px 0 14px !important;
+  }
+
+  .channel-hero-copy p {
+    line-height: 1.65 !important;
+    margin-bottom: 24px !important;
   }
 
 }
