@@ -27,15 +27,15 @@ export default function DebtFinancing() {
     <div className="debt-page-wrapper">
       {/* Hero Section */}
       {/* <section className="debt-hero-section">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/assets/img/debt/debt-funding-mob.jpg" />
-          <img 
-            src="/assets/img/debt/debt-funding.jpg" 
-            alt="GHL Debt Funding & Financing Banner" 
-            className="debt-hero-img"
-          />
-        </picture>
-      </section> */}
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/assets/img/debt/debt-funding-mob.jpg" />
+            <img 
+              src="/assets/img/debt/debt-funding.jpg" 
+              alt="GHL Debt Funding & Financing Banner" 
+              className="debt-hero-img"
+            />
+          </picture>
+        </section> */}
       {/* Hero Section */}
       <section className="debt-hero">
         <div className="debt-hero-media-wrap">
@@ -93,8 +93,8 @@ export default function DebtFinancing() {
                   <ArrowRight size={18} />
                 </a>
                 {/* <a href="#/contact" className="hero-btn hero-btn-secondary">
-                  Talk to Advisor
-                </a> */}
+                    Talk to Advisor
+                  </a> */}
               </div>
             </div>
           </div>
