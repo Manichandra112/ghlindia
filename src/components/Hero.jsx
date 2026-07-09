@@ -46,6 +46,7 @@ export default function Hero() {
     <section className="hero-section" id="hero">
       <div className="container hero-container">
         <Swiper
+          key={isMobile ? 'mobile' : 'desktop'}
           spaceBetween={0}
           centeredSlides={true}
           loop={true}

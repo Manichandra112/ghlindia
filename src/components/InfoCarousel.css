@@ -46,11 +46,14 @@
   animation-play-state: paused;
 }
 
+
 .info-marquee-item {
   flex-shrink: 0;
   width: 280px;
   height: 450px;
+
 }
+
 
 .info-card {
   width: 100%;
@@ -84,12 +87,10 @@
   left: -75%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: skewX(-25deg);
   pointer-events: none;
 }
@@ -99,14 +100,20 @@
 }
 
 @keyframes card-shimmer-effect {
-  0% { left: -75%; }
-  100% { left: 125%; }
+  0% {
+    left: -75%;
+  }
+
+  100% {
+    left: 125%;
+  }
 }
 
 @keyframes info-marquee-scroll {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -115,7 +122,7 @@
 /* Staggered card conveyor entry transitions */
 .info-marquee-item {
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
 }
 
