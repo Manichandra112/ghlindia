@@ -207,21 +207,23 @@ export default function EconomyInsight() {
   return (
     <div className="economy-insight-container">
       <section className="economy-hero">
-        <img
-          src={economyInsightHero}
-          alt="Economic Insights Banner"
-          className="economy-hero-img"
-        />
-        <div className="economy-hero-content-wrap container">
-          <div className="economy-hero-content">
-            <span className="charge-hero-tag">Market Intelligence. Expert Analysis.</span>
-
-            <h1>Economic Insights<span> & Market Intelligence</span></h1>
-            <p>Stay updated with real-time news, expert analyses, policy changes, and comprehensive insights shaping the Indian economic landscape.</p>
-            <div className="economy-hero-actions">
-              <a href="#economy-content" className="economy-hero-btn" onClick={handleExploreClick}>
-                Explore News <ArrowRight size={18} />
-              </a>
+        <div className="economy-hero-media-wrap">
+          <img
+            src={economyInsightHero}
+            alt="Economic Insights Banner"
+            className="economy-hero-img"
+          />
+          <div className="economy-hero-overlay-mask"></div>
+          <div className="economy-hero-content-wrap container">
+            <div className="economy-hero-content">
+              <span className="economy-hero-tag">Market Intelligence. Expert Analysis.</span>
+              <h1>Economic Insights<span> &amp; Market Intelligence</span></h1>
+              <p>Stay updated with real-time news, expert analyses, policy changes, and comprehensive insights shaping the Indian economic landscape.</p>
+              <div className="economy-hero-actions">
+                <a href="#economy-content" className="economy-hero-btn" onClick={handleExploreClick}>
+                  Explore News <ArrowRight size={18} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

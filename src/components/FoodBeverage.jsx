@@ -10,6 +10,7 @@ import {
   Sparkles,
   TrendingUp,
   UsersRound,
+  UtensilsCrossed,
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FoodBeverage.css';
@@ -128,7 +129,8 @@ export default function FoodBeverage() {
         <div className="food-hero-pattern" />
         <div className="container food-hero-content">
           <div className="food-hero-copy" data-animate="fade-up">
-            <span className="real-eyebrow"><MapPinned size={16} /> Sector Focus</span>
+
+            <span className="food-eyebrow"><UtensilsCrossed size={16} /> Sector Focus</span>
             <h1>Food &amp; Beverage</h1>
             <p>
               A redesigned view of India&apos;s FMCG and food economy, built around market scale,
