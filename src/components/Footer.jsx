@@ -28,9 +28,9 @@ export default function Footer() {
 
   const companyLinks = [
     { label: 'About Us', href: '#/about-us' },
-    { label: 'Terms & Conditions', href: '#' },
-    { label: 'Cookie Policy', href: '#what-we-do' },
-    { label: 'Privacy Policy', href: '#achievements' },
+    { label: 'Terms & Conditions', href: '#/terms' },
+    { label: 'Cookie Policy', href: '#/cookies' },
+    { label: 'Privacy Policy', href: '#/privacy' },
     { label: 'Blog', href: '#/blogs' },
   ];
 

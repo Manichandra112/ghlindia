@@ -128,7 +128,7 @@ export default function FoodBeverage() {
         <div className="food-hero-pattern" />
         <div className="container food-hero-content">
           <div className="food-hero-copy" data-animate="fade-up">
-            <span className="food-eyebrow">Sector Focus</span>
+            <span className="real-eyebrow"><MapPinned size={16} /> Sector Focus</span>
             <h1>Food &amp; Beverage</h1>
             <p>
               A redesigned view of India&apos;s FMCG and food economy, built around market scale,
@@ -278,7 +278,7 @@ export default function FoodBeverage() {
                   <h3>{item.title}</h3>
                 </div>
                 <p>{item.summary}</p>
-               
+
               </article>
             ))}
           </div>
@@ -310,27 +310,27 @@ export default function FoodBeverage() {
       </section>
 
       <div className="food-image-insight">
-  <span className="food-image-tag">Market Insight</span>
+        <span className="food-image-tag">Market Insight</span>
 
-  <h3>India's Online Grocery Market is Accelerating</h3>
+        <h3>India's Online Grocery Market is Accelerating</h3>
 
-  <p>
-    The Indian online grocery market is estimated to exceed
-    <strong> ₹1,310.93 billion (US$ 17.12 billion)</strong> by
-    <strong> 2026</strong>, growing at a
-    <strong> CAGR of 28.99%</strong>, driven by rising digital
-    adoption, changing consumer preferences, and expanding
-    e-commerce infrastructure.
-  </p>
-</div>
+        <p>
+          The Indian online grocery market is estimated to exceed
+          <strong> ₹1,310.93 billion (US$ 17.12 billion)</strong> by
+          <strong> 2026</strong>, growing at a
+          <strong> CAGR of 28.99%</strong>, driven by rising digital
+          adoption, changing consumer preferences, and expanding
+          e-commerce infrastructure.
+        </p>
+      </div>
       <section className="food-image-section">
-  <div className="food-image-card">
-    <img
-      src={foodMidImage}
-      alt="Food & Beverage"
-    />
-  </div>
-</section>
+        <div className="food-image-card">
+          <img
+            src={foodMidImage}
+            alt="Food & Beverage"
+          />
+        </div>
+      </section>
 
 
       <section className="food-why-section">
@@ -353,18 +353,18 @@ export default function FoodBeverage() {
         </div>
       </section>
       <section className="real-cta-section">
-              <div className="container">
-                <div className="real-cta-content" data-animate="fade-up">
-                  <span>Build With GHL India</span>
-                  <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-                  <p>Let us join together to live an opulent life</p>
-                  <div className="real-cta-actions">
-                    <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
-                    <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
-                  </div>
-                </div>
-              </div>
-            </section>
+        <div className="container">
+          <div className="real-cta-content" data-animate="fade-up">
+            <span>Build With GHL India</span>
+            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
+            <p>Let us join together to live an opulent life</p>
+            <div className="real-cta-actions">
+              <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
+              <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

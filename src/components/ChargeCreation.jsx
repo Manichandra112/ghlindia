@@ -74,9 +74,7 @@ export default function ChargeCreation() {
                   Explore Charge Creation
                   <ArrowRight size={18} />
                 </a>
-                <a href="#/contact" className="charge-hero-btn charge-hero-btn-secondary">
-                  Talk to Advisor
-                </a>
+
               </div>
             </div>
           </div>

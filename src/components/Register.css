@@ -109,11 +109,11 @@
 .register-left-card {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(228, 31, 38, 0.02) 100%);
   border: 1px solid rgba(var(--primary-red-rgb), 0.15);
   border-radius: var(--border-radius-lg);
-  padding: 36px;
+  padding: 20px;
   box-shadow: var(--card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   height: 100%;
   position: relative;
@@ -275,9 +275,9 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(var(--primary-red-rgb), 0.15);
   background: #000;
-  max-height: 140px;
+  max-height: 160px;
   width: 100%;
-  max-width: 260px;
+  max-width: 325px;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -351,7 +351,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: var(--border-radius-lg);
-  padding: 40px;
+  padding: 28px;
   border: 1px solid rgba(var(--primary-red-rgb), 0.15);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06), 0 10px 24px rgba(0, 0, 0, 0.04);
   position: relative;

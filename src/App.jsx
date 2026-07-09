@@ -37,6 +37,7 @@ import ContactPage from './components/ContactPage';
 import CareerApplyPage from './components/CareerApplyPage';
 import Login from './components/Login';
 import Register from './components/Register';
+import PolicyPages from './components/PolicyPages';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -86,6 +87,12 @@ function App() {
         setCurrentView('login');
       } else if (hash === '#/register') {
         setCurrentView('register');
+      } else if (hash === '#/terms') {
+        setCurrentView('terms');
+      } else if (hash === '#/privacy') {
+        setCurrentView('privacy');
+      } else if (hash === '#/cookies') {
+        setCurrentView('cookies');
       } else {
         setCurrentView('home');
       }
@@ -124,6 +131,9 @@ function App() {
         {currentView === 'contact' && <ContactPage />}
         {currentView === 'login' && <Login />}
         {currentView === 'register' && <Register />}
+        {currentView === 'terms' && <PolicyPages type="terms" />}
+        {currentView === 'privacy' && <PolicyPages type="privacy" />}
+        {currentView === 'cookies' && <PolicyPages type="cookies" />}
         {currentView === 'home' && (
           <>
             <Hero />

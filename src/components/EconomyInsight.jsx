@@ -21,11 +21,11 @@ export default function EconomyInsight() {
         setLoading(true);
         const response = await fetch('/economy-insight');
         if (!response.ok) throw new Error('Live fetch failed');
-        
+
         const htmlText = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
-        
+
         const tabBtns = Array.from(doc.querySelectorAll('.date-selector-wrapper button[data-tab]'));
         if (tabBtns.length === 0) {
           throw new Error('No tabs found in live HTML structure');
@@ -34,7 +34,7 @@ export default function EconomyInsight() {
           id: btn.getAttribute('id') || btn.getAttribute('data-tab'),
           date: btn.textContent.trim()
         }));
-        
+
         const parsedNews = {};
         parsedTabs.forEach(tab => {
           const section = doc.getElementById(tab.id);
@@ -45,19 +45,19 @@ export default function EconomyInsight() {
               const imgEl = art.querySelector('.news-img img');
               const descEl = art.querySelector('.details p');
               const dateEl = art.querySelector('.date-wrapper span') || art.querySelector('.news-meta-date');
-              
+
               const title = titleEl ? titleEl.textContent.trim() : '';
               const href = titleEl ? titleEl.getAttribute('href') : '';
               const slug = href ? href.split('?')[1] || '' : '';
               const image = imgEl ? imgEl.getAttribute('src') : '';
               const description = descEl ? descEl.textContent.trim() : '';
               const date = dateEl ? dateEl.textContent.trim() : '';
-              
+
               return { title, slug, image, description, date };
             });
           }
         });
-        
+
         setTabs(parsedTabs);
         setNews(parsedNews);
         if (parsedTabs.length > 0) {
@@ -136,11 +136,11 @@ export default function EconomyInsight() {
 
           const updatedArticle = { ...article, content: contentHtml };
           setSelectedArticle(updatedArticle);
-          
+
           setNews(prev => {
             const updated = { ...prev };
             Object.keys(updated).forEach(dateTab => {
-              updated[dateTab] = updated[dateTab].map(art => 
+              updated[dateTab] = updated[dateTab].map(art =>
                 art.slug === article.slug ? { ...art, content: contentHtml } : art
               );
             });
@@ -158,7 +158,7 @@ export default function EconomyInsight() {
             foundContent = matched.content;
           }
         });
-        
+
         setSelectedArticle(prev => ({ ...prev, content: foundContent || '<p>Content temporarily unavailable.</p>' }));
         setLoadingDetail(false);
       }
@@ -214,14 +214,14 @@ export default function EconomyInsight() {
         />
         <div className="economy-hero-content-wrap container">
           <div className="economy-hero-content">
-            <span className="economy-hero-tag">Market Intelligence. Expert Analysis.</span>
+            <span className="charge-hero-tag">Market Intelligence. Expert Analysis.</span>
+
             <h1>Economic Insights<span> & Market Intelligence</span></h1>
             <p>Stay updated with real-time news, expert analyses, policy changes, and comprehensive insights shaping the Indian economic landscape.</p>
             <div className="economy-hero-actions">
               <a href="#economy-content" className="economy-hero-btn" onClick={handleExploreClick}>
                 Explore News <ArrowRight size={18} />
               </a>
-              <a href="#/contact" className="economy-hero-btn economy-hero-btn-secondary">Talk to Advisor</a>
             </div>
           </div>
         </div>
@@ -248,64 +248,64 @@ export default function EconomyInsight() {
               </p>
             </div>
           ) : (
-          <>
-            {/* Horizontal Scrollable Tabs Selector */}
-            <div className="date-selector-wrapper">
-              <button className="scroll-btn left" onClick={() => scroll('left')}>
-                <ChevronLeft size={20} />
-              </button>
-              <div className="date-tabs-container" ref={tabsRef}>
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    className={`date-tab ${activeTab === tab.date ? 'active' : ''}`}
-                    onClick={() => handleTabChange(tab.date)}
-                  >
-                    {tab.date}
-                  </button>
-                ))}
-              </div>
-              <button className="scroll-btn right" onClick={() => scroll('right')}>
-                <ChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* News Items Grid */}
-            <div className={`news-grid ${isTransitioning ? 'fade-out' : ''}`}>
-              {activeNewsList.length > 0 ? (
-                activeNewsList.map((item, index) => (
-                  <div key={index} className="news-card">
-                    <div className="card-img-wrapper">
-                      <img
-                        src={getImageUrl(item.image)}
-                        alt={item.title}
-                        className="card-img"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="card-content">
-                      <h3 className="card-title">{item.title}</h3>
-                      <button
-                        className="read-more-btn"
-                        onClick={() => handleReadMore(item)}
-                      >
-                        <span>Read More</span>
-                        <ChevronRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="empty-state col-span-full">
-                  <p>No news articles found for this date.</p>
+            <>
+              {/* Horizontal Scrollable Tabs Selector */}
+              <div className="date-selector-wrapper">
+                <button className="scroll-btn left" onClick={() => scroll('left')}>
+                  <ChevronLeft size={20} />
+                </button>
+                <div className="date-tabs-container" ref={tabsRef}>
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      className={`date-tab ${activeTab === tab.date ? 'active' : ''}`}
+                      onClick={() => handleTabChange(tab.date)}
+                    >
+                      {tab.date}
+                    </button>
+                  ))}
                 </div>
-              )}
-            </div>
-          </>
-        )}
+                <button className="scroll-btn right" onClick={() => scroll('right')}>
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+
+              {/* News Items Grid */}
+              <div className={`news-grid ${isTransitioning ? 'fade-out' : ''}`}>
+                {activeNewsList.length > 0 ? (
+                  activeNewsList.map((item, index) => (
+                    <div key={index} className="news-card">
+                      <div className="card-img-wrapper">
+                        <img
+                          src={getImageUrl(item.image)}
+                          alt={item.title}
+                          className="card-img"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="card-content">
+                        <h3 className="card-title">{item.title}</h3>
+                        <button
+                          className="read-more-btn"
+                          onClick={() => handleReadMore(item)}
+                        >
+                          <span>Read More</span>
+                          <ChevronRight size={14} />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="empty-state col-span-full">
+                    <p>No news articles found for this date.</p>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
+      <CallToAction />
     </div>
-    <CallToAction />
-  </div>
-);
+  );
 }
