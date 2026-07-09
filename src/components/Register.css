@@ -1,0 +1,459 @@
+/* Register Component Premium Stylesheet */
+
+.register-container-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  color: var(--text-dark, #0f172a);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  padding-top: var(--header-height, 80px);
+  padding-bottom: 60px;
+  overflow: hidden;
+}
+
+/* Background Accents */
+.register-bg-layers {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.register-bg-glow-1 {
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--primary-red-rgb), 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.register-bg-glow-2 {
+  position: absolute;
+  bottom: -10%;
+  right: -5%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--primary-red-rgb), 0.035) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.register-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(var(--primary-red-rgb), 0.065) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+}
+
+.register-particle {
+  position: absolute;
+  background: rgba(var(--primary-red-rgb), 0.3);
+  border-radius: 50%;
+  animation: floatUp 15s linear infinite;
+  opacity: 0;
+  bottom: -20px;
+}
+
+.register-particles .rp-1 { width: 4px; height: 4px; left: 12%; animation-duration: 11s; }
+.register-particles .rp-2 { width: 5px; height: 5px; left: 24%; animation-duration: 16s; animation-delay: 2s; }
+.register-particles .rp-3 { width: 3px; height: 3px; left: 40%; animation-duration: 15s; animation-delay: 4s; }
+.register-particles .rp-4 { width: 6px; height: 6px; left: 58%; animation-duration: 19s; animation-delay: 1s; }
+.register-particles .rp-5 { width: 4px; height: 4px; left: 75%; animation-duration: 17s; animation-delay: 3s; }
+.register-particles .rp-6 { width: 5px; height: 5px; left: 88%; animation-duration: 14s; animation-delay: 5s; }
+
+/* Breadcrumbs */
+.register-breadcrumbs {
+  padding: 24px 0 12px;
+}
+
+.register-breadcrumbs .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Main layouts */
+.register-main-section {
+  padding: 20px 0 40px;
+}
+
+.register-grid-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: stretch;
+}
+
+.register-left-panel {
+  width: 100%;
+  height: 100%;
+}
+
+.register-left-card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(228, 31, 38, 0.02) 100%);
+  border: 1px solid rgba(var(--primary-red-rgb), 0.08);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+  box-shadow: var(--card-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.register-left-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-red-rgb), 0.4), rgba(var(--gold-accent-rgb), 0.3), transparent);
+  animation: shineTopLine 4s ease-in-out infinite;
+}
+
+.register-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(var(--primary-red-rgb), 0.08), rgba(var(--gold-accent-rgb), 0.06));
+  border: 1px solid rgba(var(--primary-red-rgb), 0.16);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a81015;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.register-hero-text h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 800;
+  color: var(--dark-charcoal);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.register-hero-text p {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* Checklist Styling */
+.register-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(var(--primary-red-rgb), 0.05);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+}
+
+.register-checklist h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.checklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checklist-check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(228, 31, 38, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-red);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checklist-item p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+/* Video Card register */
+.register-video-card {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(var(--primary-red-rgb), 0.1);
+  background: #000;
+  aspect-ratio: 16 / 9;
+}
+
+/* Right Panel Card */
+.register-right-panel {
+  width: 100%;
+  height: 100%;
+}
+
+.register-form-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  padding: 45px 40px;
+  border: 1px solid rgba(var(--primary-red-rgb), 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06), 0 10px 24px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs & Form specifics */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Phone select + input styling */
+.phone-input-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.phone-select-code {
+  width: 100%;
+  height: 50px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  padding: 0 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--dark-charcoal);
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.phone-select-code:focus {
+  border-color: var(--primary-red);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(var(--primary-red-rgb), 0.1);
+}
+
+.phone-number-input-field input::-webkit-outer-spin-button,
+.phone-number-input-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Optional label */
+.optional-lbl {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+/* Whatsapp Checkbox row */
+.whatsapp-otp-chk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.whatsapp-otp-chk input {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  accent-color: var(--primary-red);
+  cursor: pointer;
+}
+
+/* Resend Link OTP */
+.resend-otp-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-red);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: var(--transition-fast);
+  text-decoration: underline;
+  margin-top: 4px;
+}
+
+.resend-otp-link:hover {
+  opacity: 0.8;
+}
+
+/* OTP verification styles */
+.otp-verification-wrapper {
+  animation: otpFieldFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes otpFieldFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Submit button register page */
+.register-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--primary-red) 0%, #a81015 100%);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 8px 20px rgba(var(--primary-red-rgb), 0.25);
+  margin-top: 10px;
+}
+
+.register-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(var(--primary-red-rgb), 0.35);
+}
+
+.register-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.register-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.register-submit-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Password Strength Meter */
+.strength-indicator {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.strength-too-short {
+  color: #ef4444; /* red */
+}
+
+.strength-medium {
+  color: #eab308; /* yellow */
+}
+
+.strength-strong {
+  color: #22c55e; /* green */
+}
+
+/* Redirect Footers */
+.login-redirect-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.login-link {
+  color: var(--primary-red);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive constraints */
+@media (max-width: 1024px) {
+  .register-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .register-left-panel, .register-right-panel, .register-left-card, .register-form-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-left-card {
+    padding: 30px 24px;
+    gap: 24px;
+  }
+  .register-form-card {
+    padding: 35px 24px;
+  }
+  .form-row-two-col {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-container-wrapper {
+    padding-top: var(--header-height, 72px);
+  }
+  .register-breadcrumbs {
+    padding: 16px 0 8px;
+  }
+  .phone-input-row {
+    grid-template-columns: 100px 1fr;
+    gap: 8px;
+  }
+  .phone-select-code {
+    font-size: 13px;
+    height: 48px;
+  }
+}

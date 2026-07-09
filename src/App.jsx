@@ -35,6 +35,8 @@ import ChannelPartner from './components/ChannelPartner';
 import CareerPage from './components/CareerPage';
 import ContactPage from './components/ContactPage';
 import CareerApplyPage from './components/CareerApplyPage';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
@@ -80,6 +82,10 @@ function App() {
         setCurrentView('career-apply');
       } else if (hash === '#/contact') {
         setCurrentView('contact');
+      } else if (hash === '#/login') {
+        setCurrentView('login');
+      } else if (hash === '#/register') {
+        setCurrentView('register');
       } else {
         setCurrentView('home');
       }
@@ -116,6 +122,8 @@ function App() {
         {currentView === 'career' && <CareerPage />}
         {currentView === 'career-apply' && <CareerApplyPage />}
         {currentView === 'contact' && <ContactPage />}
+        {currentView === 'login' && <Login />}
+        {currentView === 'register' && <Register />}
         {currentView === 'home' && (
           <>
             <Hero />

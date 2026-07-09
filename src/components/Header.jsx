@@ -195,7 +195,7 @@ export default function Header() {
 
           {/* Action CTA Button */}
           <div className="header-actions">
-            <a href="#login" className="btn btn-primary login-btn">
+            <a href="#/login" className="btn btn-primary login-btn">
               Login
             </a>
             <button className="mobile-toggle" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -282,7 +282,7 @@ export default function Header() {
               </button>
             </li>
             <li className="mobile-login-li">
-              <a href="#login" className="btn btn-primary w-full" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#/login" className="btn btn-primary w-full" onClick={() => setMobileMenuOpen(false)}>
                 Login
               </a>
             </li>
