@@ -23,6 +23,16 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
       },
+      '/economy-insight': {
+        target: 'https://www.ghlindia.com',
+        changeOrigin: true,
+        secure: true,
+      },
+      '/economy-insightdetails': {
+        target: 'https://www.ghlindia.com',
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
 })

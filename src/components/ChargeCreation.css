@@ -165,6 +165,7 @@
   .charge-hero-media-wrap {
     display: flex;
     flex-direction: column;
+    background: #0f172a;
   }
 
   .charge-hero-overlay-mask {
@@ -182,6 +183,7 @@
 
   .charge-hero-img {
     order: 1;
+    background: #0f172a;
   }
 
   .charge-hero-content {

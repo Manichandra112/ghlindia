@@ -19,10 +19,34 @@ export default function EconomyInsight() {
     async function loadData() {
       try {
         setLoading(true);
-        const response = await fetch('/economy-insight');
-        if (!response.ok) throw new Error('Live fetch failed');
+        let htmlText = '';
 
-        const htmlText = await response.text();
+        // 1. Try relative fetch first (works when proxied or hosted on the same domain)
+        try {
+          const response = await fetch('/economy-insight');
+          if (response.ok) {
+            const text = await response.text();
+            // Verify we actually fetched the economy insight page content, not the SPA index.html
+            if (text.includes('date-selector-wrapper') || text.includes('news-box')) {
+              htmlText = text;
+            }
+          }
+        } catch (e) {
+          console.warn('Relative fetch failed, trying CORS proxy fallback...', e);
+        }
+
+        // 2. Fall back to live fetch via CORS proxy if relative fetch did not yield content
+        if (!htmlText) {
+          const targetUrl = 'https://www.ghlindia.com/economy-insight';
+          const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+          const response = await fetch(proxyUrl);
+          if (response.ok) {
+            htmlText = await response.text();
+          }
+        }
+
+        if (!htmlText) throw new Error('Failed to fetch live HTML content');
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
 
@@ -114,10 +138,33 @@ export default function EconomyInsight() {
     if (!article.content) {
       try {
         setLoadingDetail(true);
-        const response = await fetch(`/economy-insightdetails?${article.slug}`);
-        if (!response.ok) throw new Error('Detail fetch error');
+        let htmlText = '';
 
-        const htmlText = await response.text();
+        // 1. Try relative fetch first
+        try {
+          const response = await fetch(`/economy-insightdetails?${article.slug}`);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.includes('blog-details') || text.includes('article')) {
+              htmlText = text;
+            }
+          }
+        } catch (e) {
+          console.warn('Relative detail fetch failed, trying CORS proxy...', e);
+        }
+
+        // 2. Try CORS proxy fallback
+        if (!htmlText) {
+          const targetUrl = `https://www.ghlindia.com/economy-insightdetails?${article.slug}`;
+          const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+          const response = await fetch(proxyUrl);
+          if (response.ok) {
+            htmlText = await response.text();
+          }
+        }
+
+        if (!htmlText) throw new Error('Detail fetch error');
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, 'text/html');
 
