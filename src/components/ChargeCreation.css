@@ -172,6 +172,7 @@
   }
 
   .charge-hero-content-wrap {
+    order: 2;
     position: relative;
     inset: auto;
     background: #0f172a;
@@ -180,11 +181,10 @@
   }
 
   .charge-hero-img {
-    order: 2;
+    order: 1;
   }
 
   .charge-hero-content {
-    order: 1;
     max-width: 100%;
     text-align: left;
   }
