@@ -264,7 +264,7 @@
 }
 
 .real-chart-card {
-  height: 420px;
+  height: 430px;
   padding: 14px 20px;
   border-radius: 16px;
   color: #ffffff;
@@ -428,7 +428,8 @@
   padding: 13px 15px;
   background: #f8fafc;
   border-radius: 10px;
-  border-left: 3px solid var(--real-primary);
+  border: 1px solid rgba(13, 115, 119, 0.18);
+  border-left: 4px solid var(--real-primary);
 }
 
 .real-fact-list li::before {
@@ -779,7 +780,7 @@
 
 .real-segments-section {
   background: #f1f5f9;
-  padding: 40px 0 64px;
+  padding: 40px 0 48px;
   border-top: 1px solid rgba(13, 27, 42, 0.06);
   border-bottom: 1px solid rgba(13, 27, 42, 0.06);
 }
@@ -820,20 +821,82 @@
 
 .real-segment-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 16px;
 }
 
 .real-segment-card {
-  min-height: 292px;
+  min-height: 290px;
   position: relative;
   overflow: hidden;
-  padding: 28px 26px;
-  border-radius: 14px;
+  padding: 20px 18px 10px 18px;
+  border-radius: 8px;
   background: #ffffff;
-  border: 1px solid rgba(13, 27, 42, 0.08);
-  box-shadow: 0 2px 10px rgba(13, 27, 42, 0.06);
+  border: 1px solid rgba(13, 115, 119, 0.18);
+  box-shadow: 0 16px 40px rgba(9, 17, 31, 0.07);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 1. Flex Space Segment (1 short point) */
+.real-segment-card.flex-space ul {
+  gap: 0;
+  margin-top: 8px;
+}
+
+.real-segment-card.flex-space li {
+  font-size: 14px !important;
+  line-height: 1.95 !important;
+}
+
+/* 2. Healthcare (2 points) */
+.real-segment-card.healthcare ul {
+  gap: 10px !important;
+  margin-top: 6px;
+}
+
+.real-segment-card.healthcare li {
+  line-height: 1.6 !important;
+}
+
+/* 3. Service Apartments (2 shorter points) */
+.real-segment-card.service-apartments ul {
+  gap: 12px !important;
+  margin-top: 8px;
+}
+
+.real-segment-card.service-apartments li {
+  line-height: 1.7 !important;
+}
+
+/* 4. Senior Citizen Housing (2 points) */
+.real-segment-card.senior-housing ul {
+  gap: 10px !important;
+  margin-top: 6px;
+}
+
+.real-segment-card.senior-housing li {
+  line-height: 1.6 !important;
+}
+
+/* 5. Hotels (2 shorter points) */
+.real-segment-card.hotels ul {
+  gap: 12px !important;
+  margin-top: 8px;
+}
+
+.real-segment-card.hotels li {
+  line-height: 1.7 !important;
+}
+
+/* 6. Smaller Office Spaces (2 points) */
+.real-segment-card.smaller-offices ul {
+  gap: 8px !important;
+  margin-top: 4px;
+}
+
+.real-segment-card.smaller-offices li {
+  line-height: 1.5 !important;
 }
 
 .real-segment-card::before {
@@ -841,7 +904,7 @@
   position: absolute;
   inset: 0 0 auto;
   height: 4px;
-  border-radius: 14px 14px 0 0;
+  border-radius: 8px 8px 0 0;
   background: linear-gradient(90deg, #0d7377, #14a8a8);
 }
 
@@ -855,34 +918,50 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .real-segment-icon {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
+  border-radius: 6px;
   color: var(--real-primary);
   background: rgba(13, 115, 119, 0.08);
 }
 
+.real-segment-icon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
 .real-segment-top>span {
   color: var(--real-primary);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 900;
   text-align: right;
 }
 
 .real-segment-card h3 {
   color: var(--real-ink);
-  font-size: 20px;
-  margin-bottom: 14px;
+  font-size: 17px;
+  height: 46px;
+  margin-bottom: 12px;
+  line-height: 1.35;
+  display: flex;
+  align-items: flex-start;
 }
 
-.real-segment-card ul,
+.real-segment-card ul {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
 .real-why-copy ul {
   list-style: none;
   display: grid;
@@ -891,7 +970,14 @@
   padding: 0;
 }
 
-.real-segment-card li,
+.real-segment-card li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--real-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
 .real-why-copy li {
   position: relative;
   padding-left: 20px;
@@ -899,7 +985,17 @@
   line-height: 1.62;
 }
 
-.real-segment-card li::before,
+.real-segment-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--real-primary);
+}
+
 .real-why-copy li::before {
   content: '';
   position: absolute;

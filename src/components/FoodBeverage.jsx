@@ -316,7 +316,7 @@ export default function FoodBeverage() {
           <div className="food-segment-grid" key={activeFilter}>
             {visibleSegments.map((seg, index) => (
               <div
-                className="food-segment-card"
+                className={`food-segment-card ${seg.id}`}
                 key={seg.id}
                 data-animate="fade-up"
                 data-stagger-delay={`${index * 90}ms`}

@@ -359,7 +359,7 @@ export default function RealEstateSector() {
           <div className="real-segment-grid" key={activeFilter}>
             {visibleSegments.map((segment, index) => (
               <article
-                className="real-segment-card"
+                className={`real-segment-card ${segment.id}`}
                 key={segment.id}
                 data-animate="fade-up"
                 data-stagger-delay={`${index * 80}ms`}
