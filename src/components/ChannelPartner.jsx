@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChannelPartner.css';
+import channelPartnerHero from '../assets/channelpartner.png';
 
 const GHL = 'https://www.ghlindia.com';
 
@@ -44,26 +45,28 @@ export default function ChannelPartner() {
     <div className="channel-page" ref={pageRef}>
       <section className="channel-hero">
         <img
-          src={`${GHL}/assets/img/why/Channel-Partner.jpg`}
+          src={channelPartnerHero}
           alt="Become a GHL India channel partner"
           className="channel-hero-img"
         />
         <div className="channel-hero-overlay" />
-        <div className="container channel-hero-content">
-          <div className="channel-hero-copy" data-animate="fade-up">
-            <span className="channel-eyebrow"><UsersRound size={16} /> Partnership Program</span>
-            <h1>Become A Channel Partner</h1>
-            <p>
-              A partner is someone who supports us, fostering a healthy relationship.
-              Similarly, a channel partner&apos;s support is crucial in promoting our products.
-            </p>
-            <div className="channel-hero-actions">
-              <button type="button" className="channel-btn primary" onClick={scrollToDetails}>
-                Explore program <ArrowRight size={16} />
-              </button>
-              <a href="mailto:sales@ghlindia.com" className="channel-btn secondary">
-                Contact sales
-              </a>
+        <div className="channel-hero-content-wrap">
+          <div className="container channel-hero-content">
+            <div className="channel-hero-copy" data-animate="fade-up">
+              <span className="channel-eyebrow"><UsersRound size={16} /> Partnership Program</span>
+              <h1>Become A Channel Partner</h1>
+              <p>
+                A partner is someone who supports us, fostering a healthy relationship.
+                Similarly, a channel partner&apos;s support is crucial in promoting our products.
+              </p>
+              <div className="channel-hero-actions">
+                <button type="button" className="channel-btn primary" onClick={scrollToDetails}>
+                  Explore program <ArrowRight size={16} />
+                </button>
+                <a href="mailto:sales@ghlindia.com" className="channel-btn secondary">
+                  Contact sales
+                </a>
+              </div>
             </div>
           </div>
         </div>
