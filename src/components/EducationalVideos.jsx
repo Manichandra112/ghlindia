@@ -25,11 +25,16 @@ export default function EducationalVideos() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedVideo, setSelectedVideo] = useState(null); // For lightbox modal
+  const [playingVideoUrl, setPlayingVideoUrl] = useState(null); // For inline play
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const videosPerPage = 9;
+
+  // Reset inline player when transitioning views/pages
+  useEffect(() => {
+    setPlayingVideoUrl(null);
+  }, [currentPage, activeCategory, searchQuery]);
 
   // Categorization logic based on title keywords
   const getCategory = (title) => {
@@ -262,27 +267,41 @@ export default function EducationalVideos() {
                     <div key={index} className="edu-video-card">
                       <div className="video-card-inner">
                         <div className="video-media-wrapper">
-                          <img
-                            src={getThumbnailUrl(video.thumbnail)}
-                            alt={video.title}
-                            className="video-thumbnail"
-                            loading="lazy"
-                          />
-                          <div className="category-label-tag">{video.category}</div>
-                          {video.isNew && (
-                            <div className="video-card-ribbon">
-                              <span>New</span>
-                            </div>
+                          {playingVideoUrl === video.videoUrl ? (
+                            <iframe
+                              className="video-inline-iframe"
+                              src={`https://www.youtube.com/embed/${extractYouTubeID(video.videoUrl)}?autoplay=1`}
+                              title={video.title}
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              style={{ width: '100%', height: '100%', border: 'none', position: 'absolute', top: 0, left: 0 }}
+                            ></iframe>
+                          ) : (
+                            <>
+                              <img
+                                src={getThumbnailUrl(video.thumbnail)}
+                                alt={video.title}
+                                className="video-thumbnail"
+                                loading="lazy"
+                              />
+                              <div className="category-label-tag">{video.category}</div>
+                              {video.isNew && (
+                                <div className="video-card-ribbon">
+                                  <span>New</span>
+                                </div>
+                              )}
+                              <button
+                                className="video-play-overlay-btn"
+                                onClick={() => setPlayingVideoUrl(video.videoUrl)}
+                                aria-label="Play video"
+                              >
+                                <div className="btn-circle-ripple">
+                                  <Play size={20} fill="#ffffff" stroke="none" />
+                                </div>
+                              </button>
+                            </>
                           )}
-                          <button
-                            className="video-play-overlay-btn"
-                            onClick={() => setSelectedVideo(video)}
-                            aria-label="Play video"
-                          >
-                            <div className="btn-circle-ripple">
-                              <Play size={20} fill="#ffffff" stroke="none" />
-                            </div>
-                          </button>
                         </div>
                         <div className="video-content-body">
                           <h3 className="video-title">{video.title}</h3>
@@ -298,7 +317,7 @@ export default function EducationalVideos() {
                             Subscribe
                           </a>
                           <button
-                            onClick={() => setSelectedVideo(video)}
+                            onClick={() => setPlayingVideoUrl(video.videoUrl)}
                             className="video-action-btn watch-btn"
                           >
                             <Video size={14} className="btn-icon" />
@@ -368,50 +387,6 @@ export default function EducationalVideos() {
         </div>
       </section>
 
-      {/* Cinematic Lightbox Modal */}
-      {selectedVideo && (
-        <div className="cinematic-lightbox-overlay" onClick={() => setSelectedVideo(null)}>
-          <div className="lightbox-content-box" onClick={(e) => e.stopPropagation()}>
-            <button className="lightbox-close-btn" onClick={() => setSelectedVideo(null)}>
-              <X size={24} />
-            </button>
-            <div className="lightbox-video-frame-wrapper">
-              <iframe
-                className="lightbox-iframe"
-                src={`https://www.youtube.com/embed/${extractYouTubeID(selectedVideo.videoUrl)}?autoplay=1`}
-                title={selectedVideo.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="lightbox-metadata">
-              <span className="lightbox-category">{selectedVideo.category}</span>
-              <h2 className="lightbox-title">{selectedVideo.title}</h2>
-              <div className="lightbox-actions-row">
-                <a
-                  href={selectedVideo.videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="lightbox-btn yt-link-btn"
-                >
-                  <Film size={16} />
-                  Open on YouTube
-                </a>
-                <a
-                  href="https://www.youtube.com/@ghlindiaasset"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="lightbox-btn channel-sub-btn"
-                >
-                  <YoutubeIcon size={16} />
-                  Subscribe
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
