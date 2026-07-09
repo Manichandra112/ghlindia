@@ -96,6 +96,18 @@ const marketFacts = [
   { year: '2030', value: 1000, label: 'US$ 1T' },
 ];
 
+const highlights = [
+  { value: 'US$ 1T', label: 'projected market size by 2030', Icon: TrendingUp },
+  { value: '19.5%', label: 'CAGR estimated during 2017-2028', Icon: Landmark },
+  { value: '13%', label: "of India's GDP forecast by 2025", Icon: ShieldCheck },
+];
+
+const investmentThesis = [
+  'Real estate sector expected to reach US$ 1 trillion by 2030, up from US$ 200B in 2021.',
+  'Increasing industrial activity, rising income levels and urbanisation are key demand drivers.',
+  'Government has implemented 10 major policy reforms to improve transparency and liquidity.',
+];
+
 const realEstatePolicies = [
   'Real Estate Regulatory Act (RERA)',
   'Benami Transactions Act',
@@ -241,46 +253,26 @@ export default function RealEstateSector() {
           </div>
 
           <div className="real-market-grid">
-            <div data-animate="fade-right">
+            <div className="real-chart-block" data-animate="fade-right">
               <h3 className="real-chart-title">Market size of real estate in India (US$ billion)</h3>
               <RealEstateGrowthChart />
             </div>
 
             <div className="real-market-story" data-animate="fade-left" data-stagger-delay="120ms">
-              <div className="real-proof-grid">
-                <div className="real-proof-card">
-                  <TrendingUp size={22} />
-                  <strong>19.5%</strong>
-                  <span>CAGR estimated during 2017-2028</span>
-                </div>
-                <div className="real-proof-card">
-                  <Landmark size={22} />
-                  <strong>13%</strong>
-                  <span>of India&apos;s GDP forecast by 2025</span>
-                </div>
-                <div className="real-proof-card">
-                  <ShieldCheck size={22} />
-                  <strong>10</strong>
-                  <span>government reforms supporting the sector</span>
-                </div>
+              <div className="real-highlight-grid">
+                {highlights.map(({ value, label, Icon }) => (
+                  <div className="real-highlight-card" key={label}>
+                    <Icon size={20} />
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
-              <div className="real-source-context">
-                <p>
-                  Real estate sector in India is expected to reach US$ 1 trillion in market size by 2030,
-                  up from US$ 200 billion in 2021. India&apos;s real estate market is estimated to increase
-                  at a CAGR of 19.5% during 2017-2028. The market is forecast to reach US$ 650 billion,
-                  representing 13% of India&apos;s GDP by 2025.
-                </p>
-                <p>
-                  Increasing share of real estate in the GDP would be supported by increasing industrial activity,
-                  improving income level and urbanisation.
-                </p>
-                <p>
-                  India has an overall 75-80% import dependency on medical devices, with export at Rs. 14,802 crore
-                  (US$ 2.1 billion) in 2019 and is expected to rise at CAGR of 29.7% to reach Rs. 70,490
-                  (US$ 10 billion) in 2025.
-                </p>
-              </div>
+              <ul className="real-fact-list">
+                {investmentThesis.map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -364,7 +356,7 @@ export default function RealEstateSector() {
             ))}
           </div>
 
-          <div className="real-segment-grid">
+          <div className="real-segment-grid" key={activeFilter}>
             {visibleSegments.map((segment, index) => (
               <article
                 className="real-segment-card"
@@ -482,3 +474,4 @@ export default function RealEstateSector() {
     </div>
   );
 }
+

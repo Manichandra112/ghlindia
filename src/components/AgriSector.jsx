@@ -1,137 +1,158 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
+  BarChart3,
   ChevronRight,
   Factory,
   Leaf,
   PackageCheck,
   ShieldCheck,
   Sparkles,
+  Sprout,
   Tractor,
+  TrendingUp,
   Warehouse,
 } from 'lucide-react';
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './AgriSector.css';
 import agriMidImage from '../assets/agri2.png';
 
 const GHL = 'https://www.ghlindia.com';
 
-const chartData = [
-  { year: '2016', value: 250.62 },
-  { year: '2017', value: 266.48 },
-  { year: '2018', value: 283.68 },
-  { year: '2019', value: 267.9 },
-  { year: '2020', value: 276.37 },
-  { year: '2021', value: 271.9 },
+const marketFacts = [
+  { year: '2015', value: 200 },
+  { year: '2018', value: 250 },
+  { year: '2021', value: 271 },
+  { year: '2025*', value: 340 },
 ];
 
-const opportunities = [
+const highlights = [
+  { value: '54.6%', label: "of India's population depends on agriculture", Icon: Sprout },
+  { value: '18.8%', label: 'share of GVA from agriculture in FY22', Icon: TrendingUp },
+  { value: 'US$ 24B', label: 'predicted sector size by 2025', Icon: ShieldCheck },
+];
+
+const investmentThesis = [
+  'India can be among the top five exporters of agro-commodities.',
+  'Agriculture and allied activities grew at 3.9% in FY 2021-22.',
+  'Rs. 1.24 lakh crore allocated to agriculture in Budget 2022-23.',
+];
+
+const segments = [
   {
-    filter: 'Supply chain infrastructure',
+    id: 'supply-chain',
+    filter: 'Supply Chain',
+    title: 'Supply Chain Infrastructure',
     Icon: Warehouse,
+    metric: '45 lakh MT',
+    metricLabel: 'cold storage capacity added since 2015',
     points: [
-      '1,303 cold storages with a capacity of 45 lakh MT have been established since 2015.',
-      'Private warehouse operators are supported by multiple income streams, subsidy and availability of credit.',
-      'It is expected that 4% growth in the food grain storage capacity would restructure agricultural sector over the next few years.',
+      '1,303 cold storages have been established since 2015.',
+      'Private warehouse operators supported by multiple income streams, subsidy and credit.',
+      '4% growth in food grain storage capacity expected to restructure agricultural sector.',
     ],
   },
   {
-    filter: 'Potential global outsourcing hubs',
+    id: 'outsourcing',
+    filter: 'Outsourcing Hubs',
+    title: 'Potential Global Outsourcing Hubs',
     Icon: Factory,
+    metric: '22 Parks',
+    metricLabel: 'mega food parks operational',
     points: [
-      'Huge opportunity exists for agri input segments like seeds and plant growth nutrients.',
-      'As of January 2021, out of the 37 approved mega food parks in the country, 22 were operational',
-      'In Sept 2019, the World Bank sanctioned Rs. 3,000 crore (US$ 429.25 million) to finance mini and mega food parks in the country',
+      'Huge opportunity in agri input segments like seeds and plant growth nutrients.',
+      '22 out of 37 approved mega food parks were operational as of January 2021.',
+      'World Bank sanctioned Rs. 3,000 crore to finance mini and mega food parks.',
     ],
   },
   {
-    filter: 'Farm management services',
+    id: 'farm-mgmt',
+    filter: 'Farm Management',
+    title: 'Farm Management Services',
     Icon: Tractor,
+    metric: 'New Models',
+    metricLabel: 'agri input + advisory businesses',
     points: [
-      'New agri business, which provides inputs such as seeds and fertilizers along with providing advice and training farmers on latest agricultural practices.',
-      "In December 2019, the Department of Agriculture, Cooperation and Farmers Welfare created a task force to develop a complete farmers' database for better planning, monitoring, strategy formulation and smooth implementation of schemes for the entire country.",
+      'New agri business models provide seeds, fertilizers, advice and farmer training.',
+      "Government task force created to build a complete national farmers' database.",
     ],
   },
 ];
+
+const ALL_FILTERS = ['All', 'Supply Chain', 'Outsourcing Hubs', 'Farm Management'];
 
 const whyChoose = [
   {
-    title: 'Demand-side drivers',
+    title: 'Demand-side Drivers',
     Icon: PackageCheck,
     items: ['Population and income growth', 'Increasing exports', 'Favourable demographics'],
   },
   {
-    title: 'Supply-side drivers',
+    title: 'Supply-side Drivers',
     Icon: Leaf,
     items: [
       'Hybrid and genetically modified seeds',
-      'Favourable climate for agriculture and wide variety of crops',
-      'Mechanisation',
-      'Irrigational facilities',
+      'Favourable climate and wide crop variety',
+      'Mechanisation and irrigation',
       'Green revolution in Eastern India',
     ],
   },
   {
-    title: 'Policy support',
+    title: 'Policy Support',
     Icon: ShieldCheck,
     items: [
       'Growing institutional credit',
-      'Increasing MSP',
-      'Introduction of new schemes like Paramparagat Krishi Vikas Yojana, Pradhanmantri Gram Sinchai Yojana, and Sansad Adarsh Gram Yojana',
+      'Increasing minimum support price (MSP)',
+      'New schemes: PKVY, PMGSY, SAGY',
       'Opening exports of wheat and rice',
-      'Approval of National Mission on Food Processing',
     ],
   },
 ];
 
-function AgriChart() {
+function AgriGrowthChart() {
+  const canvasRef = useRef(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setAnimated(true); },
+      { threshold: 0.3 }
+    );
+    if (canvasRef.current) observer.observe(canvasRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const maxVal = 400;
+
   return (
-    <div className="agri-chart-card">
+    <div className="agri-chart-wrap" ref={canvasRef}>
       <div className="agri-chart-head">
         <div>
-          <span>US$ billion</span>
-          <h3>Market size of real Agriculture in India</h3>
+          <span>Market trajectory</span>
+          <h3>US$ 200B to US$ 340B</h3>
         </div>
+        <BarChart3 size={22} />
       </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={chartData} margin={{ top: 14, right: 18, left: -12, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(15, 23, 42, 0.12)" />
-          <XAxis dataKey="year" tick={{ fill: '#526071', fontSize: 12 }} axisLine={false} tickLine={false} />
-          <YAxis
-            domain={[0, 400]}
-            ticks={[0, 100, 200, 300, 400]}
-            tick={{ fill: '#526071', fontSize: 12 }}
-            axisLine={false}
-            tickLine={false}
-          />
-          <Tooltip
-            formatter={(value) => [`${value}`, 'US$ billion']}
-            labelFormatter={(label) => `Year ${label}`}
-            contentStyle={{
-              borderRadius: 8,
-              border: '1px solid rgba(15, 23, 42, 0.12)',
-              boxShadow: '0 12px 28px rgba(15, 23, 42, 0.12)',
-            }}
-          />
-          <Line
-            type="linear"
-            dataKey="value"
-            stroke="#ae0f0f"
-            strokeWidth={3}
-            dot={{ r: 4, fill: '#ae0f0f', stroke: '#ffffff', strokeWidth: 2 }}
-            activeDot={{ r: 6, fill: '#ae0f0f', stroke: '#ffffff', strokeWidth: 2 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+      <div className="agri-chart-bars">
+        {marketFacts.map((item, i) => {
+          const heightPct = animated ? (item.value / maxVal) * 100 : 0;
+          return (
+            <div className="agri-bar-col" key={item.year}>
+              <div className="agri-bar-value" style={{ opacity: animated ? 1 : 0 }}>${item.value}B</div>
+              <div className="agri-bar-track">
+                <div
+                  className="agri-bar-fill"
+                  style={{
+                    height: `${heightPct}%`,
+                    transitionDelay: `${i * 160}ms`,
+                  }}
+                />
+              </div>
+              <div className="agri-bar-label">{item.year}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -140,13 +161,10 @@ export default function AgriSector() {
   const [activeFilter, setActiveFilter] = useState('All');
   const pageRef = useScrollAnimation();
 
-  const visibleOpportunities = useMemo(
-    () =>
-      activeFilter === 'All'
-        ? opportunities
-        : opportunities.filter((opportunity) => opportunity.filter === activeFilter),
-    [activeFilter]
-  );
+  const visibleSegments =
+    activeFilter === 'All'
+      ? segments
+      : segments.filter((s) => s.filter === activeFilter);
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -154,47 +172,45 @@ export default function AgriSector() {
 
   return (
     <div className="agri-page" ref={pageRef}>
+      {/* ─── Hero ─── */}
       <section className="agri-hero">
         <picture>
           <source media="(max-width: 768px)" srcSet={`${GHL}/assets/img/sectors/bennar-mobile/Agri-Mob.jpg`} />
           <img
             src={`${GHL}/assets/img/sectors/bennar-desktop/AGRI-Web.jpg`}
-            alt="Asset management company"
+            alt="Agriculture sector investment"
             className="agri-hero-bg"
           />
         </picture>
         <div className="agri-hero-overlay" />
-        <img
-          src={`${GHL}/assets/img/sectors/dimond_shape.png`}
-          alt="Image"
-          className="agri-diamond"
-        />
+        <div className="agri-hero-pattern" />
         <div className="container agri-hero-content">
           <div className="agri-hero-copy" data-animate="fade-up">
             <span className="agri-eyebrow"><Leaf size={16} /> Sector Focus</span>
-            <h1>Agriculture Sector</h1>
+            <h1>Agriculture Investment Opportunities</h1>
             <p>
-              The Indian agricultural sector is predicted to increase to US$ 24 billion by 2025.
-              India can be among the top five exporters of agro-commodities by shifting its focus
-              on cultivation and effectively handholding farmers.
+              India's agricultural sector is predicted to reach US$ 24 billion by 2025.
+              A combination of supply-chain reform, technology adoption, and policy support
+              creates compelling entry points across the value chain.
             </p>
             <div className="agri-hero-actions">
               <button type="button" className="agri-btn primary" onClick={() => scrollToSection('agri-market')}>
                 Explore market size <ArrowRight size={16} />
               </button>
-              <button type="button" className="agri-btn secondary" onClick={() => scrollToSection('agri-opportunities')}>
-                View opportunities
+              <button type="button" className="agri-btn secondary" onClick={() => scrollToSection('agri-segments')}>
+                View segments
               </button>
             </div>
           </div>
           <div className="agri-hero-panel" data-animate="fade-left" data-stagger-delay="140ms">
             <span>2025 Outlook</span>
             <strong>US$ 24B</strong>
-            <p>Predicted market size for the Indian agricultural sector.</p>
+            <p>Predicted market size for India's agricultural sector by 2025.</p>
           </div>
         </div>
       </section>
 
+      {/* ─── Breadcrumb ─── */}
       <nav className="agri-breadcrumb">
         <div className="container">
           <ul>
@@ -209,83 +225,99 @@ export default function AgriSector() {
         </div>
       </nav>
 
+      {/* ─── Market Signal ─── */}
       <section className="agri-market-section" id="agri-market">
         <div className="container">
           <div className="agri-section-header" data-animate="fade-up">
             <span>Market Signal</span>
             <h2>Market size of Agriculture Sector</h2>
             <p>
-              The Indian agricultural sector is predicted to increase to US$ 24 billion by 2025.
-              India can be among the top five exporters of agro-commodities by shifting its focus
-              on cultivation and effectively handholding farmers.
+              Agriculture is India's backbone, contributing 18.8% of GVA and employing over half
+              the population. Government investment and policy reform are accelerating commercial scale.
             </p>
           </div>
 
           <div className="agri-market-grid">
-            <div data-animate="fade-right">
-              <AgriChart />
+            {/* Left: Animated Chart */}
+            <div className="agri-chart-col" data-animate="fade-right">
+              <AgriGrowthChart />
             </div>
-            <div className="agri-market-copy" data-animate="fade-left" data-stagger-delay="120ms">
-              <p>In India, agriculture is the primary source of livelihood for ~54.6% of the population.</p>
-              <p>As per 1st advance estimates of National Income FY 22, the percentage share of GVA of Agriculture and Allied Sectors (at current prices) is 18.8% of the total GVA.</p>
-              <p>Agriculture and allied activities recorded a growth rate of 3.9% in FY 2021-22 (uptil 31 January, 2022)</p>
-              <p>Gross Value Added by the agriculture and allied sector is 18.8% in FY 2021-22 (uptil 31 January, 2022)</p>
-              <p>As per the Budget 2022-23, Rs. 1.24 lakh crore (US$ 15.9 billion) has been allocated to Department of Agriculture, Cooperation and Farmers' Welfare</p>
+
+            {/* Right: Highlights + Facts */}
+            <div className="agri-market-story" data-animate="fade-left" data-stagger-delay="120ms">
+              <div className="agri-highlight-grid">
+                {highlights.map(({ value, label, Icon }) => (
+                  <div className="agri-highlight-card" key={label}>
+                    <Icon size={20} />
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <ul className="agri-fact-list">
+                {investmentThesis.map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="agri-opportunities-section" id="agri-opportunities">
+      {/* ─── Opportunity Map ─── */}
+      <section className="agri-segments-section" id="agri-segments">
         <div className="container">
           <div className="agri-section-header" data-animate="fade-up">
             <span>Opportunity Map</span>
             <h2>Opportunities in various segments</h2>
+            <p>From supply-chain infrastructure to farm management and global outsourcing, each segment offers scalable entry points.</p>
           </div>
 
           <div className="agri-filter-tabs">
-            {['All', ...opportunities.map((item) => item.filter)].map((filter) => (
+            {ALL_FILTERS.map((f) => (
               <button
-                key={filter}
                 type="button"
-                className={`agri-filter-tab${activeFilter === filter ? ' active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
+                key={f}
+                className={`agri-filter-tab${activeFilter === f ? ' active' : ''}`}
+                onClick={() => setActiveFilter(f)}
               >
-                {filter === 'All' && <Sparkles size={15} />}
-                {filter}
+                {f === 'All' && <Sparkles size={15} />}
+                {f}
               </button>
             ))}
           </div>
 
-          <div className="agri-card-grid">
-            {visibleOpportunities.map(({ filter, Icon, points }, index) => (
-              <article
-                className="agri-opportunity-card"
-                key={filter}
+          <div className="agri-segment-grid" key={activeFilter}>
+            {visibleSegments.map((seg, index) => (
+              <div
+                className="agri-segment-card"
+                key={seg.id}
                 data-animate="fade-up"
                 data-stagger-delay={`${index * 90}ms`}
               >
-                <div className="agri-opportunity-icon"><Icon size={24} /></div>
-                <h3>{filter}</h3>
+                <div className="agri-segment-topline">
+                  <div className="agri-segment-icon"><seg.Icon size={25} /></div>
+                  <span>{seg.metric}</span>
+                </div>
+                <h3>{seg.title}</h3>
+                <p className="agri-segment-metric">{seg.metricLabel}</p>
                 <ul>
-                  {points.map((point) => (
-                    <li key={point}>{point}</li>
+                  {seg.points.map((pt, i) => (
+                    <li key={i}>{pt}</li>
                   ))}
                 </ul>
-              </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="agri-image-section">
-        <img
-          src={agriMidImage}
-          alt="Asset management company"
-        />
-        <div className="agri-image-overlay">
+      {/* ─── Mid Banner ─── */}
+      <section className="agri-trend-banner">
+        <img src={agriMidImage} alt="Agriculture investment trends" className="agri-trend-img" />
+        <div className="agri-trend-overlay">
           <div className="container">
-            <div className="agri-image-insight">
+            <div className="agri-trend-content" data-animate="fade-up">
               <span>Market Insight</span>
               <h2>India's comparative advantage lies in its favourable climate, large agriculture sector and livestock base, long coastline and inland water resources.</h2>
             </div>
@@ -293,17 +325,17 @@ export default function AgriSector() {
         </div>
       </section>
 
+      {/* ─── Why We Choose ─── */}
       <section className="agri-why-section">
         <div className="container">
-          <div className="agri-section-header" data-animate="fade-up">
+          <div className="agri-why-heading" data-animate="fade-up">
             <span>Investment Rationale</span>
             <h2>Why We Choose</h2>
           </div>
-
-          <div className="agri-driver-grid">
+          <div className="agri-why-grid">
             {whyChoose.map(({ title, Icon, items }) => (
-              <article className="agri-driver-card" key={title} data-animate="fade-up">
-                <Icon size={22} />
+              <article className="agri-why-card" key={title} data-animate="fade-up">
+                <div className="agri-why-icon"><Icon size={24} /></div>
                 <h3>{title}</h3>
                 <ul>
                   {items.map((item) => (
@@ -316,9 +348,11 @@ export default function AgriSector() {
         </div>
       </section>
 
+      {/* ─── CTA ─── */}
       <section className="agri-cta-section">
         <div className="container">
           <div className="agri-cta-content" data-animate="fade-up">
+            <span>Build With GHL India</span>
             <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
             <p>Let us join together to live an opulent life</p>
             <div className="agri-cta-actions">

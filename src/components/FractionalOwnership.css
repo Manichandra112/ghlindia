@@ -25,6 +25,7 @@
     object-fit: contain;
   }
 }
+
 .fractional-page-wrapper {
   background-color: var(--light-gray);
   color: var(--text-dark);
@@ -234,49 +235,52 @@
   .fractional-hero-img {
     order: 1;
   }
+
   .fractional-hero-content-wrap {
-  order: 2;
-}
+    order: 2;
+  }
 
   .fractional-hero-content {
-  max-width: 100%;
-  margin: 0;
-  text-align: left;
-}
-.fractional-hero-actions {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 14px;
-}
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
+  }
 
-/* .fractional-hero-btn,
+  .fractional-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  /* .fractional-hero-btn,
 .fractional-hero-btn-secondary {
   width: 100%;
   justify-content: center;
 } */
- .fractional-hero-btn,
-.fractional-hero-btn-secondary{
-    width:100%;
-    padding:13px 18px;
-    font-size:15px;
-}
-.fractional-hero-content-wrap {
-  padding: 36px 20px;
-}
+  .fractional-hero-btn,
+  .fractional-hero-btn-secondary {
+    width: 100%;
+    padding: 13px 18px;
+    font-size: 15px;
+  }
 
-.fractional-hero-content h1 {
-  font-size: 34px;
-  line-height: 1.15;
-}
+  .fractional-hero-content-wrap {
+    padding: 36px 20px;
+  }
 
-.fractional-hero-content p {
-  font-size: 16px;
-  line-height: 1.7;
-}
+  .fractional-hero-content h1 {
+    font-size: 34px;
+    line-height: 1.15;
+  }
 
-  
+  .fractional-hero-content p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
 
-  
+
+
+
 }
 
 /* 2. Intro Section */
@@ -388,12 +392,14 @@
     display: none;
   }
 }
+
 @media (max-width: 768px) {
   .fractional-row-flex {
     flex-direction: column;
     gap: 28px;
     text-align: center;
   }
+
   .fractional-col-flex {
     width: 100%;
   }
@@ -524,8 +530,8 @@
   border: 1px solid var(--border-light);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.4s ease,
-              border-color 0.4s ease;
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -716,6 +722,7 @@
 }
 
 @media (max-width: 768px) {
+
   .timeline-step-row.left-align,
   .timeline-step-row.right-align {
     justify-content: flex-start;
@@ -781,14 +788,15 @@
 .timeline-card-wrapper {
   background-color: var(--text-white);
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-top: 3px solid var(--gold-accent); /* Golden top strip */
+  border-top: 3px solid var(--gold-accent);
+  /* Golden top strip */
   border-radius: var(--border-radius-md);
   padding: 24px 28px;
   width: 90%;
   margin: 0 auto;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
-              border-color 0.4s ease, 
-              box-shadow 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
 }
 
@@ -801,6 +809,7 @@
 }
 
 @media (max-width: 768px) {
+
   .timeline-step-row.left-align .timeline-card-wrapper,
   .timeline-step-row.right-align .timeline-card-wrapper {
     margin-left: 0;
@@ -812,7 +821,8 @@
 .timeline-card-wrapper:hover {
   transform: translateY(-5px);
   border-color: rgba(228, 31, 38, 0.15);
-  border-top-color: var(--primary-red); /* Swaps to red strip on hover */
+  border-top-color: var(--primary-red);
+  /* Swaps to red strip on hover */
   background-color: var(--text-white);
   box-shadow: 0 15px 35px rgba(228, 31, 38, 0.08);
 }
@@ -882,6 +892,7 @@
     width: 100%;
     align-items: center;
   }
+
   .cta-actions-row .btn {
     width: 100%;
     max-width: 280px;
@@ -895,7 +906,8 @@
   font-weight: 700;
   font-size: 14.5px;
   padding: 12px 30px;
-  border-radius: 30px; /* Modern pill style */
+  border-radius: 30px;
+  /* Modern pill style */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
   border: none;
   display: inline-flex;
@@ -918,7 +930,8 @@
   font-weight: 600;
   font-size: 14.5px;
   padding: 12px 30px;
-  border-radius: 30px; /* Modern pill style */
+  border-radius: 30px;
+  /* Modern pill style */
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -937,6 +950,8 @@
 .fractional-page-wrapper [data-animate="fade-right"],
 .fractional-page-wrapper [data-animate="fade-up"],
 .fractional-page-wrapper [data-animate="zoom-in"] {
-  transition-duration: 1.4s !important; /* Made animation slower for elegance */
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important; /* Smooth ease-out expo curve */
+  transition-duration: 1.4s !important;
+  /* Made animation slower for elegance */
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  /* Smooth ease-out expo curve */
 }

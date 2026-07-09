@@ -1,15 +1,15 @@
 @media (max-width: 768px) {
 
-  .debt-hero-media-wrap{
+  .debt-hero-media-wrap {
     display: flex;
     flex-direction: column;
   }
 
-  .debt-hero-overlay-mask{
+  .debt-hero-overlay-mask {
     display: none;
   }
 
-  .debt-hero-img{
+  .debt-hero-img {
     width: 100%;
     height: auto;
     max-height: none;
@@ -17,7 +17,7 @@
     order: 1;
   }
 
-  .debt-hero-container{
+  .debt-hero-container {
     position: relative;
     inset: auto;
     background: #0b1422;
@@ -26,44 +26,45 @@
     z-index: 2;
   }
 
-  .debt-content{
+  .debt-content {
     max-width: 100%;
     text-align: left;
   }
 
-  .debt-content h1{
+  .debt-content h1 {
     font-size: 34px;
     line-height: 1.15;
   }
 
-  .debt-content p{
+  .debt-content p {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 24px;
   }
 
-  .hero-features{
+  .hero-features {
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
     margin-bottom: 28px;
   }
 
-  .feature{
+  .feature {
     width: 100%;
   }
 
-  .hero-actions{
+  .hero-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
   .hero-btn,
-  .hero-btn-secondary{
+  .hero-btn-secondary {
     width: 100%;
     justify-content: center;
   }
 }
+
 .debt-hero {
   position: relative;
   width: 100%;
@@ -252,28 +253,103 @@
   }
 }
 
-@media(max-width:768px) {
-  .debt-hero .debt-content {
-    padding: 0;
+/* ==========================================================
+   DEBT HERO - MOBILE REDESIGN
+==========================================================*/
+
+@media screen and (max-width:768px) {
+
+  .debt-hero {
+    width: 100%;
+    overflow: hidden;
+    background: #0b1422;
+  }
+
+  .debt-hero-media-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .debt-hero-overlay-mask {
+    display: none;
+  }
+
+  .debt-hero-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .debt-hero-container {
+    position: relative;
+    inset: auto;
+    padding: 34px 22px 42px;
+    background: #0b1422;
+    display: block;
+  }
+
+  .debt-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    padding: 7px 14px;
+    font-size: 10px;
+    letter-spacing: .18em;
+    margin-bottom: 18px;
   }
 
   .debt-content h1 {
-    font-size: 38px;
+    font-size: 34px;
+    line-height: 1.18;
+    margin-bottom: 18px;
+    max-width: 100%;
   }
 
   .debt-content p {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 100%;
   }
 
   .hero-features {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-    margin: 0 auto 30px;
+    display: none;
   }
 
-  .feature {
-    text-align: left;
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
   }
+
+  .hero-btn,
+  .hero-btn-secondary {
+
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .hero-btn svg {
+    margin-left: 8px;
+  }
+
 }
 
 @media (max-width: 992px) {
@@ -292,53 +368,58 @@
 }
 
 @media (max-width: 768px) {
-  .debt-hero-img{
-    width:100%;
-    height:auto;
-    max-height:none;
-    display:block;
-    order:1;
-}
-.debt-hero-container{
-    position:relative;
-    inset:auto;
-    background:#0b1422;
-    padding:28px 20px;
-    order:2;
-    z-index:2;
-}
-.debt-content{
-    max-width:100%;
-    margin:0;
-    text-align:left;
-}
-.debt-content h1{
-    font-size:34px;
-    line-height:1.15;
-}
+  .debt-hero-img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    display: block;
+    order: 1;
+  }
 
-.debt-content p{
-    font-size:16px;
-    line-height:1.7;
-    margin-bottom:22px;
-}
-.hero-features{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:24px;
-}
-.hero-actions{
-    flex-direction:column;
-    align-items:stretch;
-    gap:14px;
-}
+  .debt-hero-container {
+    position: relative;
+    inset: auto;
+    background: #0b1422;
+    padding: 28px 20px;
+    order: 2;
+    z-index: 2;
+  }
 
-.hero-btn,
-.hero-btn-secondary{
-    width:100%;
-    justify-content:center;
-}
+  .debt-content {
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  .debt-content h1 {
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .debt-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+  }
+
+  .hero-features {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .hero-btn,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {

@@ -129,8 +129,11 @@
   }
 }
 
-.fiq-hero-content{
-    margin-top: 25px;
+.fiq-hero-content {
+  margin-top: 25px;
+  width: 100%;
+  max-width: 550px;
+  /* Limits the text width */
 }
 
 .fiq-hero-tag {
@@ -149,8 +152,9 @@
 }
 
 .fiq-hero-content h1 {
-  font-size: clamp(30px, 4.2vw, 46px);
-  line-height: 1.08;
+  max-width: 460px;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.1;
   color: #f8fbff;
   margin-bottom: 12px;
   font-weight: 800;
@@ -159,12 +163,14 @@
 
 .fiq-hero-content h1 span {
   display: block;
-  color: #e41f26; /* Changed to match brand red theme */
+  color: #e41f26;
+  /* Changed to match brand red theme */
 }
 
 .fiq-hero-content p {
-  font-size: clamp(14px, 1.4vw, 16px);
-  line-height: 1.45;
+  max-width: 430px;
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.6;
   color: rgba(248, 251, 255, 0.9);
   margin-bottom: 20px;
   font-weight: 400;
@@ -215,7 +221,9 @@
   box-shadow: none;
 }
 
-/* @media (max-width: 768px) {
+
+@media (max-width: 768px) {
+
   .fiq-hero {
     height: auto;
   }
@@ -223,58 +231,13 @@
   .fiq-hero-media-wrap {
     display: flex;
     flex-direction: column;
-    height: auto;
-  }
-
-  .fiq-hero-img {
-    height: auto;
-    object-fit: contain;
-    order: 2;
   }
 
   .fiq-hero-overlay-mask {
     display: none;
   }
 
-  .fiq-hero-content-wrap {
-    position: relative;
-    inset: auto;
-    background: #0f172a;
-    padding: 40px 20px;
-    z-index: 2;
-    order: 1;
-  }
-
-  .fiq-hero-content {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .fiq-hero-content h1 {
-    font-size: 32px !important;
-  }
-
-  .fiq-hero-content p {
-    font-size: 15px !important;
-  }
-} */
-
-@media (max-width: 768px) {
-
-  .fiq-hero{
-    height: auto;
-  }
-
-  .fiq-hero-media-wrap{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .fiq-hero-overlay-mask{
-    display: none;
-  }
-
-  .fiq-hero-img{
+  .fiq-hero-img {
     width: 100%;
     height: auto;
     max-height: none;
@@ -282,7 +245,7 @@
     order: 1;
   }
 
-  .fiq-hero-content-wrap{
+  .fiq-hero-content-wrap {
     position: relative;
     inset: auto;
     background: #0f172a;
@@ -291,35 +254,36 @@
     z-index: 2;
   }
 
-  .fiq-hero-content{
+  .fiq-hero-content {
     max-width: 100%;
     text-align: left;
     margin-top: 0;
   }
 
-  .fiq-hero-content h1{
+  .fiq-hero-content h1 {
     font-size: 34px;
     line-height: 1.15;
   }
 
-  .fiq-hero-content p{
+  .fiq-hero-content p {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 24px;
   }
 
-  .fiq-hero-actions{
+  .fiq-hero-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 14px;
   }
 
   .fiq-hero-btn,
-  .fiq-hero-btn-secondary{
+  .fiq-hero-btn-secondary {
     width: 100%;
     justify-content: center;
   }
 }
+
 /* Content Layout Grid */
 
 

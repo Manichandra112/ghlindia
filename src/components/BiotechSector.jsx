@@ -300,7 +300,7 @@ export default function BiotechSector() {
             ))}
           </div>
 
-          <div className="biotech-segment-grid">
+          <div className="biotech-segment-grid" key={activeFilter}>
             {visibleSegments.map((seg, index) => (
               <div
                 className="biotech-segment-card"

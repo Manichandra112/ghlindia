@@ -1,13 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-  ArrowUpRight,
   ArrowRight,
+  BarChart3,
   ChevronRight,
   Globe2,
-  LineChart,
   MapPinned,
   ShieldCheck,
   Sparkles,
+  Sprout,
   TrendingUp,
   UsersRound,
   UtensilsCrossed,
@@ -18,105 +18,189 @@ import foodMidImage from '../assets/food2.png';
 
 const GHL = 'https://www.ghlindia.com';
 
+const marketFacts = [
+  { year: '2020', value: 7 },
+  { year: '2022', value: 12 },
+  { year: '2025', value: 32 },
+  { year: '2030', value: 49 },
+];
+
 const highlights = [
   { value: 'US$ 220B', label: 'India FMCG market expected by 2025', Icon: TrendingUp },
   { value: '11%', label: 'e-commerce contribution forecast by 2030', Icon: Globe2 },
   { value: '1B', label: 'internet users likely in India by 2025', Icon: UsersRound },
 ];
 
-const chartData = [
-  { name: "2020", value: 7 },
-  { name: "2022", value: 12 },
-  { name: "2025", value: 32 },
-  { name: "2030", value: 49 },
-];
-
-const marketContext = [
+const investmentThesis = [
   'FMCG is the fourth-largest sector in the Indian economy.',
-  'Household and personal care leads with 50% share, followed by healthcare at 31% and food & beverages at 19%.',
-  'Growing awareness, easier access and changing lifestyles have been the key growth drivers for the sector.',
-  'The number of internet users in India is likely to reach 1 billion by 2025.',
-  'Real household spending is projected to increase at 9.1% YoY in 2021.',
+  'Growing awareness, easier access and changing lifestyles are key growth drivers.',
+  'Real household spending projected to increase at 9.1% YoY in 2021.',
 ];
 
-const opportunities = [
+const segments = [
   {
-    title: 'Sourcing base',
-    summary:
-      'Indian and multinational FMCG players can leverage India as a strategic sourcing hub for cost-competitive product development and manufacturing.',
+    id: 'sourcing',
+    filter: 'Sourcing Base',
+    title: 'Sourcing Base',
+    Icon: Globe2,
+    metric: 'Cost-competitive',
+    metricLabel: 'strategic manufacturing hub',
+    points: [
+      'Indian and multinational FMCG players can leverage India as a strategic sourcing hub.',
+      'Cost-competitive product development and manufacturing at scale.',
+    ],
   },
   {
+    id: 'penetration',
+    filter: 'Penetration',
     title: 'Penetration',
-    summary:
-      'Low penetration levels across consumption categories leave room for expansion, especially as major players deepen rural reach.',
+    Icon: MapPinned,
+    metric: 'Low penetration',
+    metricLabel: 'headroom for expansion',
+    points: [
+      'Low penetration levels across categories leave major room for expansion.',
+      'Major players are deepening rural reach to capture unmet demand.',
+    ],
   },
   {
+    id: 'online',
+    filter: 'Online FMCG',
     title: 'Online FMCG',
-    summary:
-      'The online FMCG market continues to scale as convenience-led retail and digital buying habits reshape distribution.',
+    Icon: BarChart3,
+    metric: '28.99% CAGR',
+    metricLabel: 'online grocery growth to 2026',
+    points: [
+      'Online FMCG market is scaling rapidly as digital buying habits reshape distribution.',
+      'Market estimated to exceed US$ 17.12 billion by 2026.',
+    ],
   },
   {
-    title: 'Premium products',
-    summary:
-      'Rising disposable incomes are shifting demand toward premium and differentiated products in urban markets.',
+    id: 'premium',
+    filter: 'Premium Products',
+    title: 'Premium Products',
+    Icon: Sparkles,
+    metric: 'Rising income',
+    metricLabel: 'urban premiumisation wave',
+    points: [
+      'Rising disposable incomes are shifting demand toward premium products in urban markets.',
+      'Differentiated products are gaining traction across food and personal care.',
+    ],
   },
   {
-    title: 'Innovative products',
-    summary:
-      'Consumers in India are highly adaptable to new products, giving brands room to test and scale formats quickly.',
+    id: 'innovation',
+    filter: 'Innovative Products',
+    title: 'Innovative Products',
+    Icon: Sprout,
+    metric: 'High adaptability',
+    metricLabel: 'consumers ready for new formats',
+    points: [
+      'Indian consumers are highly adaptable to new products and formats.',
+      'Brands can test and scale new formats quickly in this market.',
+    ],
   },
   {
-    title: 'Rural market',
-    summary:
-      'Strong distribution networks and better digital logistics are helping branded products reach rural demand pockets faster.',
+    id: 'rural',
+    filter: 'Rural Market',
+    title: 'Rural Market',
+    Icon: TrendingUp,
+    metric: 'Faster access',
+    metricLabel: 'digital logistics driving reach',
+    points: [
+      'Strong distribution networks are helping branded products reach rural demand pockets.',
+      'Better digital logistics is accelerating last-mile delivery.',
+    ],
   },
 ];
+
+const ALL_FILTERS = ['All', 'Sourcing Base', 'Penetration', 'Online FMCG', 'Premium Products', 'Innovative Products', 'Rural Market'];
 
 const whyChoose = [
   {
-    title: 'Shift to organised market',
-    summary:
-      'Brand consciousness and modern retail are accelerating the transition away from unorganised distribution.',
+    title: 'Shift to Organised Market',
+    summary: 'Brand consciousness and modern retail are accelerating the transition away from unorganised distribution.',
     Icon: ShieldCheck,
   },
   {
-    title: 'Increase in penetration',
-    summary:
-      'Low branded-product penetration in categories like instant foods creates room for long-term volume growth.',
+    title: 'Increase in Penetration',
+    summary: 'Low branded-product penetration in categories like instant foods creates room for long-term volume growth.',
     Icon: MapPinned,
   },
   {
-    title: 'Rural consumption',
-    summary:
-      'Higher incomes and aspirations are lifting rural demand for branded products across essential categories.',
-    Icon: Sparkles,
+    title: 'Rural Consumption',
+    summary: 'Higher incomes and aspirations are lifting rural demand for branded products across essential categories.',
+    Icon: Sprout,
   },
   {
-    title: 'Easy access',
-    summary:
-      'Internet access, online retail, and delivery platforms are making products more accessible at the right time and place.',
-    Icon: LineChart,
+    title: 'Easy Access',
+    summary: 'Internet access, online retail and delivery platforms are making products more accessible at the right place and time.',
+    Icon: Globe2,
   },
 ];
 
+function FoodGrowthChart() {
+  const canvasRef = useRef(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setAnimated(true); },
+      { threshold: 0.3 }
+    );
+    if (canvasRef.current) observer.observe(canvasRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const maxVal = 60;
+
+  return (
+    <div className="food-chart-wrap" ref={canvasRef}>
+      <div className="food-chart-head">
+        <div>
+          <span>Online FMCG share</span>
+          <h3>7% to 49% by 2030</h3>
+        </div>
+        <BarChart3 size={22} />
+      </div>
+      <div className="food-chart-bars">
+        {marketFacts.map((item, i) => {
+          const heightPct = animated ? (item.value / maxVal) * 100 : 0;
+          return (
+            <div className="food-bar-col" key={item.year}>
+              <div className="food-bar-value" style={{ opacity: animated ? 1 : 0 }}>{item.value}%</div>
+              <div className="food-bar-track">
+                <div
+                  className="food-bar-fill"
+                  style={{
+                    height: `${heightPct}%`,
+                    transitionDelay: `${i * 160}ms`,
+                  }}
+                />
+              </div>
+              <div className="food-bar-label">{item.year}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function FoodBeverage() {
-  const [activeOpportunity, setActiveOpportunity] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('All');
   const pageRef = useScrollAnimation();
 
-  const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
+  const visibleSegments =
+    activeFilter === 'All'
+      ? segments
+      : segments.filter((s) => s.filter === activeFilter);
 
-  const visibleOpportunities = useMemo(
-    () => (activeOpportunity === 'All' ? opportunities : opportunities.filter((item) => item.title === activeOpportunity)),
-    [activeOpportunity]
-  );
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="food-page" ref={pageRef}>
+      {/* ─── Hero ─── */}
       <section className="food-hero">
         <picture>
           <img
@@ -129,31 +213,30 @@ export default function FoodBeverage() {
         <div className="food-hero-pattern" />
         <div className="container food-hero-content">
           <div className="food-hero-copy" data-animate="fade-up">
-
             <span className="food-eyebrow"><UtensilsCrossed size={16} /> Sector Focus</span>
-            <h1>Food &amp; Beverage</h1>
+            <h1>Food &amp; Beverage Investment Opportunities</h1>
             <p>
-              A redesigned view of India&apos;s FMCG and food economy, built around market scale,
-              distribution depth, and the shift toward premium, digital, and rural demand.
+              India&apos;s FMCG and food economy is driven by market scale, distribution depth,
+              and the shift toward premium, digital, and rural demand.
             </p>
             <div className="food-hero-actions">
               <button type="button" className="food-btn primary" onClick={() => scrollToSection('food-market')}>
                 Explore market size <ArrowRight size={16} />
               </button>
-              <button type="button" className="food-btn secondary" onClick={() => scrollToSection('food-opportunities')}>
-                View opportunities
+              <button type="button" className="food-btn secondary" onClick={() => scrollToSection('food-segments')}>
+                View segments
               </button>
             </div>
           </div>
-
           <div className="food-hero-panel" data-animate="fade-left" data-stagger-delay="120ms">
-            <span>Market signal</span>
+            <span>Market Signal</span>
             <strong>US$ 220B</strong>
-            <p>The expected size of India&apos;s FMCG market by 2025, with e-commerce adding another layer of scale.</p>
+            <p>Expected size of India&apos;s FMCG market by 2025, with e-commerce adding another layer of scale.</p>
           </div>
         </div>
       </section>
 
+      {/* ─── Breadcrumb ─── */}
       <nav className="food-breadcrumb">
         <div className="container">
           <ul>
@@ -168,84 +251,47 @@ export default function FoodBeverage() {
         </div>
       </nav>
 
+      {/* ─── Market Signal ─── */}
       <section className="food-market-section" id="food-market">
         <div className="container">
           <div className="food-section-header" data-animate="fade-up">
             <span>Market Signal</span>
             <h2>Market size of Food &amp; Beverage Sector</h2>
             <p>
-              FMCG is the fourth-largest sector in India. Household and personal care leads today, while food and beverages
-              continue gaining from lifestyle shifts, better access, and stronger digital adoption.
+              FMCG is the fourth-largest sector in India. Household and personal care leads today,
+              while food and beverages continue gaining from lifestyle shifts, better access, and digital adoption.
             </p>
           </div>
 
           <div className="food-market-grid">
-            <div className="food-market-shell" data-animate="fade-right">
-              <div className="food-market-top">
-                <div className="food-market-card-head">
-                  {/* <span>Market signal</span>
-                  <strong>US$ 220B</strong>
-                  <p>The expected size of India&apos;s FMCG market by 2025, with digital commerce accelerating category scale.</p> */}
-
-                  <div className="food-market-top-stats">
-                    {highlights.map(({ value, label, Icon }) => (
-                      <div key={label} className="food-market-stat-tile">
-                        <Icon size={17} />
-                        <div>
-                          <strong>{value}</strong>
-                          <p>{label}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="food-market-body">
-                <div className="food-growth-panel">
-                  <div className="food-growth-head">
-                    <span>Online FMCG contribution</span>
-                    <h3>Digital channels are becoming a larger growth lane</h3>
-                  </div>
-                  <div className="food-growth-flow">
-                    {chartData.map((item, index) => (
-                      <div className="food-growth-step" key={item.name}>
-                        <div className="food-growth-node">
-                          <strong>{item.value}%</strong>
-                          <span>{item.name}</span>
-                        </div>
-                        <div className="food-growth-track">
-                          <div style={{ width: `${item.value * 2}%` }} />
-                        </div>
-                        {index < chartData.length - 1 && <ArrowUpRight size={18} className="food-growth-arrow" />}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="food-market-side">
-                  <div className="food-market-side-head">
-                    <h3>Growth narrative</h3>
-                    <p>A blend of category leadership, digital adoption and consumption expansion is supporting long-term momentum.</p>
-                  </div>
-
-                  <div className="food-market-context">
-                    {marketContext.map((item, index) => (
-                      <div key={item} className="food-market-context-item">
-                        <span>{String(index + 1).padStart(2, '0')}</span>
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {/* Left: Animated Chart */}
+            <div className="food-chart-col" data-animate="fade-right">
+              <FoodGrowthChart />
             </div>
 
+            {/* Right: Highlights + Facts */}
+            <div className="food-market-story" data-animate="fade-left" data-stagger-delay="120ms">
+              <div className="food-highlight-grid">
+                {highlights.map(({ value, label, Icon }) => (
+                  <div className="food-highlight-card" key={label}>
+                    <Icon size={20} />
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+              <ul className="food-fact-list">
+                {investmentThesis.map((fact) => (
+                  <li key={fact}>{fact}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="food-opportunities-section" id="food-opportunities">
+      {/* ─── Opportunity Map ─── */}
+      <section className="food-segments-section" id="food-segments">
         <div className="container">
           <div className="food-section-header" data-animate="fade-up">
             <span>Opportunity Map</span>
@@ -254,99 +300,68 @@ export default function FoodBeverage() {
           </div>
 
           <div className="food-filter-tabs">
-            {['All', ...opportunities.map((item) => item.title)].map((filter) => (
+            {ALL_FILTERS.map((f) => (
               <button
-                key={filter}
                 type="button"
-                className={`food-filter-tab${activeOpportunity === filter ? ' active' : ''}`}
-                onClick={() => setActiveOpportunity(filter)}
+                key={f}
+                className={`food-filter-tab${activeFilter === f ? ' active' : ''}`}
+                onClick={() => setActiveFilter(f)}
               >
-                {filter === 'All' && <Sparkles size={15} />}
-                {filter}
+                {f === 'All' && <Sparkles size={15} />}
+                {f}
               </button>
             ))}
           </div>
 
-          <div className="food-card-grid">
-            {visibleOpportunities.map((item, index) => (
-              <article
-                key={item.title}
-                className="food-opportunity-card"
+          <div className="food-segment-grid" key={activeFilter}>
+            {visibleSegments.map((seg, index) => (
+              <div
+                className="food-segment-card"
+                key={seg.id}
                 data-animate="fade-up"
-                data-stagger-delay={`${index * 80}ms`}
+                data-stagger-delay={`${index * 90}ms`}
               >
-                <div className="food-opportunity-top">
-                  <div className="food-opportunity-index">{String(index + 1).padStart(2, '0')}</div>
-                  <h3>{item.title}</h3>
+                <div className="food-segment-topline">
+                  <div className="food-segment-icon"><seg.Icon size={25} /></div>
+                  <span>{seg.metric}</span>
                 </div>
-                <p>{item.summary}</p>
-
-              </article>
+                <h3>{seg.title}</h3>
+                <p className="food-segment-metric">{seg.metricLabel}</p>
+                <ul>
+                  {seg.points.map((pt, i) => (
+                    <li key={i}>{pt}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-
-      <section className="food-image-feature">
-        <img
-          src={foodMidImage}
-          alt="Food & Beverage"
-        />
-        <div className="food-image-feature-overlay">
+      {/* ─── Mid Banner ─── */}
+      <section className="food-trend-banner">
+        <img src={foodMidImage} alt="Food and Beverage trends" className="food-trend-img" />
+        <div className="food-trend-overlay">
           <div className="container">
-            <div className="food-feature-insight">
-              <span className="food-image-tag">Market Insight</span>
-              <h3>India's Online Grocery Market is Accelerating</h3>
-              <p>
-                The Indian online grocery market is estimated to exceed
-                <strong> Rs. 1,310.93 billion (US$ 17.12 billion)</strong> by
-                <strong> 2026</strong>, growing at a
-                <strong> CAGR of 28.99%</strong>, driven by rising digital
-                adoption, changing consumer preferences, and expanding
-                e-commerce infrastructure.
-              </p>
+            <div className="food-trend-content" data-animate="fade-up">
+              <span>Market Insight</span>
+              <h2>India&apos;s Online Grocery Market is estimated to exceed Rs. 1,310.93 billion (US$ 17.12 billion) by 2026, growing at a CAGR of 28.99%.</h2>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="food-image-insight">
-        <span className="food-image-tag">Market Insight</span>
-
-        <h3>India's Online Grocery Market is Accelerating</h3>
-
-        <p>
-          The Indian online grocery market is estimated to exceed
-          <strong> ₹1,310.93 billion (US$ 17.12 billion)</strong> by
-          <strong> 2026</strong>, growing at a
-          <strong> CAGR of 28.99%</strong>, driven by rising digital
-          adoption, changing consumer preferences, and expanding
-          e-commerce infrastructure.
-        </p>
-      </div>
-      <section className="food-image-section">
-        <div className="food-image-card">
-          <img
-            src={foodMidImage}
-            alt="Food & Beverage"
-          />
-        </div>
-      </section>
-
-
+      {/* ─── Why We Choose ─── */}
       <section className="food-why-section">
         <div className="container">
-          <div className="food-section-header" data-animate="fade-up">
-            <span>Why We Choose</span>
-            <h2>Why the sector remains compelling</h2>
-            <p>The same underlying forces driving the website&apos;s food page are presented here in a cleaner, more investable layout.</p>
+          <div className="food-why-heading" data-animate="fade-up">
+            <span>Investment Rationale</span>
+            <h2>Why We Choose</h2>
           </div>
-
           <div className="food-why-grid">
             {whyChoose.map(({ title, summary, Icon }) => (
               <article className="food-why-card" key={title} data-animate="fade-up">
-                <Icon size={20} />
+                <div className="food-why-icon"><Icon size={24} /></div>
                 <h3>{title}</h3>
                 <p>{summary}</p>
               </article>
@@ -354,15 +369,17 @@ export default function FoodBeverage() {
           </div>
         </div>
       </section>
-      <section className="real-cta-section">
+
+      {/* ─── CTA ─── */}
+      <section className="food-cta-section">
         <div className="container">
-          <div className="real-cta-content" data-animate="fade-up">
+          <div className="food-cta-content" data-animate="fade-up">
             <span>Build With GHL India</span>
             <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
             <p>Let us join together to live an opulent life</p>
-            <div className="real-cta-actions">
-              <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
-              <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
+            <div className="food-cta-actions">
+              <a href="#login" className="food-cta-btn primary">Login <ChevronRight size={16} /></a>
+              <a href="#register" className="food-cta-btn secondary">Register <ChevronRight size={16} /></a>
             </div>
           </div>
         </div>
