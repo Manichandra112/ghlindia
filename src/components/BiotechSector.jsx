@@ -303,7 +303,7 @@ export default function BiotechSector() {
           <div className="biotech-segment-grid" key={activeFilter}>
             {visibleSegments.map((seg, index) => (
               <div
-                className="biotech-segment-card"
+                className={`biotech-segment-card ${seg.id}`}
                 key={seg.id}
                 data-animate="fade-up"
                 data-stagger-delay={`${index * 90}ms`}

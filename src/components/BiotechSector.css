@@ -1,6 +1,5 @@
 .biotech-page {
   background: #f8f9fd;
-  overflow-x: hidden;
   font-family: var(--font-body, 'Inter', sans-serif);
 }
 
@@ -767,7 +766,7 @@
 
 .biotech-section-header {
   max-width: 820px;
-  margin: 0 auto clamp(34px, 5vw, 56px);
+  margin: 0 auto 30px;
 }
 
 .biotech-section-header h2 {
@@ -931,9 +930,8 @@
   font-size: 24px;
   font-family: var(--font-heading);
 }
-
 .biotech-segments-section {
-  padding: clamp(64px, 8vw, 104px) 0;
+  padding: 35px 0 45px;
   background:
     linear-gradient(180deg, #eff8f5, #f8fbfd);
   border-top: 1px solid var(--bio-line);
@@ -941,19 +939,25 @@
 }
 
 .biotech-filter-tabs {
-  gap: 10px;
-  margin-bottom: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
 }
 
 .biotech-filter-tab {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  min-height: 38px;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 18px;
   border-radius: 8px;
   border: 1px solid rgba(9, 17, 31, 0.14);
   color: #243142;
   background: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
 }
 
 .biotech-filter-tab:hover,
@@ -961,20 +965,20 @@
   color: #ffffff;
   border-color: var(--bio-green);
   background: linear-gradient(135deg, var(--bio-green), #0f8d68);
-  box-shadow: 0 14px 26px rgba(0, 168, 120, 0.22);
+  box-shadow: 0 10px 20px rgba(0, 168, 120, 0.2);
 }
 
 .biotech-segment-grid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .biotech-segment-card {
-  min-height: 340px;
+  min-height: 315px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  padding: 22px;
+  padding: 20px;
   border: 1px solid var(--bio-line);
   background: #ffffff;
   box-shadow: 0 16px 40px rgba(9, 17, 31, 0.07);
@@ -989,60 +993,81 @@
 }
 
 .biotech-segment-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(0, 168, 120, 0.34);
-  box-shadow: 0 24px 52px rgba(9, 17, 31, 0.12);
+  box-shadow: 0 20px 44px rgba(9, 17, 31, 0.1);
 }
 
 .biotech-segment-topline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .biotech-segment-icon {
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
   margin: 0;
-  border-radius: 8px;
+  border-radius: 6px;
   color: var(--bio-green);
   background: #e8fff6;
 }
 
+.biotech-segment-icon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
 .biotech-segment-topline>span {
   color: var(--bio-red);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 800;
   text-align: right;
 }
 
 .biotech-segment-card h3 {
   color: var(--bio-ink);
-  font-size: 20px;
-  margin-bottom: 6px;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 
 .biotech-segment-metric {
   color: var(--bio-muted);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .biotech-segment-card ul {
-  gap: 11px;
+  gap: 8px;
 }
 
 .biotech-segment-card ul li {
   color: #526071;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .biotech-segment-card ul li::before {
   background: var(--bio-green);
+}
+
+/* Custom spacing for cards 2, 3, and 4 to fill height and avoid blank gaps at bottom */
+.biotech-segment-card.bio-industrials ul,
+.biotech-segment-card.bio-pharma ul,
+.biotech-segment-card.bio-agri ul {
+  gap: 16px !important;
+  margin-top: 10px !important;
+}
+
+.biotech-segment-card.bio-industrials ul li,
+.biotech-segment-card.bio-pharma ul li,
+.biotech-segment-card.bio-agri ul li {
+  line-height: 1.85 !important;
 }
 
 .biotech-trend-banner {
@@ -1409,4 +1434,69 @@
 
 .biotech-marquee-wrap {
   display: none !important;
+}
+
+/* ==========================================================================
+   Compact Mobile View adjustments for Biotech Opportunity Map 
+   (Ensures header, tabs, and content fit in one single frame)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .biotech-segments-section {
+    padding: 28px 0 20px !important;
+  }
+
+  .biotech-segments-section .biotech-section-header {
+    margin-bottom: 16px !important;
+  }
+
+  .biotech-segments-section .biotech-section-header h2 {
+    font-size: clamp(22px, 5.5vw, 26px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .biotech-segments-section .biotech-section-header p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .biotech-filter-tabs {
+    margin-bottom: 16px !important;
+    gap: 6px !important;
+  }
+
+  .biotech-filter-tab {
+    min-height: 32px !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+  }
+
+  .biotech-segment-grid {
+    gap: 12px !important;
+  }
+
+  .biotech-segment-card {
+    min-height: auto !important;
+    padding: 16px 18px !important;
+    border-radius: 8px !important;
+  }
+
+  .biotech-segment-card h3 {
+    font-size: 17px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .biotech-segment-metric {
+    font-size: 11px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .biotech-segment-card ul {
+    gap: 8px !important;
+  }
+
+  .biotech-segment-card ul li {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
 }

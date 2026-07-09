@@ -103,9 +103,9 @@ const highlights = [
 ];
 
 const investmentThesis = [
-  'Real estate sector expected to reach US$ 1 trillion by 2030, up from US$ 200B in 2021.',
-  'Increasing industrial activity, rising income levels and urbanisation are key demand drivers.',
-  'Government has implemented 10 major policy reforms to improve transparency and liquidity.',
+  'Real estate sector in India is expected to reach US$ 1 trillion in market size by 2030, up from US$ 200 billion in 2021.',
+  'India’s real estate market is estimated to increase at a CAGR of 19.5% during 2017- 2028. The market is forecast to reach US$ 650 billion, representing 13% of India’s GDP by 2025.',
+  'Increasing share of real estate in the GDP would be supported by increasing industrial activity, improving income level and urbanisation.',
 ];
 
 const realEstatePolicies = [

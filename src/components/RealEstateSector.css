@@ -60,11 +60,11 @@
 }
 
 .real-eyebrow,
-.real-section-header > span,
-.real-policy-copy > span,
-.real-fdi-content > span,
-.real-why-heading > span,
-.real-cta-content > span {
+.real-section-header>span,
+.real-policy-copy>span,
+.real-fdi-content>span,
+.real-why-heading>span,
+.real-cta-content>span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -264,9 +264,8 @@
 }
 
 .real-chart-card {
-  min-height: 420px;
-  height: 100%;
-  padding: clamp(22px, 3vw, 34px);
+  height: 420px;
+  padding: 14px 20px;
   border-radius: 16px;
   color: #ffffff;
   background: linear-gradient(145deg, #061a1a, #0a2e2e 60%, #062020);
@@ -284,7 +283,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
 }
 
 .real-chart-head span {
@@ -297,8 +296,8 @@
 
 .real-chart-head h3 {
   color: #ffffff;
-  font-size: clamp(25px, 3vw, 36px);
-  margin-top: 8px;
+  font-size: clamp(24px, 3vw, 32px);
+  margin-top: 4px;
 }
 
 .real-chart-head svg {
@@ -310,7 +309,7 @@
   display: flex;
   align-items: flex-end;
   gap: clamp(18px, 3vw, 30px);
-  height: 260px;
+  height: 285px;
 }
 
 .real-chart-block {
@@ -361,6 +360,8 @@
 .real-market-story {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding-top: 34px;
   gap: 0;
 }
 
@@ -385,7 +386,9 @@
   transition: transform 0.22s ease;
 }
 
-.real-highlight-card:hover { transform: translateY(-3px); }
+.real-highlight-card:hover {
+  transform: translateY(-3px);
+}
 
 .real-highlight-card svg {
   color: var(--real-primary);
@@ -412,16 +415,17 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: auto;
 }
 
 .real-fact-list li {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
   font-size: 14px;
   color: #334155;
   line-height: 1.65;
-  padding: 14px 16px;
+  padding: 13px 15px;
   background: #f8fafc;
   border-radius: 10px;
   border-left: 3px solid var(--real-primary);
@@ -865,7 +869,7 @@
   background: rgba(13, 115, 119, 0.08);
 }
 
-.real-segment-top > span {
+.real-segment-top>span {
   color: var(--real-primary);
   font-size: 12px;
   font-weight: 900;
@@ -1012,8 +1016,13 @@
 }
 
 @keyframes realFdiMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .real-why-section {
@@ -1199,7 +1208,7 @@
   text-align: center;
 }
 
-.real-cta-content > span {
+.real-cta-content>span {
   color: #ffe1e3;
   margin-bottom: 12px;
 }
@@ -1237,6 +1246,7 @@
 }
 
 @media (max-width: 1000px) {
+
   .real-market-grid,
   .real-why-chart-grid {
     grid-template-columns: 1fr;
@@ -1264,6 +1274,7 @@
 }
 
 @media (max-width: 760px) {
+
   .real-hero-content,
   .real-proof-grid,
   .real-policy-grid,
@@ -1316,4 +1327,3 @@
     height: 220px;
   }
 }
-
