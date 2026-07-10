@@ -367,29 +367,26 @@
    7. TREND BANNER WITH MARQUEE
    ──────────────────────────────────────── */
 .biotech-trend-banner {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  align-items: stretch;
-  background: #020917;
+  position: relative;
+  width: 100%;
   max-width: 1200px;
   margin: 60px auto;
+  min-height: 360px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 48px rgba(2, 9, 23, 0.09);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  min-height: 340px;
-  position: relative;
 }
 
-/* Background animated blobs for Biotech */
+/* Background animated blobs for Biotech overlay on the image background */
 .biotech-trend-banner::before,
 .biotech-trend-banner::after {
   content: '';
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.15;
-  z-index: 1;
+  opacity: 0.1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -412,40 +409,30 @@
 }
 
 @keyframes bioBlobMove1 {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate(60px, 40px) scale(1.15);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(60px, 40px) scale(1.15); }
 }
 
 @keyframes bioBlobMove2 {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate(-40px, -60px) scale(1.1);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-40px, -60px) scale(1.1); }
 }
 
 .biotech-trend-banner picture {
-  grid-column: 2;
-  grid-row: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: static;
-  z-index: 2;
+  z-index: 1;
 }
 
 .biotech-trend-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   object-position: center;
-  position: static;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: none;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -454,16 +441,16 @@
 }
 
 .biotech-trend-overlay {
-  grid-column: 1;
-  grid-row: 1;
-  position: static;
-  background: transparent;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: 360px;
+  background: linear-gradient(90deg, rgba(2, 9, 23, 0.9) 0%, rgba(2, 9, 23, 0.65) 45%, rgba(2, 9, 23, 0.1) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  padding: 40px 0 0 0;
-  z-index: 2;
+  padding: 50px 0 0 0;
 }
 
 .biotech-trend-overlay .container {
@@ -1155,26 +1142,14 @@
 /* Responsive tablet/mobile adjustments for Biotech trend banner */
 @media (max-width: 900px) {
   .biotech-trend-banner {
-    grid-template-columns: 1fr;
     margin: 40px 16px;
-    min-height: auto;
-  }
-
-  .biotech-trend-banner picture {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .biotech-trend-img {
-    height: 240px;
-    border-left: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 300px;
   }
 
   .biotech-trend-overlay {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 30px 0 0 0;
+    min-height: 300px;
+    background: linear-gradient(180deg, rgba(2, 9, 23, 0.9) 0%, rgba(2, 9, 23, 0.75) 100%);
+    padding: 40px 0 0 0;
   }
 
   .biotech-trend-overlay .container {
@@ -1183,41 +1158,31 @@
 }
 
 .biotech-trend-content {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
+  max-width: 600px;
 }
 
 .biotech-trend-content>span {
-  min-height: auto;
-  padding: 5px 12px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(148, 246, 208, 0.25);
-  background: rgba(148, 246, 208, 0.06);
-  writing-mode: horizontal-tb;
-  transform: none;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.2;
-  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  color: #94f6d0;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #94f6d0;
-  display: inline-flex;
+  margin-bottom: 16px;
+  border: 1px solid rgba(148, 246, 208, 0.35);
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: rgba(148, 246, 208, 0.1);
 }
 
 .biotech-trend-content h2 {
   color: #ffffff;
-  max-width: 100%;
-  font-size: clamp(17px, 2.2vw, 24px);
-  line-height: 1.55;
-  font-weight: 500;
-  margin: 0 0 12px;
-  text-shadow: none;
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .biotech-trend-content p {

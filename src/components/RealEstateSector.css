@@ -1008,29 +1008,26 @@
 }
 
 .real-fdi-banner {
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  align-items: stretch;
-  background: #020e14;
+  position: relative;
+  width: 100%;
   max-width: 1200px;
   margin: 60px auto;
+  min-height: 360px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 48px rgba(2, 14, 20, 0.09);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  min-height: 340px;
-  position: relative;
 }
 
-/* Background animated blobs for Real Estate */
+/* Background animated blobs for Real Estate overlay on the image background */
 .real-fdi-banner::before,
 .real-fdi-banner::after {
   content: '';
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.15;
-  z-index: 1;
+  opacity: 0.1;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -1063,20 +1060,20 @@
 }
 
 .real-fdi-banner picture {
-  grid-column: 2;
-  grid-row: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  position: static;
-  z-index: 2;
+  z-index: 1;
 }
 
 .real-fdi-banner img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   object-position: center;
-  position: static;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: none;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1085,14 +1082,14 @@
 }
 
 .real-fdi-overlay {
-  grid-column: 1;
-  grid-row: 1;
-  position: static;
-  background: transparent;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: 360px;
+  background: linear-gradient(90deg, rgba(2, 14, 20, 0.9) 0%, rgba(2, 14, 20, 0.65) 45%, rgba(2, 14, 20, 0.1) 100%);
   display: flex;
   align-items: center;
-  padding: 44px;
-  z-index: 2;
+  padding: 60px 44px;
 }
 
 .real-fdi-overlay .container {
@@ -1152,23 +1149,13 @@
 
 @media (max-width: 900px) {
   .real-fdi-banner {
-    grid-template-columns: 1fr;
     margin: 40px 16px;
-    min-height: auto;
-  }
-  .real-fdi-banner picture {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .real-fdi-banner img {
-    height: 240px;
-    border-left: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 300px;
   }
   .real-fdi-overlay {
-    grid-column: 1;
-    grid-row: 2;
-    padding: 30px 24px;
+    min-height: 300px;
+    background: linear-gradient(180deg, rgba(2, 14, 20, 0.9) 0%, rgba(2, 14, 20, 0.75) 100%);
+    padding: 40px 24px;
   }
 }
 
