@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './AgriSector.css';
+import BottomCTA from './BottomCTA';
 import agriMidImage from '../assets/agri2.png';
 
 const GHL = 'https://www.ghlindia.com';
@@ -352,19 +353,7 @@ export default function AgriSector() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="agri-cta-section">
-        <div className="container">
-          <div className="agri-cta-content" data-animate="fade-up">
-            <span>Build With GHL India</span>
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="agri-cta-actions">
-              <a href="#login" className="agri-cta-btn primary">Login <ChevronRight size={16} /></a>
-              <a href="#register" className="agri-cta-btn secondary">Register <ChevronRight size={16} /></a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
     </div>
   );
 }

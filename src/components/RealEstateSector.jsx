@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
+import BottomCTA from './BottomCTA';
 // import realEstateHero from '../assets/real estate-1.png';
 import realEstateHero from '../assets/realestate 2.png';
 import realestateimg from '../assets/real estate 2.png';
@@ -462,19 +463,7 @@ export default function RealEstateSector() {
         </div>
       </section>
 
-      <section className="real-cta-section">
-        <div className="container">
-          <div className="real-cta-content" data-animate="fade-up">
-            <span>Build With GHL India</span>
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="real-cta-actions">
-              <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
-              <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
     </div>
   );
 }

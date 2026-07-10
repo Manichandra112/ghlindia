@@ -8,6 +8,7 @@ import {
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { fallbackCareerJobs, loadCareerJobs } from './careerJobs';
 import './CareerPage.css';
+import BottomCTA from './BottomCTA';
 
 export default function CareerPage() {
   const pageRef = useScrollAnimation();
@@ -101,24 +102,7 @@ export default function CareerPage() {
 
      
 
-<section className="about-login-cta-section">
-        <div className="container">
-          <div className="about-login-cta-content">
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="about-login-cta-actions">
-              <a href="#login" className="cta-btn btn-white-glass">
-                <span>Login</span>
-                <ArrowRight size={16} />
-              </a>
-              <a href="#register" className="cta-btn btn-white-solid">
-                <span>Register</span>
-                <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>  
+      <BottomCTA />
     </div>
   );
 }

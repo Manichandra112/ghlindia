@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FoodBeverage.css';
+import BottomCTA from './BottomCTA';
 import foodMidImage from '../assets/food2.png';
 
 const GHL = 'https://www.ghlindia.com';
@@ -374,19 +375,7 @@ export default function FoodBeverage() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="food-cta-section">
-        <div className="container">
-          <div className="food-cta-content" data-animate="fade-up">
-            <span>Build With GHL India</span>
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="food-cta-actions">
-              <a href="#login" className="food-cta-btn primary">Login <ChevronRight size={16} /></a>
-              <a href="#register" className="food-cta-btn secondary">Register <ChevronRight size={16} /></a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
     </div>
   );
 }

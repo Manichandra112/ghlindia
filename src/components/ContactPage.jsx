@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ContactPage.css';
+import BottomCTA from './BottomCTA';
 
 const contactCards = [
   {
@@ -152,22 +153,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="about-login-cta-section">
-        <div className="container">
-          <div className="about-login-cta-content">
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="about-login-cta-actions">
-              <a href="#login" className="cta-btn btn-white-glass">
-                <span>Login</span>
-              </a>
-              <a href="#register" className="cta-btn btn-white-solid">
-                <span>Register</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
 
     </div>
   );

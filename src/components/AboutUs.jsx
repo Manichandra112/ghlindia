@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { ArrowRight, ShieldCheck, Target, Award, CheckCircle2, ChevronRight } from 'lucide-react';
 import './AboutUs.css';
 import aboutHero from '../assets/about us.png';
+import BottomCTA from './BottomCTA';
 
 export default function AboutUs() {
   const narrativeRef = useRef(null);
@@ -358,24 +359,7 @@ export default function AboutUs() {
       </section>
 
       {/* 7. Bottom Login & Register CTA Section */}
-      <section className="about-login-cta-section">
-        <div className="container">
-          <div className="about-login-cta-content">
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="about-login-cta-actions">
-              <a href="#login" className="cta-btn btn-white-glass">
-                <span>Login</span>
-                <ArrowRight size={16} />
-              </a>
-              <a href="#register" className="cta-btn btn-white-solid">
-                <span>Register</span>
-                <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
     </div>
   );
 }

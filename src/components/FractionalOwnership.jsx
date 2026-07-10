@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FractionalOwnership.css';
+import BottomCTA from './BottomCTA';
 import fractionalInvestment from '../assets/fractional invesment.png';
 
 export default function FractionalOwnership() {
@@ -324,20 +325,7 @@ export default function FractionalOwnership() {
       </section>
 
       {/* Action CTA Section */}
-      <section className="fractional-cta">
-        <div className="container text-center">
-          <h2 className="cta-title">GHL India is here to create a prosperous environment that serves the world at large</h2>
-          <p className="cta-desc">Let us join together to live an opulent life. Start your co-ownership journey today.</p>
-          <div className="cta-actions-row">
-            <a href="#login" className="btn btn-cta-primary">
-              Login to Portal <ArrowRight size={16} />
-            </a>
-            <a href="#login" className="btn btn-cta-secondary">
-              Register Account <ArrowRight size={16} />
-            </a>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
     </div>
   );
 }

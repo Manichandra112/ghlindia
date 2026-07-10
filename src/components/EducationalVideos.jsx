@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info } from 'lucide-react';
 import localVideos from '../data/educational_videos_data.json';
 import './EducationalVideos.css';
+import BottomCTA from './BottomCTA';
 
 const YoutubeIcon = ({ size = 16, className }) => (
   <svg
@@ -368,24 +369,7 @@ export default function EducationalVideos() {
       </section>
 
       {/* Login & Register CTA Section */}
-      <section className="edu-login-cta-section">
-        <div className="container">
-          <div className="edu-login-cta-content">
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="edu-login-cta-actions">
-              <a href="#login" className="cta-btn btn-white-glass">
-                <span>Login</span>
-                <ArrowRight size={16} />
-              </a>
-              <a href="#register" className="cta-btn btn-white-solid">
-                <span>Register</span>
-                <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <BottomCTA />
 
     </div>
   );

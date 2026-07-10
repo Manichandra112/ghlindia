@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './BiotechSector.css';
+import BottomCTA from './BottomCTA';
 import whywechoose from '../assets/biotech1.png';
 
 const GHL = 'https://www.ghlindia.com';
@@ -391,20 +392,8 @@ export default function BiotechSector() {
         </div>
       </section>
 
-      {/* ─── Login CTA ─── */}
-      <section className="biotech-cta-section">
-        <div className="container">
-          <div className="biotech-cta-content" data-animate="fade-up">
-            <span>Build With GHL India</span>
-            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
-            <p>Let us join together to live an opulent life</p>
-            <div className="biotech-cta-actions">
-              <a href="#login" className="biotech-cta-btn primary">Login <ChevronRight size={16} /></a>
-              <a href="#register" className="biotech-cta-btn secondary">Register <ChevronRight size={16} /></a>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ─── CTA ─── */}
+      <BottomCTA />
     </div>
   );
 }
