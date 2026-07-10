@@ -3,6 +3,12 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .about-section.section-padding {
+    padding-top: 24px;
+  }
+}
+
 /* Established Block styling */
 .established-box {
   display: grid;
@@ -28,8 +34,22 @@
 @media (max-width: 768px) {
   .established-box {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 28px;
+    gap: 12px;
+    padding: 24px 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .established-box h2 {
+    font-size: 26px;
+  }
+
+  .established-box p {
+    font-size: 14px;
+    line-height: 1.7;
   }
 }
 
@@ -49,6 +69,29 @@
   color: var(--primary-red);
 }
 
+/* Section Heading for Reels & Card Row */
+.about-reels-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.about-reels-heading h3 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark-charcoal);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .about-reels-heading {
+    margin-bottom: 24px;
+  }
+
+  .about-reels-heading h3 {
+    font-size: 22px;
+  }
+}
+
 /* Reels & Middle Card Grid */
 .about-reels-row {
   display: grid;
@@ -60,7 +103,7 @@
 @media (max-width: 991px) {
   .about-reels-row {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
   .reel-card-item {
     max-width: 380px;
@@ -158,13 +201,6 @@
               0 0 0 1px rgba(228, 31, 38, 0.1);
 }
 
-.middle-card-title {
-  font-size: 19px;
-  font-weight: 800;
-  margin-bottom: 16px;
-  color: var(--dark-charcoal);
-  line-height: 1.3;
-}
 
 .middle-image-wrapper {
   position: relative;

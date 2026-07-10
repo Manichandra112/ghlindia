@@ -27,6 +27,11 @@ export default function About() {
           </div>
         </div>
 
+        {/* Section Heading for Reels & Card Row */}
+        <div className="about-reels-heading" data-animate="fade-up">
+          <h3><span className="red-accent">GHL's</span> Business-Alternative Investment Platform</h3>
+        </div>
+
         {/* Reels & Middle Card Row */}
         <div className="about-reels-row">
           
@@ -57,9 +62,6 @@ export default function About() {
 
           {/* MIDDLE CONTENT CARD */}
           <div className="about-middle-card glass-panel" data-animate="fade-up" data-stagger-delay="100ms">
-            <h3 className="middle-card-title">
-              <span className="red-accent">GHL‘s</span> Business-Alternative Investment Platform
-            </h3>
             
             <div className="middle-image-wrapper">
               <img 
