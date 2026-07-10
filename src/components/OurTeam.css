@@ -35,7 +35,8 @@
 .team-hero-fullbleed {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 92px);
+  height: 66vh;
+  min-height: 500px;
   overflow: hidden;
   background: #ffffff;
 }
@@ -74,7 +75,7 @@
 .team-hero-slide.accounts-slide img {
   left: 50%;
   transform: translateX(-50%);
-  width: 97%;
+  width: 99%;
   height: 100%;
   bottom: 0;
   object-fit: unset;
