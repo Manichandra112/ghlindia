@@ -19,6 +19,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
 // import realEstateHero from '../assets/real estate-1.png';
 import realEstateHero from '../assets/realestate 2.png';
+import realestateimg from '../assets/real estate 2.png';
 
 const segments = [
   {
@@ -295,7 +296,7 @@ export default function RealEstateSector() {
                 <li><strong>Investment:</strong> Eased FDI norms and tax reforms to attract global capital.</li>
               </ul>
 
-              
+
             </div>
 
             <div className="policy-cards-grid" data-animate="fade-up" data-stagger-delay="120ms" role="list">
@@ -328,11 +329,11 @@ export default function RealEstateSector() {
               })()}
             </div>
 
-            
+
           </div>
         </div>
       </section>
-      
+
 
       <section className="real-segments-section" id="real-segments">
         <div className="container">
@@ -382,9 +383,9 @@ export default function RealEstateSector() {
 
       <section className="real-fdi-banner">
         <picture>
-          <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/sectors/bennar-mobile/RE-Mid-Mob.jpg" />
+          <source media="(max-width: 768px)" srcSet={realestateimg} />
           <img
-            src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/RE-Mid-Web.jpg"
+            src={realestateimg}
             alt="real estate investing"
           />
         </picture>
