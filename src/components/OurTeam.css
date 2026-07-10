@@ -62,7 +62,13 @@
 }
 
 .team-hero-slide.sales-slide img {
-  height: calc(100% - 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 99%;
+  height: 100%;
+  bottom: 0;
+  object-fit: unset;
+  object-position: unset;
 }
 
 .team-hero-slide.accounts-slide img {
@@ -85,7 +91,13 @@
 }
 
 .team-hero-slide.creative-slide img {
-  height: calc(100% - 40px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 99%;
+  height: 100%;
+  bottom: 0;
+  object-fit: unset;
+  object-position: unset;
 }
 
 .team-hero-overlay {
