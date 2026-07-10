@@ -592,7 +592,7 @@
   width: 100%;
   max-width: 100%;
   margin: 80px 0;
-  min-height: 360px;
+  min-height: 450px;
   border-radius: 0;
   overflow: hidden;
   box-shadow: 0 20px 48px rgba(5, 15, 5, 0.09);
@@ -619,7 +619,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  min-height: 360px;
+  min-height: 450px;
   background: linear-gradient(90deg, rgba(4, 20, 10, 0.9) 0%, rgba(4, 20, 10, 0.5) 35%, rgba(4, 20, 10, 0) 70%);
   display: flex;
   align-items: center;
