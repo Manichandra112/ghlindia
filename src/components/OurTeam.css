@@ -28,15 +28,15 @@
 }
 
 .team-hero-redesign {
-  margin-top: var(--header-height, 92px);
-  padding: 0 0 40px;
+  margin-top: 40px;
+  padding: 0 0 20px;
 }
 
 .team-hero-fullbleed {
   position: relative;
   width: 100%;
-  height: 66vh;
-  min-height: 500px;
+  height: 70vh;
+  min-height: 530px;
   overflow: hidden;
   background: #ffffff;
 }
@@ -44,12 +44,28 @@
 .team-hero-slide {
   position: absolute;
   inset: 0;
+  transform: translateX(100%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  will-change: transform, opacity;
 }
 
 .team-hero-slide.active {
+  transform: translateX(0);
   opacity: 1;
+  z-index: 2;
+}
+
+.team-hero-slide.prev {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.team-hero-slide.next {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
 }
 
 .team-hero-slide img {
@@ -105,44 +121,67 @@
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 8px 24px 4px;
-  background: transparent;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 32px 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
 }
 
 .team-hero-title-block {
-  text-align: center;
+  text-align: left;
+  pointer-events: auto;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  margin-top: 0;
+  display: block;
 }
 
 .team-hero-eyebrow {
-  margin: 0 0 10px;
+  margin: 0 0 4px;
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   font-weight: 800;
-  color: var(--team-red);
+  color: #ff3b50;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .team-hero-title-block h1 {
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 4.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.05em;
-  background: linear-gradient(135deg, #161616 0%, #7e1020 50%, #bc1f32 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  display: block;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: titleEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes titleEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .team-hero-controls {
-  margin-top: auto;
+  margin-top: 0;
   display: flex;
   align-items: center;
   gap: 16px;
+  pointer-events: auto;
 }
 
 .team-arrow {
@@ -168,21 +207,34 @@
 .team-hero-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .team-hero-dots button {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   border: 0;
   padding: 0;
-  background: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-hero-dots button:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .team-hero-dots button.active {
   background: #ffffff;
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
 }
 
 .team-story-section,

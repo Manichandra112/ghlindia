@@ -183,7 +183,7 @@ export default function OurTeam() {
 
     const timer = window.setTimeout(() => {
       setCurrentHero((prev) => (prev + 1) % heroSlides.length);
-    }, 4200);
+    }, 3000);
 
     return () => window.clearTimeout(timer);
   }, [currentHero, isHeroPaused]);
@@ -212,8 +212,16 @@ export default function OurTeam() {
                   : slide.label.toLowerCase().includes('creative')
                     ? 'creative-slide'
                     : '';
+
+            let positionClass = 'next';
+            if (index === currentHero) {
+              positionClass = 'active';
+            } else if (index === (currentHero - 1 + heroSlides.length) % heroSlides.length) {
+              positionClass = 'prev';
+            }
+
             return (
-              <div key={slide.label} className={`team-hero-slide ${index === currentHero ? 'active' : ''} ${slideClass}`}>
+              <div key={slide.label} className={`team-hero-slide ${positionClass} ${slideClass}`}>
                 <img src={slide.image} alt={slide.label} />
               </div>
             );
@@ -221,18 +229,10 @@ export default function OurTeam() {
 
           <div className="team-hero-overlay">
             <div className="team-hero-title-block">
-              <h1>{currentSlide.label}</h1>
+              <h1 key={currentHero}>{currentSlide.label}</h1>
             </div>
 
             <div className="team-hero-controls">
-              <button
-                type="button"
-                className="team-arrow"
-                onClick={() => setCurrentHero((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-                aria-label="Previous team"
-              >
-                <ChevronLeft size={18} />
-              </button>
               <div className="team-hero-dots">
                 {heroSlides.map((slide, index) => (
                   <button
@@ -244,14 +244,6 @@ export default function OurTeam() {
                   />
                 ))}
               </div>
-              <button
-                type="button"
-                className="team-arrow"
-                onClick={() => setCurrentHero((prev) => (prev + 1) % heroSlides.length)}
-                aria-label="Next team"
-              >
-                <ChevronRight size={18} />
-              </button>
             </div>
           </div>
         </div>
