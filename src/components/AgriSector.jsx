@@ -320,6 +320,9 @@ export default function AgriSector() {
             <div className="agri-trend-content" data-animate="fade-up">
               <span>Market Insight</span>
               <h2>India's comparative advantage lies in its favourable climate, large agriculture sector and livestock base, long coastline and inland water resources.</h2>
+              <p>
+                As a leading producer of spices, pulses, and milk, India represents a vital link in global supply chains, backed by increasing investments in cold storage infrastructure and processing technologies.
+              </p>
             </div>
           </div>
         </div>

@@ -394,6 +394,9 @@ export default function RealEstateSector() {
             <div className="real-fdi-insight">
               <span>Market Insight</span>
               <h2>The Government has allowed 100% FDI for townships and settlements development projects.</h2>
+              <p>
+                This bold regulatory stance has unlocked institutional global capital, streamlining town planning, high-quality warehousing facilities, and commercial office complexes across Tier-1 and Tier-2 smart cities.
+              </p>
             </div>
           </div>
         </div>

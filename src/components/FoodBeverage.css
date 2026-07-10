@@ -730,6 +730,14 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.food-trend-content p {
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13.5px;
+  line-height: 1.62;
+  margin: 12px 0 0 0;
+}
+
 @media (max-width: 900px) {
   .food-trend-banner {
     margin: 40px 16px;

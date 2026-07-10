@@ -1141,10 +1141,18 @@
   margin: 0;
   color: #ffffff;
   max-width: 100%;
-  font-size: clamp(17px, 2.2vw, 24px);
-  line-height: 1.55;
-  font-weight: 500;
-  text-shadow: none;
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.5;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.real-fdi-insight p {
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13.5px;
+  line-height: 1.62;
+  margin: 12px 0 0 0;
 }
 
 @media (max-width: 900px) {

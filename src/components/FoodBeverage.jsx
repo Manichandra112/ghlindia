@@ -346,6 +346,9 @@ export default function FoodBeverage() {
             <div className="food-trend-content" data-animate="fade-up">
               <span>Market Insight</span>
               <h2>India&apos;s Online Grocery Market is estimated to exceed Rs. 1,310.93 billion (US$ 17.12 billion) by 2026, growing at a CAGR of 28.99%.</h2>
+              <p>
+                Driven by technological innovations, rising urbanization, and shifting consumer preferences toward e-commerce convenience, the grocery delivery sector is poised for exponential long-term growth.
+              </p>
             </div>
           </div>
         </div>
