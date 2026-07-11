@@ -253,6 +253,11 @@ export default function OurTeam() {
 
       <section className="team-story-section">
         <div className="team-shell">
+          <div className="section-header">
+            <span>Introduction</span>
+            <h2>Who We Are</h2>
+          </div>
+
           <div className="team-story-card">
             <div className="team-video-wrap">
               <div className="team-video-card">
@@ -274,7 +279,6 @@ export default function OurTeam() {
             </div>
 
             <div className="team-story-copy">
-              <p className="team-section-tag">Who We Are</p>
               <p className="team-story-text">
                 Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here.
               </p>
@@ -288,7 +292,7 @@ export default function OurTeam() {
 
       <section className="team-block-section">
         <div className="team-shell">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header">
             <span>Leadership</span>
             <h2>Our Management Team</h2>
             <p>Meet the visionary minds driving GHL India's success and financial stewardship.</p>
@@ -350,7 +354,7 @@ export default function OurTeam() {
 
       <section className="team-block-section soft">
         <div className="team-shell">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header">
             <span>Experts</span>
             <h2>Meet Our Team</h2>
             <p>Our dedicated professionals spanning Sales, IT, Accounts, and Creative divisions.</p>
@@ -365,7 +369,7 @@ export default function OurTeam() {
 
       <section className="team-block-section">
         <div className="team-shell">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header">
             <span>Support</span>
             <h2>Investor Relationship Managers</h2>
             <p>Your primary points of contact, ensuring a seamless and transparent onboarding experience.</p>
@@ -380,7 +384,7 @@ export default function OurTeam() {
 
       <section className="gallery-section-redesign">
         <div className="team-shell">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header">
             <span>Visuals</span>
             <h2>GHL India Gallery</h2>
             <p className="team-gallery-note">A wider look at the people and environment behind GHL India.</p>

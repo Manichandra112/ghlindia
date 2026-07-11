@@ -43,7 +43,7 @@
 
 .team-hero-redesign {
   margin-top: 40px;
-  padding: 0 0 20px;
+  padding: 0;
 }
 
 .team-hero-fullbleed {
@@ -254,14 +254,17 @@
 
 .team-story-section {
   background: #ffffff;
-  border-top: 1px solid var(--team-line);
   border-bottom: 1px solid var(--team-line);
-  padding: 56px 0;
+  padding: 24px 0 28px;
+}
+
+.team-story-section .section-header {
+  margin-bottom: 28px;
 }
 
 .team-block-section {
   background: #f8f9fd;
-  padding: 56px 0 68px;
+  padding: 32px 0 68px;
   border-bottom: 1px solid var(--team-line);
 }
 
@@ -271,7 +274,7 @@
 
 .gallery-section-redesign {
   background: #ffffff;
-  padding: 56px 0 68px;
+  padding: 32px 0 68px;
   border-top: 1px solid var(--team-line);
 }
 
@@ -298,7 +301,8 @@
 
 .team-video-card {
   position: relative;
-  min-height: 320px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   border-radius: 20px;
   overflow: hidden;
   background: #111;
@@ -816,7 +820,7 @@
 
 .gallery-thumb-redesign {
   border-radius: 16px;
-  padding: 6px;
+  padding: 0;
   text-align: left;
   background: #ffffff;
   border: 1px solid var(--team-line);
@@ -840,7 +844,7 @@
 .gallery-thumb-image-stage {
   height: 80px;
   min-height: 80px;
-  border-radius: 10px;
+  border-radius: 0;
   background: #f8f9fd;
   padding: 0;
   overflow: hidden;
@@ -861,7 +865,8 @@
 
 .gallery-thumb-label {
   display: block;
-  margin-top: 6px;
+  padding: 8px 10px 10px;
+  margin-top: 0;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--team-muted);
@@ -944,9 +949,75 @@ a {
   }
 
   .leader-card-main,
-  .director-image-box,
+  .director-stage-redesign {
+    height: 220px !important;
+    min-height: unset !important;
+  }
+
+  .people-grid-redesign {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  .person-card-shell {
+    flex: 1 1 calc(50% - 6px) !important;
+    max-width: calc(50% - 6px) !important;
+  }
+
   .person-image-stage {
-    min-height: 240px;
+    height: 150px !important;
+    min-height: 150px !important;
+    max-height: 150px !important;
+  }
+
+  .person-image-stage img {
+    width: auto !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: scale(1.12) translateY(20px) !important;
+  }
+
+  .leader-card-main img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
+
+  .director-image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left top !important;
+  }
+
+  .person-card-box {
+    padding: 10px 12px !important;
+    gap: 6px !important;
+  }
+
+  .person-card-name {
+    font-size: 0.8rem !important;
+  }
+
+  .person-card-role {
+    font-size: 0.68rem !important;
+    margin-top: 2px !important;
+  }
+
+  .person-linkedin {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 6px !important;
+    flex: 0 0 24px !important;
+    aspect-ratio: 1 !important;
+  }
+
+  .person-linkedin svg {
+    width: 12px !important;
+    height: 12px !important;
   }
 
   .leader-card-copy {
@@ -954,11 +1025,49 @@ a {
   }
 
   .team-block-header.between,
-  .gallery-main-meta,
-  .director-footer-redesign,
-  .director-copy-redesign {
+  .gallery-main-meta {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .director-footer-redesign {
+    flex-direction: column;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .director-copy-redesign {
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 12px !important;
+  }
+
+  .director-copy-redesign > div {
+    text-align: center !important;
+  }
+
+  .director-copy-redesign h3 {
+    font-size: 0.95rem !important;
+  }
+
+  .director-copy-redesign p {
+    font-size: 0.72rem !important;
+    margin-top: 3px !important;
+  }
+
+  .leader-linkedin,
+  .director-linkedin-redesign {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+  }
+
+  .leader-linkedin svg,
+  .director-linkedin-redesign svg {
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .team-hero-fullbleed {
@@ -987,5 +1096,29 @@ a {
 
   .team-hero-controls {
     margin-top: 2px;
+  }
+
+  .team-story-section {
+    padding: 20px 0 20px 0 !important;
+  }
+
+  .team-story-section .section-header {
+    margin-bottom: 16px !important;
+  }
+
+  .team-story-card {
+    gap: 20px !important;
+  }
+
+  .team-logo-card {
+    margin-top: 18px !important;
+  }
+
+  .team-block-section {
+    padding: 24px 0 40px 0 !important;
+  }
+
+  .gallery-section-redesign {
+    padding: 24px 0 40px 0 !important;
   }
 }
