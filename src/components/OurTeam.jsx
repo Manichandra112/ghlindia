@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import './OurTeam.css';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const LinkedinIcon = ({ size = 12, className = '' }) => (
+const LinkedinIcon = ({ size = 16, className = '' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -12,7 +13,7 @@ const LinkedinIcon = ({ size = 12, className = '' }) => (
     className={className}
     aria-hidden="true"
   >
-    <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zm7 0h3.83v1.64h.05c.53-1 1.84-2.06 3.79-2.06C21.6 8.58 24 10.57 24 14.87V21h-4v-5.43c0-1.3-.02-2.98-1.82-2.98-1.82 0-2.1 1.42-2.1 2.88V21h-4z" />
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z" />
   </svg>
 );
 
@@ -157,11 +158,11 @@ function PeopleCard({ person }) {
           </div>
           {person.linkedin !== '#' ? (
             <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="person-linkedin" aria-label={`${person.name} LinkedIn`}>
-              <LinkedinIcon />
+              <LinkedinIcon size={16} />
             </a>
           ) : (
             <span className="person-linkedin disabled" aria-hidden="true">
-              <LinkedinIcon />
+              <LinkedinIcon size={16} />
             </span>
           )}
         </div>
@@ -171,6 +172,7 @@ function PeopleCard({ person }) {
 }
 
 export default function OurTeam() {
+  const sectionRef = useScrollAnimation();
   const [currentHero, setCurrentHero] = useState(0);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -195,7 +197,7 @@ export default function OurTeam() {
     : 'https://www.youtube.com/embed/J7dU_nZKKm0?rel=0&modestbranding=1&playsinline=1&controls=1&mute=1';
 
   return (
-    <div className="team-page-redesign">
+    <div className="team-page-redesign" ref={sectionRef}>
       <section className="team-hero-redesign">
         <div
           className="team-hero-fullbleed"
@@ -250,33 +252,35 @@ export default function OurTeam() {
       </section>
 
       <section className="team-story-section">
-        <div className="team-shell team-story-grid">
-          <div className="team-video-wrap">
-            <div className="team-video-card">
-              <iframe
-                src={videoSrc}
-                title="GHL India Asset team"
-                allow="autoplay; encrypted-media; fullscreen"
-                allowFullScreen
-                loading="lazy"
-              />
-              {!isVideoPlaying && (
-                <button type="button" className="team-video-poster" onClick={() => setIsVideoPlaying(true)}>
-                  <span className="team-video-play">
-                    <Play size={16} fill="currentColor" />
-                  </span>
-                </button>
-              )}
+        <div className="team-shell">
+          <div className="team-story-card">
+            <div className="team-video-wrap">
+              <div className="team-video-card">
+                <iframe
+                  src={videoSrc}
+                  title="GHL India Asset team"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                  loading="lazy"
+                />
+                {!isVideoPlaying && (
+                  <button type="button" className="team-video-poster" onClick={() => setIsVideoPlaying(true)}>
+                    <span className="team-video-play">
+                      <Play size={16} fill="currentColor" />
+                    </span>
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="team-story-copy">
-            <p className="team-section-tag">Who We Are</p>
-            <p className="team-story-text">
-              Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here.
-            </p>
-            <div className="team-logo-card">
-              <img src="https://www.ghlindia.com/assets/img/logo.webp" alt="GHL India logo" width="150" height="60" />
+            <div className="team-story-copy">
+              <p className="team-section-tag">Who We Are</p>
+              <p className="team-story-text">
+                Great things in business are never done by one person. They are done by a team of people who are committed and capable. See the key people of our company here.
+              </p>
+              <div className="team-logo-card">
+                <img src="https://www.ghlindia.com/assets/img/logo.webp" alt="GHL India logo" width="150" height="60" />
+              </div>
             </div>
           </div>
         </div>
@@ -284,14 +288,16 @@ export default function OurTeam() {
 
       <section className="team-block-section">
         <div className="team-shell">
-          <div className="team-block-header center">
-            <span className="team-pill">Our Team</span>
+          <div className="section-header" data-animate="fade-up">
+            <span>Leadership</span>
+            <h2>Our Management Team</h2>
+            <p>Meet the visionary minds driving GHL India's success and financial stewardship.</p>
           </div>
 
           <div className="leadership-grid-redesign">
             {leadershipCards.map((card) => (
-              <article className="leader-card-redesign" key={card.name}>
-                <div className="leader-card-stage">
+              <article className="leader-card-container" key={card.name}>
+                <div className="leader-card-main">
                   <div className="leader-card-copy">
                     <h3>{card.name}</h3>
                     <p>{card.role}</p>
@@ -300,10 +306,12 @@ export default function OurTeam() {
                     <img src={card.image} alt={card.name} />
                   </div>
                   <a href={card.linkedin} target="_blank" rel="noopener noreferrer" className="leader-linkedin" aria-label={`${card.name} LinkedIn`}>
-                    <LinkedinIcon size={13} />
+                    <LinkedinIcon size={18} />
                   </a>
                 </div>
-                <div className="leader-card-caption">{card.caption}</div>
+                <div className="leader-card-caption">
+                  {card.caption}
+                </div>
               </article>
             ))}
           </div>
@@ -328,7 +336,7 @@ export default function OurTeam() {
                   className="leader-linkedin director-linkedin-redesign"
                   aria-label="Mr. Karthikeyan Dhayalan LinkedIn"
                 >
-                  <LinkedinIcon size={13} />
+                  <LinkedinIcon size={18} />
                 </a>
               </div>
             </div>
@@ -342,8 +350,10 @@ export default function OurTeam() {
 
       <section className="team-block-section soft">
         <div className="team-shell">
-          <div className="team-block-header center">
-            <span className="team-pill">Meet Our Team</span>
+          <div className="section-header" data-animate="fade-up">
+            <span>Experts</span>
+            <h2>Meet Our Team</h2>
+            <p>Our dedicated professionals spanning Sales, IT, Accounts, and Creative divisions.</p>
           </div>
           <div className="people-grid-redesign">
             {peopleCards.map((person) => (
@@ -355,8 +365,10 @@ export default function OurTeam() {
 
       <section className="team-block-section">
         <div className="team-shell">
-          <div className="team-block-header center">
-            <span className="team-pill">Investor Relationship Managers</span>
+          <div className="section-header" data-animate="fade-up">
+            <span>Support</span>
+            <h2>Investor Relationship Managers</h2>
+            <p>Your primary points of contact, ensuring a seamless and transparent onboarding experience.</p>
           </div>
           <div className="people-grid-redesign">
             {irmCards.map((person) => (
@@ -368,8 +380,9 @@ export default function OurTeam() {
 
       <section className="gallery-section-redesign">
         <div className="team-shell">
-          <div className="team-block-header between">
-            <span className="team-pill">Gallery</span>
+          <div className="section-header" data-animate="fade-up">
+            <span>Visuals</span>
+            <h2>GHL India Gallery</h2>
             <p className="team-gallery-note">A wider look at the people and environment behind GHL India.</p>
           </div>
 
