@@ -155,7 +155,7 @@ img {
   text-align: center;
 }
 
-.section-header span {
+.section-header > span {
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -168,7 +168,7 @@ img {
   padding-bottom: 4px;
 }
 
-.section-header span::after {
+.section-header > span::after {
   content: '';
   position: absolute;
   bottom: 0;

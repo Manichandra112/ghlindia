@@ -1,10 +1,13 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './BottomCTA.css';
 
 export default function BottomCTA() {
+  const sectionRef = useScrollAnimation();
+
   return (
-    <section className="bottom-cta-section">
+    <section className="bottom-cta-section" ref={sectionRef}>
       <div className="container">
         <div className="bottom-cta-content" data-animate="fade-up">
           <span className="bottom-cta-tag">Build With GHL India</span>

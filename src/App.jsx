@@ -148,7 +148,7 @@ function App() {
             <InvestmentPlan />
             <HowItWorks />
             <Reviews />
-            <FAQ />
+            {/* <FAQ /> */}
             <CallToAction />
           </>
         )}
