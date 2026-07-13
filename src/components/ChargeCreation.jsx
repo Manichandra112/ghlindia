@@ -4,7 +4,8 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChargeCreation.css';
 import BottomCTA from './BottomCTA';
 import chargeHero from '../assets/charge creation.png';
-import llpStepsDesktop from '../assets/charge creation steps.png';
+// import llpStepsDesktop from '../assets/charge creation steps.png';
+import llpStepsDesktop from '../assets/charge steps1.png';
 import llpStepsMobile from '../assets/charge steps mobile.png';
 
 export default function ChargeCreation() {
