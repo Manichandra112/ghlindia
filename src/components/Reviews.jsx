@@ -58,7 +58,7 @@ export default function Reviews() {
   ];
 
   return (
-    <section className="reviews-section section-padding" id="reviews" ref={sectionRef}>
+    <section className="reviews-section section-padding no-padding" id="reviews" ref={sectionRef}>
       <div className="container">
 
         {/* Section Header */}

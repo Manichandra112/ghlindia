@@ -140,12 +140,23 @@ img {
 }
 
 .no-padding {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
 }
 
 .no-padding-top {
-  padding-top: 0 !important;
+  padding-top: 56px !important;
+}
+
+@media (max-width: 768px) {
+  .no-padding {
+    padding-top: 32px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .no-padding-top {
+    padding-top: 32px !important;
+  }
 }
 
 .text-center {
