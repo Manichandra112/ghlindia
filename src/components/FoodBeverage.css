@@ -916,12 +916,113 @@
 }
 
 @media (max-width: 760px) {
+  /* 1. Hero Mobile Stacking (Option B) */
+  .food-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    background: #1c0f02 !important; /* solid background matching --food-ink */
+    margin-top: var(--header-height, 80px) !important;
+  }
+
+  .food-hero picture {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .food-hero-bg {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+  }
+
+  .food-hero-overlay,
+  .food-hero-pattern {
+    display: none !important;
+  }
+
   .food-hero-content {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 24px 20px !important;
+    gap: 20px !important;
+    background: #1c0f02 !important;
+  }
+
+  .food-hero-copy {
+    max-width: 100% !important;
+  }
+
+  .food-hero-copy h1 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    margin: 12px 0 !important;
+    color: #ffffff !important;
+  }
+
+  .food-hero-copy p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
   }
 
   .food-hero-panel {
-    max-width: 100%;
+    align-self: stretch !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* 2. Trend Banner Mobile Stacking (Option B) */
+  .food-trend-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 32px 0 !important;
+    background: #1c0f02 !important;
+    box-shadow: none !important;
+  }
+
+  .food-trend-img {
+    position: relative !important;
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+  }
+
+  .food-trend-overlay {
+    position: relative !important;
+    min-height: auto !important;
+    background: #1c0f02 !important;
+    padding: 24px 20px !important;
+  }
+
+  .food-trend-overlay .container {
+    padding: 0 !important;
+  }
+
+  .food-trend-content h2 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+  }
+
+  .food-trend-content p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  /* 3. General mobile overrides */
+  .food-hero-content {
+    grid-template-columns: 1fr;
   }
 
   .food-hero-actions,

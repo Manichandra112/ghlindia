@@ -12,6 +12,7 @@ export default function FinancialIQ() {
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const contentRef = useRef(null);
+  const isFirstRender = useRef(true);
 
   // Fetch Financial IQ articles list for active page
   useEffect(() => {
@@ -83,10 +84,12 @@ export default function FinancialIQ() {
   // Handle page navigation
   const handlePageChange = (pageNo) => {
     setCurrentPage(pageNo);
-    // Smooth scroll to the content section start
+    // Smooth scroll to the absolute offset of the section immediately
     const contentSec = contentRef.current;
     if (contentSec) {
-      contentSec.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 80;
+      const topOffset = contentSec.getBoundingClientRect().top + window.pageYOffset - headerHeight + 20;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -94,7 +97,14 @@ export default function FinancialIQ() {
 
   const handleExploreClick = (event) => {
     event.preventDefault();
-    contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const contentSec = contentRef.current;
+    if (contentSec) {
+      const headerHeight = 80;
+      const topOffset = contentSec.getBoundingClientRect().top + window.pageYOffset - headerHeight + 20;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    } else {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   // Shared helper: fix all relative image paths in article HTML content
@@ -317,7 +327,7 @@ export default function FinancialIQ() {
                   Explore Financial IQ
                   <ArrowRight size={18} />
                 </a>
-                
+
               </div>
             </div>
           </div>
@@ -340,8 +350,8 @@ export default function FinancialIQ() {
           </div>
         </div>
 
-        <div className="container">
-          {loading ? (
+        <div className="container" style={{ minHeight: '800px', position: 'relative' }}>
+          {loading && articles.length === 0 ? (
             /* Loading Skeleton Spinner */
             <div className="flex-center" style={{ minHeight: '300px', flexDirection: 'column', gap: '20px' }}>
               <Loader2 className="animate-spin" size={48} color="#e41f26" />
@@ -349,67 +359,85 @@ export default function FinancialIQ() {
             </div>
           ) : (
             <>
-              <div className="news-grid">
-                {articles.map((item, index) => (
-                  <div key={index} className="news-card animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
-                    <div className="card-img-wrapper">
-                      <img
-                        src={getImageUrl(item.image)}
-                        alt={item.title}
-                        className="card-img"
-                        loading="lazy"
-                      />
+              {loading && (
+                /* Overlay loading spinner to avoid layout shift when page data transitions */
+                <div className="flex-center" style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: 'rgba(246, 249, 252, 0.75)',
+                  backdropFilter: 'blur(3px)',
+                  zIndex: 20,
+                  flexDirection: 'column',
+                  gap: '20px',
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease'
+                }}>
+                  <Loader2 className="animate-spin" size={48} color="#e41f26" />
+                  <p style={{ color: '#0f172a', fontWeight: 600 }}>Updating Articles...</p>
+                </div>
+              )}
+              <div style={{ opacity: loading ? 0.35 : 1, transition: 'opacity 0.2s ease', pointerEvents: loading ? 'none' : 'auto' }}>
+                <div className="news-grid">
+                  {articles.map((item, index) => (
+                    <div key={index} className="news-card animate-fade-in" style={{ animationDelay: `${index * 0.05}s` }}>
+                      <div className="card-img-wrapper">
+                        <img
+                          src={getImageUrl(item.image)}
+                          alt={item.title}
+                          className="card-img"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="card-content">
+                        <h3 className="card-title">{item.title}</h3>
+                        <button
+                          className="read-more-btn"
+                          onClick={() => handleReadMore(item)}
+                        >
+                          <span>Read More</span>
+                          <ChevronRight size={14} />
+                        </button>
+                      </div>
                     </div>
-                    <div className="card-content">
-                      <h3 className="card-title">{item.title}</h3>
-                      <button
-                        className="read-more-btn"
-                        onClick={() => handleReadMore(item)}
-                      >
-                        <span>Read More</span>
-                        <ChevronRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Dynamic Pagination Controls */}
-              <div className="blog-pagination flex-center">
-                <ul className="justify-content-center">
-                  <li className={currentPage === 1 ? 'disabled' : ''}>
-                    <button
-                      onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
-                      disabled={currentPage === 1}
-                    >
-                      &lt;
-                    </button>
-                  </li>
-
-                  {/* Dynamic page numbers (pages 1 to 11) */}
-                  {Array.from({ length: 11 }, (_, i) => i + 1).map((pageNo) => (
-                    <li key={pageNo} className={currentPage === pageNo ? 'active' : ''}>
-                      <button onClick={() => handlePageChange(pageNo)}>
-                        {pageNo}
-                      </button>
-                    </li>
                   ))}
+                </div>
 
-                  <li className={currentPage === 11 ? 'disabled' : ''}>
-                    <button
-                      onClick={() => currentPage < 11 && handlePageChange(currentPage + 1)}
-                      disabled={currentPage === 11}
-                    >
-                      &gt;
-                    </button>
-                  </li>
+                {/* Dynamic Pagination Controls */}
+                <div className="blog-pagination">
+                  {/* Prev Arrow Button (Fixed) */}
+                  <button
+                    className={`pagination-arrow prev-arrow ${currentPage === 1 ? 'disabled' : ''}`}
+                    onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                  >
+                    &lt;
+                  </button>
 
-                  <li>
-                    <button onClick={() => handlePageChange(11)}>
-                      &gt;&gt;
-                    </button>
-                  </li>
-                </ul>
+                  {/* Scrollable Numbers List */}
+                  <div className="pagination-numbers-scroll">
+                    <ul>
+                      {Array.from({ length: 11 }, (_, i) => i + 1).map((pageNo) => (
+                        <li key={pageNo} className={currentPage === pageNo ? 'active' : ''}>
+                          <button onClick={() => handlePageChange(pageNo)}>
+                            {pageNo}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Next Arrow Button (Fixed) */}
+                  <button
+                    className={`pagination-arrow next-arrow ${currentPage === 11 ? 'disabled' : ''}`}
+                    onClick={() => currentPage < 11 && handlePageChange(currentPage + 1)}
+                    disabled={currentPage === 11}
+                  >
+                    &gt;
+                  </button>
+                </div>
               </div>
             </>
           )}

@@ -405,14 +405,34 @@
   }
 }
 
+.mobile-br {
+  display: none;
+}
+
 .intro-content-col {
   padding-left: 48px;
 }
 
 @media (max-width: 768px) {
+  .mobile-br {
+    display: block;
+  }
+
   .intro-content-col {
     padding-left: 12px;
     margin-top: 32px;
+  }
+
+  .intro-content-col h2 {
+    font-size: 23px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Justify all description/intro paragraphs in mobile view to remove uneven empty right gaps */
+  .intro-content-col p,
+  .section-header p {
+    text-align: justify !important;
+    text-justify: inter-word;
   }
 }
 
@@ -430,9 +450,10 @@
 }
 
 .intro-content-col h2 {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 800;
   margin-bottom: 24px;
+  line-height: 1.25;
 }
 
 .intro-content-col p {

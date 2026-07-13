@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
-import { Award, ZoomIn, X } from 'lucide-react';
+import { Award, ZoomIn, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 import 'swiper/css';
@@ -85,7 +85,10 @@ export default function Achievements() {
             pagination={{
               clickable: true,
             }}
-            navigation={true}
+            navigation={{
+              prevEl: '.achievements-prev',
+              nextEl: '.achievements-next',
+            }}
             modules={[Autoplay, Pagination, Navigation, EffectCoverflow]}
             className="achievements-swiper"
           >
@@ -118,6 +121,14 @@ export default function Achievements() {
                 )}
               </SwiperSlide>
             ))}
+            
+            {/* Custom Navigation Buttons */}
+            <button className="achievements-prev" aria-label="Previous slide">
+              <ChevronLeft size={22} />
+            </button>
+            <button className="achievements-next" aria-label="Next slide">
+              <ChevronRight size={22} />
+            </button>
           </Swiper>
         </div>
 

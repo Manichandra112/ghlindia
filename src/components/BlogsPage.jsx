@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Search, Calendar, User, ChevronRight, ArrowLeft, ArrowRight, Clock, BookOpen } from 'lucide-react';
 import { BLOG_CONTENT } from '../data/blogContent';
 import './BlogsPage.css';
@@ -196,6 +196,10 @@ export default function BlogsPage() {
   const [selectedBlogId, setSelectedBlogId] = useState(null);
   const itemsPerPage = 9;
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [selectedBlogId]);
+
   const filteredBlogs = useMemo(() => {
     return blogs.filter(blog => blog.title.toLowerCase().includes(searchQuery.toLowerCase()));
   }, [searchQuery]);
@@ -210,7 +214,19 @@ export default function BlogsPage() {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      window.scrollTo({ top: 250, behavior: 'smooth' });
+      const element = document.querySelector('.blogs-breadcrumbs');
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const headerHeightStr = window.getComputedStyle(document.documentElement).getPropertyValue('--header-height').trim();
+        const headerHeight = headerHeightStr ? parseInt(headerHeightStr, 10) : 80;
+        const offsetPosition = elementPosition - headerHeight + 12;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      } else {
+        window.scrollTo({ top: 380, behavior: 'smooth' });
+      }
     }
   };
 

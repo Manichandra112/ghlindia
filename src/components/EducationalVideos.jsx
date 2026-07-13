@@ -168,10 +168,14 @@ export default function EducationalVideos() {
   const handlePageChange = (pageNo) => {
     if (pageNo >= 1 && pageNo <= totalPages) {
       setCurrentPage(pageNo);
-      // Clean page transition scroll
-      const gridElement = document.querySelector('.edu-content-anchor');
-      if (gridElement) {
-        gridElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Scroll to filters bar to keep them visible at the top of the viewport
+      const controlPanel = document.querySelector('.edu-control-panel-bar');
+      if (controlPanel) {
+        const headerHeight = 80;
+        const topOffset = controlPanel.getBoundingClientRect().top + window.pageYOffset - headerHeight + 20;
+        window.scrollTo({ top: topOffset, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   };

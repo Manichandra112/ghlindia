@@ -586,9 +586,53 @@
 .blog-pagination {
   margin-top: 50px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 
-.blog-pagination ul {
+.blog-pagination .pagination-arrow {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  flex-shrink: 0;
+}
+
+.blog-pagination .pagination-arrow:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #e41f26;
+  color: #e41f26;
+  transform: translateY(-1px);
+}
+
+.blog-pagination .pagination-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #94a3b8;
+}
+
+
+.pagination-numbers-scroll {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-numbers-scroll ul {
   display: flex;
   list-style: none;
   padding: 0;
@@ -597,7 +641,7 @@
   flex-wrap: wrap;
 }
 
-.blog-pagination li button {
+.pagination-numbers-scroll li button {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   color: #475569;
@@ -614,27 +658,54 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 }
 
-.blog-pagination li button:hover:not(:disabled) {
+.pagination-numbers-scroll li button:hover:not(:disabled) {
   background: #f1f5f9;
   border-color: #e41f26;
   color: #e41f26;
   transform: translateY(-1px);
 }
 
-.blog-pagination li.active button {
+.pagination-numbers-scroll li.active button {
   background: #e41f26;
   color: #ffffff;
   border-color: #e41f26;
   box-shadow: 0 4px 12px rgba(228, 31, 38, 0.2);
 }
 
-.blog-pagination li.disabled button,
-.blog-pagination li button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  color: #94a3b8;
+@media (max-width: 768px) {
+  .blog-pagination {
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pagination-numbers-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    flex-grow: 1;
+    padding-bottom: 8px;
+  }
+
+  .pagination-numbers-scroll ul {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    display: inline-flex;
+    padding: 0 4px;
+  }
+
+  /* Thin premium GHL-red custom scrollbar */
+  .pagination-numbers-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
+  .pagination-numbers-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+  }
+  .pagination-numbers-scroll::-webkit-scrollbar-thumb {
+    background: rgba(228, 31, 38, 0.3);
+    border-radius: 4px;
+  }
 }
 
 /* =============================

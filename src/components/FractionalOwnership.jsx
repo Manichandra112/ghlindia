@@ -169,7 +169,7 @@ export default function FractionalOwnership() {
             </div>
             <div className="fractional-col-flex intro-content-col" data-animate="fade-left" data-stagger-delay="150ms">
               <span className="intro-badge">Smart Finance</span>
-              <h2>Interested in learning about <span className="text-highlight">fractional investment?</span></h2>
+              <h2>Interested in learning about <br className="mobile-br" /> <span className="text-highlight">fractional investment?</span></h2>
               <p>
                 <strong>Fractional investment</strong> refers to the practice of investing in a part or fraction of an asset or investment, rather than purchasing it in full. This allows individuals to invest smaller amounts in expensive assets, such as real estate or stocks without needing the full amount to buy the entire asset.
               </p>
@@ -277,8 +277,8 @@ export default function FractionalOwnership() {
               />
             </div>
             <div className="fractional-col-flex intro-content-col" data-animate="fade-left" data-stagger-delay="150ms">
-              <span className="text-accent uppercase">Our Core Engine</span>
-              <h2>Our Primary Expertise: Property Flipping</h2>
+              <span className="intro-badge">Our Core Engine</span>
+              <h2>Our Primary Expertise: <span className="text-highlight">Property Flipping</span></h2>
               <p>
                 At GHL, we specialize in high-return **Property Flipping**. Our deal origination team identifies highly demandable, distressed properties at undervalued prices—often through auction closures, bank debt settlements, or short sales.
               </p>

@@ -1450,25 +1450,124 @@
 }
 
 @media (max-width: 760px) {
+  /* 1. Hero Mobile Stacking (Option B) */
+  .real-hero {
+    background-image: none !important;
+    background: #09101d !important; /* solid background matching --real-ink */
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: var(--header-height, 80px) !important;
+  }
 
+  .real-hero::before {
+    content: '' !important;
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    background-image: url('../assets/realestate 2.png') !important; /* load asset */
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .real-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 24px 20px !important;
+    gap: 20px !important;
+    background: #09101d !important;
+  }
+
+  .real-hero-copy {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .real-hero-copy h1 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    margin: 12px 0 !important;
+    color: #ffffff !important;
+  }
+
+  .real-hero-copy p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .real-hero-panel {
+    align-self: stretch !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .real-hero-overlay {
+    display: none !important;
+  }
+
+  /* 2. FDI Banner Mobile Stacking (Option B) */
+  .real-fdi-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 32px 0 !important;
+    background: #09101d !important;
+    box-shadow: none !important;
+  }
+
+  .real-fdi-banner picture {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 180px !important;
+  }
+
+  .real-fdi-banner img {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .real-fdi-overlay {
+    position: relative !important;
+    min-height: auto !important;
+    background: #09101d !important;
+    padding: 24px 20px !important;
+  }
+
+  .real-fdi-overlay .container {
+    padding: 0 !important;
+  }
+
+  .real-fdi-insight {
+    max-width: 100% !important;
+  }
+
+  .real-fdi-insight h2 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+  }
+
+  .real-fdi-insight p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  /* 3. General mobile spacing overrides */
   .real-hero-content,
   .real-proof-grid,
   .real-policy-grid,
   .real-segment-grid {
     grid-template-columns: 1fr;
-  }
-
-  .real-hero {
-    min-height: 470px;
-  }
-
-  .real-hero-panel {
-    max-width: 100%;
-    background: rgba(10, 13, 20, 0.5);
-  }
-
-  .real-hero-copy {
-    padding: 0;
   }
 
   .real-hero-actions,
@@ -1483,7 +1582,9 @@
   }
 
   .real-chart-card {
-    min-height: 350px;
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 24px !important;
   }
 
   .real-chart-bars {

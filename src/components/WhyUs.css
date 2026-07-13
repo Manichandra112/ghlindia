@@ -143,23 +143,24 @@
   background: rgba(255, 255, 255, 0.14);
   color: #fff;
 }
+
 @media (max-width: 768px) {
 
-  .why-hero-banner{
+  .why-hero-banner {
     margin-top: 0;
     height: auto;
   }
 
-  .why-hero-media-wrap{
+  .why-hero-media-wrap {
     display: flex;
     flex-direction: column;
   }
 
-  .why-hero-overlay-mask{
+  .why-hero-overlay-mask {
     display: none;
   }
 
-  .why-hero-img{
+  .why-hero-img {
     width: 100%;
     height: auto;
     max-height: none;
@@ -167,7 +168,7 @@
     order: 1;
   }
 
-  .why-hero-content-wrap{
+  .why-hero-content-wrap {
     position: relative;
     inset: auto;
     background: #0f172a;
@@ -176,30 +177,30 @@
     z-index: 2;
   }
 
-  .why-hero-content{
+  .why-hero-content {
     max-width: 100%;
     text-align: left;
   }
 
-  .why-hero-content h1{
+  .why-hero-content h1 {
     font-size: 34px;
     line-height: 1.15;
   }
 
-  .why-hero-content p{
+  .why-hero-content p {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 24px;
   }
 
-  .why-hero-actions{
+  .why-hero-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 14px;
   }
 
   .why-hero-btn,
-  .why-hero-btn-secondary{
+  .why-hero-btn-secondary {
     width: 100%;
     justify-content: center;
   }
@@ -251,18 +252,23 @@
 } */
 
 /* Intro Description Card */
+.why-intro.section-padding {
+  padding: 40px 0 20px;
+}
+
 .why-intro-card {
   background: #ffffff;
-  border-radius: 28px;
+  border-radius: 14px;
   border: 1.5px solid var(--card-border-subtle, rgba(15, 23, 42, 0.13));
+  border-left: 5px solid var(--primary-red, #e41f26);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  padding: 40px 50px;
-  text-align: center;
+  padding: 30px 40px;
+  text-align: left;
 }
 
 .why-intro-card p {
   font-size: clamp(15px, 2.5vw, 16.5px);
-  color: #64748B;
+  color: #475569;
   line-height: 1.75;
   margin: 0;
 }
@@ -291,7 +297,8 @@
 
 /* Timeline steppers section */
 .why-timeline-section {
-  padding: 80px 0 100px; /* Plenty of breathing room around entire section */
+  padding: 40px 0 60px;
+  /* Plenty of breathing room around entire section */
   position: relative;
 }
 
@@ -305,7 +312,8 @@
 /* Track Line */
 .timeline-horizontal-bar {
   position: absolute;
-  top: 39px; /* Center of the 78px circle */
+  top: 39px;
+  /* Center of the 78px circle */
   left: 8%;
   right: 8%;
   height: 2px;
@@ -370,7 +378,8 @@
 }
 
 .timeline-item-info {
-  margin-top: 36px; /* 36px between icon and heading */
+  margin-top: 36px;
+  /* 36px between icon and heading */
 }
 
 .timeline-item-title {
@@ -383,16 +392,20 @@
 }
 
 .timeline-item-desc {
-  font-size: 15px; /* 15px - 16px desc font size */
+  font-size: 15px;
+  /* 15px - 16px desc font size */
   color: #64748B;
   line-height: 1.7;
-  margin-top: 16px; /* 16px between heading and description */
-  max-width: 220px; /* Max-width 220px */
+  margin-top: 16px;
+  /* 16px between heading and description */
+  max-width: 220px;
+  /* Max-width 220px */
 }
 
 /* Active Highlight Styling */
 .timeline-item.active {
-  transform: scale(1.05); /* Active scale: 1.05 */
+  transform: scale(1.05);
+  /* Active scale: 1.05 */
 }
 
 .timeline-item.active .timeline-icon-box {
@@ -408,27 +421,42 @@
 
 /* Hover Effects */
 .timeline-item:hover {
-  transform: translateY(-6px); /* Lift card by 6px */
+  transform: translateY(-6px);
+  /* Lift card by 6px */
 }
 
 .timeline-item:hover .timeline-icon-box {
-  transform: scale(1.08); /* Scale circle to 1.08 */
+  transform: scale(1.08);
+  /* Scale circle to 1.08 */
   box-shadow: 0 15px 35px rgba(239, 68, 68, 0.2);
-  border-color: #EF4444; /* Change border to brand red */
+  border-color: #EF4444;
+  /* Change border to brand red */
 }
 
 .timeline-item:hover .timeline-icon-wrapper {
-  transform: rotate(3deg); /* Icon rotates slightly 2-3deg */
+  transform: rotate(3deg);
+  /* Icon rotates slightly 2-3deg */
 }
 
 .timeline-item:hover .timeline-item-title {
-  color: #EF4444; /* Heading changes to brand red */
+  color: #EF4444;
+  /* Heading changes to brand red */
 }
 
 /* Bottom Path CTA Banner */
 .why-bottom-cta {
   background: transparent;
   border-top: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.why-bottom-cta.section-padding {
+  padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .why-bottom-cta.section-padding {
+    padding: 24px 0;
+  }
 }
 
 .why-cta-card {
@@ -452,7 +480,7 @@
 /* Cards Section */
 .why-cards-section {
   background: transparent;
-  padding: 60px 0 100px;
+  padding: 60px 0 40px;
 }
 
 .why-cards-grid {
@@ -530,6 +558,7 @@
    ====================================================== */
 
 @media (max-width: 1024px) {
+
   /* Tablet View: 3x2 Grid */
   .why-timeline-list {
     grid-template-columns: repeat(3, 1fr);
@@ -537,7 +566,8 @@
   }
 
   .timeline-horizontal-bar {
-    display: none; /* Hide progress bar connector track in grid layouts */
+    display: none;
+    /* Hide progress bar connector track in grid layouts */
   }
 
   .timeline-item:hover {
@@ -554,12 +584,17 @@
     padding: 30px 24px;
   }
 
+  .why-intro.section-padding {
+    padding: 24px 0 12px;
+  }
+
   .why-timeline-section {
-    padding: 60px 0;
+    padding: 30px 0;
   }
 }
 
 @media (max-width: 600px) {
+
   /* Mobile View: Vertical Timeline Layout */
   .timeline-horizontal-bar {
     display: block;
@@ -568,7 +603,8 @@
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: calc(100% - 140px); /* Runs vertically center through circles */
+    height: calc(100% - 140px);
+    /* Runs vertically center through circles */
     margin: 40px 0;
   }
 

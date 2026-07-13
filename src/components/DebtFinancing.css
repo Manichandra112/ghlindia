@@ -1,3 +1,7 @@
+.bg-light-gray {
+  background-color: #f8f9fd !important;
+}
+
 .debt-hero {
   position: relative;
   width: 100%;
@@ -64,7 +68,7 @@
 }
 
 .debt-content h1 {
-  font-size: clamp(40px, 5.6vw, 70px);
+  font-size: clamp(36px, 5vw, 60px);
   line-height: 1.03;
   color: #f8fbff;
   margin-bottom: 22px;
@@ -246,6 +250,12 @@
   display: block;
 }
 
+.debt-intro.section-padding,
+.debt-approach.section-padding,
+.debt-why.section-padding {
+  padding: 60px 0;
+}
+
 /* 2. Common Layout Wrappers (Side-by-side Flex) */
 .debt-row-flex {
   display: flex;
@@ -290,6 +300,13 @@
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.debt-section-img:hover {
+  transform: translateY(-6px) scale(1.025);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
 }
 
 /* 4. Badges, Headings & text Highlights */
@@ -506,6 +523,21 @@
   gap: 16px;
 }
 
+/* Reset index.css card styling overrides for these benefits */
+.debt-why .benefit-card {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.debt-why .benefit-card:hover {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
 .benefit-icon-wrapper {
   background-color: var(--text-white);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -540,7 +572,7 @@
   max-width: 800px;
   margin: 50px auto 0;
   text-align: center;
-  background-color: var(--text-white);
+  background: var(--text-white) !important;
   border: 1px dashed rgba(228, 31, 38, 0.2);
   padding: 20px 30px;
   border-radius: 12px;
@@ -705,6 +737,15 @@
 ==========================================================*/
 @media screen and (max-width:768px) {
 
+  /* Disable scroll animations on mobile for reliable content visibility */
+  .debt-page-wrapper [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+
   .debt-page-wrapper {
     overflow-x: hidden;
   }
@@ -767,7 +808,7 @@
   }
 
   .debt-content h1 {
-    font-size: 38px;
+    font-size: 32px;
     line-height: 1.15;
     font-weight: 700;
     margin-bottom: 18px;
@@ -862,23 +903,18 @@
   /* SECTIONS */
 
   .section-padding {
-    padding: 70px 0;
-  }
-
-  .debt-row-flex {
-    flex-direction: column;
-    gap: 36px;
-  }
-
-  .debt-row-flex.row-reverse {
-    flex-direction: column;
+    padding: 35px 0;
   }
 
   .debt-row-flex {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 28px;
     width: 100%;
+  }
+
+  .debt-row-flex.row-reverse {
+    flex-direction: column-reverse;
   }
 
   .debt-col-flex {

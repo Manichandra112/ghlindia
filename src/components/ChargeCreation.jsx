@@ -1,60 +1,78 @@
-import React, { useRef } from 'react';
-import { Shield, Building, Users, FileText, CheckCircle, Lock, Play, Layers, ShieldCheck, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Layers, Lock, Play } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChargeCreation.css';
 import BottomCTA from './BottomCTA';
 import chargeHero from '../assets/charge creation.png';
+import llpStepsDesktop from '../assets/charge creation steps.png';
+import llpStepsMobile from '../assets/charge steps mobile.png';
 
 export default function ChargeCreation() {
-  const introRef = useRef(null);
+  const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
+  const introRef = useScrollAnimation(animOptions);
+  const safetyRef = useScrollAnimation(animOptions);
+
   const handleExploreClick = (event) => {
     event.preventDefault();
-    introRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const target = introRef.current;
+    if (target) {
+      const header = document.querySelector('.header-main');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = targetPosition - headerHeight - 20;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   const debentureSteps = [
     {
-      num: "01",
+      num: '01',
       content: <>Appointment of <strong>debenture trustee</strong></>
     },
     {
-      num: "02",
+      num: '02',
       content: <>Fund mobilization in the bank account of the <strong>special purpose vehicle (SPV)</strong> through debentures issuance</>
     },
     {
-      num: "03",
-      content: <>Purchasing the asset in the <strong>SPV's</strong> name</>
+      num: '03',
+      content: <>Purchasing the asset in the <strong>SPV&apos;s</strong> name</>
     },
     {
-      num: "04",
+      num: '04',
       content: <>Mortgaging the purchased asset in the name of the <strong>debenture trustee</strong></>
     },
     {
-      num: "05",
+      num: '05',
       content: <>Registering the mortgage deed with <strong>MCA</strong> through charge creation form <strong>CHG-9</strong></>
     }
   ];
 
   const llpSteps = [
     {
-      num: "01",
-      title: "Fund Mobilization",
-      desc: "Funds are raised directly in the bank account of the Special Purpose Vehicle (SPV) to launch the financing process."
+      num: '01',
+      title: 'Fund Mobilization',
+      desc: 'Funds are raised directly in the bank account of the Special Purpose Vehicle (SPV) to launch the financing process.'
     },
     {
-      num: "02",
-      title: "Hypothecation Agreement",
-      desc: "A hypothecation agreement is executed on the floating assets, granting the lender a formal security charge."
+      num: '02',
+      title: 'Hypothecation Agreement',
+      desc: 'A hypothecation agreement is executed on the floating assets, granting the lender a formal security charge.'
     },
     {
-      num: "03",
-      title: "MCA Registration (Form 8)",
-      desc: "The hypothecation agreement is registered with the Ministry of Corporate Affairs (MCA) via Form 8 for legal binding."
+      num: '03',
+      title: 'MCA Registration (Form 8)',
+      desc: 'The hypothecation agreement is registered with the Ministry of Corporate Affairs (MCA) via Form 8 for legal binding.'
     }
   ];
 
+
+
   return (
     <div className="charge-creation-page">
-      {/* Hero Header Banner */}
       <section className="charge-hero-banner">
         <div className="charge-hero-media-wrap">
           <img src={chargeHero} alt="Charge Creation Banner" className="charge-hero-img" />
@@ -75,20 +93,18 @@ export default function ChargeCreation() {
                   Explore Charge Creation
                   <ArrowRight size={18} />
                 </a>
-
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Introduction Container */}
       <section className="charge-intro section-padding" id="charge-intro" ref={introRef}>
         <div className="container">
-          <div className="charge-intro-card">
-            <div className="charge-intro-text">
-              <h2>What is Charge Creation?</h2>
-              <div className="heading-line"></div>
+          <div className="charge-row-flex">
+            <div className="charge-col-flex intro-content-col" data-animate="fade-left">
+              <span className="intro-badge">Security Basics</span>
+              <h2>What is <span className="text-highlight">Charge Creation?</span></h2>
               <p>
                 Charge creation is a legal process where a borrower pledges specific assets as security to guarantee debt repayment. This gives lenders and investors absolute legal confidence that their capital is protected.
               </p>
@@ -96,31 +112,30 @@ export default function ChargeCreation() {
                 Even in the event of default or bankruptcy, the registered charge gives the trustee direct rights to liquidate or manage the pledged asset to recoup investor principal, making it one of the safest mechanisms in structured finance.
               </p>
             </div>
-            <div className="charge-intro-graphics">
-              <div className="graphics-circle">
-                <Lock size={48} className="lock-icon-glow" />
-                <span>100% Asset Backed</span>
+
+            <div className="charge-col-flex intro-image-container" data-animate="fade-right">
+              <div className="charge-intro-graphics">
+                <div className="graphics-circle">
+                  <Lock size={48} className="lock-icon-glow" />
+                  <span>100% Asset Backed</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Debenture Section */}
       <section className="charge-debenture section-padding">
         <div className="container">
           <div className="section-header text-center">
             <span>Security Framework</span>
-            <h2>How is the charge creation process done for debenture plan?</h2>
-            <div className="heading-line mx-auto"></div>
+            <h2>How is the charge creation process <br className="mobile-br" /> done for debenture plan?</h2>
             <p>
               Follow the official process of securing capital using physical land assets, verified by independent trustees and registered under federal guidelines.
             </p>
           </div>
 
-          {/* Custom Interactive Flowchart Tree */}
           <div className="debenture-flowchart-interactive">
-            {/* Top Node */}
             <div className="flowchart-top-node-wrapper">
               <div className="flowchart-top-circle">
                 <span>CHARGE</span>
@@ -128,19 +143,14 @@ export default function ChargeCreation() {
               </div>
             </div>
 
-            {/* Branching Connection Lines */}
             <div className="flowchart-branches">
               <div className="flowchart-main-branch-line"></div>
             </div>
 
-            {/* Flowchart Steps Grid */}
             <div className="flowchart-steps-grid">
               {debentureSteps.map((step, idx) => (
                 <div key={idx} className="flowchart-step-column">
-                  {/* Vertical dashed drop line */}
                   <div className="flowchart-drop-line"></div>
-
-                  {/* Flowchart Step Card */}
                   <div className="flowchart-step-card">
                     <span className="flowchart-card-tab">{step.num}</span>
                     <div className="flowchart-card-content">
@@ -152,13 +162,10 @@ export default function ChargeCreation() {
             </div>
           </div>
 
-          {/* YouTube Video Section Header */}
           <div className="video-section-header text-center">
-            <h2>Ever wondered how charge creation works in debenture plans?</h2>
-            <div className="heading-line mx-auto"></div>
+            <h3>Ever wondered how charge creation <br className="mobile-br" /> works in debenture plans?</h3>
           </div>
 
-          {/* YouTube Video Section */}
           <div className="debenture-video-box">
             <div className="video-info">
               <h3>DEBENTURE PLAN</h3>
@@ -166,7 +173,7 @@ export default function ChargeCreation() {
                 A group of entrepreneurs wants to build a warehouse and needs money. They decide to raise funds by issuing debentures and put the money into their Special Purpose Vehicle (SPV) account.
               </p>
               <p>
-                With the money ready, they use it to buy land for the warehouse, with the land owned by the SPV. They then appoint a debenture trustee, a person or organization that will manage the loan and ensure everything runs smoothly. To protect the loan, they mortgage the land in the trustee's name, making sure the land can be used to pay back the loan if needed. Finally, they register the mortgage deed with the Ministry of Corporate Affairs (MCA), securing the deal through the CHG-9 charge creation form.
+                With the money ready, they use it to buy land for the warehouse, with the land owned by the SPV. They then appoint a debenture trustee, a person or organization that will manage the loan and ensure everything runs smoothly. To protect the loan, they mortgage the land in the trustee&apos;s name, making sure the land can be used to pay back the loan if needed. Finally, they register the mortgage deed with the Ministry of Corporate Affairs (MCA), securing the deal through the CHG-9 charge creation form.
               </p>
               <p className="video-summary-highlight">
                 Now they have the funds, the land, and the proper legal steps to move forward.
@@ -197,34 +204,33 @@ export default function ChargeCreation() {
         </div>
       </section>
 
-      {/* LLP Plan Section */}
       <section className="charge-llp section-padding">
         <div className="container">
           <div className="section-header text-center">
             <span>Alternative Strategy</span>
-            <h2>How is the charge creation process done for LLP plan?</h2>
-            <div className="heading-line mx-auto"></div>
+            <h2>How is the charge creation process <br className="mobile-br" /> done for LLP plan?</h2>
           </div>
+        </div>
 
-          {/* Flowchart Image */}
-          <div className="llp-flowchart-box text-center">
+        <figure className="llp-reference-figure">
+          <picture>
+            <source media="(max-width: 768px)" srcSet={llpStepsMobile} />
             <img
-              src="/assets/img/debt/LLP-plan.png"
-              alt="LLP Plan Flowchart"
-              className="llp-flowchart-img img-fluid"
+              src={llpStepsDesktop}
+              alt="LLP Charge Creation Steps"
+              className="llp-reference-img"
             />
-          </div>
+          </picture>
+        </figure>
 
-          {/* LLP Process Heading */}
-          <div className="section-header text-center mt-5">
-            <h2>LLP Fund Mobilization and Hypothecation Agreement Process</h2>
-            <div className="heading-line mx-auto"></div>
-            <p>
+        <div className="container mt-5">
+          <div className="video-section-header text-center">
+            <h3>LLP Fund Mobilization and <br className="mobile-br" /> Hypothecation Agreement Process</h3>
+            <p className="text-muted" style={{ maxWidth: '800px', margin: '12px auto 0', fontSize: '16px', lineHeight: '1.6' }}>
               Under our Limited Liability Partnership plans, we execute strict asset hypothecation agreements registered directly with the Ministry of Corporate Affairs (MCA).
             </p>
           </div>
 
-          {/* LLP Cards Grid */}
           <div className="llp-grid">
             {llpSteps.map((step, idx) => (
               <div key={idx} className="llp-card">
@@ -240,16 +246,19 @@ export default function ChargeCreation() {
         </div>
       </section>
 
-      {/* GHL Safety Callout */}
-      <section className="charge-safety section-padding">
+      <section className="charge-safety section-padding" ref={safetyRef}>
         <div className="container">
-          <div className="safety-card">
-            <div className="safety-text">
-              <div className="safety-badge">
-                <ShieldCheck size={20} />
-                <span>GHL Asset Protection</span>
-              </div>
-              <h2>How GHL Secures Your Capital</h2>
+          <div className="charge-row-flex row-reverse">
+            <div className="charge-col-flex intro-image-container" data-animate="fade-left">
+              <img
+                src="/assets/img/debt/secures-your-assets.png"
+                alt="GHL Asset Protection Graphic"
+                className="safety-img"
+              />
+            </div>
+            <div className="charge-col-flex intro-content-col" data-animate="fade-right">
+              <span className="intro-badge">Asset Protection</span>
+              <h2>How GHL <span className="text-highlight">Secures Your Capital</span></h2>
               <p>
                 Once a charge is officially registered on an asset, it becomes legally locked and cannot be sold, transferred, or leveraged without the express consent of the trustee.
               </p>
@@ -257,18 +266,10 @@ export default function ChargeCreation() {
                 In the rare case of asset liquidation, all proceeds are legally prioritised to refund investors. Additionally, GHL has policies in place to replace any assets with equivalent value properties if changes occur, ensuring your investment remains continuously protected.
               </p>
             </div>
-            <div className="safety-img-container">
-              <img
-                src="/assets/img/debt/secures-your-assets.png"
-                alt="GHL Asset Protection Graphic"
-                className="safety-img"
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Bottom Login/Register CTA Section */}
       <BottomCTA />
     </div>
   );

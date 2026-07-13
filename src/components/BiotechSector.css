@@ -410,13 +410,23 @@
 }
 
 @keyframes bioBlobMove1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(60px, 40px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(60px, 40px) scale(1.15);
+  }
 }
 
 @keyframes bioBlobMove2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-40px, -60px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-40px, -60px) scale(1.1);
+  }
 }
 
 .biotech-trend-banner picture {
@@ -1496,6 +1506,121 @@
    (Ensures header, tabs, and content fit in one single frame)
    ========================================================================== */
 @media screen and (max-width: 768px) {
+  /* 1. Hero Mobile Stacking (Option B) */
+  .biotech-hero {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    background: #09111f !important; /* Solid dark background matching --bio-ink */
+    margin-top: var(--header-height, 80px) !important;
+  }
+
+  .biotech-hero picture {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .biotech-hero-bg {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+  }
+
+  .biotech-hero-overlay,
+  .biotech-hero-pattern {
+    display: none !important;
+  }
+
+  .biotech-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 24px 20px !important;
+    gap: 20px !important;
+    background: #09111f !important;
+  }
+
+  .biotech-hero-copy {
+    max-width: 100% !important;
+  }
+
+  .biotech-hero-copy h1 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+    margin: 12px 0 !important;
+  }
+
+  .biotech-hero-copy p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .biotech-hero-actions {
+    margin-top: 18px !important;
+    gap: 10px !important;
+  }
+
+  .biotech-hero-panel {
+    align-self: stretch !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* 2. Trend Banner Mobile Stacking (Option B) */
+  .biotech-trend-banner {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 32px 0 !important;
+    background: #09111f !important;
+  }
+
+  .biotech-trend-banner picture {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    height: 180px !important;
+  }
+
+  .biotech-trend-img {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .biotech-trend-overlay {
+    position: relative !important;
+    min-height: auto !important;
+    background: #09111f !important;
+    padding: 24px 20px !important;
+  }
+
+  .biotech-trend-overlay .container {
+    padding: 0 !important;
+  }
+
+  .biotech-trend-content h2 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+  }
+
+  .biotech-trend-content p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  /* 3. Segment Grid Compact styles */
   .biotech-segments-section {
     padding: 28px 0 20px !important;
   }

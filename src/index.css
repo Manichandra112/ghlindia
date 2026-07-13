@@ -286,7 +286,6 @@ img {
 .process-timeline-section.process-timeline-section,
 .debt-hero-section.debt-hero-section,
 .debt-approach.debt-approach,
-.debt-why.debt-why,
 .calculator-section.calculator-section {
   background-color: var(--section-white);
 }
@@ -301,6 +300,7 @@ img {
 .why-fractional-grid.why-fractional-grid,
 .property-flipping-expertise.property-flipping-expertise,
 .debt-intro.debt-intro,
+.debt-why.debt-why,
 .debt-cards-grid.debt-cards-grid {
   background-color: var(--section-muted);
   border-top: 1px solid rgba(15, 23, 42, 0.06);

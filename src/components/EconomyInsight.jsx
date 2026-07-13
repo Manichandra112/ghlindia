@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowLeft, Calendar, FileText, Loader2, ArrowRight } from 'lucide-react';
 import newsData from '../data/news_data.json';
+import newsContent from '../data/news_content.json';
 import './EconomyInsight.css';
 import CallToAction from './CallToAction';
 import economyInsightHero from '../assets/economy-insight.png';
@@ -9,98 +10,22 @@ export default function EconomyInsight() {
   const [tabs, setTabs] = useState([]);
   const [news, setNews] = useState({});
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('Today');
+  const [activeTab, setActiveTab] = useState('');
   const [selectedArticle, setSelectedArticle] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const tabsRef = useRef(null);
 
   useEffect(() => {
-    async function loadData() {
-      try {
-        setLoading(true);
-        let htmlText = '';
-
-        // 1. Try relative fetch first (works when proxied or hosted on the same domain)
-        try {
-          const response = await fetch('/economy-insight');
-          if (response.ok) {
-            const text = await response.text();
-            // Verify we actually fetched the economy insight page content, not the SPA index.html
-            if (text.includes('date-selector-wrapper') || text.includes('news-box')) {
-              htmlText = text;
-            }
-          }
-        } catch (e) {
-          console.warn('Relative fetch failed, trying CORS proxy fallback...', e);
-        }
-
-        // 2. Fall back to live fetch via CORS proxy if relative fetch did not yield content
-        if (!htmlText) {
-          const targetUrl = 'https://www.ghlindia.com/economy-insight';
-          const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
-          const response = await fetch(proxyUrl);
-          if (response.ok) {
-            htmlText = await response.text();
-          }
-        }
-
-        if (!htmlText) throw new Error('Failed to fetch live HTML content');
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, 'text/html');
-
-        const tabBtns = Array.from(doc.querySelectorAll('.date-selector-wrapper button[data-tab]'));
-        if (tabBtns.length === 0) {
-          throw new Error('No tabs found in live HTML structure');
-        }
-        const parsedTabs = tabBtns.map(btn => ({
-          id: btn.getAttribute('id') || btn.getAttribute('data-tab'),
-          date: btn.textContent.trim()
-        }));
-
-        const parsedNews = {};
-        parsedTabs.forEach(tab => {
-          const section = doc.getElementById(tab.id);
-          if (section) {
-            const articles = Array.from(section.querySelectorAll('.news-box'));
-            parsedNews[tab.date] = articles.map(art => {
-              const titleEl = art.querySelector('.title a');
-              const imgEl = art.querySelector('.news-img img');
-              const descEl = art.querySelector('.details p');
-              const dateEl = art.querySelector('.date-wrapper span') || art.querySelector('.news-meta-date');
-
-              const title = titleEl ? titleEl.textContent.trim() : '';
-              const href = titleEl ? titleEl.getAttribute('href') : '';
-              const slug = href ? href.split('?')[1] || '' : '';
-              const image = imgEl ? imgEl.getAttribute('src') : '';
-              const description = descEl ? descEl.textContent.trim() : '';
-              const date = dateEl ? dateEl.textContent.trim() : '';
-
-              return { title, slug, image, description, date };
-            });
-          }
-        });
-
-        setTabs(parsedTabs);
-        setNews(parsedNews);
-        if (parsedTabs.length > 0) {
-          setActiveTab(parsedTabs[0].date);
-        }
-        setLoading(false);
-      } catch (err) {
-        console.warn('Live fetch failed, falling back to local news JSON.', err);
-        if (newsData && newsData.tabs && newsData.news) {
-          setTabs(newsData.tabs);
-          setNews(newsData.news);
-          if (newsData.tabs.length > 0) {
-            setActiveTab(newsData.tabs[0].date);
-          }
-        }
-        setLoading(false);
+    setLoading(true);
+    if (newsData && newsData.tabs && newsData.news) {
+      setTabs(newsData.tabs);
+      setNews(newsData.news);
+      if (newsData.tabs.length > 0) {
+        setActiveTab(newsData.tabs[0].date);
       }
     }
-    loadData();
+    setLoading(false);
   }, []);
 
   const handleExploreClick = (e) => {
@@ -130,87 +55,32 @@ export default function EconomyInsight() {
   const getImageUrl = (path) => {
     if (!path) return '';
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
-    return `https://www.ghlindia.com/${path}`;
+    if (path.startsWith('/')) return path;
+    return `/newsimg/${path}`;
   };
 
-  const handleReadMore = async (article) => {
+  const handleReadMore = (article) => {
     setSelectedArticle(article);
     if (!article.content) {
-      try {
-        setLoadingDetail(true);
-        let htmlText = '';
+      setLoadingDetail(true);
+      const contentHtml = newsContent[article.slug] || '<p>Content temporarily unavailable.</p>';
+      
+      const updatedArticle = { ...article, content: contentHtml };
+      setSelectedArticle(updatedArticle);
 
-        // 1. Try relative fetch first
-        try {
-          const response = await fetch(`/economy-insightdetails?${article.slug}`);
-          if (response.ok) {
-            const text = await response.text();
-            if (text.includes('blog-details') || text.includes('article')) {
-              htmlText = text;
-            }
-          }
-        } catch (e) {
-          console.warn('Relative detail fetch failed, trying CORS proxy...', e);
-        }
-
-        // 2. Try CORS proxy fallback
-        if (!htmlText) {
-          const targetUrl = `https://www.ghlindia.com/economy-insightdetails?${article.slug}`;
-          const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
-          const response = await fetch(proxyUrl);
-          if (response.ok) {
-            htmlText = await response.text();
-          }
-        }
-
-        if (!htmlText) throw new Error('Detail fetch error');
-
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, 'text/html');
-
-        const detailArticle = doc.querySelector('.blog-details article');
-        if (detailArticle) {
-          const imgBlock = detailArticle.querySelector('.post-img');
-          if (imgBlock) imgBlock.remove();
-
-          let contentHtml = detailArticle.innerHTML;
-          contentHtml = contentHtml.replace(/src="superadmin\/admin\/courses\/iqimages\//g, 'src="https://www.ghlindia.com/superadmin/admin/courses/iqimages/');
-          contentHtml = contentHtml.replace(/src="iqimg\//g, 'src="https://www.ghlindia.com/iqimg/');
-          contentHtml = contentHtml.replace(/src="(?!https?:\/\/|data:|blob:|#)([^"]+)"/g, 'src="https://www.ghlindia.com/$1"');
-          contentHtml = contentHtml.replace(/src="(https?:\/\/[^"]+)"/g, (match, url) => {
-            return `src="${url.replace(/ /g, '%20')}"`;
-          });
-
-          const updatedArticle = { ...article, content: contentHtml };
-          setSelectedArticle(updatedArticle);
-
-          setNews(prev => {
-            const updated = { ...prev };
-            Object.keys(updated).forEach(dateTab => {
-              updated[dateTab] = updated[dateTab].map(art =>
-                art.slug === article.slug ? { ...art, content: contentHtml } : art
-              );
-            });
-            return updated;
-          });
-        }
-        setLoadingDetail(false);
-      } catch (err) {
-        console.error('Error fetching article detail:', err);
-        const localTabs = newsData.news || {};
-        let foundContent = '';
-        Object.keys(localTabs).forEach(dateTab => {
-          const matched = localTabs[dateTab].find(art => art.slug === article.slug);
-          if (matched && matched.content) {
-            foundContent = matched.content;
-          }
+      setNews(prev => {
+        const updated = { ...prev };
+        Object.keys(updated).forEach(dateTab => {
+          updated[dateTab] = updated[dateTab].map(art =>
+            art.slug === article.slug ? { ...art, content: contentHtml } : art
+          );
         });
-
-        setSelectedArticle(prev => ({ ...prev, content: foundContent || '<p>Content temporarily unavailable.</p>' }));
-        setLoadingDetail(false);
-      }
+        return updated;
+      });
+      setLoadingDetail(false);
     }
   };
+
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -13,7 +13,7 @@
 }
 
 .achievements-swiper {
-  padding: 18px 0 42px;
+  padding: 18px 60px 42px;
 }
 
 /* Swiper custom 3D card parameters */
@@ -204,23 +204,58 @@
   font-weight: 600;
 }
 
-/* Navigation overrides */
-.achievements-section .swiper-button-prev,
-.achievements-section .swiper-button-next {
-  color: var(--dark-charcoal);
-  width: 44px;
-  height: 44px;
-  background-color: var(--text-white);
-  border: 1px solid var(--card-border);
+/* Custom Navigation Buttons */
+.achievements-prev,
+.achievements-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: rgba(18, 20, 26, 0.82); /* Glassmorphism background */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.achievements-section .swiper-button-prev:hover,
-.achievements-section .swiper-button-next:hover {
+.achievements-prev {
+  left: 20px;
+}
+
+.achievements-next {
+  right: 20px;
+}
+
+/* Hover and active states */
+.achievements-prev:hover,
+.achievements-next:hover {
   background-color: var(--primary-red);
   border-color: var(--primary-red);
   color: var(--text-white);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 24px rgba(228, 31, 38, 0.4);
+}
+
+.achievements-prev:active,
+.achievements-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Disabled state */
+.achievements-prev.swiper-button-disabled,
+.achievements-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .achievements-section .swiper-pagination-bullet-active {
@@ -246,6 +281,15 @@
   .achievement-slide {
     width: min(78vw, 290px);
     height: 420px;
+  }
+
+  .achievements-swiper {
+    padding: 18px 15px 30px;
+  }
+
+  .achievements-prev,
+  .achievements-next {
+    display: none;
   }
 }
 

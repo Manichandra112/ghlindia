@@ -14,7 +14,7 @@ import debit from '../assets/debitfunding.png';
 import BottomCTA from './BottomCTA';
 
 export default function DebtFinancing() {
-  const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
+  const animOptions = { threshold: 0.05, rootMargin: '0px 0px -50px 0px' };
   const sectionRef1 = useScrollAnimation(animOptions);
   const sectionRef2 = useScrollAnimation(animOptions);
   const sectionRef3 = useScrollAnimation(animOptions);
@@ -105,6 +105,11 @@ export default function DebtFinancing() {
       {/* 1. What is Debt Funding Section */}
       <section className="debt-intro section-padding" ref={sectionRef1}>
         <div className="container">
+          <div className="section-header" data-animate="fade-up">
+            <span className="text-accent uppercase">Finance Basics</span>
+            <h2>Do you know what <span className="text-highlight">debt funding is?</span></h2>
+          </div>
+
           <div className="debt-row-flex">
             <div className="debt-col-flex debt-image-container" data-animate="fade-right">
               <img
@@ -114,8 +119,6 @@ export default function DebtFinancing() {
               />
             </div>
             <div className="debt-col-flex debt-content-col" data-animate="fade-left" data-stagger-delay="150ms">
-              <span className="debt-badge">Finance Basics</span>
-              <h2>Do you know what <span className="text-highlight">debt funding is?</span></h2>
               <p>
                 <strong>Debt funding</strong> is a method of raising capital for a business or project by borrowing money. Instead of selling equity or ownership in the company, debt funding involves the business taking out loans or issuing bonds that must be repaid over time with interest.
               </p>
@@ -144,8 +147,13 @@ export default function DebtFinancing() {
       </section>
 
       {/* 2. GHL's Approach to Debt Funding */}
-      <section className="debt-approach section-padding bg-light-gray" ref={sectionRef2}>
+      <section className="debt-approach section-padding" ref={sectionRef2}>
         <div className="container">
+          <div className="section-header" data-animate="fade-up">
+            <span className="text-accent uppercase">Strategic Yields</span>
+            <h2>GHL’s Approach to <span className="text-highlight">Debt Funding</span></h2>
+          </div>
+
           <div className="debt-row-flex row-reverse">
             <div className="debt-col-flex debt-image-container" data-animate="fade-left" data-stagger-delay="150ms">
               <img
@@ -155,8 +163,6 @@ export default function DebtFinancing() {
               />
             </div>
             <div className="debt-col-flex debt-content-col" data-animate="fade-right">
-              <span className="debt-badge">Strategic Yields</span>
-              <h2>GHL’s Approach to <span className="text-highlight">Debt Funding</span></h2>
               <p>
                 At <strong>GHL</strong>, we use a special way of raising money called debt funding. We do this by offering <strong>Secured Non-Convertible Debentures (NCDs)</strong>, which let us gather capital from investors looking for stable returns.
               </p>
@@ -166,13 +172,9 @@ export default function DebtFinancing() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* 3. Three Card Matrix Grid */}
-      <section className="debt-cards-grid section-padding" ref={sectionRef3}>
-        <div className="container">
-          <div className="debt-grid-row">
+          {/* Grouped Three Card Matrix Grid */}
+          <div className="debt-grid-row" style={{ marginTop: '54px' }}>
             {/* Card 1 */}
             <div className="debt-grid-card glass-panel" data-animate="fade-up" data-stagger-delay="0ms">
               <div className="debt-card-header">
@@ -231,7 +233,7 @@ export default function DebtFinancing() {
       </section>
 
       {/* 4. Why Invest with Us Section */}
-      <section className="debt-why section-padding bg-light-gray" ref={sectionRef4}>
+      <section className="debt-why section-padding" ref={sectionRef4}>
         <div className="container">
           <div className="section-header" data-animate="fade-up">
             <span className="text-accent">Partner of Choice</span>
