@@ -44,7 +44,7 @@ export default function Media() {
   ];
 
   return (
-    <section className="media-section section-padding" id="media" ref={sectionRef}>
+    <section className="media-section section-padding no-padding" id="media" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}

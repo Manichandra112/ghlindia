@@ -56,7 +56,7 @@ export default function Stats() {
   ];
 
   return (
-    <section className="stats-section section-padding" id="stats" ref={sectionRef}>
+    <section className="stats-section section-padding no-padding" id="stats" ref={sectionRef}>
       <div className="container">
         
         {/* Intro Header */}

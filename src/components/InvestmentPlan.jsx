@@ -6,7 +6,7 @@ import './InvestmentPlan.css';
 export default function InvestmentPlan() {
   const sectionRef = useScrollAnimation();
   return (
-    <section className="investment-plan-section section-padding" id="investment-plan" ref={sectionRef}>
+    <section className="investment-plan-section section-padding no-padding" id="investment-plan" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}

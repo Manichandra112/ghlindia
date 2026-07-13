@@ -11,6 +11,8 @@ import llpStepsMobile from '../assets/charge steps mobile.png';
 export default function ChargeCreation() {
   const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
   const introRef = useScrollAnimation(animOptions);
+  const debentureRef = useScrollAnimation(animOptions);
+  const llpRef = useScrollAnimation(animOptions);
   const safetyRef = useScrollAnimation(animOptions);
 
   const handleExploreClick = (event) => {
@@ -126,7 +128,7 @@ export default function ChargeCreation() {
         </div>
       </section>
 
-      <section className="charge-debenture section-padding">
+      <section className="charge-debenture section-padding" ref={debentureRef}>
         <div className="container">
           <div className="section-header text-center">
             <span>Security Framework</span>
@@ -152,7 +154,7 @@ export default function ChargeCreation() {
               {debentureSteps.map((step, idx) => (
                 <div key={idx} className="flowchart-step-column">
                   <div className="flowchart-drop-line"></div>
-                  <div className="flowchart-step-card">
+                  <div className="flowchart-step-card" data-animate="fade-up" data-stagger-delay={`${idx * 150}ms`}>
                     <span className="flowchart-card-tab">{step.num}</span>
                     <div className="flowchart-card-content">
                       <p>{step.content}</p>
@@ -167,7 +169,7 @@ export default function ChargeCreation() {
             <h3>Ever wondered how charge creation <br className="mobile-br" /> works in debenture plans?</h3>
           </div>
 
-          <div className="debenture-video-box">
+          <div className="debenture-video-box" data-animate="fade-up">
             <div className="video-info">
               <h3>DEBENTURE PLAN</h3>
               <p>
@@ -205,7 +207,7 @@ export default function ChargeCreation() {
         </div>
       </section>
 
-      <section className="charge-llp section-padding">
+      <section className="charge-llp section-padding" ref={llpRef}>
         <div className="container">
           <div className="section-header text-center">
             <span>Alternative Strategy</span>
@@ -234,7 +236,7 @@ export default function ChargeCreation() {
 
           <div className="llp-grid">
             {llpSteps.map((step, idx) => (
-              <div key={idx} className="llp-card">
+              <div key={idx} className="llp-card" data-animate="fade-up" data-stagger-delay={`${idx * 150}ms`}>
                 <div className="llp-card-header">
                   <span className="llp-card-num">{step.num}</span>
                   <Layers size={24} className="llp-icon" />

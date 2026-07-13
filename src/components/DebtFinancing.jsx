@@ -105,7 +105,7 @@ export default function DebtFinancing() {
       {/* 1. What is Debt Funding Section */}
       <section className="debt-intro section-padding" ref={sectionRef1}>
         <div className="container">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header text-center" data-animate="fade-up">
             <span className="text-accent uppercase">Finance Basics</span>
             <h2>Do you know what <span className="text-highlight">debt funding is?</span></h2>
           </div>
@@ -149,7 +149,7 @@ export default function DebtFinancing() {
       {/* 2. GHL's Approach to Debt Funding */}
       <section className="debt-approach section-padding" ref={sectionRef2}>
         <div className="container">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header text-center" data-animate="fade-up">
             <span className="text-accent uppercase">Strategic Yields</span>
             <h2>GHL’s Approach to <span className="text-highlight">Debt Funding</span></h2>
           </div>
@@ -235,7 +235,7 @@ export default function DebtFinancing() {
       {/* 4. Why Invest with Us Section */}
       <section className="debt-why section-padding" ref={sectionRef4}>
         <div className="container">
-          <div className="section-header" data-animate="fade-up">
+          <div className="section-header text-center" data-animate="fade-up">
             <span className="text-accent">Partner of Choice</span>
             <h2>Why Invest with Us?</h2>
             <p className="text-muted">At <strong>GHL</strong>, we prioritize the financial success and security of our investors.</p>

@@ -21,7 +21,7 @@ import BottomCTA from './BottomCTA';
 import fractionalInvestment from '../assets/fractional invesment.png';
 
 export default function FractionalOwnership() {
-  const animOptions = { threshold: 0.15, rootMargin: '0px 0px -150px 0px' };
+  const animOptions = { threshold: 0.3, rootMargin: '0px 0px -250px 0px' };
   const sectionRef1 = useScrollAnimation(animOptions);
   const sectionRef2 = useScrollAnimation(animOptions);
   const sectionRef3 = useScrollAnimation(animOptions);
@@ -58,6 +58,11 @@ export default function FractionalOwnership() {
       icon: <Percent className="feat-icon" />,
       title: "Earn While You Sleep",
       desc: "Enjoy regular payouts, like interest on debentures, without lifting a finger."
+    },
+    {
+      icon: <FileText className="feat-icon" />,
+      title: "100% Transparent Tracking",
+      desc: "Monitor your yields, documents, and compliance filings in real-time through a transparent portal."
     }
   ];
 
@@ -159,6 +164,12 @@ export default function FractionalOwnership() {
       {/* Intro Concept Section */}
       <section className="fractional-intro section-padding" id="learn-more" ref={sectionRef1}>
         <div className="container">
+          
+          <div className="section-header text-center" data-animate="fade-up">
+            <span className="intro-badge">Smart Finance</span>
+            <h2>Interested in learning about <span className="text-highlight">fractional investment?</span></h2>
+          </div>
+
           <div className="fractional-row-flex">
             <div className="fractional-col-flex intro-image-container" data-animate="fade-right">
               <img
@@ -168,8 +179,6 @@ export default function FractionalOwnership() {
               />
             </div>
             <div className="fractional-col-flex intro-content-col" data-animate="fade-left" data-stagger-delay="150ms">
-              <span className="intro-badge">Smart Finance</span>
-              <h2>Interested in learning about <br className="mobile-br" /> <span className="text-highlight">fractional investment?</span></h2>
               <p>
                 <strong>Fractional investment</strong> refers to the practice of investing in a part or fraction of an asset or investment, rather than purchasing it in full. This allows individuals to invest smaller amounts in expensive assets, such as real estate or stocks without needing the full amount to buy the entire asset.
               </p>
@@ -222,18 +231,21 @@ export default function FractionalOwnership() {
           </div>
 
           <div className="fractional-grid-row">
-            {whyFractional.map((feat, idx) => (
-              <div
-                className="fractional-feat-card glass-panel"
-                key={idx}
-                data-animate="fade-up"
-                style={{ animationDelay: `${idx * 150}ms` }}
-              >
-                <div className="feat-icon-badge">{feat.icon}</div>
-                <h4>{feat.title}</h4>
-                <p>{feat.desc}</p>
-              </div>
-            ))}
+            {whyFractional.map((feat, idx) => {
+              const animType = idx % 3 === 0 ? 'fade-right' : idx % 3 === 1 ? 'fade-up' : 'fade-left';
+              return (
+                <div
+                  className="fractional-feat-card glass-panel"
+                  key={idx}
+                  data-animate={animType}
+                  style={{ animationDelay: `${idx * 150}ms` }}
+                >
+                  <div className="feat-icon-badge">{feat.icon}</div>
+                  <h4>{feat.title}</h4>
+                  <p>{feat.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -248,19 +260,23 @@ export default function FractionalOwnership() {
           </div>
 
           <div className="ghl-reasons-matrix">
-            {whyChooseGhl.map((reason) => (
-              <div
-                className="reason-card"
-                key={reason.id}
-                data-animate="fade-up"
-              >
-                <div className="reason-header">
-                  <CheckCircle className="check-icon-gold" size={18} />
-                  <h5>{reason.title}</h5>
+            {whyChooseGhl.map((reason, idx) => {
+              const animType = idx % 3 === 0 ? 'fade-right' : idx % 3 === 1 ? 'fade-up' : 'fade-left';
+              return (
+                <div
+                  className="reason-card"
+                  key={reason.id}
+                  data-animate={animType}
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="reason-header">
+                    <CheckCircle className="check-icon-gold" size={18} />
+                    <h5>{reason.title}</h5>
+                  </div>
+                  <p>{reason.text}</p>
                 </div>
-                <p>{reason.text}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -268,17 +284,21 @@ export default function FractionalOwnership() {
       {/* Expertise: Property Flipping */}
       <section className="property-flipping-expertise section-padding" ref={sectionRef5}>
         <div className="container">
-          <div className="fractional-row-flex">
-            <div className="fractional-col-flex" data-animate="fade-right">
+          
+          <div className="section-header text-center" data-animate="fade-up">
+            <span className="intro-badge">Our Core Engine</span>
+            <h2>Our Primary Expertise: <span className="text-highlight">Property Flipping</span></h2>
+          </div>
+
+          <div className="fractional-row-flex row-reverse">
+            <div className="fractional-col-flex" data-animate="fade-left">
               <img
                 src="/assets/img/debt/our-expertise.png"
                 alt="Property Flipping Expertise"
                 className="fractional-intro-img"
               />
             </div>
-            <div className="fractional-col-flex intro-content-col" data-animate="fade-left" data-stagger-delay="150ms">
-              <span className="intro-badge">Our Core Engine</span>
-              <h2>Our Primary Expertise: <span className="text-highlight">Property Flipping</span></h2>
+            <div className="fractional-col-flex intro-content-col" data-animate="fade-right" data-stagger-delay="150ms">
               <p>
                 At GHL, we specialize in high-return **Property Flipping**. Our deal origination team identifies highly demandable, distressed properties at undervalued prices—often through auction closures, bank debt settlements, or short sales.
               </p>

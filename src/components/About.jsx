@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './About.css';
 
 export default function About() {
   const [playingLeft, setPlayingLeft] = useState(false);
   const [playingRight, setPlayingRight] = useState(false);
+  const sectionRef1 = useScrollAnimation();
+  const sectionRef2 = useScrollAnimation();
 
   return (
     <>
-      <section className="about-section" id="about">
+      <section className="about-section" id="about" ref={sectionRef1}>
         <div className="container">
           {/* Established in 2021 Statement Block */}
-          <div className="established-box glass-panel">
+          <div className="established-box glass-panel" data-animate="fade-up">
             <div className="est-left">
               <h2>Established in <span className="red-accent">2021</span></h2>
             </div>
@@ -27,10 +30,10 @@ export default function About() {
         </div>
       </section>
 
-      <section className="about-reels-section" id="about-reels">
+      <section className="about-reels-section" id="about-reels" ref={sectionRef2}>
         <div className="container">
           {/* Section Heading for Reels & Card Row */}
-          <div className="section-header">
+          <div className="section-header" data-animate="fade-up">
             <span>Our Platform</span>
             <h2><span className="red-accent">GHL's</span> Business-Alternative Investment Platform</h2>
           </div>
@@ -39,7 +42,7 @@ export default function About() {
           <div className="about-reels-row">
             
             {/* LEFT REEL CARD */}
-            <div className="reel-card-item">
+            <div className="reel-card-item" data-animate="fade-right">
               <div className="reel-media-top">
                 {!playingLeft ? (
                   <div className="reel-thumbnail-wrapper" onClick={() => setPlayingLeft(true)}>
@@ -68,7 +71,7 @@ export default function About() {
             </div>
 
             {/* MIDDLE CONTENT CARD */}
-            <div className="about-middle-card glass-panel">
+            <div className="about-middle-card glass-panel" data-animate="zoom-in" data-stagger-delay="100ms">
               
               <div className="middle-image-wrapper">
                 <img 
@@ -87,7 +90,7 @@ export default function About() {
             </div>
 
             {/* RIGHT REEL CARD */}
-            <div className="reel-card-item">
+            <div className="reel-card-item" data-animate="fade-left" data-stagger-delay="200ms">
               <div className="reel-media-top">
                 {!playingRight ? (
                   <div className="reel-thumbnail-wrapper" onClick={() => setPlayingRight(true)}>

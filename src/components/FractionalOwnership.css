@@ -413,7 +413,33 @@
   padding-left: 48px;
 }
 
+.fractional-row-flex.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.fractional-row-flex.row-reverse .intro-content-col {
+  padding-left: 0;
+  padding-right: 48px;
+}
+
+.mobile-only-header {
+  display: none;
+}
+
+.desktop-only-header {
+  display: block;
+}
+
 @media (max-width: 768px) {
+  .mobile-only-header {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .desktop-only-header {
+    display: none;
+  }
+
   .mobile-br {
     display: block;
   }
@@ -421,6 +447,14 @@
   .intro-content-col {
     padding-left: 12px;
     margin-top: 32px;
+  }
+
+  .fractional-row-flex.row-reverse {
+    flex-direction: column;
+  }
+
+  .fractional-row-flex.row-reverse .intro-content-col {
+    padding-right: 12px;
   }
 
   .intro-content-col h2 {
@@ -558,10 +592,15 @@
   align-items: flex-start;
 }
 
+.fractional-feat-card[data-animate] {
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
 .fractional-feat-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(var(--primary-red-rgb), 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.07);
+  border-color: rgba(228, 31, 38, 0.35) !important;
+  box-shadow: 0 20px 40px rgba(228, 31, 38, 0.05);
 }
 
 .feat-icon-badge {
@@ -635,13 +674,20 @@
   border-radius: var(--border-radius-md);
   padding: 32px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.reason-card[data-animate] {
+  transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .reason-card:hover {
-  border-color: rgba(228, 31, 38, 0.15);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-color: rgba(228, 31, 38, 0.35) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(228, 31, 38, 0.05);
 }
 
 .reason-header {

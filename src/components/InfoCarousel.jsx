@@ -6,7 +6,7 @@ export default function InfoCarousel() {
   const sectionRef = useScrollAnimation();
   const observerRef = useRef(null);
   const [hasEntered, setHasEntered] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const [animationPhase, setAnimationPhase] = useState('idle');
 
   const cards = [
     { img: '/assets/img/cc/page-home.jpg', alt: 'GHL Investment Opportunity Cover' },
@@ -19,6 +19,11 @@ export default function InfoCarousel() {
   ];
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      setHasEntered(true);
+      return;
+    }
+
     const el = observerRef.current;
     if (!el) return;
 
@@ -29,7 +34,7 @@ export default function InfoCarousel() {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.08 }
+      { threshold: 0.01 }
     );
 
     observer.observe(el);
@@ -37,16 +42,17 @@ export default function InfoCarousel() {
   }, []);
 
   useEffect(() => {
-    if (hasEntered && visibleCount < cards.length) {
+    if (hasEntered) {
+      setAnimationPhase('entering');
       const timer = setTimeout(() => {
-        setVisibleCount((prev) => prev + 1);
-      }, 500); // 500ms intervals
+        setAnimationPhase('looping');
+      }, 11000); // 11s entrance scroll
       return () => clearTimeout(timer);
     }
-  }, [hasEntered, visibleCount, cards.length]);
+  }, [hasEntered]);
 
   return (
-    <section className="info-carousel-sec section-padding" id="info-carousel" ref={sectionRef}>
+    <section className="info-carousel-sec section-padding no-padding-top" id="info-carousel" ref={sectionRef}>
       <div className="container" ref={observerRef}>
         
         {/* Section Header */}
@@ -58,37 +64,31 @@ export default function InfoCarousel() {
 
         {/* CSS Continuous Scroll Marquee */}
         <div className="info-marquee-container">
-          <div className="info-marquee-track">
+          <div className={`info-marquee-track ${animationPhase}`}>
             {/* First Set of Cards */}
-            {cards.map((card, idx) => {
-              const isVisible = idx < visibleCount;
-              return (
-                <div 
-                  key={`card-1-${idx}`} 
-                  className={`info-marquee-item ${isVisible ? 'revealed' : 'hidden-card'}`}
-                >
-                  <div className="info-card glass-panel">
-                    <img src={card.img} alt={card.alt} className="info-card-img" />
-                    <div className="info-card-shimmer"></div>
-                  </div>
+            {cards.map((card, idx) => (
+              <div 
+                key={`card-1-${idx}`} 
+                className="info-marquee-item"
+              >
+                <div className="info-card glass-panel">
+                  <img src={card.img} alt={card.alt} className="info-card-img" />
+                  <div className="info-card-shimmer"></div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
             {/* Second Set of Cards for Infinite Scroll Loop */}
-            {cards.map((card, idx) => {
-              const isVisible = visibleCount === cards.length;
-              return (
-                <div 
-                  key={`card-2-${idx}`} 
-                  className={`info-marquee-item ${isVisible ? 'revealed' : 'hidden-card'}`}
-                >
-                  <div className="info-card glass-panel">
-                    <img src={card.img} alt={card.alt} className="info-card-img" />
-                    <div className="info-card-shimmer"></div>
-                  </div>
+            {cards.map((card, idx) => (
+              <div 
+                key={`card-2-${idx}`} 
+                className="info-marquee-item"
+              >
+                <div className="info-card glass-panel">
+                  <img src={card.img} alt={card.alt} className="info-card-img" />
+                  <div className="info-card-shimmer"></div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
 

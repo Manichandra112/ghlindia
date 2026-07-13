@@ -42,7 +42,7 @@ export default function Sectors() {
   ];
 
   return (
-    <section className="sectors-section section-padding" id="sectors" ref={sectionRef}>
+    <section className="sectors-section section-padding no-padding" id="sectors" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}

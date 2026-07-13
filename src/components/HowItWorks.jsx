@@ -113,7 +113,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="how-it-works-sec section-padding" id="how-it-works" ref={sectionRef}>
+    <section className="how-it-works-sec section-padding no-padding" id="how-it-works" ref={sectionRef}>
       <div className="container">
         {/* Section Header */}
         <div className="how-header" data-animate="fade-up">

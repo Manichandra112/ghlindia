@@ -12,6 +12,7 @@ import './Achievements.css';
 
 export default function Achievements() {
   const [lightboxImg, setLightboxImg] = useState(null);
+  const [isZoomed, setIsZoomed] = useState(false);
   const sectionRef = useScrollAnimation();
 
   const awards = [
@@ -53,7 +54,7 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="achievements-section section-padding" id="achievements" ref={sectionRef}>
+    <section className="achievements-section section-padding no-padding" id="achievements" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
@@ -105,7 +106,7 @@ export default function Achievements() {
                     </div>
                   </div>
                 ) : (
-                  <div className="award-card-wrapper" onClick={() => setLightboxImg(award)}>
+                  <div className="award-card-wrapper" onClick={() => { setLightboxImg(award); setIsZoomed(false); }}>
                     <div className="award-image-box">
                       <img src={award.img} alt={award.title} className="award-cert-img" />
                       <div className="zoom-hover-overlay">
@@ -137,14 +138,15 @@ export default function Achievements() {
       {/* Lightbox / Zoom Overlay Modal */}
       {lightboxImg && (
         <div className="lightbox-backdrop" onClick={() => setLightboxImg(null)}>
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+          <div className={`lightbox-content ${isZoomed ? 'zoomed' : ''}`} onClick={(e) => e.stopPropagation()}>
             <button className="lightbox-close-btn" onClick={() => setLightboxImg(null)}>
               <X size={24} />
             </button>
             <img 
               src={lightboxImg.img} 
               alt={lightboxImg.title} 
-              className="lightbox-img" 
+              className={`lightbox-img ${isZoomed ? 'zoomed' : ''}`}
+              onClick={() => setIsZoomed(!isZoomed)}
             />
             <div className="lightbox-caption">
               <h3>{lightboxImg.title}</h3>

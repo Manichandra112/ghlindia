@@ -19,9 +19,9 @@ export default function WhatWeDo() {
   };
 
   return (
-    <section className="what-we-do-section section-padding" id="what-we-do" ref={sectionRef}>
+    <section className="what-we-do-section section-padding no-padding" id="what-we-do" ref={sectionRef}>
       <div className="container">
-        
+
         {/* Section Header */}
         <div className="section-header" data-animate="fade-up">
           <span>Operational Framework</span>
@@ -31,14 +31,14 @@ export default function WhatWeDo() {
 
         {/* Video - Circle - Video Row */}
         <div className="operational-row">
-          
+
           {/* LEFT VIDEO */}
           <div className="op-video-box glass-panel" data-animate="fade-right">
             {!playingLeft ? (
               <div className="op-video-trigger" onClick={() => setPlayingLeft(true)}>
-                <img 
-                  src="/assets/img/Home_23.07.2024/first-video.jpg" 
-                  alt="Property Acquisition Video Cover" 
+                <img
+                  src="/assets/img/Home_23.07.2024/first-video.jpg"
+                  alt="Property Acquisition Video Cover"
                   className="op-cover-img"
                 />
                 <div className="op-play-circle">
@@ -46,8 +46,8 @@ export default function WhatWeDo() {
                 </div>
               </div>
             ) : (
-              <iframe 
-                src="https://www.youtube.com/embed/1RKTgTK9P24?autoplay=1" 
+              <iframe
+                src="https://www.youtube.com/embed/1RKTgTK9P24?autoplay=1"
                 title="Property Trading Introduction Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -60,9 +60,9 @@ export default function WhatWeDo() {
           {/* CENTER CIRCULAR IMAGE TRIGGER */}
           <div className="op-circle-trigger-col" data-animate="fade-up" data-stagger-delay="100ms" onClick={() => setModalType('trading')} style={{ cursor: 'pointer' }}>
             <div className="circular-thumb-container">
-              <img 
-                src="/assets/img/home2026/others/PropertyFlipping.jpg" 
-                alt="Property Flipping" 
+              <img
+                src="/assets/img/home2026/others/PropertyFlipping.jpg"
+                alt="Property Flipping"
                 className="circular-img"
               />
               <div className="plus-badge">
@@ -76,9 +76,9 @@ export default function WhatWeDo() {
           <div className="op-video-box glass-panel" data-animate="fade-left" data-stagger-delay="200ms">
             {!playingRight ? (
               <div className="op-video-trigger" onClick={() => setPlayingRight(true)}>
-                <img 
-                  src="/assets/img/Home_23.07.2024/second-video.jpg" 
-                  alt="Asset Management Video Cover" 
+                <img
+                  src="/assets/img/Home_23.07.2024/second-video.jpg"
+                  alt="Asset Management Video Cover"
                   className="op-cover-img"
                 />
                 <div className="op-play-circle">
@@ -86,8 +86,8 @@ export default function WhatWeDo() {
                 </div>
               </div>
             ) : (
-              <iframe 
-                src="https://www.youtube.com/embed/R2KIHBqBCsU?autoplay=1" 
+              <iframe
+                src="https://www.youtube.com/embed/R2KIHBqBCsU?autoplay=1"
                 title="LLP Trading Introduction Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -105,17 +105,14 @@ export default function WhatWeDo() {
       {modalType === 'trading' && (
         <div className={`modal-backdrop show ${isClosing ? 'backdrop-out' : 'backdrop-in'}`} onClick={handleClose}>
           <div className={`modal-content model-modal glass-panel ${isClosing ? 'modal-out' : 'modal-in'}`} style={{ padding: 0, overflow: 'hidden', maxWidth: '500px', width: '90%' }} onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header-area" style={{ background: '#590306', color: '#ffffff', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
-              <h3 className="modal-service-title" style={{ margin: 0, fontSize: '20px', fontWeight: 'bold', color: '#ffffff' }}>Property Trading</h3>
-              <button className="modal-close" onClick={handleClose} style={{ background: 'transparent', border: 'none', color: '#ffffff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                <X size={20} />
-              </button>
+            <div className="modal-header-area" style={{ background: '#590306', color: '#ffffff', padding: '15px 20px', textAlign: 'center', position: 'relative' }}>
+              <h3 className="modal-service-title" style={{ margin: 0, fontSize: '20px', fontWeight: 'bold', color: '#ffffff', textAlign: 'center', width: '100%' }}>Property Trading</h3>
             </div>
             <div className="modal-body-area" style={{ padding: '24px 20px', textAlign: 'center' }}>
               <div className="modal-circle-art-row" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-                <img 
-                  src="/assets/img/home2026/others/PropertyFlipping.jpg" 
-                  alt="Property Trading" 
+                <img
+                  src="/assets/img/home2026/others/PropertyFlipping.jpg"
+                  alt="Property Trading"
                   className="modal-circle-thumbnail"
                   style={{ width: '160px', height: '160px', borderRadius: '50%', objectFit: 'cover' }}
                 />

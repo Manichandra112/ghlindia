@@ -139,6 +139,15 @@ img {
   }
 }
 
+.no-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.no-padding-top {
+  padding-top: 0 !important;
+}
+
 .text-center {
   text-align: center;
 }

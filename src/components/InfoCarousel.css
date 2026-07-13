@@ -38,11 +38,26 @@
   display: flex;
   width: max-content;
   gap: 24px;
+  transform: translate3d(100vw, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.info-marquee-track.idle {
+  transform: translate3d(100vw, 0, 0);
+}
+
+.info-marquee-track.entering {
+  animation: info-marquee-enter 11s linear forwards;
+}
+
+.info-marquee-track.looping {
   animation: info-marquee-scroll 35s linear infinite;
 }
 
 /* Pause animation on hover */
-.info-marquee-track:hover {
+.info-marquee-track.looping:hover {
   animation-play-state: paused;
 }
 
@@ -111,28 +126,20 @@
 
 @keyframes info-marquee-scroll {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-/* Staggered card conveyor entry transitions */
-.info-marquee-item {
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity;
-}
-
-.info-marquee-item.hidden-card {
-  opacity: 0;
-  transform: translateX(120px) scale(0.95);
-  pointer-events: none;
-}
-
-.info-marquee-item.revealed {
-  opacity: 1;
-  transform: translateX(0) scale(1);
+/* Entrance animation keyframes */
+@keyframes info-marquee-enter {
+  0% {
+    transform: translate3d(100vw, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }

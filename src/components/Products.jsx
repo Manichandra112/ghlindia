@@ -35,7 +35,7 @@ export default function Products() {
   ];
 
   return (
-    <section className="products-section section-padding" id="products" ref={sectionRef}>
+    <section className="products-section section-padding no-padding" id="products" ref={sectionRef}>
       <div className="container">
         
         {/* Section Header */}
