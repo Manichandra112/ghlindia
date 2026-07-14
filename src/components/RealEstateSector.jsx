@@ -17,10 +17,8 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
-import BottomCTA from './BottomCTA';
 // import realEstateHero from '../assets/real estate-1.png';
-import realEstateHero from '../assets/realestate 2.png';
-import realestateimg from '../assets/real estate 2.png';
+import realEstateHero from '../assets/realdo estate 2.png';
 
 const segments = [
   {
@@ -96,18 +94,6 @@ const marketFacts = [
   { year: '2021', value: 200, label: 'US$ 200B' },
   { year: '2025', value: 650, label: 'US$ 650B' },
   { year: '2030', value: 1000, label: 'US$ 1T' },
-];
-
-const highlights = [
-  { value: 'US$ 1T', label: 'projected market size by 2030', Icon: TrendingUp },
-  { value: '19.5%', label: 'CAGR estimated during 2017-2028', Icon: Landmark },
-  { value: '13%', label: "of India's GDP forecast by 2025", Icon: ShieldCheck },
-];
-
-const investmentThesis = [
-  'Real estate sector in India is expected to reach US$ 1 trillion in market size by 2030, up from US$ 200 billion in 2021.',
-  'India’s real estate market is estimated to increase at a CAGR of 19.5% during 2017- 2028. The market is forecast to reach US$ 650 billion, representing 13% of India’s GDP by 2025.',
-  'Increasing share of real estate in the GDP would be supported by increasing industrial activity, improving income level and urbanisation.',
 ];
 
 const realEstatePolicies = [
@@ -255,26 +241,46 @@ export default function RealEstateSector() {
           </div>
 
           <div className="real-market-grid">
-            <div className="real-chart-block" data-animate="fade-right">
+            <div data-animate="fade-right">
               <h3 className="real-chart-title">Market size of real estate in India (US$ billion)</h3>
               <RealEstateGrowthChart />
             </div>
 
             <div className="real-market-story" data-animate="fade-left" data-stagger-delay="120ms">
-              <div className="real-highlight-grid">
-                {highlights.map(({ value, label, Icon }) => (
-                  <div className="real-highlight-card" key={label}>
-                    <Icon size={20} />
-                    <strong>{value}</strong>
-                    <span>{label}</span>
-                  </div>
-                ))}
+              <div className="real-proof-grid">
+                <div className="real-proof-card">
+                  <TrendingUp size={22} />
+                  <strong>19.5%</strong>
+                  <span>CAGR estimated during 2017-2028</span>
+                </div>
+                <div className="real-proof-card">
+                  <Landmark size={22} />
+                  <strong>13%</strong>
+                  <span>of India&apos;s GDP forecast by 2025</span>
+                </div>
+                <div className="real-proof-card">
+                  <ShieldCheck size={22} />
+                  <strong>10</strong>
+                  <span>government reforms supporting the sector</span>
+                </div>
               </div>
-              <ul className="real-fact-list">
-                {investmentThesis.map((fact) => (
-                  <li key={fact}>{fact}</li>
-                ))}
-              </ul>
+              <div className="real-source-context">
+                <p>
+                  Real estate sector in India is expected to reach US$ 1 trillion in market size by 2030,
+                  up from US$ 200 billion in 2021. India&apos;s real estate market is estimated to increase
+                  at a CAGR of 19.5% during 2017-2028. The market is forecast to reach US$ 650 billion,
+                  representing 13% of India&apos;s GDP by 2025.
+                </p>
+                <p>
+                  Increasing share of real estate in the GDP would be supported by increasing industrial activity,
+                  improving income level and urbanisation.
+                </p>
+                <p>
+                  India has an overall 75-80% import dependency on medical devices, with export at Rs. 14,802 crore
+                  (US$ 2.1 billion) in 2019 and is expected to rise at CAGR of 29.7% to reach Rs. 70,490
+                  (US$ 10 billion) in 2025.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -297,7 +303,7 @@ export default function RealEstateSector() {
                 <li><strong>Investment:</strong> Eased FDI norms and tax reforms to attract global capital.</li>
               </ul>
 
-
+              
             </div>
 
             <div className="policy-cards-grid" data-animate="fade-up" data-stagger-delay="120ms" role="list">
@@ -330,11 +336,11 @@ export default function RealEstateSector() {
               })()}
             </div>
 
-
+            
           </div>
         </div>
       </section>
-
+      
 
       <section className="real-segments-section" id="real-segments">
         <div className="container">
@@ -358,10 +364,10 @@ export default function RealEstateSector() {
             ))}
           </div>
 
-          <div className="real-segment-grid" key={activeFilter}>
+          <div className="real-segment-grid">
             {visibleSegments.map((segment, index) => (
               <article
-                className={`real-segment-card ${segment.id}`}
+                className="real-segment-card"
                 key={segment.id}
                 data-animate="fade-up"
                 data-stagger-delay={`${index * 80}ms`}
@@ -384,9 +390,9 @@ export default function RealEstateSector() {
 
       <section className="real-fdi-banner">
         <picture>
-          <source media="(max-width: 768px)" srcSet={realestateimg} />
+          <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/sectors/bennar-mobile/RE-Mid-Mob.jpg" />
           <img
-            src={realestateimg}
+            src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/RE-Mid-Web.jpg"
             alt="real estate investing"
           />
         </picture>
@@ -395,9 +401,6 @@ export default function RealEstateSector() {
             <div className="real-fdi-insight">
               <span>Market Insight</span>
               <h2>The Government has allowed 100% FDI for townships and settlements development projects.</h2>
-              <p>
-                This bold regulatory stance has unlocked institutional global capital, streamlining town planning, high-quality warehousing facilities, and commercial office complexes across Tier-1 and Tier-2 smart cities.
-              </p>
             </div>
           </div>
         </div>
@@ -463,8 +466,19 @@ export default function RealEstateSector() {
         </div>
       </section>
 
-      <BottomCTA />
+      <section className="real-cta-section">
+        <div className="container">
+          <div className="real-cta-content" data-animate="fade-up">
+            <span>Build With GHL India</span>
+            <h2>GHL INDIA is here to create a prosperous environment that serves the world at large</h2>
+            <p>Let us join together to live an opulent life</p>
+            <div className="real-cta-actions">
+              <a href="#login" className="real-cta-btn primary">Login <ChevronRight size={16} /></a>
+              <a href="#register" className="real-cta-btn secondary">Register <ChevronRight size={16} /></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-

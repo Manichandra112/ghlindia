@@ -1051,13 +1051,23 @@
 }
 
 @keyframes realBlobMove1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(60px, 40px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(60px, 40px) scale(1.15);
+  }
 }
 
 @keyframes realBlobMove2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-40px, -60px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-40px, -60px) scale(1.1);
+  }
 }
 
 .real-fdi-banner picture {
@@ -1160,6 +1170,7 @@
     margin: 40px 16px;
     min-height: 300px;
   }
+
   .real-fdi-overlay {
     min-height: 300px;
     background: linear-gradient(180deg, rgba(2, 14, 20, 0.9) 0%, rgba(2, 14, 20, 0.75) 100%);
@@ -1450,33 +1461,64 @@
 }
 
 @media (max-width: 760px) {
-  /* 1. Hero Mobile Stacking (Option B) */
-  .real-hero {
+
+  /* .real-hero {
     background-image: none !important;
-    background: #09101d !important; /* solid background matching --real-ink */
+    background: #09101d !important;
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
     min-height: auto !important;
     margin-top: var(--header-height, 80px) !important;
+  } */
+  .real-hero {
+    min-height: 520px;
+    margin-top: var(--header-height, 80px);
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    /* DON'T remove the image */
+    background-image: inherit !important;
   }
 
-  .real-hero::before {
+  /* .real-hero::before {
     content: '' !important;
     display: block !important;
     width: 100% !important;
     height: 220px !important;
-    background-image: url('../assets/realestate 2.png') !important; /* load asset */
+    background-image: url('../assets/realestate 2.png') !important;
     background-size: cover !important;
     background-position: center !important;
+  } */
+  .real-hero::before {
+    display: none !important;
+    content: none !important;
   }
 
-  .real-hero-content {
+  .real-hero-overlay {
+    display: block !important;
+    background: rgba(0, 0, 0, .45);
+  }
+
+
+  /* .real-hero-content {
     display: flex !important;
     flex-direction: column !important;
     padding: 24px 20px !important;
     gap: 20px !important;
     background: #09101d !important;
+  } */
+
+  .real-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 520px;
+    padding: 40px 20px;
+    background: transparent !important;
   }
 
   .real-hero-copy {
@@ -1509,7 +1551,6 @@
     display: none !important;
   }
 
-  /* 2. FDI Banner Mobile Stacking (Option B) */
   .real-fdi-banner {
     display: flex !important;
     flex-direction: column !important;
