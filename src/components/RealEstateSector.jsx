@@ -18,7 +18,7 @@ import {
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
 // import realEstateHero from '../assets/real estate-1.png';
-import realEstateHero from '../assets/realdo estate 2.png';
+import realEstateHero from '../assets/real estate 2.png';
 
 const segments = [
   {
@@ -482,3 +482,4 @@ export default function RealEstateSector() {
     </div>
   );
 }
+
