@@ -516,19 +516,17 @@
 
 .why-card-image-box {
   width: 100%;
-  overflow: hidden;
   background: #f8fafc;
 }
 
 .why-card-img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 190px;
   display: block;
 }
 
 .why-card-content {
-  padding: 30px 24px;
+  padding: 18px 24px 30px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -595,7 +593,11 @@
 
 @media (max-width: 600px) {
 
-  /* Mobile View: Vertical Timeline Layout */
+  /* Mobile View: convert timeline steps into stacked cards */
+  .why-timeline-wrapper {
+    padding: 0;
+  }
+
   .timeline-horizontal-bar {
     display: block;
     top: 0;
@@ -603,8 +605,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 2px;
-    height: calc(100% - 140px);
-    /* Runs vertically center through circles */
+    height: calc(100% - 80px);
     margin: 40px 0;
   }
 
@@ -614,26 +615,61 @@
     transition: height 400ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Calculate height for dynamic vertical progress */
-  .why-timeline-wrapper {
-    padding: 0;
-  }
-
   .why-timeline-list {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 18px;
   }
 
   .timeline-item {
     width: 100%;
     align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 24px;
+    padding: 24px 20px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  }
+
+  .timeline-item-info {
+    margin-top: 18px;
+  }
+
+  .timeline-item-title {
+    font-size: 22px;
   }
 
   .timeline-item-desc {
     max-width: 280px;
+    margin-top: 10px;
+  }
+
+  .timeline-item.active {
+    transform: none;
+    border-color: rgba(239, 68, 68, 0.35);
+    box-shadow: 0 16px 36px rgba(239, 68, 68, 0.12);
+  }
+
+  .timeline-item:hover {
+    transform: none;
+  }
+
+  .timeline-item:hover .timeline-icon-box {
+    transform: none;
+  }
+
+  .timeline-item:hover .timeline-icon-wrapper {
+    transform: none;
   }
 
   .why-cards-grid {
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+
+
+
+

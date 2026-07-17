@@ -4,7 +4,7 @@ import './WhyUs.css';
 import whyHero from '../assets/whyghl.png';
 
 export default function WhyUs() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(null);
   const introRef = useRef(null);
 
   const criteriaList = [
@@ -157,7 +157,7 @@ export default function WhyUs() {
               {/* Dynamic red progress segment based on selection */}
               <div
                 className="timeline-progress-bar"
-                style={{ width: `${(activeIdx / 5) * 100}%` }}
+                style={{ width: activeIdx === null ? "0%" : `${(activeIdx / 5) * 100}%` }}
               ></div>
             </div>
 
@@ -229,3 +229,5 @@ export default function WhyUs() {
     </div>
   );
 }
+
+
