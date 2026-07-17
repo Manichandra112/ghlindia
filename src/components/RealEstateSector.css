@@ -59,6 +59,19 @@
   padding-bottom: clamp(28px, 4vw, 52px);
 }
 
+@media (min-width: 993px) {
+  .real-hero-content {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .real-hero-copy {
+    padding-top: 50px;
+  }
+}
+
 .real-eyebrow,
 .real-section-header>span,
 .real-policy-copy>span,
@@ -1645,3 +1658,4 @@
     height: 220px;
   }
 }
+

@@ -73,6 +73,22 @@
   padding-bottom: clamp(28px, 4vw, 56px);
 }
 
+@media (min-width: 993px) {
+  .agri-hero-content {
+    grid-template-columns: minmax(0, 620px) minmax(240px, 320px);
+    justify-content: space-between;
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .agri-hero-copy {
+    max-width: 620px;
+    padding-top: 40px;
+  }
+}
+
 .agri-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1004,3 +1020,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+

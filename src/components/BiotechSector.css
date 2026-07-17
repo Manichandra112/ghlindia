@@ -716,6 +716,15 @@
   padding-bottom: clamp(64px, 9vw, 112px);
 }
 
+@media (min-width: 993px) {
+  .biotech-hero-content {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
 .biotech-hero-copy {
   max-width: 720px;
 }
@@ -802,8 +811,8 @@
   padding: 24px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 8px;
-  background: rgba(4, 14, 26, 0.62);
-  backdrop-filter: blur(18px);
+  background: transparent;
+  backdrop-filter: none;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
 }
 
@@ -1680,3 +1689,4 @@
     line-height: 1.5 !important;
   }
 }
+

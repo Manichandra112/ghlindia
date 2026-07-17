@@ -73,6 +73,19 @@
   padding-bottom: clamp(28px, 4vw, 56px);
 }
 
+@media (min-width: 993px) {
+  .food-hero-content {
+    padding-left: 3.5% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .food-hero-copy {
+    padding-top: 50px;
+  }
+}
+
 .food-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -1048,3 +1061,4 @@
     grid-template-columns: 1fr;
   }
 }
+
