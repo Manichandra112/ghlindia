@@ -81,6 +81,9 @@
   position: relative;
   transition: var(--transition-smooth);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-card:hover {
@@ -90,9 +93,11 @@
 }
 
 .info-card-img {
-  width: 100%;
+  display: block;
+  width: auto;
   height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 /* Card reflection overlay on hover */
@@ -139,6 +144,7 @@
   0% {
     transform: translate3d(100vw, 0, 0);
   }
+
   100% {
     transform: translate3d(0, 0, 0);
   }

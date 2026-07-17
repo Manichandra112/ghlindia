@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { Star, ShieldAlert, BadgeCheck, ChevronRight, MessageSquareQuote, X } from 'lucide-react';
+import { Star, ShieldAlert, BadgeCheck, ChevronLeft, ChevronRight, MessageSquareQuote, X } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 import 'swiper/css';
@@ -105,6 +105,12 @@ export default function Reviews() {
 
         {/* Swiper Slider */}
         <div className="reviews-slider-container" data-animate="fade-up" data-stagger-delay="400ms">
+          <button className="reviews-prev" aria-label="Previous slide">
+            <ChevronLeft size={22} />
+          </button>
+          <button className="reviews-next" aria-label="Next slide">
+            <ChevronRight size={22} />
+          </button>
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
@@ -115,9 +121,12 @@ export default function Reviews() {
             pagination={{
               clickable: true,
             }}
-            navigation={true}
+            navigation={{
+              prevEl: '.reviews-prev',
+              nextEl: '.reviews-next',
+            }}
             breakpoints={{
-              640: { slidesPerView: 1.5 },
+              640: { slidesPerView: 1 },
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 }
             }}

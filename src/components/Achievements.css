@@ -231,7 +231,8 @@
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
-  background-color: rgba(18, 20, 26, 0.82); /* Glassmorphism background */
+  background-color: rgba(18, 20, 26, 0.82);
+  /* Glassmorphism background */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);

@@ -76,7 +76,7 @@
   .reel-media-top,
   .reel-thumbnail-wrapper,
   .reel-video-element {
-    height: 350px !important;
+    height: 390px !important;
   }
 
   .reel-video-element {
@@ -94,6 +94,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .about-middle-card {
+    width: 100% !important;
+    max-width: 270px !important;
+    margin: 0 auto;
   }
 
   /* Keep GHL heading the same size as desktop on mobile */
@@ -156,7 +162,7 @@
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   margin: 0 auto;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
@@ -282,6 +288,9 @@
   align-items: center;
   text-align: center;
   align-self: stretch;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   overflow: hidden;
@@ -343,3 +352,14 @@
   text-align: justify;
   padding: 0 16px 16px 16px;
 }
+
+
+
+
+
+
+
+
+
+
+

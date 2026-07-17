@@ -1094,8 +1094,18 @@ a {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
   }
 
-  .team-hero-controls {
-    margin-top: 2px;
+
+
+  .team-hero-dots {
+    display: inline-flex;
+    padding: 6px 12px;
+    gap: 8px;
+    margin: 0 auto;
+  }
+
+  .team-hero-dots button {
+    width: 8px;
+    height: 8px;
   }
 
   .team-story-section {
@@ -1122,3 +1132,4 @@ a {
     padding: 24px 0 40px 0 !important;
   }
 }
+
