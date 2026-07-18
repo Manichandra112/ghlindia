@@ -17,8 +17,13 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './RealEstateSector.css';
-// import realEstateHero from '../assets/real estate-1.png';
-import realEstateHero from '../assets/real estate 2.png';
+import realEstateHeroPrimary from '../assets/realestate 1.png';
+import realEstateHeroSecondary from '../assets/real estate 2.png';
+
+const realEstateImages = {
+  primary: realEstateHeroPrimary,
+  secondary: realEstateHeroSecondary,
+};
 
 const segments = [
   {
@@ -188,7 +193,8 @@ export default function RealEstateSector() {
 
   return (
     <div className="real-page" ref={pageRef}>
-      <section className="real-hero" style={{ backgroundImage: `url(${realEstateHero})` }}>
+      <section className="real-hero">
+        <img className="real-hero-bg" src={realEstateImages.primary} alt="Real estate skyline" />
         <div className="real-hero-overlay" />
         <div className="container real-hero-content">
           <div className="real-hero-copy" data-animate="fade-up">
@@ -390,9 +396,8 @@ export default function RealEstateSector() {
 
       <section className="real-fdi-banner">
         <picture>
-          <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/sectors/bennar-mobile/RE-Mid-Mob.jpg" />
           <img
-            src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/RE-Mid-Web.jpg"
+            src={realEstateImages.secondary}
             alt="real estate investing"
           />
         </picture>
@@ -401,6 +406,10 @@ export default function RealEstateSector() {
             <div className="real-fdi-insight">
               <span>Market Insight</span>
               <h2>The Government has allowed 100% FDI for townships and settlements development projects.</h2>
+              <p>
+                This policy support improves capital access for large-scale housing and integrated development,
+                strengthening long-term opportunities across township, residential, and urban infrastructure projects.
+              </p>
             </div>
           </div>
         </div>
@@ -482,4 +491,9 @@ export default function RealEstateSector() {
     </div>
   );
 }
+
+
+
+
+
 

@@ -1402,7 +1402,7 @@
 
 /* Corrections: keep original flow and scrolling diabetes context visible */
 .biotech-hero {
-  min-height: clamp(320px, 42vw, 460px);
+  height: clamp(280px, 45vw, 540px);
 }
 
 .biotech-hero-content {
@@ -1689,4 +1689,6 @@
     line-height: 1.5 !important;
   }
 }
+
+
 
