@@ -163,8 +163,8 @@
 }
 
 .real-hero-panel {
-  align-self: center;
-  margin-top: 0;
+  align-self: start;
+  margin-top: 220px;
   max-width: 330px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.28);
@@ -271,8 +271,8 @@
 }
 
 .real-chart-card {
-  height: 430px;
-  padding: 14px 20px;
+  height: 460px;
+  padding: 18px 20px 28px;
   border-radius: 16px;
   color: #ffffff;
   background: linear-gradient(145deg, #061a1a, #0a2e2e 60%, #062020);
@@ -316,7 +316,7 @@
   display: flex;
   align-items: flex-end;
   gap: clamp(18px, 3vw, 30px);
-  height: 285px;
+  height: 335px;
 }
 
 .real-chart-block {
@@ -367,14 +367,14 @@
 .real-market-story {
   display: flex;
   flex-direction: column;
-  height: 430px;
+  height: 460px;
   padding-top: 0;
   gap: 0;
 }
 
 .real-proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 12px;
 }
@@ -383,7 +383,7 @@
   background: #ffffff;
   border: 1px solid var(--real-line);
   border-radius: 12px;
-  padding: 14px 12px;
+  padding: 14px 12px 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -431,6 +431,7 @@
   border: 1px solid rgba(13, 115, 119, 0.18);
   border-left: 4px solid var(--real-primary);
 }
+
 /* ─ Highlight Cards (matches biotech-highlight-grid) ─ */
 .real-highlight-grid {
   display: grid;
@@ -1588,6 +1589,7 @@
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
+
   .real-fdi-banner {
     display: flex !important;
     flex-direction: column !important;
@@ -1638,12 +1640,16 @@
     line-height: 1.6 !important;
     color: rgba(255, 255, 255, 0.7) !important;
   }
+
   /* 3. General mobile spacing overrides */
   .real-hero-content,
-  .real-proof-grid,
   .real-policy-grid,
   .real-segment-grid {
     grid-template-columns: 1fr;
+  }
+
+  .real-proof-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .real-hero-actions,
@@ -1689,34 +1695,3 @@
     height: 220px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -388,7 +388,7 @@
 
 .agri-highlight-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 22px;
 }
@@ -397,7 +397,7 @@
   background: #ffffff;
   border: 1px solid var(--agri-line);
   border-radius: 12px;
-  padding: 18px 14px;
+  padding: 16px 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -690,6 +690,7 @@
     margin: 40px 16px;
     min-height: 300px;
   }
+
   .agri-trend-overlay {
     min-height: 300px;
     background: linear-gradient(180deg, rgba(4, 20, 10, 0.9) 0%, rgba(4, 20, 10, 0.75) 100%);
@@ -879,7 +880,7 @@
   }
 
   .agri-highlight-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .agri-why-grid {
@@ -888,13 +889,15 @@
 }
 
 @media (max-width: 760px) {
+
   /* 1. Hero Mobile Stacking (Option B) */
   .agri-hero {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
     min-height: auto !important;
-    background: #09140a !important; /* solid background matching --agri-ink */
+    background: #09140a !important;
+    /* solid background matching --agri-ink */
     margin-top: var(--header-height, 80px) !important;
   }
 
@@ -1020,5 +1023,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-

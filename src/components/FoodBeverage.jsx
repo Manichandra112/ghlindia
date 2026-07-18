@@ -16,6 +16,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FoodBeverage.css';
 import BottomCTA from './BottomCTA';
 import foodMidImage from '../assets/food2.png';
+import foodHeroImage from '../assets/food & bevarage image.png';
 
 const GHL = 'https://www.ghlindia.com';
 
@@ -30,6 +31,7 @@ const highlights = [
   { value: 'US$ 220B', label: 'India FMCG market expected by 2025', Icon: TrendingUp },
   { value: '11%', label: 'e-commerce contribution forecast by 2030', Icon: Globe2 },
   { value: '1B', label: 'internet users likely in India by 2025', Icon: UsersRound },
+  { value: '9.1% YoY', label: 'projected real household spending growth', Icon: Sprout },
 ];
 
 const investmentThesis = [
@@ -205,7 +207,7 @@ export default function FoodBeverage() {
       <section className="food-hero">
         <picture>
           <img
-            src={`${GHL}/assets/img/sectors/bennar-desktop/Food-Web.jpg`}
+            src={foodHeroImage}
             alt="Food and beverage sector"
             className="food-hero-bg"
           />

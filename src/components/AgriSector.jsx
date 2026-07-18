@@ -31,6 +31,7 @@ const highlights = [
   { value: '54.6%', label: "of India's population depends on agriculture", Icon: Sprout },
   { value: '18.8%', label: 'share of GVA from agriculture in FY22', Icon: TrendingUp },
   { value: 'US$ 24B', label: 'predicted sector size by 2025', Icon: ShieldCheck },
+  { value: '1,300+', label: 'cold storages added since 2015', Icon: Warehouse },
 ];
 
 const investmentThesis = [

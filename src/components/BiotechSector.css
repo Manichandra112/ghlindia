@@ -808,12 +808,16 @@
 
 .biotech-hero-panel {
   align-self: end;
-  padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  justify-self: end;
+  margin-bottom: 80px;
+  max-width: 320px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 8px;
-  background: transparent;
-  backdrop-filter: none;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  background: rgba(5, 15, 5, 0.48);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
 }
 
 .biotech-hero-panel span {
@@ -828,14 +832,14 @@
   display: block;
   color: #ffffff;
   font-family: var(--font-heading);
-  font-size: clamp(38px, 5vw, 58px);
+  font-size: clamp(28px, 3.6vw, 42px);
   line-height: 1;
-  margin: 16px 0 12px;
+  margin: 12px 0 10px;
 }
 
 .biotech-hero-panel p {
   color: rgba(255, 255, 255, 0.76);
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.65;
 }
 
@@ -914,7 +918,7 @@
 }
 
 .bio-chart-bars {
-  height: 250px;
+  height: 310px;
   gap: clamp(10px, 2vw, 18px);
 }
 
@@ -947,20 +951,21 @@
 
 .biotech-highlight-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
 .biotech-highlight-card {
-  min-height: 156px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 18px;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 14px 12px;
   border: 1px solid var(--bio-line);
   border-radius: 8px;
   background: linear-gradient(180deg, #ffffff, #f4fbf8);
   box-shadow: 0 12px 30px rgba(9, 17, 31, 0.06);
+  transition: transform 0.22s ease;
 }
 
 .biotech-highlight-card svg {
@@ -970,7 +975,7 @@
 .biotech-highlight-card strong {
   color: var(--bio-ink);
   font-family: var(--font-heading);
-  font-size: clamp(24px, 3vw, 34px);
+  font-size: clamp(18px, 2.2vw, 26px);
   line-height: 1;
 }
 
@@ -1356,7 +1361,7 @@
   }
 
   .biotech-highlight-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1381,10 +1386,13 @@
     width: 100%;
   }
 
-  .biotech-highlight-grid,
   .biotech-proof-strip,
   .biotech-segment-grid {
     grid-template-columns: 1fr;
+  }
+
+  .biotech-highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .bio-chart-wrap {
@@ -1419,11 +1427,15 @@
 }
 
 .biotech-hero-panel {
-  padding: 18px;
+  padding: 16px;
+  margin-bottom: 80px;
+  max-width: 320px;
+  width: 100%;
+  justify-self: end;
 }
 
 .biotech-hero-panel strong {
-  font-size: clamp(30px, 3.7vw, 46px);
+  font-size: clamp(28px, 3.6vw, 42px);
 }
 
 .biotech-diamond-img {
@@ -1515,13 +1527,15 @@
    (Ensures header, tabs, and content fit in one single frame)
    ========================================================================== */
 @media screen and (max-width: 768px) {
+
   /* 1. Hero Mobile Stacking (Option B) */
   .biotech-hero {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
     min-height: auto !important;
-    background: #09111f !important; /* Solid dark background matching --bio-ink */
+    background: #09111f !important;
+    /* Solid dark background matching --bio-ink */
     margin-top: var(--header-height, 80px) !important;
   }
 
@@ -1689,6 +1703,3 @@
     line-height: 1.5 !important;
   }
 }
-
-
-

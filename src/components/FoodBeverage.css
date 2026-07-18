@@ -82,7 +82,7 @@
   }
 
   .food-hero-copy {
-    padding-top: 50px;
+    padding-top: 90px;
   }
 }
 
@@ -385,7 +385,7 @@
 
 .food-highlight-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 22px;
 }
@@ -394,7 +394,7 @@
   background: #ffffff;
   border: 1px solid var(--food-line);
   border-radius: 12px;
-  padding: 18px 14px;
+  padding: 16px 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -921,6 +921,10 @@
 @media (max-width: 1000px) {
   .food-market-grid {
     grid-template-columns: 1fr;
+  }
+
+  .food-highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .food-why-grid {

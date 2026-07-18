@@ -98,6 +98,7 @@ const highlights = [
   { value: 'Top 12', label: 'global biotech destinations', Icon: ShieldCheck },
   { value: '3rd', label: 'largest in Asia-Pacific', Icon: TrendingUp },
   { value: '1,128', label: 'biotech startups launched in 2021', Icon: FlaskConical },
+  { value: 'US$ 300B', label: '2030 Bioeconomy Outlook', Icon: TrendingUp },
 ];
 
 const investmentThesis = [

@@ -269,6 +269,11 @@ export default function RealEstateSector() {
                   <strong>10</strong>
                   <span>government reforms supporting the sector</span>
                 </div>
+                <div className="real-proof-card">
+                  <Building2 size={22} />
+                  <strong>US$ 1T</strong>
+                  <span>market size expected by 2030</span>
+                </div>
               </div>
               <div className="real-source-context">
                 <p>
@@ -309,7 +314,7 @@ export default function RealEstateSector() {
                 <li><strong>Investment:</strong> Eased FDI norms and tax reforms to attract global capital.</li>
               </ul>
 
-              
+
             </div>
 
             <div className="policy-cards-grid" data-animate="fade-up" data-stagger-delay="120ms" role="list">
@@ -342,11 +347,11 @@ export default function RealEstateSector() {
               })()}
             </div>
 
-            
+
           </div>
         </div>
       </section>
-      
+
 
       <section className="real-segments-section" id="real-segments">
         <div className="container">
