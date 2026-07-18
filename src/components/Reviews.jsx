@@ -173,10 +173,15 @@ function ReviewCard({ review }) {
     }, 500); // Wait for CSS animation to finish
   };
 
-  const maxLen = 120;
+  const maxLen = 130;
   const isLong = review.text.length > maxLen;
-
-  const displayText = isLong ? review.text.substring(0, maxLen) + '...' : review.text;
+  
+  let displayText = review.text;
+  if (isLong) {
+    const truncated = review.text.substring(0, maxLen);
+    const lastSpace = truncated.lastIndexOf(' ');
+    displayText = (lastSpace > 0 ? truncated.substring(0, lastSpace) : truncated) + '...';
+  }
 
   return (
     <>

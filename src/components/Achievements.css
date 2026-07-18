@@ -59,7 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 20px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -112,7 +112,7 @@
 }
 
 .award-card-info {
-  padding: 20px 24px;
+  padding: 22px 24px;
   background-color: #11141a;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   margin-top: auto;
@@ -295,16 +295,31 @@
 
 @media (max-width: 768px) {
   .achievements-carousel-container {
-    padding: 4px 0 28px;
+    padding: 8px 0 10px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.03);
   }
 
   .achievement-slide {
-    width: min(78vw, 290px);
-    height: 420px;
+    width: min(76vw, 270px);
+    height: 375px;
+  }
+
+  .award-image-box {
+    height: 275px;
+    padding: 18px 14px;
+  }
+
+  .award-card-info {
+    padding: 16px 16px;
   }
 
   .achievements-swiper {
-    padding: 18px 15px 30px;
+    padding: 14px 10px 24px !important;
+  }
+
+  .achievements-section .swiper-pagination {
+    bottom: 3px !important;
   }
 
   .achievements-prev,

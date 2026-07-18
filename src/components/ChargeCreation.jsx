@@ -84,8 +84,8 @@ export default function ChargeCreation() {
             <div className="charge-hero-content">
               <span className="charge-hero-tag">SECURED STRUCTURE. LEGAL PROTECTION.</span>
               <h1>
-                Charge Creation
-                <span> that protects every investment</span>
+                <span className="charge-mob-line1">Charge Creation that</span> <br className="charge-mob-br" />
+                <span className="charge-mob-line2">protects every investment</span>
               </h1>
               <p>
                 Understand how legally registered charges secure assets, protect investor capital,
@@ -166,7 +166,10 @@ export default function ChargeCreation() {
           </div>
 
           <div className="video-section-header text-center">
-            <h3>Ever wondered how charge creation <br className="mobile-br" /> works in debenture plans?</h3>
+            <h3>
+              <span className="debenture-mob-line1">Ever wondered how charge creation</span> <br className="debenture-mob-br" />
+              <span className="debenture-mob-line2">works in debenture plans?</span>
+            </h3>
           </div>
 
           <div className="debenture-video-box" data-animate="fade-up">

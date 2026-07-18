@@ -330,9 +330,9 @@ export default function BiotechSector() {
       {/* ─── Trend Banner with Marquee ─── */}
       <section className="biotech-trend-banner">
         <picture>
-          <source media="(max-width: 768px)" srcSet={`${GHL}/assets/img/sectors/bennar-mobile/Bio-Mob.jpg`} />
+          <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Bio-Mid-Web.jpg" />
           <img
-            src={`${GHL}/assets/img/sectors/bennar-desktop/Bio-Mid-Web.jpg`}
+            src="https://www.ghlindia.com/assets/img/sectors/bennar-desktop/Bio-Mid-Web.jpg"
             alt="biotech investment trends"
             className="biotech-trend-img"
           />

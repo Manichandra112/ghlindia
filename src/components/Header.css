@@ -419,6 +419,19 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
+  .mobile-item.active {
+    color: var(--primary-red) !important;
+    font-weight: 700 !important;
+  }
+
+  .mobile-item.active span {
+    color: var(--primary-red) !important;
+  }
+
+  .mobile-item.active svg {
+    color: var(--primary-red) !important;
+  }
+
   .mobile-aif {
     color: var(--primary-red);
     justify-content: flex-start;

@@ -44,7 +44,7 @@ export default function Sectors() {
   return (
     <section className="sectors-section section-padding no-padding" id="sectors" ref={sectionRef}>
       <div className="container">
-        
+
         {/* Section Header */}
         <div className="section-header" data-animate="fade-up">
           <span>Investment Domains</span>
@@ -57,19 +57,19 @@ export default function Sectors() {
           {sectors.map((sector, index) => (
             <a
               href={sector.href}
-              key={index} 
+              key={index}
               className="sector-card glass-panel card-hover-effect"
               style={{ '--hover-accent': sector.accent }}
               data-animate="fade-up"
               data-stagger-delay={`${index * 250}ms`}
             >
               <div className="sector-shimmer-effect"></div>
-              
+
               <div className="sector-image-container">
-                <img 
-                  src={sector.image} 
-                  alt={sector.title} 
-                  className="sector-image" 
+                <img
+                  src={sector.image}
+                  alt={sector.title}
+                  className="sector-image"
                 />
                 <span className="sector-stat-badge">{sector.stat}</span>
               </div>
@@ -77,7 +77,7 @@ export default function Sectors() {
               <div className="sector-card-content">
                 <h3 className="sector-title">{sector.title}</h3>
                 <p className="sector-desc">{sector.description}</p>
-                
+
                 <div className="sector-card-footer">
                   <span className="sector-footer-action">Read market insights</span>
                   <ArrowRight size={16} className="arrow-icon" />

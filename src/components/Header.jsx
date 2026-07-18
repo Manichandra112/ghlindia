@@ -207,7 +207,7 @@ export default function Header() {
         {/* Mobile Navigation Menu Drawer */}
         <div className={`mobile-navbar ${mobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-nav-links">
-            <li><a href="#/" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
+            <li><a href="#/" className={`mobile-item ${isActiveLink('#/') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Home</a></li>
             <li>
               <a href="https://ghlindiaventures.com/" target="_blank" rel="noopener noreferrer" className="mobile-item mobile-aif" onClick={() => setMobileMenuOpen(false)}>
                 AIF <span className="animated-dot"></span>
@@ -215,35 +215,35 @@ export default function Header() {
             </li>
 
             <li className="mobile-dropdown-parent">
-              <button className="mobile-item" onClick={() => toggleDropdown('mob-strategy')}>
+              <button className={`mobile-item ${isActiveSection(['#/fractional-ownership', '#/debt-financing']) ? 'active' : ''}`} onClick={() => toggleDropdown('mob-strategy')}>
                 <span>Strategy</span>
                 <ChevronDown size={16} />
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-strategy' ? 'open' : ''}`}>
-                <li><a href="#/fractional-ownership" onClick={() => setMobileMenuOpen(false)}>Fractional Investment</a></li>
-                <li><a href="#/debt-financing" onClick={() => setMobileMenuOpen(false)}>Debt Funding</a></li>
+                <li><a href="#/fractional-ownership" className={isActiveLink('#/fractional-ownership') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Fractional Investment</a></li>
+                <li><a href="#/debt-financing" className={isActiveLink('#/debt-financing') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Debt Funding</a></li>
               </ul>
             </li>
 
             <li className="mobile-dropdown-parent">
-              <button className="mobile-item" onClick={() => toggleDropdown('mob-security')}>
+              <button className={`mobile-item ${isActiveSection(['#/charge-creation']) ? 'active' : ''}`} onClick={() => toggleDropdown('mob-security')}>
                 <span>Security</span>
                 <ChevronDown size={16} />
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-security' ? 'open' : ''}`}>
-                <li><a href="#/charge-creation" onClick={() => setMobileMenuOpen(false)}>Charge Creation</a></li>
+                <li><a href="#/charge-creation" className={isActiveLink('#/charge-creation') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Charge Creation</a></li>
               </ul>
             </li>
 
             <li className="mobile-dropdown-parent">
-              <button className="mobile-item" onClick={() => toggleDropdown('mob-intelligence')}>
+              <button className={`mobile-item ${isActiveSection(['#/economy-insight', '#/financial-iq', '#/educational-videos']) ? 'active' : ''}`} onClick={() => toggleDropdown('mob-intelligence')}>
                 <span>Intelligence</span>
                 <ChevronDown size={16} />
               </button>
               <ul className={`mobile-submenu ${activeDropdown === 'mob-intelligence' ? 'open' : ''}`}>
-                <li><a href="#/economy-insight" onClick={() => setMobileMenuOpen(false)}>Economy Insight</a></li>
-                <li><a href="#/financial-iq" onClick={() => setMobileMenuOpen(false)}>Financial IQ</a></li>
-                <li><a href="#/educational-videos" onClick={() => setMobileMenuOpen(false)}>Educational Videos</a></li>
+                <li><a href="#/economy-insight" className={isActiveLink('#/economy-insight') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Economy Insight</a></li>
+                <li><a href="#/financial-iq" className={isActiveLink('#/financial-iq') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Financial IQ</a></li>
+                <li><a href="#/educational-videos" className={isActiveLink('#/educational-videos') ? 'active' : ''} onClick={() => setMobileMenuOpen(false)}>Educational Videos</a></li>
               </ul>
             </li>
 
@@ -257,7 +257,7 @@ export default function Header() {
             <li><a href="#/contact" className={`mobile-item ${isActiveLink('#/contact') ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)}>Contact Us</a></li>
             <li><a href={BROCHURE_URL} target="_blank" rel="noopener noreferrer" className="mobile-item" onClick={() => setMobileMenuOpen(false)}>Brochure</a></li>
             <li className="mobile-dropdown-parent">
-              <button className="mobile-item" onClick={() => toggleDropdown('mob-sectors')}>
+              <button className={`mobile-item ${isActiveSection(sectorLinks.map((sector) => sector.href)) ? 'active' : ''}`} onClick={() => toggleDropdown('mob-sectors')}>
                 <span>Sectors</span>
                 <ChevronDown size={16} />
               </button>

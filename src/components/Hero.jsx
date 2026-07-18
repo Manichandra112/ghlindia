@@ -8,6 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './Hero.css';
 
+import hero1 from '../assets/hero1.png';
+
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -21,23 +23,23 @@ export default function Hero() {
   }, []);
 
   const desktopSlides = [
-    { img: '/assets/img/Home_23.07.2024/ET_now.jpg', link: 'https://www.youtube.com/watch?v=bMJHxlPS78A' },
-    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Web.jpg', link: '#stats' },
-    { img: '/assets/img/home2026/web/Share.jpg', link: '#login' },
-    { img: '/assets/img/home2026/web/18.jpg', link: '#login' },
-    { img: '/assets/img/home2026/web/Secured-NCD.jpg', link: '#login' },
-    { img: '/assets/img/home2026/web/NCDss.jpg', link: '#login' },
-    { img: '/assets/img/home2026/web/Recession-or-inflation-.jpg', link: '#login' }
+    { img: hero1 },
+    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Web.jpg' },
+    { img: '/assets/img/home2026/web/Share.jpg' },
+    { img: '/assets/img/home2026/web/18.jpg' },
+    { img: '/assets/img/home2026/web/Secured-NCD.jpg' },
+    { img: '/assets/img/home2026/web/NCDss.jpg' },
+    { img: '/assets/img/home2026/web/Recession-or-inflation-.jpg' }
   ];
 
   const mobileSlides = [
-    { img: '/assets/img/Home_23.07.2024/ET_now-mob.jpg', link: 'https://www.youtube.com/watch?v=bMJHxlPS78A' },
-    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Mob-Web.jpg', link: '#stats' },
-    { img: '/assets/img/home2026/mob/Share-Mob.jpg', link: '#login' },
-    { img: '/assets/img/home2026/mob/18Mob.jpg', link: '#login' },
-    { img: '/assets/img/home2026/mob/NCDs-Mob.jpg', link: '#login' },
-    { img: '/assets/img/home2026/mob/Secured-NCD-Mob.jpg', link: '#login' },
-    { img: '/assets/img/home2026/mob/Recession-or-inflation--Mob.jpg', link: '#login' }
+    { img: hero1 },
+    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Mob-Web.jpg' },
+    { img: '/assets/img/home2026/mob/Share-Mob.jpg' },
+    { img: '/assets/img/home2026/mob/18Mob.jpg' },
+    { img: '/assets/img/home2026/mob/NCDs-Mob.jpg' },
+    { img: '/assets/img/home2026/mob/Secured-NCD-Mob.jpg' },
+    { img: '/assets/img/home2026/mob/Recession-or-inflation--Mob.jpg' }
   ];
 
   const activeSlides = isMobile ? mobileSlides : desktopSlides;
@@ -62,28 +64,37 @@ export default function Hero() {
           className="hero-swiper"
         >
           {activeSlides.map((slide, index) => {
-            const isExternal = slide.link.startsWith('http');
             const slideContent = (
               <div className="hero-slide-img-wrapper">
-                <img 
-                  src={slide.img} 
-                  alt={`GHL Alternate Investment Banner ${index + 1}`} 
-                  className="hero-slide-img" 
+                <img
+                  src={slide.img}
+                  alt={`GHL Alternate Investment Banner ${index + 1}`}
+                  className="hero-slide-img"
                 />
+                {index === 0 && (
+                  <div className="hero-slide-overlay-content">
+                    <div className="hero-slide-text-container">
+                      <h1 className="hero-slide-title-custom">
+                        Building Wealth<br />
+                        Through <span className="gold-text">Strategic</span><br />
+                        <span className="gold-text">Investments</span>
+                      </h1>
+                      <div className="hero-slide-gold-line" />
+                      <p className="hero-slide-desc-custom">
+                        Trusted investment solutions in Real Estate, Asset Management<br />
+                        and Alternative Investments.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             );
 
             return (
               <SwiperSlide key={index}>
-                {isExternal ? (
-                  <a href={slide.link} target="_blank" rel="noopener noreferrer" className="hero-slide-link">
-                    {slideContent}
-                  </a>
-                ) : (
-                  <a href={slide.link} className="hero-slide-link">
-                    {slideContent}
-                  </a>
-                )}
+                <div className="hero-slide-no-link">
+                  {slideContent}
+                </div>
               </SwiperSlide>
             );
           })}

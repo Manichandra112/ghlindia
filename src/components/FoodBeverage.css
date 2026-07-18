@@ -673,7 +673,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  margin: 80px 0;
+  margin: 0;
   min-height: 450px;
   border-radius: 0;
   overflow: hidden;
@@ -756,6 +756,7 @@
     margin: 40px 16px;
     min-height: 300px;
   }
+
   .food-trend-overlay {
     min-height: 300px;
     background: linear-gradient(180deg, rgba(23, 10, 3, 0.9) 0%, rgba(23, 10, 3, 0.75) 100%);
@@ -933,13 +934,15 @@
 }
 
 @media (max-width: 760px) {
+
   /* 1. Hero Mobile Stacking (Option B) */
   .food-hero {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
     min-height: auto !important;
-    background: #1c0f02 !important; /* solid background matching --food-ink */
+    background: #1c0f02 !important;
+    /* solid background matching --food-ink */
     margin-top: var(--header-height, 80px) !important;
   }
 
@@ -1001,7 +1004,7 @@
     flex-direction: column !important;
     height: auto !important;
     min-height: auto !important;
-    margin: 32px 0 !important;
+    margin: 0 !important;
     background: #1c0f02 !important;
     box-shadow: none !important;
   }
@@ -1065,4 +1068,3 @@
     grid-template-columns: 1fr;
   }
 }
-
