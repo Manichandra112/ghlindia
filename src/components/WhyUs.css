@@ -83,7 +83,7 @@
 }
 
 .why-hero-content h1 {
-  font-size: clamp(40px, 5.6vw, 68px);
+  font-size: clamp(34px, 4.6vw, 56px);
   line-height: 1.04;
   color: #f8fbff;
   margin-bottom: 18px;

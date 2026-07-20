@@ -20,6 +20,8 @@ import './FractionalOwnership.css';
 import BottomCTA from './BottomCTA';
 import fractionalInvestment from '../assets/fractional invesment.png';
 
+import fractionalInvestmentmobile from '../assets/debt-financingmobile.png';
+
 export default function FractionalOwnership() {
   const animOptions = { threshold: 0.3, rootMargin: '0px 0px -250px 0px' };
   const sectionRef1 = useScrollAnimation(animOptions);
@@ -164,7 +166,7 @@ export default function FractionalOwnership() {
       {/* Intro Concept Section */}
       <section className="fractional-intro section-padding" id="learn-more" ref={sectionRef1}>
         <div className="container">
-          
+
           <div className="section-header text-center" data-animate="fade-up">
             <span className="intro-badge">Smart Finance</span>
             <h2>Interested in learning about <span className="text-highlight">fractional investment?</span></h2>
@@ -284,7 +286,7 @@ export default function FractionalOwnership() {
       {/* Expertise: Property Flipping */}
       <section className="property-flipping-expertise section-padding" ref={sectionRef5}>
         <div className="container">
-          
+
           <div className="section-header text-center" data-animate="fade-up">
             <span className="intro-badge">Our Core Engine</span>
             <h2>Our Primary Expertise: <span className="text-highlight">Property Flipping</span></h2>

@@ -10,7 +10,9 @@ import {
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './DebtFinancing.css';
-import debit from '../assets/debitfunding.png';
+import debit from '../assets/debt-financing1.png';
+import debtmobile from '../assets/debt-financingmobile.png';
+
 import BottomCTA from './BottomCTA';
 
 export default function DebtFinancing() {

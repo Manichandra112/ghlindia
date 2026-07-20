@@ -44,7 +44,7 @@
 .charge-hero-img {
   width: 100%;
   height: auto;
-  max-height: 550px;
+  max-height: 520px;
   display: block;
   margin: 0 auto;
 }
@@ -97,8 +97,8 @@
 }
 
 .charge-hero-content h1 {
-  font-size: clamp(40px, 5.6vw, 68px);
-  line-height: 1.04;
+  font-size: clamp(36px, 4.8vw, 60px);
+  line-height: 1.05;
   color: #f8fbff;
   margin-bottom: 18px;
   font-weight: 700;
