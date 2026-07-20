@@ -198,9 +198,9 @@
 }
 
 .real-breadcrumb {
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid var(--real-line);
-  padding: 13px 0;
+  background: var(--section-muted);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 14px 0;
 }
 
 .real-breadcrumb ul {
@@ -221,7 +221,7 @@
 
 .real-breadcrumb li.active,
 .real-breadcrumb li a:hover {
-  color: var(--real-red);
+  color: var(--primary-red, #e41f26);
 }
 
 .real-breadcrumb svg {
@@ -861,29 +861,27 @@
 }
 
 .real-filter-tab {
-  min-height: 38px;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 22px;
-  border-radius: 99px;
-  border: 2px solid rgba(26, 86, 160, 0.22);
-  color: #2f3847;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(9, 17, 31, 0.14);
+  color: #243142;
   background: #ffffff;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
-  letter-spacing: 0.02em;
 }
 
 .real-filter-tab.active,
 .real-filter-tab:hover {
   color: #ffffff;
   border-color: var(--real-primary);
-  background: var(--real-primary);
-  box-shadow: 0 4px 14px rgba(13, 115, 119, 0.32);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--real-primary), #094e51);
+  box-shadow: 0 10px 20px rgba(13, 115, 119, 0.2);
 }
 
 .real-segment-grid {

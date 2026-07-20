@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info } from 'lucide-react';
+import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info, ChevronRight } from 'lucide-react';
 import localVideos from '../data/educational_videos_data.json';
 import './EducationalVideos.css';
 import BottomCTA from './BottomCTA';
@@ -204,6 +204,17 @@ export default function EducationalVideos() {
           </div>
         </div>
       </div>
+
+      {/* ─── Breadcrumb ─── */}
+      <nav className="edu-breadcrumbs">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Videos</li>
+          </ul>
+        </div>
+      </nav>
 
       {/* Control Panel Bar (Filters + Search) */}
       <div className="edu-control-panel-bar">

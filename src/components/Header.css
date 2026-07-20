@@ -91,7 +91,7 @@
 
 .header-scrolled {
   top: 0;
-  height: 70px;
+  height: 58px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
@@ -113,44 +113,103 @@
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .logo-symbol {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background-color: var(--primary-red);
   color: var(--text-white);
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 24px;
-  border-radius: 8px;
+  font-size: 11px;
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(228, 31, 38, 0.3);
+  box-shadow: 0 4px 10px rgba(228, 31, 38, 0.22);
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .logo-highlight {
   font-family: var(--font-heading);
-  font-weight: 800;
+  font-weight: 900;
   font-size: 20px;
-  color: var(--dark-charcoal);
-  letter-spacing: -0.5px;
+  color: #1a1a1a;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 0.9;
 }
 
-.logo-sub {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--text-muted);
+.logo-i {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+}
+
+.logo-star {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6.2px;
+  height: 6.2px;
+}
+
+.logo-tagline {
+  font-size: 6.8px;
+  color: #7f8c8d;
   font-weight: 700;
-  margin-top: 2px;
+  margin-top: 0px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.15;
+}
+
+.logo-tagline-1 {
+  letter-spacing: 0.8px;
+}
+
+.logo-tagline-2 {
+  letter-spacing: 3.8px;
+}
+
+@media (max-width: 768px) {
+  .logo-symbol {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+    border-radius: 7px;
+  }
+  .logo-area {
+    gap: 6px;
+  }
+  .logo-highlight {
+    font-size: 16px;
+  }
+  .logo-star {
+    width: 5px;
+    height: 5px;
+    top: -4px;
+  }
+  .logo-tagline {
+    font-size: 5.5px;
+  }
+  .logo-tagline-1 {
+    letter-spacing: 0.5px;
+  }
+  .logo-tagline-2 {
+    letter-spacing: 2.7px;
+  }
 }
 
 /* Desktop Navbar */
@@ -174,6 +233,7 @@
   gap: 4px;
   padding: 8px 12px;
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 .nav-item:hover,

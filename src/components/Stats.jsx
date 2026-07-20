@@ -60,8 +60,8 @@ export default function Stats() {
       <div className="container">
         
         {/* Intro Header */}
-        <div className="stats-header-area" data-animate="fade-up">
-          <span className="stats-micro-title">Performance Metrics</span>
+        <div className="section-header" data-animate="fade-up">
+          <span>Performance Metrics</span>
           <h2>GHL India in Numbers</h2>
           <p>
             Our alternate investment platform provides transparency and security that back our rapid growth trajectory.

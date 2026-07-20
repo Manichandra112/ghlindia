@@ -238,9 +238,9 @@
 
 /* 3. Breadcrumbs List */
 .edu-breadcrumbs {
-  background-color: #ffffff;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  background-color: var(--section-muted);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .breadcrumbs-list {
@@ -270,8 +270,8 @@
 }
 
 .breadcrumbs-list li.active {
-  color: var(--text-dark, #0f172a);
-  font-weight: 500;
+  color: var(--primary-red, #e41f26) !important;
+  font-weight: 600 !important;
 }
 
 /* Anchor offset for pagination scroll to target */

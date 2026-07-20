@@ -12,9 +12,9 @@
 
 /* Breadcrumbs Styling */
 .breadcrumbs {
-  padding: 10px 0 10px 0;
-  background: transparent;
-  border-bottom: none;
+  background-color: var(--section-muted);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
   margin-bottom: 15px;
 }
 
@@ -51,31 +51,37 @@
   /* GHL brand red highlight */
 }
 
-.breadcrumbs nav ol {
+.breadcrumbs-list {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: #64748b;
-  font-weight: 500;
+  flex-wrap: wrap;
 }
 
-.breadcrumbs nav ol li+li::before {
-  content: "/";
-  padding: 0 10px;
-  color: #cbd5e1;
-}
-
-.breadcrumbs nav a {
-  color: #e41f26;
+.breadcrumbs-list li a {
+  color: #64748b;
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: color 0.2s ease;
 }
 
-.breadcrumbs nav a:hover {
-  opacity: 0.8;
+.breadcrumbs-list li a:hover {
+  color: var(--primary-red, #e41f26);
+}
+
+.breadcrumbs-list .separator {
+  margin: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  color: #94a3b8;
+}
+
+.breadcrumbs-list li.active {
+  color: var(--primary-red, #e41f26) !important;
+  font-weight: 600 !important;
 }
 
 /* Hero Section */

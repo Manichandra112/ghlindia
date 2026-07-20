@@ -227,8 +227,6 @@ export default function RealEstateSector() {
           <ul>
             <li><a href="#/">Home</a></li>
             <ChevronRight size={13} />
-            <li>Resources</li>
-            <ChevronRight size={13} />
             <li>Sectors</li>
             <ChevronRight size={13} />
             <li className="active">Real Estate</li>

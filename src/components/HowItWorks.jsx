@@ -116,11 +116,10 @@ export default function HowItWorks() {
     <section className="how-it-works-sec section-padding no-padding" id="how-it-works" ref={sectionRef}>
       <div className="container">
         {/* Section Header */}
-        <div className="how-header" data-animate="fade-up">
+        <div className="section-header" data-animate="fade-up">
           <span>Simple Onboarding</span>
           <h2>How Does It Work?</h2>
-          <div className="how-header-line"></div>
-          <p className="how-header-desc">
+          <p>
             Get started on your yield accumulation journey in four simple, secure stages.
           </p>
         </div>

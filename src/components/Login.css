@@ -81,8 +81,8 @@
 }
 
 .breadcrumb-current {
-  color: var(--text-dark);
-  font-weight: 500;
+  color: var(--primary-red);
+  font-weight: 600;
 }
 
 /* Main Section Layout */

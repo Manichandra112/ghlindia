@@ -8,44 +8,7 @@
   overflow: hidden;
 }
 
-.how-header {
-  text-align: center;
-  max-width: 680px;
-  margin: 0 auto 64px;
-}
 
-.how-header span {
-  display: block;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--primary-red, #e41f26);
-  margin-bottom: 12px;
-}
-
-.how-header h2 {
-  font-size: 36px;
-  font-weight: 800;
-  color: #111827;
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-
-.how-header-line {
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-red, #e41f26);
-  margin: 18px auto;
-  border-radius: 2px;
-}
-
-.how-header-desc {
-  font-size: 16px;
-  color: #4b5563;
-  line-height: 1.6;
-  margin: 0;
-}
 
 .how-steps-grid {
   display: grid;

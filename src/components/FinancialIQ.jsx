@@ -200,12 +200,14 @@ export default function FinancialIQ() {
           <div className="container">
             <span className="section-subtitle">Financial Education</span>
             <h1 className="page-title">Financial <span className="highlight">IQ</span></h1>
-            <nav>
-              <ol>
+            <nav className="fiq-breadcrumb-nav">
+              <ul className="breadcrumbs-list">
                 <li><a href="#/" onClick={() => setSelectedArticle(null)}>Home</a></li>
+                <span className="separator"><ChevronRight size={12} /></span>
                 <li><a href="#/financial-iq" onClick={() => setSelectedArticle(null)}>Financial IQ</a></li>
-                <li>{selectedArticle.title}</li>
-              </ol>
+                <span className="separator"><ChevronRight size={12} /></span>
+                <li className="active">{selectedArticle.title}</li>
+              </ul>
             </nav>
           </div>
         </div>
@@ -341,11 +343,12 @@ export default function FinancialIQ() {
           <div className="container">
             <span className="section-subtitle">Financial Education</span>
             <h1 className="page-title">Financial <span className="highlight">IQ</span></h1>
-            <nav>
-              <ol>
+            <nav className="fiq-breadcrumb-nav">
+              <ul className="breadcrumbs-list">
                 <li><a href="#/">Home</a></li>
-                <li>Financial IQ</li>
-              </ol>
+                <span className="separator"><ChevronRight size={12} /></span>
+                <li className="active">Financial IQ</li>
+              </ul>
             </nav>
           </div>
         </div>

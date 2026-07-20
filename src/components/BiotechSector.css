@@ -46,9 +46,9 @@
    2. BREADCRUMB
    ──────────────────────────────────────── */
 .biotech-breadcrumb {
-  background: #ffffff;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-  padding: 13px 0;
+  background: var(--section-muted);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 14px 0;
 }
 
 .biotech-breadcrumb ul {

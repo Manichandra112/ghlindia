@@ -122,7 +122,7 @@
 
 /* 2. Breadcrumbs */
 .faq-breadcrumbs {
-  background-color: #ffffff;
+  background-color: var(--section-muted);
   padding: 14px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
@@ -155,8 +155,8 @@
 }
 
 .breadcrumbs-list li.active {
-  color: var(--text-dark, #0f172a);
-  font-weight: 500;
+  color: var(--primary-red, #e41f26) !important;
+  font-weight: 600 !important;
 }
 
 /* 3. Split Content Area */

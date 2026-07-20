@@ -1,14 +1,3 @@
-/* Fractional Ownership Stylesheet */
-/* Desktop & Laptop */
-/* @media (min-width: 993px) {
-  .fractional-hero-img {
-    width: 100%;
-    height: 530px;
-    object-fit: cover;
-    display: block;
-  }
-} */
-
 /* Tablet */
 @media (min-width: 769px) and (max-width: 992px) {
   .fractional-hero-img {

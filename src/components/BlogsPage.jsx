@@ -278,9 +278,11 @@ export default function BlogsPage() {
           <ul className="breadcrumbs-list">
             <li><a href="#/">Home</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li><a href="#/" onClick={() => setSelectedBlogId(null)}>Resources</a></li>
-            <span className="separator"><ChevronRight size={12} /></span>
-            <li><a href="#/" onClick={() => setSelectedBlogId(null)}>Blogs</a></li>
+            {selectedBlogId ? (
+              <li><a href="#/" onClick={() => setSelectedBlogId(null)}>Blogs</a></li>
+            ) : (
+              <li className="active">Blogs</li>
+            )}
             {selectedBlogId && (() => {
               const blog = blogs.find(b => b.id === selectedBlogId);
               return (

@@ -67,7 +67,7 @@ export default function AboutUs() {
 
           <div className="about-hero-content-wrap container">
             <div className="about-hero-content">
-
+              <span className="badge-tag" style={{ marginBottom: '16px' }}>SECURED STRUCTURE. LEGAL PROTECTION.</span>
               <h1>
                 Building stronger relationships,
                 creating lasting impact
@@ -103,8 +103,6 @@ export default function AboutUs() {
           <ul className="breadcrumbs-list">
             <li><a href="#/">Home</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li>Resources</li>
-            <span className="separator"><ChevronRight size={12} /></span>
             <li className="active">About Us</li>
           </ul>
         </div>
@@ -114,6 +112,7 @@ export default function AboutUs() {
       <section className="about-narrative-section" id="about-narrative" ref={narrativeRef}>
         <div className="container">
           <div className="section-header text-center">
+            <span>Our Journey</span>
             <h2 className="section-title">Our Journey from <span className="red-highlight">2019</span> to <span className="red-highlight">2024</span></h2>
             <p className="section-subtitle">
               Beyond basic financial returns, we strive to build platforms that bring happiness, financial freedom, and peace of mind to investors.
@@ -197,6 +196,7 @@ export default function AboutUs() {
       <section className="about-analytics-section">
         <div className="container">
           <div className="section-header text-center">
+            <span>Our Vetting Framework</span>
             <h2 className="section-title">Understanding Our Analytical Methods</h2>
             <p className="section-subtitle">We employ micro-market, macroeconomic, and political-economic frameworks to validate our deals.</p>
           </div>
@@ -322,6 +322,7 @@ export default function AboutUs() {
       <section className="about-vision-mission-section">
         <div className="container">
           <div className="section-header text-center">
+            <span>Philosophy & Purpose</span>
             <h2 className="section-title">Curious About Our <span className="red-highlight">Vision & Mission</span>?</h2>
             <p className="section-subtitle">
               Learn more about our forward-looking guidance and core values.

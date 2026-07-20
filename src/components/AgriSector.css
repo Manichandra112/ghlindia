@@ -194,9 +194,9 @@
    2. BREADCRUMB
    ──────────────────────────────────────── */
 .agri-breadcrumb {
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid var(--agri-line);
-  padding: 13px 0;
+  background: var(--section-muted);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  padding: 14px 0;
 }
 
 .agri-breadcrumb ul {
@@ -221,9 +221,12 @@
   transition: color 0.2s;
 }
 
-.agri-breadcrumb li a:hover,
+.agri-breadcrumb li a:hover {
+  color: var(--primary-red, #e41f26);
+}
+
 .agri-breadcrumb li.active {
-  color: var(--agri-primary);
+  color: var(--primary-red, #e41f26);
   font-weight: 700;
 }
 
@@ -477,25 +480,27 @@
 }
 
 .agri-filter-tab {
-  padding: 8px 22px;
-  border: 2px solid rgba(77, 124, 15, 0.22);
-  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 6px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(9, 17, 31, 0.14);
+  color: #243142;
   background: #ffffff;
-  color: #475569;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
-  letter-spacing: 0.02em;
 }
 
 .agri-filter-tab:hover,
 .agri-filter-tab.active {
-  background: var(--agri-primary);
-  border-color: var(--agri-primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(77, 124, 15, 0.3);
-  transform: translateY(-1px);
+  border-color: var(--agri-primary);
+  background: linear-gradient(135deg, var(--agri-primary), #365314);
+  box-shadow: 0 10px 20px rgba(77, 124, 15, 0.2);
 }
 
 /* Segment Grid */

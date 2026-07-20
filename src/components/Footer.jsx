@@ -55,10 +55,13 @@ export default function Footer() {
           {/* Brand/Contact column */}
           <div className="footer-col brand-col">
             <a href="#/" className="logo-area logo-footer">
-              <div className="logo-symbol">G</div>
+              <div className="logo-symbol">GHL</div>
               <div className="logo-text text-white">
-                <span className="logo-highlight text-white">GHL</span>
-                <span className="logo-sub text-white-muted">INDIA</span>
+                <span className="logo-highlight text-white">
+                  IND<span className="logo-i">I<svg className="logo-star" viewBox="0 0 24 24"><path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#e41f26" /></svg></span>A
+                </span>
+                <span className="logo-tagline text-white-muted logo-tagline-1">KEY TO FISCAL</span>
+                <span className="logo-tagline text-white-muted logo-tagline-2">FREEDOM</span>
               </div>
             </a>
             <p className="brand-pitch">

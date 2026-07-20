@@ -149,11 +149,12 @@ export default function EconomyInsight() {
       <div className="economy-content-section" id="economy-content">
         <div className="breadcrumbs">
           <div className="container">
-            <nav>
-              <ol>
+            <nav className="economy-breadcrumb-nav">
+              <ul className="breadcrumbs-list">
                 <li><a href="#/">Home</a></li>
-                <li>News</li>
-              </ol>
+                <span className="separator"><ChevronRight size={12} /></span>
+                <li className="active">News</li>
+              </ul>
             </nav>
           </div>
         </div>

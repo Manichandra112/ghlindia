@@ -274,8 +274,6 @@ export default function FAQPage() {
           <ul className="breadcrumbs-list">
             <li><a href="#/">Home</a></li>
             <span className="separator"><ChevronRight size={12} /></span>
-            <li>Resources</li>
-            <span className="separator"><ChevronRight size={12} /></span>
             <li className="active">FAQ</li>
           </ul>
         </div>
