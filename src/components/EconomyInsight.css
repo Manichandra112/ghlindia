@@ -651,17 +651,17 @@
 } */
 @media (max-width: 768px) {
 
-  .economy-hero{
+  .economy-hero {
     display: flex;
     flex-direction: column;
     height: auto;
   }
 
-  .economy-hero::before{
+  .economy-hero::before {
     display: none;
   }
 
-  .economy-hero-img{
+  .economy-hero-img {
     width: 100%;
     height: auto;
     max-height: none;
@@ -669,7 +669,7 @@
     order: 1;
   }
 
-  .economy-hero-content-wrap{
+  .economy-hero-content-wrap {
     position: relative;
     inset: auto;
     background: #0f172a;
@@ -677,30 +677,30 @@
     order: 2;
   }
 
-  .economy-hero-content{
+  .economy-hero-content {
     max-width: 100%;
     text-align: left;
   }
 
-  .economy-hero-content h1{
+  .economy-hero-content h1 {
     font-size: 34px;
     line-height: 1.15;
   }
 
-  .economy-hero-content p{
+  .economy-hero-content p {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 24px;
   }
 
-  .economy-hero-actions{
+  .economy-hero-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 14px;
   }
 
   .economy-hero-btn,
-  .economy-hero-btn-secondary{
+  .economy-hero-btn-secondary {
     width: 100%;
     justify-content: center;
   }

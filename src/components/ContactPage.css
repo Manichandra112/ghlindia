@@ -38,7 +38,7 @@
 
 .contact-eyebrow,
 .contact-form-head span,
-.contact-cta-content > span {
+.contact-cta-content>span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -147,7 +147,7 @@
   gap: 8px;
 }
 
-.contact-field > span {
+.contact-field>span {
   color: #334155;
   font-size: 13px;
   font-weight: 800;
@@ -307,7 +307,7 @@
   text-align: center;
 }
 
-.contact-cta-content > span {
+.contact-cta-content>span {
   color: #ffe1e3;
 }
 

@@ -114,6 +114,7 @@
   .faq-hero-section {
     margin-top: 70px;
   }
+
   .faq-hero-wrapper {
     min-height: 240px;
     padding: 40px 16px;
@@ -399,7 +400,8 @@
 }
 
 .faq-accordion-answer.expanded {
-  max-height: 500px; /* arbitrary high number to allow expansion */
+  max-height: 500px;
+  /* arbitrary high number to allow expansion */
 }
 
 .faq-answer-inner {
@@ -450,11 +452,14 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
   .faq-sidebar {
     position: static;
   }
+
   .sidebar-contact-card {
-    display: none; /* Hide sidebar contact widget on tablet/mobile to keep focus on FAQs */
+    display: none;
+    /* Hide sidebar contact widget on tablet/mobile to keep focus on FAQs */
   }
 }
 
