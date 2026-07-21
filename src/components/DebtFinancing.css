@@ -759,8 +759,13 @@
   }
 
   .debt-hero-media-wrap {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    width: 100%;
+  }
+
+  .debt-hero-media-wrap picture {
+    display: block;
+    width: 100%;
   }
 
   .debt-hero-overlay-mask {
@@ -768,14 +773,14 @@
   }
 
   .debt-hero-img {
-    width: 100%;
-    height: auto;
-    max-height: 220px;
-    /* Adjust this: 180px, 200px, 220px */
-    object-fit: contain;
-    object-position: center;
-    display: block;
-    background: #fff;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    background: transparent !important;
   }
 
   .debt-hero-container {

@@ -42,7 +42,10 @@ export default function DebtFinancing() {
       {/* Hero Section */}
       <section className="debt-hero">
         <div className="debt-hero-media-wrap">
-          <img src={debit} alt="Debt Financing Banner" className="debt-hero-img" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={debtmobile} />
+            <img src={debit} alt="Debt Financing Banner" className="debt-hero-img" />
+          </picture>
           <div className="debt-hero-overlay-mask" />
           <div className="debt-container debt-hero-container">
             <div className="debt-content">

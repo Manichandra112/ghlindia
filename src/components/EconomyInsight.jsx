@@ -5,6 +5,7 @@ import newsContent from '../data/news_content.json';
 import './EconomyInsight.css';
 import CallToAction from './CallToAction';
 import economyInsightHero from '../assets/economy-insight.png';
+import economyInsightHeroMobile from '../assets/economy-insight mobile.png';
 
 export default function EconomyInsight() {
   const [tabs, setTabs] = useState([]);
@@ -125,11 +126,14 @@ export default function EconomyInsight() {
     <div className="economy-insight-container">
       <section className="economy-hero">
         <div className="economy-hero-media-wrap">
-          <img
-            src={economyInsightHero}
-            alt="Economic Insights Banner"
-            className="economy-hero-img"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={economyInsightHeroMobile} />
+            <img
+              src={economyInsightHero}
+              alt="Economic Insights Banner"
+              className="economy-hero-img"
+            />
+          </picture>
           <div className="economy-hero-overlay-mask"></div>
           <div className="economy-hero-content-wrap container">
             <div className="economy-hero-content">

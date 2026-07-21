@@ -283,7 +283,7 @@
   background:
     radial-gradient(circle at 12% 10%, rgba(180, 83, 9, 0.06), transparent 30%),
     #ffffff;
-  padding: 64px 0 48px;
+  padding: 32px 0 40px;
 }
 
 .food-market-grid {
@@ -774,7 +774,7 @@
    ──────────────────────────────────────── */
 .food-why-section {
   background: linear-gradient(180deg, #ffffff, #fef9ee);
-  padding: clamp(64px, 8vw, 104px) 0;
+  padding: clamp(36px, 4.5vw, 54px) 0;
 }
 
 .food-why-grid {
@@ -1050,13 +1050,30 @@
     grid-template-columns: 1fr;
   }
 
-  .food-hero-actions,
+  .food-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .food-hero-actions .food-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 14px 20px !important;
+    margin: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
   .food-cta-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .food-btn,
   .food-cta-btn {
     width: 100%;
   }
@@ -1067,6 +1084,36 @@
 
   .food-segment-grid {
     grid-template-columns: 1fr;
+  }
+
+  .food-market-section {
+    padding: 24px 0 32px !important;
+  }
+
+  .food-section-header p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 12px 0 0 0 !important;
+  }
+
+  .food-filter-tabs {
+    gap: 5px !important;
+    justify-content: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  .food-filter-tab {
+    padding: 5px 9px !important;
+    font-size: 11.5px !important;
+    min-height: 30px !important;
+    gap: 4px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .food-why-section {
+    padding: 32px 0 !important;
   }
 
   .food-why-grid {

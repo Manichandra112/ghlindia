@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info, ChevronRight } from 'lucide-react';
+import { Play, ArrowLeft, ArrowRight, Video, Search, X, Film, Info, ChevronRight, CheckCircle } from 'lucide-react';
 import localVideos from '../data/educational_videos_data.json';
 import './EducationalVideos.css';
 import BottomCTA from './BottomCTA';
@@ -180,6 +180,16 @@ export default function EducationalVideos() {
     }
   };
 
+  const handleExploreClick = (e) => {
+    e.preventDefault();
+    const controlPanel = document.querySelector('.edu-control-panel-bar');
+    if (controlPanel) {
+      const headerHeight = 80;
+      const topOffset = controlPanel.getBoundingClientRect().top + window.pageYOffset - headerHeight + 10;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
+  };
+
   const categories = ['All', 'Strategy', 'Structure', 'Protection', 'Shorts'];
 
   return (
@@ -187,20 +197,37 @@ export default function EducationalVideos() {
       {/* Cinematic Banner Header */}
       <div className="edu-banner-section">
         <div className="edu-banner-wrapper">
-          <img
-            src="https://www.ghlindia.com/assets/img/Edu-Video-Banner.jpg"
-            alt="Educational Videos Desktop Banner"
-            className="edu-banner-img desktop-banner"
-          />
-          <img
-            src="https://www.ghlindia.com/assets/img/Edu-Video-MOB-Banner.jpg"
-            alt="Educational Videos Mobile Banner"
-            className="edu-banner-img mobile-banner"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="https://www.ghlindia.com/assets/img/Edu-Video-MOB-Banner.jpg" />
+            <img
+              src="https://www.ghlindia.com/assets/img/Edu-Video-Banner.jpg"
+              alt="Educational Videos Banner"
+              className="edu-banner-img"
+            />
+          </picture>
+          <div className="banner-overlay-mask"></div>
           <div className="banner-overlay-content">
-            <span className="badge-tag">GHL Academy</span>
-            <h1>Educational Video Resources</h1>
-            <p>Smart structural insights, real estate architecture, and capital protection strategies.</p>
+            <span className="badge-tag">GHL ACADEMY • VIDEO LEARNING HUB</span>
+            <h1>
+              <span className="title-single-line">Educational Video Resources</span>
+              <br />
+              <span className="highlight-gold">for Smart Investors</span>
+            </h1>
+            <p>
+              Master alternative investments, real estate architecture, corporate debt structuring,
+              and capital protection strategies through in-depth expert video guides and market insights.
+            </p>
+            <div className="edu-hero-points">
+              <span className="edu-hero-point-pill"><CheckCircle size={14} /> Property Flipping</span>
+              <span className="edu-hero-point-pill"><CheckCircle size={14} /> Yield Strategies</span>
+              <span className="edu-hero-point-pill"><CheckCircle size={14} /> Capital Protection</span>
+              <span className="edu-hero-point-pill"><CheckCircle size={14} /> Expert Analysis</span>
+            </div>
+            <div className="edu-hero-actions">
+              <a href="#edu-videos-section" className="edu-hero-btn" onClick={handleExploreClick}>
+                Explore Video Library <ArrowRight size={18} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

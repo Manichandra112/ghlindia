@@ -19,69 +19,140 @@
 .edu-banner-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 7.5;
-  /* Taller height */
   background-color: #0b0f19;
+}
+
+.edu-banner-wrapper picture {
+  width: 100%;
+  display: block;
 }
 
 .edu-banner-img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 500px;
   display: block;
-  opacity: 0.45;
-  /* Darken image to highlight typography overlay */
-  filter: grayscale(20%) brightness(90%);
 }
 
-.edu-banner-img.mobile-banner {
-  display: none;
+.banner-overlay-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.45) 55%, rgba(15, 23, 42, 0.15) 100%);
+  z-index: 1;
 }
 
 .banner-overlay-content {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 10%;
-  background: linear-gradient(90deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.3) 100%);
+  padding: 0 3%;
   color: #ffffff;
   z-index: 2;
 }
 
 .banner-overlay-content .badge-tag {
-  background-color: var(--primary-red, #e41f26);
-  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  color: #f8fbff;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 99px;
-  letter-spacing: 0.1em;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 10px rgba(228, 31, 38, 0.3);
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+  backdrop-filter: blur(4px);
+  box-shadow: none;
 }
 
 .banner-overlay-content h1 {
-  font-size: clamp(24px, 4vw, 42px);
+  font-size: clamp(30px, 3.8vw, 48px);
   font-weight: 800;
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: #ffffff;
-  /* Make text color white for high readability */
+  max-width: 900px;
+}
+
+.title-single-line {
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.banner-overlay-content h1 span.highlight-gold {
+  color: #ffd778;
+  display: inline-block;
 }
 
 .banner-overlay-content p {
-  font-size: clamp(13px, 1.8vw, 17px);
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-  max-width: 600px;
-  line-height: 1.5;
+  font-size: clamp(15px, 1.35vw, 18px);
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 20px 0;
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.edu-hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+  max-width: 780px;
+}
+
+.edu-hero-point-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f1f5f9;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+  backdrop-filter: blur(4px);
+}
+
+.edu-hero-point-pill svg {
+  color: #4ade80;
+}
+
+.edu-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.edu-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--primary-red, #e41f26);
+  color: #ffffff;
+  padding: 11px 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(228, 31, 38, 0.35);
+  cursor: pointer;
+  border: none;
+}
+
+.edu-hero-btn:hover {
+  background-color: #c5161c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(228, 31, 38, 0.45);
 }
 
 @media (max-width: 768px) {
@@ -90,20 +161,83 @@
   }
 
   .edu-banner-wrapper {
-    aspect-ratio: 16 / 9;
+    display: flex;
+    flex-direction: column;
   }
 
-  .edu-banner-img.desktop-banner {
+  .banner-overlay-mask {
     display: none;
   }
 
-  .edu-banner-img.mobile-banner {
-    display: block;
-    opacity: 0.4;
+  .edu-banner-img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    order: 1;
   }
 
   .banner-overlay-content {
-    padding: 0 24px;
+    position: relative;
+    inset: auto;
+    max-width: 100%;
+    background: #0f172a;
+    padding: 28px 20px;
+    order: 2;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .banner-overlay-content h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    max-width: 100%;
+  }
+
+  .title-single-line {
+    white-space: normal;
+  }
+
+  .banner-overlay-content p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+    max-width: 100%;
+  }
+
+  .edu-hero-points {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .edu-hero-point-pill {
+    font-size: 12px;
+    padding: 7px 12px;
+    justify-content: center;
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 5px);
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .edu-hero-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .edu-hero-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    box-sizing: border-box;
   }
 }
 

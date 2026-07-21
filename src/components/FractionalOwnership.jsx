@@ -19,8 +19,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FractionalOwnership.css';
 import BottomCTA from './BottomCTA';
 import fractionalInvestment from '../assets/fractional invesment.png';
-
-import fractionalInvestmentmobile from '../assets/debt-financingmobile.png';
+import fractionalInvestmentmobile from '../assets/fractional investment mobile.png';
 
 export default function FractionalOwnership() {
   const animOptions = { threshold: 0.3, rootMargin: '0px 0px -250px 0px' };
@@ -129,7 +128,10 @@ export default function FractionalOwnership() {
     <div className="fractional-page-wrapper">
       <section className="fractional-hero">
         <div className="fractional-hero-media-wrap">
-          <img src={fractionalInvestment} alt="Fractional Investment Banner" className="fractional-hero-img" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={fractionalInvestmentmobile} />
+            <img src={fractionalInvestment} alt="Fractional Investment Banner" className="fractional-hero-img" />
+          </picture>
           <div className="fractional-hero-overlay-mask" />
           <div className="fractional-hero-content-wrap container">
             <div className="fractional-hero-content">

@@ -13,6 +13,7 @@ import {
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChannelPartner.css';
 import channelPartnerHero from '../assets/channelpartner.png';
+import channelPartnerMobile from '../assets/channelpartner-mobile.png';
 
 const GHL = 'https://www.ghlindia.com';
 
@@ -44,17 +45,20 @@ export default function ChannelPartner() {
   return (
     <div className="channel-page" ref={pageRef}>
       <section className="channel-hero">
-        <img
-          src={channelPartnerHero}
-          alt="Become a GHL India channel partner"
-          className="channel-hero-img"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={channelPartnerMobile} />
+          <img
+            src={channelPartnerHero}
+            alt="Become a GHL India channel partner"
+            className="channel-hero-img"
+          />
+        </picture>
         <div className="channel-hero-overlay" />
         <div className="channel-hero-content-wrap">
-          <div className="container channel-hero-content">
+          <div className="channel-hero-content">
             <div className="channel-hero-copy" data-animate="fade-up">
               <span className="channel-eyebrow"><UsersRound size={16} /> Partnership Program</span>
-              <h1>Become A Channel Partner</h1>
+              <h1>Become A <span>Channel Partner</span></h1>
               <p>
                 A partner is someone who supports us, fostering a healthy relationship.
                 Similarly, a channel partner&apos;s support is crucial in promoting our products.
@@ -86,10 +90,16 @@ export default function ChannelPartner() {
 
       <section className="channel-intro-section" id="channel-details">
         <div className="container">
+          <div className="channel-section-header" data-animate="fade-up">
+            <span className="channel-section-kicker">Partner With GHL India</span>
+            <h2>
+              Help us grow while showcasing
+              <br className="mobile-only-br" /> financial products with clarity.
+            </h2>
+          </div>
+
           <div className="channel-intro-grid">
             <div className="channel-copy-stack" data-animate="fade-right">
-              <span className="channel-section-kicker">Partner With GHL India</span>
-              <h2>Help us grow while showcasing financial products with clarity.</h2>
               <div className="channel-body-copy">
                 <p>
                   Welcome to GHL India&apos;s Channel Partner Program! We&apos;re excited to have you with us.
@@ -157,7 +167,7 @@ export default function ChannelPartner() {
       <section className="channel-cta-section">
         <div className="container">
           <div className="channel-cta-content" data-animate="fade-up">
-            <span>Get In Touch</span>
+            <span>GET IN TOUCH</span>
             <h2>Ready to understand the Channel Partner terms?</h2>
             <p>Speak with the GHL India team to learn about responsibilities, remuneration, and agreement details.</p>
             <div className="channel-cta-actions">

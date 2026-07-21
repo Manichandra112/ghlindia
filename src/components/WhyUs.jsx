@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { TrendingUp, Users, Award, Globe, Coins, ShieldCheck, ArrowRight } from 'lucide-react';
 import './WhyUs.css';
 import whyHero from '../assets/whyghl.png';
+import whyHeroMobile from '../assets/why-us mobile.png';
 
 export default function WhyUs() {
   const [activeIdx, setActiveIdx] = useState(null);
@@ -101,7 +102,10 @@ export default function WhyUs() {
       {/* Hero Header Banner */}
       <section className="why-hero-banner">
         <div className="why-hero-media-wrap">
-          <img src={whyHero} alt="Why GHL Banner" className="why-hero-img" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={whyHeroMobile} />
+            <img src={whyHero} alt="Why GHL Banner" className="why-hero-img" />
+          </picture>
           <div className="why-hero-overlay-mask" />
           <div className="why-hero-content-wrap container">
             <div className="why-hero-content">

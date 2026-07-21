@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { ArrowRight, ShieldCheck, Target, Award, CheckCircle2, ChevronRight } from 'lucide-react';
 import './AboutUs.css';
 import aboutHero from '../assets/about us.png';
+import aboutHeroMobile from '../assets/aboutus-mobile.png';
 import BottomCTA from './BottomCTA';
 
 export default function AboutUs() {
@@ -57,11 +58,14 @@ export default function AboutUs() {
       <section className="about-hero-section">
         <div className="about-hero-media-wrap">
 
-          <img
-            src={aboutHero}
-            alt="About Us Banner"
-            className="about-hero-img"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={aboutHeroMobile} />
+            <img
+              src={aboutHero}
+              alt="About Us Banner"
+              className="about-hero-img"
+            />
+          </picture>
 
           <div className="about-hero-overlay-mask"></div>
 
@@ -69,8 +73,8 @@ export default function AboutUs() {
             <div className="about-hero-content">
               <span className="badge-tag" style={{ marginBottom: '16px' }}>SECURED STRUCTURE. LEGAL PROTECTION.</span>
               <h1>
-                Building stronger relationships,
-                creating lasting impact
+                Building stronger relationships,<br />
+                <span>creating lasting impact</span>
               </h1>
 
               <p>

@@ -131,7 +131,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 12px 22px;
+  padding: 14px 34px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 800;
@@ -286,7 +286,7 @@
   background:
     radial-gradient(circle at 12% 10%, rgba(77, 124, 15, 0.07), transparent 30%),
     #ffffff;
-  padding: 64px 0 48px;
+  padding: 32px 0 40px;
 }
 
 .agri-market-grid {
@@ -708,7 +708,7 @@
    ──────────────────────────────────────── */
 .agri-why-section {
   background: linear-gradient(180deg, #ffffff, #f0f7e6);
-  padding: clamp(64px, 8vw, 104px) 0;
+  padding: clamp(36px, 4.5vw, 54px) 0;
 }
 
 .agri-why-grid {
@@ -1005,13 +1005,30 @@
     grid-template-columns: 1fr;
   }
 
-  .agri-hero-actions,
+  .agri-hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .agri-hero-actions .agri-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 14px 20px !important;
+    margin: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
   .agri-cta-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .agri-btn,
   .agri-cta-btn {
     width: 100%;
   }
@@ -1022,6 +1039,22 @@
 
   .agri-segment-grid {
     grid-template-columns: 1fr;
+  }
+
+  .agri-section-header p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 12px 0 0 0 !important;
+  }
+
+  .agri-market-section {
+    padding: 24px 0 32px !important;
+  }
+
+  .agri-why-section {
+    padding: 32px 0 !important;
   }
 
   .agri-why-grid {

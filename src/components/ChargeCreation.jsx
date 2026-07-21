@@ -4,6 +4,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChargeCreation.css';
 import BottomCTA from './BottomCTA';
 import chargeHero from '../assets/charge creation.png';
+import chargeHeroMobile from '../assets/charge creation-mobile.png';
 // import llpStepsDesktop from '../assets/charge creation steps.png';
 import llpStepsDesktop from '../assets/charge steps1.png';
 import llpStepsMobile from '../assets/charge steps mobile.png';
@@ -78,7 +79,10 @@ export default function ChargeCreation() {
     <div className="charge-creation-page">
       <section className="charge-hero-banner">
         <div className="charge-hero-media-wrap">
-          <img src={chargeHero} alt="Charge Creation Banner" className="charge-hero-img" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={chargeHeroMobile} />
+            <img src={chargeHero} alt="Charge Creation Banner" className="charge-hero-img" />
+          </picture>
           <div className="charge-hero-overlay-mask" />
           <div className="charge-hero-content-wrap container">
             <div className="charge-hero-content">

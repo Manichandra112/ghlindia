@@ -4,6 +4,7 @@ import localData from '../data/financial_iq_data.json';
 import CallToAction from './CallToAction';
 import './FinancialIQ.css';
 import financialIqHero from '../assets/financial iq.png';
+import financialIqHeroMobile from '../assets/financial-iq mobile.png';
 
 export default function FinancialIQ() {
   const [articles, setArticles] = useState([]);
@@ -196,22 +197,6 @@ export default function FinancialIQ() {
   if (selectedArticle) {
     return (
       <div className="financial-iq-container financial-iq-detail-view animate-fade-in">
-        <div className="breadcrumbs">
-          <div className="container">
-            <span className="section-subtitle">Financial Education</span>
-            <h1 className="page-title">Financial <span className="highlight">IQ</span></h1>
-            <nav className="fiq-breadcrumb-nav">
-              <ul className="breadcrumbs-list">
-                <li><a href="#/" onClick={() => setSelectedArticle(null)}>Home</a></li>
-                <span className="separator"><ChevronRight size={12} /></span>
-                <li><a href="#/financial-iq" onClick={() => setSelectedArticle(null)}>Financial IQ</a></li>
-                <span className="separator"><ChevronRight size={12} /></span>
-                <li className="active">{selectedArticle.title}</li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
         <div className="container detail-view">
           <div className="back-nav">
             <button className="back-btn" onClick={() => setSelectedArticle(null)}>
@@ -307,11 +292,14 @@ export default function FinancialIQ() {
     <div className="financial-iq-container financial-iq-list-view">
       <section className="fiq-hero">
         <div className="fiq-hero-media-wrap">
-          <img
-            src={financialIqHero}
-            alt="Financial IQ Banner"
-            className="fiq-hero-img"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={financialIqHeroMobile} />
+            <img
+              src={financialIqHero}
+              alt="Financial IQ Banner"
+              className="fiq-hero-img"
+            />
+          </picture>
           <div className="fiq-hero-overlay-mask" />
           <div className="fiq-hero-content-wrap container">
             <div className="fiq-hero-content">
@@ -321,8 +309,9 @@ export default function FinancialIQ() {
                 <span> for smarter wealth decisions</span>
               </h1>
               <p>
-                Explore practical insights, market concepts, and investor-first knowledge to build
-                long-term financial confidence.
+                Explore practical insights, market concepts, and investor-first knowledge<br />
+                designed to help you navigate financial markets, evaluate asset classes,<br />
+                and make informed wealth decisions with confidence.
               </p>
               <div className="fiq-hero-actions">
                 <a href="#fiq-content" className="fiq-hero-btn" onClick={handleExploreClick}>
@@ -341,8 +330,6 @@ export default function FinancialIQ() {
         {/* Page Header & Breadcrumbs */}
         <div className="breadcrumbs">
           <div className="container">
-            <span className="section-subtitle">Financial Education</span>
-            <h1 className="page-title">Financial <span className="highlight">IQ</span></h1>
             <nav className="fiq-breadcrumb-nav">
               <ul className="breadcrumbs-list">
                 <li><a href="#/">Home</a></li>

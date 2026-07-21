@@ -7,7 +7,7 @@
 }
 
 .financial-iq-detail-view {
-  padding-top: 112px;
+  padding-top: var(--header-height, 80px);
 }
 
 /* Breadcrumbs Styling */
@@ -15,7 +15,12 @@
   background-color: var(--section-muted);
   padding: 14px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.financial-iq-detail-view .breadcrumbs {
+  margin-top: calc(-1 * var(--header-height, 80px));
+  padding-top: calc(var(--header-height, 80px) + 14px);
 }
 
 .breadcrumbs .container {
@@ -158,8 +163,8 @@
 }
 
 .fiq-hero-content h1 {
-  max-width: 550px;
-  font-size: clamp(30px, 4vw, 44px);
+  max-width: 680px;
+  font-size: clamp(36px, 4.8vw, 58px);
   line-height: 1.1;
   color: #f8fbff;
   margin-bottom: 12px;
@@ -168,13 +173,12 @@
 }
 
 .fiq-hero-content h1 span {
-  display: block;
-  color: #e41f26;
-  /* Changed to match brand red theme */
+  display: inline;
+  color: #ffd778;
 }
 
 .fiq-hero-content p {
-  max-width: 430px;
+  max-width: 680px;
   font-size: clamp(14px, 1.3vw, 16px);
   line-height: 1.6;
   color: rgba(248, 251, 255, 0.9);
