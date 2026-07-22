@@ -105,19 +105,25 @@
   .hero-slide-img-wrapper,
   .hero-slide-link,
   .hero-slide-no-link {
-    height: 250px !important;
+    height: clamp(210px, 56vw, 260px) !important;
+    min-height: 0 !important;
+    background: transparent !important;
+    line-height: 0 !important;
   }
 
   .hero-slide-img {
     width: 100% !important;
-    height: 250px !important;
+    height: 100% !important;
+    object-fit: cover !important;
     display: block !important;
+    margin: 0 auto;
   }
 
   .hero-section .swiper-pagination {
-    bottom: 8px !important;
-    padding: 3px 8px;
-    gap: 3px;
+    bottom: 12px !important;
+    padding: 4px 10px;
+    gap: 4px;
+    z-index: 25 !important;
   }
 }
 

@@ -138,8 +138,8 @@ export default function FractionalOwnership() {
             <div className="fractional-hero-content">
               <span className="fractional-hero-tag">SMART ACCESS. BIG OPPORTUNITIES.</span>
               <h1>
-                Small Investments,
-                <span> Big Opportunities</span>
+                Small Investments,<br />
+                <span>Big Opportunities</span>
               </h1>
               <p>
                 Start with affordable capital and co-own high-value assets through fractional

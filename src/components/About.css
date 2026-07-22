@@ -47,13 +47,12 @@
 @media (max-width: 768px) {
   .established-box {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 16px 14px;
+    gap: 12px;
+    padding: 20px 18px;
     width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     margin-bottom: 28px;
-    text-align: center;
   }
 
   .reel-card-item {
@@ -108,12 +107,18 @@
   }
 
   .established-box h2 {
-    font-size: 20px;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 8px;
   }
 
   .established-box p {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 13.5px !important;
+    line-height: 1.65 !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    color: var(--text-muted);
+    margin: 0;
   }
 }
 
@@ -352,14 +357,3 @@
   text-align: justify;
   padding: 0 16px 16px 16px;
 }
-
-
-
-
-
-
-
-
-
-
-

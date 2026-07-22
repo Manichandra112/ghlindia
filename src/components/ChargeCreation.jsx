@@ -92,7 +92,7 @@ export default function ChargeCreation() {
                 <span className="charge-mob-line2">protects every investment</span>
               </h1>
               <p>
-                Understand how legally registered charges secure assets, protect investor capital,
+                Understand how legally registered charges secure assets, protect investor capital, <br className="charge-p-br" />
                 and create a transparent repayment framework.
               </p>
               <div className="charge-hero-actions">
