@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { TrendingUp, Users, Award, Globe, Coins, ShieldCheck, ArrowRight } from 'lucide-react';
+import { TrendingUp, Users, Award, Globe, Coins, ShieldCheck, ArrowRight, ChevronRight } from 'lucide-react';
 import './WhyUs.css';
 import whyHero from '../assets/whyghl.png';
 import whyHeroMobile from '../assets/why-us mobile.png';
@@ -131,6 +131,17 @@ export default function WhyUs() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Why Us</li>
+          </ul>
+        </div>
+      </nav>
 
       {/* Intro Description */}
       <section className="why-intro section-padding" id="why-intro" ref={introRef}>

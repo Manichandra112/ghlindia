@@ -13,7 +13,8 @@ import {
   Percent,
   Search,
   UserCheck,
-  Check
+  Check,
+  ChevronRight
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './FractionalOwnership.css';
@@ -164,6 +165,19 @@ export default function FractionalOwnership() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li>Strategy</li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Fractional Investment</li>
+          </ul>
+        </div>
+      </nav>
 
       {/* Intro Concept Section */}
       <section className="fractional-intro section-padding" id="learn-more" ref={sectionRef1}>

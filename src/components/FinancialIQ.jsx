@@ -325,20 +325,21 @@ export default function FinancialIQ() {
         </div>
       </section>
 
-      {/* Downside section containing breadcrumbs, cards and pagination */}
-      <div className="fiq-content-section" id="fiq-content" ref={contentRef}>
-        {/* Page Header & Breadcrumbs */}
-        <div className="breadcrumbs">
-          <div className="container">
-            <nav className="fiq-breadcrumb-nav">
-              <ul className="breadcrumbs-list">
-                <li><a href="#/">Home</a></li>
-                <span className="separator"><ChevronRight size={12} /></span>
-                <li className="active">Financial IQ</li>
-              </ul>
-            </nav>
-          </div>
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li>Intelligence</li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Financial IQ</li>
+          </ul>
         </div>
+      </nav>
+
+      {/* Downside section containing cards and pagination */}
+      <div className="fiq-content-section" id="fiq-content" ref={contentRef}>
 
         <div className="container" style={{ minHeight: '800px', position: 'relative' }}>
           {loading && articles.length === 0 ? (

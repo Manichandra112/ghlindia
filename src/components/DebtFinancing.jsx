@@ -6,7 +6,8 @@ import {
   ArrowRight,
   Check,
   Building,
-  Percent
+  Percent,
+  ChevronRight
 } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './DebtFinancing.css';
@@ -106,6 +107,19 @@ export default function DebtFinancing() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li>Strategy</li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Debt Funding</li>
+          </ul>
+        </div>
+      </nav>
 
       {/* 1. What is Debt Funding Section */}
       <section className="debt-intro section-padding" ref={sectionRef1}>

@@ -8,6 +8,12 @@ import 'swiper/css/navigation';
 import './Hero.css';
 
 import hero1 from '../assets/hero1.png';
+import hero2 from '../assets/home-hero2.png';
+import hero3 from '../assets/home-hero3.png';
+import hero4 from '../assets/home-hero4.png';
+import hero5 from '../assets/home-hero5.png';
+import hero6 from '../assets/home-hero6.png';
+import hero7 from '../assets/home-hero7.png';
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -23,22 +29,22 @@ export default function Hero() {
 
   const desktopSlides = [
     { img: hero1 },
-    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Web.jpg' },
-    { img: '/assets/img/home2026/web/Share.jpg' },
-    { img: '/assets/img/home2026/web/18.jpg' },
-    { img: '/assets/img/home2026/web/Secured-NCD.jpg' },
-    { img: '/assets/img/home2026/web/NCDss.jpg' },
-    { img: '/assets/img/home2026/web/Recession-or-inflation-.jpg' }
+    { img: hero2 },
+    { img: hero3 },
+    { img: hero4 },
+    { img: hero5 },
+    { img: hero6 },
+    { img: hero7 }
   ];
 
   const mobileSlides = [
     { img: hero1 },
-    { img: '/assets/img/Home_23.07.2024/june/5th-Year-Anniversary-Mob-Web.jpg' },
-    { img: '/assets/img/home2026/mob/Share-Mob.jpg' },
-    { img: '/assets/img/home2026/mob/18Mob.jpg' },
-    { img: '/assets/img/home2026/mob/NCDs-Mob.jpg' },
-    { img: '/assets/img/home2026/mob/Secured-NCD-Mob.jpg' },
-    { img: '/assets/img/home2026/mob/Recession-or-inflation--Mob.jpg' }
+    { img: hero2 },
+    { img: hero3 },
+    { img: hero4 },
+    { img: hero5 },
+    { img: hero6 },
+    { img: hero7 }
   ];
 
   const activeSlides = isMobile ? mobileSlides : desktopSlides;

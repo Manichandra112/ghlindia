@@ -231,6 +231,56 @@ img {
   }
 }
 
+/* Standard Breadcrumbs Styling */
+.page-breadcrumb,
+.global-breadcrumb {
+  background-color: var(--section-muted, #f8fafc);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  position: relative;
+  z-index: 5;
+}
+
+.breadcrumbs-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs-list li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbs-list li a {
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs-list li a:hover {
+  color: var(--primary-red, #e41f26);
+}
+
+.breadcrumbs-list .separator {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 8px;
+  color: #94a3b8;
+  user-select: none;
+}
+
+.breadcrumbs-list li.active {
+  color: var(--primary-red, #e41f26) !important;
+  font-weight: 600 !important;
+}
+
 /* Button Component */
 .btn {
   display: inline-flex;

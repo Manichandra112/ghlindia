@@ -23,6 +23,24 @@
   padding-top: var(--header-height, 80px);
 }
 
+.fractional-page-wrapper .section-padding {
+  padding: 50px 0;
+}
+
+.fractional-page-wrapper .section-header {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .fractional-page-wrapper .section-padding {
+    padding: 30px 0 !important;
+  }
+
+  .fractional-page-wrapper .section-header {
+    margin-bottom: 24px;
+  }
+}
+
 @media (max-width: 600px) {
   .fractional-page-wrapper {
     padding-top: var(--header-height, 72px);
@@ -47,7 +65,7 @@
 .fractional-hero-img {
   width: 100%;
   height: auto;
-  max-height: 52about-us0px;
+  height: 500px;
   display: block;
 }
 
@@ -488,7 +506,7 @@
 
 /* 3. Example Section */
 .fractional-example {
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
 }
 
@@ -552,7 +570,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-top: 40px;
+  margin-top: 28px;
 }
 
 @media (max-width: 992px) {
@@ -642,7 +660,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  margin-top: 48px;
+  margin-top: 32px;
 }
 
 @media (max-width: 992px) {
@@ -739,7 +757,7 @@
 .timeline-block {
   position: relative;
   max-width: 860px;
-  margin: 60px auto 0;
+  margin: 32px auto 0;
 }
 
 .timeline-connector-line {

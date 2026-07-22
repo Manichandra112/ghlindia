@@ -251,6 +251,17 @@ export default function OurTeam() {
         </div>
       </section>
 
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Our Team</li>
+          </ul>
+        </div>
+      </nav>
+
       <section className="team-story-section">
         <div className="team-shell">
           <div className="section-header">

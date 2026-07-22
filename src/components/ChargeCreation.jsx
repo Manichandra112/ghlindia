@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Layers, Lock, Play } from 'lucide-react';
+import { ArrowRight, Layers, Lock, Play, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import './ChargeCreation.css';
 import BottomCTA from './BottomCTA';
@@ -105,6 +105,19 @@ export default function ChargeCreation() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb Navigation */}
+      <nav className="page-breadcrumb">
+        <div className="container">
+          <ul className="breadcrumbs-list">
+            <li><a href="#/">Home</a></li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li>Security</li>
+            <span className="separator"><ChevronRight size={12} /></span>
+            <li className="active">Charge Creation</li>
+          </ul>
+        </div>
+      </nav>
 
       <section className="charge-intro section-padding" id="charge-intro" ref={introRef}>
         <div className="container">
